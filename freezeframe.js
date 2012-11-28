@@ -1,14 +1,13 @@
 /*
 --------------------------------
-freezeframe.js
+freezeframe.js version 1.0
 --------------------------------
-https://github.com/chrisantonellis/freezeframe
-version 1.0
 Licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License
+http://creativecommons.org/licenses/by-sa/3.0/deed.en_US
 
 2012 Chris Antonellis
 http://www.chrisantonellis.com
-
+https://github.com/chrisantonellis/freezeframe
 Documentation: http://freezeframe.chrisantonellis.com
 */
 
@@ -21,11 +20,11 @@ FreezeFrame = (function()
 	var speed_fade_out;
 	var loading_bg_style;
 
-	var _this
+	var _this;
 
 	function FreezeFrame(_options)
 	{
-		var _this = this;
+		_this = this;
 
 		if(_options == undefined)
 		{
