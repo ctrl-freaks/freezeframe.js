@@ -8,9 +8,8 @@ Installation
 
 1. freezeframe.js requires the jQuery framework. Include the latest version of jQuery in your page header before including freezeframe.js.
 
-HTML Header
------------
-<script type="text/javascript" src="jquery.js"></script>
+### HTML Header
+	<script type="text/javascript" src="jquery.js"></script>
 
 (Note: I recommend using the latest version of jQuery from Google Hosted Libraries.)
 
@@ -20,27 +19,25 @@ HTML Header
 
 4. Include the following code in your HTML Header. This will include the script and set it to run on page load. Optionally, you can customize variables that determine how freezeframe functions and looks in the header.
 
-HTML Header
------------
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="freezeframe.js"></script>
-<script type="text/javascript">
-	ff = new FreezeFrame();
-</script>
+### HTML Header
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="freezeframe.js"></script>
+	<script type="text/javascript">
+		ff = new FreezeFrame();
+	</script>
 
-HTML Header (Optional)
-----------------------
-		<script type="text/javascript" src="jquery.js"></script>
-		<script type="text/javascript" src="freezeframe.js"></script>
-		<script type="text/javascript">
-		$(document).ready(function(){
-			ff = new FreezeFrame({
-				speed_fade_in	: 1000,
-				speed_fade_out	: 1000,
-				loading_bg_style: "url('/img/loading.gif') no-repeat #FFF"
-			});
+### HTML Header (Optional)
+	<script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript" src="freezeframe.js"></script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		ff = new FreezeFrame({
+			speed_fade_in	: 1000,
+			speed_fade_out	: 1000,
+			loading_bg_style: "url('/img/loading.gif') no-repeat #FFF"
 		});
-		</script>
+	});
+	</script>
 
 (Note: The path to freezeframe.js may need to be modified depending on where you choose to upoad the script.)
 
@@ -56,8 +53,7 @@ To add CSS styling to the image, target the figure tag with the class freezefram
 			border-radius: 3px;
 		}
 
-Use with Infinite Scroll
-------------------------
+### Use with Infinite Scroll
 
 Follow the steps above, and include freezeframe.run() as a new content callback function.
 
@@ -82,9 +78,9 @@ Attribution
 While not required, I would appreciate a link back to my website if freezeframe is included in your work. Here is a suggestion:
 
 ### HTML
-		Using <a href="http://freezeframe.chrisantonellis.com">FreezeFrame</a>
-		 by <a href="http://www.chrisantonellis.com">Chris Antonellis</a>
-		This could be included in the footer, about page, readme file or not at all.
+	Using <a href="http://freezeframe.chrisantonellis.com">FreezeFrame</a>
+	 by <a href="http://www.chrisantonellis.com">Chris Antonellis</a>
+This could be included in the footer, about page, readme file or not at all.
 
 About
 =====
