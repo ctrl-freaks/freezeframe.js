@@ -1,6 +1,10 @@
 freezeframe.js
 ==============
 
+http://freezeframe.chrisantonellis.com
+
+http://www.chrisantonellis.com
+
 freezeframe.js is a script that automatically pauses animated GIFs and enables them to start animating on mouse hover.
 
 Installation
