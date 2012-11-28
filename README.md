@@ -30,63 +30,61 @@ HTML Header
 
 HTML Header (Optional)
 ----------------------
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="freezeframe.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){
-	ff = new FreezeFrame({
-		speed_fade_in	: 1000,
-		speed_fade_out	: 1000,
-		loading_bg_style: "url('/img/loading.gif') no-repeat #FFF"
-	});
-});
-</script>
+		<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="freezeframe.js"></script>
+		<script type="text/javascript">
+		$(document).ready(function(){
+			ff = new FreezeFrame({
+				speed_fade_in	: 1000,
+				speed_fade_out	: 1000,
+				loading_bg_style: "url('/img/loading.gif') no-repeat #FFF"
+			});
+		});
+		</script>
 
 (Note: The path to freezeframe.js may need to be modified depending on where you choose to upoad the script.)
 
 5. Add the boolean attribute freezeframe to each image you want modified.
 
-HTML
-----
-
-<img src="whatever.gif" freezeframe />
+### HTML
+		<img src="whatever.gif" freezeframe />
 
 To add CSS styling to the image, target the figure tag with the class freezeframe-container wrapped around the image and apply the styles to that element.
 
-CSS
-figure.freezeframe-container {
-	border-radius: 3px;
-}
+### CSS
+		figure.freezeframe-container {
+			border-radius: 3px;
+		}
 
 Use with Infinite Scroll
 ------------------------
 
 Follow the steps above, and include freezeframe.run() as a new content callback function.
 
-$('#content').infinitescroll({
-  option: "value",
-  option: "value",
-  ...
-},function(elements){
-	freezeframe.run();
-});
+### JS
+		$('#content').infinitescroll({
+		  option: "value",
+		  option: "value",
+		  ...
+		},function(elements){
+			freezeframe.run();
+		});
 
 Features
 ========
 
-- Easy to install and implement.
-- Only 4kb in size, 3kb when minified.
-- Averages 18ms per image, or 1 second of additional page load per 55 GIFs at 0.5MB each.
++ Easy to install and implement.
++ Only 4kb in size, 3kb when minified.
++ Averages 18ms per image, or 1 second of additional page load per 55 GIFs at 0.5MB each.
 
 Attribution
 ===========
 While not required, I would appreciate a link back to my website if freezeframe is included in your work. Here is a suggestion:
 
-HTML
-----
-Using <a href="http://freezeframe.chrisantonellis.com">FreezeFrame</a>
- by <a href="http://www.chrisantonellis.com">Chris Antonellis</a>
-This could be included in the footer, about page, readme file or not at all.
+### HTML
+		Using <a href="http://freezeframe.chrisantonellis.com">FreezeFrame</a>
+		 by <a href="http://www.chrisantonellis.com">Chris Antonellis</a>
+		This could be included in the footer, about page, readme file or not at all.
 
 About
 =====
