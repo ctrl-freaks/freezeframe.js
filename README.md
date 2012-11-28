@@ -4,8 +4,6 @@ freezeframe.js
 ### Example
 http://freezeframe.chrisantonellis.com
 
-http://www.chrisantonellis.com
-
 freezeframe.js is a script that automatically pauses animated GIFs and enables them to start animating on mouse hover.
 
 Installation
@@ -54,9 +52,9 @@ Installation
 To add CSS styling to the image, target the figure tag with the class freezeframe-container wrapped around the image and apply the styles to that element.
 
 ### CSS
-		figure.freezeframe-container {
-			border-radius: 3px;
-		}
+	figure.freezeframe-container {
+		border-radius: 3px;
+	}
 
 ### Centering the Image
 Because freezeframe.js forces the freezeframe-container figure to be an inline element, if you want the image to be horizontally centered, apply text-align: center; to the image's parent element.
@@ -70,13 +68,13 @@ Because freezeframe.js forces the freezeframe-container figure to be an inline e
 Follow the steps above, and include freezeframe.run() as a new content callback function.
 
 ### JS
-		$('#content').infinitescroll({
-		  option: "value",
-		  option: "value",
-		  ...
-		},function(elements){
-			freezeframe.run();
-		});
+	$('#content').infinitescroll({
+	  option: "value",
+	  option: "value",
+	  ...
+	},function(elements){
+		freezeframe.run();
+	});
 
 Features
 ========
