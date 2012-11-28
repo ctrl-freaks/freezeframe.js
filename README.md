@@ -58,6 +58,13 @@ To add CSS styling to the image, target the figure tag with the class freezefram
 			border-radius: 3px;
 		}
 
+### Centering the Image
+Because freezeframe.js forces the freezeframe-container figure to be an inline element, if you want the image to be horizontally centered, apply text-align: center; to the image's parent element.
+### CSS
+	div#images {
+		text-align: center;
+	}
+
 ### Use with Infinite Scroll
 
 Follow the steps above, and include freezeframe.run() as a new content callback function.
