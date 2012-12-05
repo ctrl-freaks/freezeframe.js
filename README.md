@@ -1,5 +1,6 @@
 freezeframe.js
 ==============
+v1.0.2
 
 ### Example
 http://freezeframe.chrisantonellis.com
