@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>freezeframe.js</title>
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<!-- jQuery -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<!-- freezeframe include -->
+	<script type="text/javascript" src="../freezeframe.js"></script>
+	<!-- freezeframe init -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		freezeframe = new FreezeFrame();
+	});
+	</script>
+</head>
+<body>
+	<h1>freezeframe.js demo</h1>
+	<!-- GIF with freezeframe attribute -->
+	<img src="times_square.gif" freezeframe />
+	<span class="note">
+		Title: <a href="#">Something</a> &sdot;
+		Artist: <a href="#">Something</a>
+	</span>
+</body>
+</html>

@@ -1,0 +1,33 @@
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700");
+body {
+  width: 502px;
+  margin: 20px auto;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 13px;
+  color: #333333;
+}
+h1 {
+  display: block;
+  margin: 0px 0px 20px 0px;
+  padding: 0px;
+  letter-spacing: -1px;
+  font-weight: normal;
+  text-align: center;
+}
+figure.freezeframe-container {
+  margin: 0px 0px 10px 0px;
+  border-radius: 3px;
+  border: 1px solid #333333;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
+}
+span.note {
+  display: block;
+  margin: 0px 0px 20px 0px;
+  padding: 0px;
+}
+span.note a {
+  color: inherit;
+}
+span.note a:hover {
+  color: black;
+}
