@@ -10,6 +10,8 @@ freezeframe.js is a script that automatically pauses animated GIFs and enables t
 Installation
 ============
 
+(documentation of new features coming very soon)
+
 1. freezeframe.js requires the jQuery framework. Include the latest version of jQuery in your page header before including freezeframe.js.
 
 ### HTML Header
