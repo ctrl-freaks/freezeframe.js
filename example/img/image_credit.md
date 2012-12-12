@@ -1,5 +1,5 @@
 Image Credit
-------------
+============
 
 - ants.gif
 - felix_baumgartner.gif
