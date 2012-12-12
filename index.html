@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>freezeframe.js v1.1.0 documentation</title>
+	<style type="text/css">
+	@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700");
+	body {
+	  width: 502px;
+	  margin: 20px auto 200px auto;
+	  font-family: 'Open Sans', sans-serif;
+	  font-size: 13px;
+	  color: #202020;
+	}
+	.bold {
+	  font-weight: 700;
+	}
+	.italic {
+	  font-style: italic;
+	}
+	.orangered {
+	  color: orangered;
+	}
+	a {
+	  color: inherit;
+	}
+	a:hover {
+	  color: black;
+	}
+	h1,
+	h2,
+	h3 {
+	  display: block;
+	  padding: 0px;
+	}
+	h1 {
+	  margin: 15px 0px;
+	}
+	h1.centered {
+	  text-align: center;
+	}
+	h2 {
+	  margin: 20px 0px 10px 0px;
+	  color: orangered;
+	}
+	h3 {
+	  margin: 10px 0px;
+	}
+	ol,
+	ul {
+	  margin: 0px 0px 15px 0px;
+	  padding: 0px;
+	  font-weight: 700;
+	  color: orangered;
+	}
+	ol li,
+	ul li {
+	  margin: 0px;
+	  padding: 0px;
+	}
+	ol li.disc,
+	ul li.disc {
+	  list-style-type: disc;
+	  color: orangered;
+	}
+	ol li p,
+	ul li p {
+	  display: block;
+	  margin: 0px;
+	  padding: 0px;
+	  font-weight: normal;
+	  color: #202020;
+	}
+	ol li ol,
+	ul li ol,
+	ol li ul,
+	ul li ul {
+	  margin: 0px 0px 0px 20px;
+	  color: #202020;
+	}
+	ol li ul,
+	ul li ul {
+	  list-style-type: circle;
+	}
+	ul {
+	  list-style-type: disc;
+	}
+	span.note {
+	  display: block;
+	  margin: -10px 0px 15px 0px;
+	  padding: 0px;
+	  font-size: 11px;
+	}
+	span.note a {
+	  color: inherit;
+	}
+	span.note a:hover {
+	  color: black;
+	}
+	pre {
+	  display: block;
+	  margin: 0px 0px 15px 0px;
+	  padding: 10px 15px;
+	  border-radius: 2px;
+	  background: #e0e0e0;
+	  box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3);
+	  font-size: 12px;
+	  color: #404040;
+	}
+	ul.variable {
+	  margin-left: 0px;
+	  list-style-type: none;
+	}
+	ul.variable li {
+	  display: block;
+	  margin: 0px 0px 5px 0px;
+	  padding: 0px;
+	}
+	ul.variable li span.attribute {
+	  display: block;
+	  width: 80px;
+	  height: 100%;
+	  float: left;
+	  font-weight: normal;
+	  color: #999999;
+	}
+	ul.variable li span.type {
+	  font-size: 11px;
+	}
+	ul.variable li p {
+	  display: block;
+	  margin: 0px 0px 0px 80px;
+	  padding: 0px;
+	}
+	</style>
+</head>
+
+<body>
+
+<h1>freezeframe.js v1.1.0</h1>
+
+<p>Documentation & Examples</p>
+
+<h2>Navigation</h2>
+
+<ol>
+	<li><p><a href="#examples">Examples</a></p></li>
+	<li><p><a href="#changelog">Changelog</a></p></li>
+	<li><p><a href="#files-included">Files Included</a></p></li>
+	<li><p><a href="#installation">Installation</a></p></li>
+	<li><p><a href="#styling-centering">Styling and Centering</a></p></li>
+	<li><p><a href="#infinite-scroll">Use with Infinite-Scroll</a></p></li>
+	<li><p><a href="#variables">Variables</a></p></li>
+</ol>
+
+<h2 id="examples">Examples</h2>
+
+<ol>
+	<li><p><a href="example">Single Image</a></p></li>
+	<li><p><a href="example/infinite-scroll.html">Integrated with Infinite-Scroll</a></p></li>
+</ol>
+
+<h2 id="changelog">Changelog</h2>
+
+<ul>
+	<li>
+		<p><span class="bold">v1.1.0</span> &sdot; 12/07/2012 &sdot; Many new features, including:
+			<ul>
+				<li><p>Created more specific variables for loading background style</p></li>
+				<li><p>Added icon to denote animation and supporting variables</p></li>
+				<li><p>Added support for touch devices (click to toggle, animation duration, etc)</p></li>
+				<li><p>Added false functionality to loading and animation icons to disable</p></li>
+			</ul>
+		</p>
+	</li>
+	<li><p><span class="bold">v1.0.2</span> &sdot; 11/30/2012 &sdot; Fixed filename and version syntax</p></li>
+	<li><p><span class="bold">v1.0.1</span> &sdot; 11/28/2012 &sdot; Fixed image positioning bug</p></li>
+	<li><p><span class="bold">v1.0.0</span> &sdot; 11/25/2012 &sdot; Initial Release<p></li>
+</ul>
+
+<h2 id="files-included">Files Included</h2>
+
+<ul>
+	<li>
+		<p><span class="bold">freezeframe/
+			<ul>
+				<li><p>freezeframe.js</p></li>
+				<li><p>index.html</p></li>
+				<li><p>readme.md</p></li>
+				<li class="disc">
+					<p><span class="bold">example/</span>
+						<ul>
+							<li><p>index.html</p></li>
+							<li><p>infinite_scroll.html</p></li>
+							<li><p>infinite_scroll_2.html</p></li>
+							<li><p>infinite_scroll_3.html</p></li>
+							<li><p>jquery.infinitescroll.js</p></li>
+							<li class="disc">
+								<p><span class="bold">img/</span>
+									<ul>
+										<li><p>ants.gif</p></li>
+										<li><p>felix_baumgartner.gif</p></li>
+										<li><p>lightning.gif</p></li>
+										<li><p>pugs.gif</p></li>
+										<li><p>running.gif</p></li>
+										<li><p>subway.gif</p></li>
+										<li><p>times_square.gif</p></li>
+									</ul>
+								</p>
+							</li>
+						</ul>
+					</p>
+				</li>
+			</ul>
+		</p>
+	</li>
+</ul>
+
+<h3>Image Credit</h3>
+
+<p>Included GIF's Copyright &copy; 2012 <a href="http://headlikeanorange.tumblr.com" target="_blank">http://headlikeanorange.tumblr.com</a></p>
+
+<h2 id="installation">Installation</h2>
+
+<ol>
+	<li><p>freezeframe.js requires the <a href="http://www.jquery.com" target="_blank">jQuery framework</a>. Include the latest version of jQuery in your page header <span class="bold">before</span> including freezeframe.js.<br /><a href="http://www.jquery.com" target="_blank">http://www.jquery.com</a></p></li>
+</ol>
+
+<h3>HTML Header</h3>
+
+<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="orangered">&quot;jquery.js&quot;</span>&gt;&lt;/script&gt;</pre>
+
+<span class="note"><span class="bold">Note:</span> I recommend using the latest version of jQuery from Google Hosted Libraries<br /><a href="https://developers.google.com/speed/libraries/devguide#jquery" target="_blank">https://developers.google.com/speed/libraries/devguide#jquery</a></span>
+
+<ol start="2">
+	<li><p>Download the current version of freezeframe.js.</p></li>
+	<li><p>Upload freezeframe.js to your webserver.</p></li>
+</ol>
+
+<ul>
+	<li><p>Optionally, If you are interested in modifying freezeframe in a sandboxed environment, upload the <span class="bold">example/</span> directory to your webserver and modify the contents of <span class="bold">example/</span>.</p></li>
+</ul>
+
+<ol start="4">
+	<li><p>Include the following code in your <span class="bold">HTML Header</span>. This will include the script and set it to run on page load. Optionally, you can customize variables that determine how freezeframe functions and looks in the header.</p></li>
+</ol>
+
+<h3>HTML Header</h3>
+
+<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="orangered">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+<span class="orangered">freezeframe = new FreezeFrame();</span>
+&lt;/script&gt;</pre>
+
+<h3>HTML Header (Optional)</h3>
+
+<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="orangered">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+<span class="orangered">freezeframe = new FreezeFrame({
+	loading_background_color: &quot;red&quot;,
+	animation_icon_position: &quot;center center&quot;
+});</span>
+&lt;/script&gt;</pre>
+
+<span class="note"><span class="bold">Note:</span> The path may need to be modified depending on where you choose to upoad the script.</span>
+
+<ol start="5">
+	<li><p>Add the boolean attribute <span class="bold">freezeframe</span> to each image you want modified.</p></li>
+</ol>
+
+<h3>HTML</h3>
+
+<pre>&lt;img src=&quot;whatever.gif&quot; <span class="orangered">freezeframe</span> /&gt;</pre>
+
+<h2 id="styling-centering">Styling and Centering the Image</h2>
+
+<ul>
+	<li><p>To add CSS styling to the image, target the <span class="bold">figure</span> tag with the class <span class="bold">freezeframe-container</span> wrapped around the image and apply the styles to that element.</p></li>
+</ul>
+
+<h3>CSS</h3>
+
+<pre><span class="orangered">figure.freezeframe-container</span> {
+	border-radius: 3px;
+}</pre>
+
+<ul>
+	<li><p>Because freezeframe.js forces the freezeframe-container figure element to be inline, if you want the image to be horizontally centered, apply <span class="bold">text-align: center;</span> to the image's parent element.</p></li>
+</ul>
+
+<h3>CSS</h3>
+
+<pre>div#images-container {
+	<span class="orangered">text-align: center;</span>
+}</pre>
+
+<h2 id="infinite-scroll">Use with Infinite-Scroll</h2>
+
+<ul>
+	<li><p>For use with <a href="Http://www.infinite-scroll.com" target="_blank">Infinite-Scroll</a>, follow the steps above and include <span class="bold">freezeframe.run()</span> as a new content callback function.<br /><a href="Http://www.infinite-scroll.com" target="_blank">http://www.infinite-scroll.com</a></p></li>
+</ul>
+
+<h3>JS</h3>
+
+<pre>$('#content').infinitescroll({
+  option: &quot;value&quot;,
+  option: &quot;value&quot;,
+  ...
+},function(elements){
+	<span class="orangered">freezeframe.run();</span>
+});</pre>
+
+<!-- Variables ----------------------------------------------------- -->
+<h2 id="variables">Variables</h2>
+
+<!-- trigger_event -->
+<h3>trigger_event</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>The input event that will trigger the freezeframe elements to animate. This value is forced to "click" on touch devices if touch_device_support is set to true.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(string)</span> "hover"<br />
+			<span class="type">(string)</span> "click"
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p><span class="type">(string)</span> "hover"</p>
+	</li>
+</ul>
+<pre><span class="orangered">trigger_event:</span> "click"</pre>
+
+<!-- touch_device_support -->
+<h3>touch_device_support</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>Determines freezeframe interaction on touch devices. If set to true, trigger_event on touch devices will be forced to "click", otherwise if set to false, trigger_event on touch devices will be set to the user input trigger_event value.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(boolean)</span> true<br />
+			<span class="type">(boolean)</span> false
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(boolean)</span> true
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">touch_device_support:</span> true</pre>
+
+<!-- animation_play_duration -->
+<h3>animation_play_duration</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>The length of time in milliseconds that a GIF will animate if started by a "click" trigger_event. After this period of time the animation will stop.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(int)</span> [user defined value]<br />
+			<span class="type">(undefined)</span>
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(int)</span> 15000
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">animation_play_duration:</span> 1500</pre>
+
+<!-- loading_background_color -->
+<h3>loading_background_color</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>The CSS color of the container shown in place of a GIF while it is processed.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(string)</span> [user defined value]<br />
+			<span class="type">(undefined)</span>
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(string)</span> "#666"
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">loading_background_color:</span> "#666"</pre>
+
+<!-- loading_background_image -->
+<h3>loading_background_image</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>URL to the animated icon shown with the container shown in place of a GIF while it is being processed. Typically an animation to denote loading.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(string)</span> [user defined image url]<br />
+			<span class="type">(boolean)</span> false<br />
+			<span class="type">(undefined)</span>
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(string)</span> [base 64 encoded icon]
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">loading_background_image:</span> "/images/loading_icon.gif"</pre>
+
+<!-- loading_background_position -->
+<h3>loading_background_position</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>The CSS position of the animated icon with the container shown in place of a GIF while it is being processed.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(string)</span> "top left"<br />
+			<span class="type">(string)</span> "top center"<br />
+			<span class="type">(string)</span> "top right"<br />
+			<span class="type">(string)</span> "center left"<br />
+			<span class="type">(string)</span> "center center"<br />
+			<span class="type">(string)</span> "center right"<br />
+			<span class="type">(string)</span> "bottom left"<br />
+			<span class="type">(string)</span> "bottom center"<br />
+			<span class="type">(string)</span> "bottom right"
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(string)</span> "top left"
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">loading_background_position:</span> "top left"</pre>
+
+<!-- loading_fade_in_speed -->
+<h3>loading_fade_in_speed</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>The length of time in milliseconds it will take for the paused GIF to fade in over the loading placeholder.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(int)</span> [user defined value]<br />
+			<span class="type">(undefined)</span>
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(int)</span> 500
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">loading_fade_in_speed:</span> 500</pre>
+
+<!-- animation_icon_image -->
+<h3>animation_icon_image</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>URL for the icon layered above the paused GIF. The icon is used to repsent animation or the possiblity of animation (play arrow).</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(string)</span> [user defined image url]<br />
+			<span class="type">(boolean)</span> false<br />
+			<span class="type">(undefined)</span>
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(string)</span> [base 64 encoded icon]
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">animation_icon_image:</span> "/images/animation_icon.gif"</pre>
+
+<!-- animation_icon_position -->
+<h3>animation_icon_position</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>The CSS position of the icon layered above the paused GIF.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(string)</span> "top left"<br />
+			<span class="type">(string)</span> "top center"<br />
+			<span class="type">(string)</span> "top right"<br />
+			<span class="type">(string)</span> "center left"<br />
+			<span class="type">(string)</span> "center center"<br />
+			<span class="type">(string)</span> "center right"<br />
+			<span class="type">(string)</span> "bottom left"<br />
+			<span class="type">(string)</span> "bottom center"<br />
+			<span class="type">(string)</span> "bottom right"
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(string)</span> "top left"
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">animation_icon_position:</span> "top left"</pre>
+
+<!-- animation_fade_out_speed -->
+<h3>animation_fade_out_speed</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>The length of time in milliseconds it will take for the animted GIF to fade back to the static first frame when the user is no longer triggering animation.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(int)</span> [user defined value]<br />
+			<span class="type">(undefined)</span>
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p>
+			<span class="type">(int)</span> 300
+		</p>
+	</li>
+</ul>
+<pre><span class="orangered">animation_fade_out_speed:</span> 300</pre>
+
+<p>Copyright &copy; 2012 Chris Antonellis &sdot; <a href="http://www.chrisantonellis.com" target="_blank">http://www.chrisantonellis.com</a></p>
+
+</body>
+</html>
