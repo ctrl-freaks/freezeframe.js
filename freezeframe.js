@@ -23,11 +23,6 @@ Changelog
 11/30/2012 v1.0.2 Fixed filename and version syntax
 11/28/2012 v1.0.1 Fixed image positioning bug
 11/25/2012 v1.0.0 Initial Release
-
-todo:
-write image attribution text file
-update READEME.md on website
-create separate documentation html
 */
 
 FreezeFrame = (function()
