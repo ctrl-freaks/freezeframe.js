@@ -2,7 +2,7 @@
 --------------
 freezeframe.js
 --------------
-v1.0.2
+v1.1.0
 
 Licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License
 http://creativecommons.org/licenses/by-sa/3.0/deed.en_US
@@ -17,13 +17,17 @@ Changelog
 ---------
 12/07/2012 v1.1.0 Many new features, including:
 	- Created more specific variables for loading background style
-	- Added icon to denote animation and variables
-	- Added support for touch devices (click to toggle, time to stop, etc)
-	- Added subtle functionality to existing variables
-	- (See documentation for more information)
+	- Added icon to denote animation and supporting variables
+	- Added support for touch devices (click to toggle, animation duration, etc)
+	- Added false functionality to loading and animation icons to disable
 11/30/2012 v1.0.2 Fixed filename and version syntax
 11/28/2012 v1.0.1 Fixed image positioning bug
 11/25/2012 v1.0.0 Initial Release
+
+todo:
+write image attribution text file
+update READEME.md on website
+create separate documentation html
 */
 
 FreezeFrame = (function()
