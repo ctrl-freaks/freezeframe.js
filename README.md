@@ -1,6 +1,6 @@
 freezeframe.js
 ==============
-v1.1.2
+v1.1.0
 
 Homepage: http://freezeframe.chrisantonellis.com
 
