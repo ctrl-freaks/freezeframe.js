@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>freezeframe.js</title>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<!-- freezeframe include -->
+	<script type="text/javascript" src="../freezeframe.js"></script>
+	<!-- freezeframe init -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+		freezeframe = new FreezeFrame();
+	});
+	</script>
+	<!-- CSS -->
+	<style type="text/css">
+	@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700");
+	body {
+		margin: 0px auto;
+		width: 501px;
+		font-family: "Open Sans", sans-serif;
+	}
+	figure.freezeframe-container {
+		margin: 0px 0px 10px 0px;
+		border-radius: 3px;
+		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+	}
+	span.note {
+		display: block;
+		margin: 0px 0px 20px 2px;
+		font-size: 11px;
+	}
+	span.note a {
+		color: #333;
+		text-decoration: none;
+	}
+	span.note a:hover {
+		color: #000;
+		text-decoration: underline;
+	}
+	</style>
+</head>
+
+<body>
+	<h1>freezeframe.js example</h1>
+	<!-- GIF with freezeframe attribute -->
+	<img src="img/times_square.gif" freezeframe />
+	<span class="note">
+		Title: <a href="#">Something</a> &sdot; Artist: <a href="#">Something</a>
+	</span>
+</body>
+</html>
