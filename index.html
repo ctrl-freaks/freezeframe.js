@@ -2,136 +2,7 @@
 <html>
 <head>
 	<title>freezeframe.js v1.1.0 documentation</title>
-	<style type="text/css">
-	@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700");
-	body {
-	  width: 502px;
-	  margin: 20px auto 200px auto;
-	  font-family: 'Open Sans', sans-serif;
-	  font-size: 13px;
-	  color: #202020;
-	}
-	.bold {
-	  font-weight: 700;
-	}
-	.italic {
-	  font-style: italic;
-	}
-	.orangered {
-	  color: orangered;
-	}
-	a {
-	  color: inherit;
-	}
-	a:hover {
-	  color: black;
-	}
-	h1,
-	h2,
-	h3 {
-	  display: block;
-	  padding: 0px;
-	}
-	h1 {
-	  margin: 15px 0px;
-	}
-	h1.centered {
-	  text-align: center;
-	}
-	h2 {
-	  margin: 20px 0px 10px 0px;
-	  color: orangered;
-	}
-	h3 {
-	  margin: 10px 0px;
-	}
-	ol,
-	ul {
-	  margin: 0px 0px 15px 0px;
-	  padding: 0px;
-	  font-weight: 700;
-	  color: orangered;
-	}
-	ol li,
-	ul li {
-	  margin: 0px;
-	  padding: 0px;
-	}
-	ol li.disc,
-	ul li.disc {
-	  list-style-type: disc;
-	  color: orangered;
-	}
-	ol li p,
-	ul li p {
-	  display: block;
-	  margin: 0px;
-	  padding: 0px;
-	  font-weight: normal;
-	  color: #202020;
-	}
-	ol li ol,
-	ul li ol,
-	ol li ul,
-	ul li ul {
-	  margin: 0px 0px 0px 20px;
-	  color: #202020;
-	}
-	ol li ul,
-	ul li ul {
-	  list-style-type: circle;
-	}
-	ul {
-	  list-style-type: disc;
-	}
-	span.note {
-	  display: block;
-	  margin: -10px 0px 15px 0px;
-	  padding: 0px;
-	  font-size: 11px;
-	}
-	span.note a {
-	  color: inherit;
-	}
-	span.note a:hover {
-	  color: black;
-	}
-	pre {
-	  display: block;
-	  margin: 0px 0px 15px 0px;
-	  padding: 10px 15px;
-	  border-radius: 2px;
-	  background: #e0e0e0;
-	  box-shadow: inset 0px 1px 2px rgba(0, 0, 0, 0.3);
-	  font-size: 12px;
-	  color: #404040;
-	}
-	ul.variable {
-	  margin-left: 0px;
-	  list-style-type: none;
-	}
-	ul.variable li {
-	  display: block;
-	  margin: 0px 0px 5px 0px;
-	  padding: 0px;
-	}
-	ul.variable li span.attribute {
-	  display: block;
-	  width: 80px;
-	  height: 100%;
-	  float: left;
-	  font-weight: normal;
-	  color: #999999;
-	}
-	ul.variable li span.type {
-	  font-size: 11px;
-	}
-	ul.variable li p {
-	  display: block;
-	  margin: 0px 0px 0px 80px;
-	  padding: 0px;
-	}
-	</style>
+	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
@@ -227,7 +98,7 @@
 
 <h3>HTML Header</h3>
 
-<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="orangered">&quot;jquery.js&quot;</span>&gt;&lt;/script&gt;</pre>
+<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="color">&quot;jquery.js&quot;</span>&gt;&lt;/script&gt;</pre>
 
 <span class="note"><span class="bold">Note:</span> I recommend using the latest version of jQuery from Google Hosted Libraries<br /><a href="https://developers.google.com/speed/libraries/devguide#jquery" target="_blank">https://developers.google.com/speed/libraries/devguide#jquery</a></span>
 
@@ -246,16 +117,16 @@
 
 <h3>HTML Header</h3>
 
-<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="orangered">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;
+<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="color">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
-<span class="orangered">freezeframe = new FreezeFrame();</span>
+<span class="color">freezeframe = new FreezeFrame();</span>
 &lt;/script&gt;</pre>
 
 <h3>HTML Header (Optional)</h3>
 
-<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="orangered">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;
+<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="color">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;
 &lt;script type=&quot;text/javascript&quot;&gt;
-<span class="orangered">freezeframe = new FreezeFrame({
+<span class="color">freezeframe = new FreezeFrame({
 	loading_background_color: &quot;red&quot;,
 	animation_icon_position: &quot;center center&quot;
 });</span>
@@ -269,7 +140,7 @@
 
 <h3>HTML</h3>
 
-<pre>&lt;img src=&quot;whatever.gif&quot; <span class="orangered">freezeframe</span> /&gt;</pre>
+<pre>&lt;img src=&quot;whatever.gif&quot; <span class="color">freezeframe</span> /&gt;</pre>
 
 <h2 id="styling-centering">Styling and Centering the Image</h2>
 
@@ -279,7 +150,7 @@
 
 <h3>CSS</h3>
 
-<pre><span class="orangered">figure.freezeframe-container</span> {
+<pre><span class="color">figure.freezeframe-container</span> {
 	border-radius: 3px;
 }</pre>
 
@@ -290,7 +161,7 @@
 <h3>CSS</h3>
 
 <pre>div#images-container {
-	<span class="orangered">text-align: center;</span>
+	<span class="color">text-align: center;</span>
 }</pre>
 
 <h2 id="infinite-scroll">Use with Infinite-Scroll</h2>
@@ -306,7 +177,7 @@
   option: &quot;value&quot;,
   ...
 },function(elements){
-	<span class="orangered">freezeframe.run();</span>
+	<span class="color">freezeframe.run();</span>
 });</pre>
 
 <!-- Variables ----------------------------------------------------- -->
@@ -328,7 +199,7 @@
 		<p><span class="type">(string)</span> "hover"</p>
 	</li>
 </ul>
-<pre><span class="orangered">trigger_event:</span> "click"</pre>
+<pre><span class="color">trigger_event:</span> "click"</pre>
 
 <!-- touch_device_support -->
 <h3>touch_device_support</h3>
@@ -348,7 +219,7 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">touch_device_support:</span> true</pre>
+<pre><span class="color">touch_device_support:</span> true</pre>
 
 <!-- animation_play_duration -->
 <h3>animation_play_duration</h3>
@@ -368,7 +239,7 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">animation_play_duration:</span> 1500</pre>
+<pre><span class="color">animation_play_duration:</span> 1500</pre>
 
 <!-- loading_background_color -->
 <h3>loading_background_color</h3>
@@ -388,7 +259,7 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">loading_background_color:</span> "#666"</pre>
+<pre><span class="color">loading_background_color:</span> "#666"</pre>
 
 <!-- loading_background_image -->
 <h3>loading_background_image</h3>
@@ -409,7 +280,7 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">loading_background_image:</span> "/images/loading_icon.gif"</pre>
+<pre><span class="color">loading_background_image:</span> "/images/loading_icon.gif"</pre>
 
 <!-- loading_background_position -->
 <h3>loading_background_position</h3>
@@ -436,7 +307,7 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">loading_background_position:</span> "top left"</pre>
+<pre><span class="color">loading_background_position:</span> "top left"</pre>
 
 <!-- loading_fade_in_speed -->
 <h3>loading_fade_in_speed</h3>
@@ -456,7 +327,7 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">loading_fade_in_speed:</span> 500</pre>
+<pre><span class="color">loading_fade_in_speed:</span> 500</pre>
 
 <!-- animation_icon_image -->
 <h3>animation_icon_image</h3>
@@ -477,7 +348,7 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">animation_icon_image:</span> "/images/animation_icon.gif"</pre>
+<pre><span class="color">animation_icon_image:</span> "/images/animation_icon.gif"</pre>
 
 <!-- animation_icon_position -->
 <h3>animation_icon_position</h3>
@@ -504,7 +375,7 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">animation_icon_position:</span> "top left"</pre>
+<pre><span class="color">animation_icon_position:</span> "top left"</pre>
 
 <!-- animation_fade_out_speed -->
 <h3>animation_fade_out_speed</h3>
@@ -524,9 +395,9 @@
 		</p>
 	</li>
 </ul>
-<pre><span class="orangered">animation_fade_out_speed:</span> 300</pre>
+<pre><span class="color">animation_fade_out_speed:</span> 300</pre>
 
-<p><a href="http://freezeframe.chrisantonellis.com" target="_blank">http://freezeframe.chrisantonellis.com</a><br /><br />Copyright &copy; 2012 Chris Antonellis<br /><a href="http://www.chrisantonellis.com" target="_blank">http://www.chrisantonellis.com</a></p>
+<p>Copyright &copy; 2012 Chris Antonellis &sdot; <a href="http://www.chrisantonellis.com" target="_blank">http://www.chrisantonellis.com</a></p>
 
 </body>
 </html>
