@@ -162,8 +162,7 @@ FreezeFrame = ( function() {
 		// with the attribute freezeframe="true" or images whos src 
 		// attribute starts with "http"
 		images = $('img[freezeframe]')
-			.not('[freezeframe="true"]')
-			.not('[src^="http"]');
+			.not('[freezeframe="true"]');
 
 		// Process each image by resetting the animation sequence, copying
 		// to the canvas, converting to a data url, and attaching that
@@ -172,6 +171,9 @@ FreezeFrame = ( function() {
 
 			// Set freezeframe attribute to true so it won't be reprocessed
 			$(this).attr("freezeframe", "true");
+			
+			// Set cross-origin to anon to load images from remote services (that send the correct header)
+			$(this).attr("crossOrigin", "anonymous");
 
 			// Determine file extension
 			ext = $(this)[0].src.split(".");
