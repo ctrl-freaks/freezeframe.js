@@ -1,13 +1,23 @@
 <!DOCTYPE html>
+<html>
 <head>
-	<!-- jQuery -->
+	<title>freezeframe.js</title>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+	<!-- jQuery include -->
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+	<!-- freezeframe include -->
+	<script type="text/javascript" src="../freezeframe.js"></script>
+	<!-- freezeframe options -->
+	<script type="text/javascript">
+		freezeframe_options = {}
+	</script>
+
 	<!-- infinite scroll include -->
 	<script src="jquery.infinitescroll.js"></script>
 	<!-- infinite scroll init -->
 	<script>
-	$(document).ready(function()
-	{
+	$(document).ready(function() {
 		$('#content').infinitescroll({
 		  navSelector  : "#navigation",
 		  nextSelector : "#navigation a:first",
@@ -24,47 +34,15 @@
 		});
 	});
 	</script>
-	<!-- freezeframe include -->
-	<script src="../freezeframe.js"></script>
-	<!-- freezeframe init -->
-	<script type="text/javascript">
-		freezeframe = new FreezeFrame();
-	</script>
-	<!-- CSS -->
-	<style type="text/css">
-	@import url("http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700");
-	body {
-		margin: 0px auto;
-		width: 501px;
-		font-family: "Open Sans", sans-serif;
-	}
-	figure.freezeframe-container {
-		margin: 0px 0px 10px 0px;
-		border-radius: 3px;
-		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-	}
-	span.note {
-		display: block;
-		margin: 0px 0px 20px 2px;
-		font-size: 11px;
-	}
-	span.note a {
-		color: #333;
-		text-decoration: none;
-	}
-	span.note a:hover {
-		color: #000;
-		text-decoration: underline;
-	}
-	</style>
 </head>
 
 <body>
+<h1>freezeframe.js &amp; infinite-scroll</h1>
 
-<h1>freezeframe.js & infinite-scroll</h1>
 <div id="content">
+
 	<div class="image">
-		<img src="img/running.gif" freezeframe />
+		<img class="freezeframe" src="img/running.gif" />
 		<span class="note">
 			<a href="http://black-and-white-gifs.tumblr.com/post/29985867361">running</a> &sdot; 
 			<a href="http://black-and-white-gifs.tumblr.com">black and white gifs</a>
@@ -72,17 +50,17 @@
 	</div>
 
 	<div class="image">
-		<img src="img/subway.gif" freezeframe />
+		<img class="freezeframe" src="img/subway.gif" />
 		<span class="note">
 			<a href="http://headlikeanorange.tumblr.com/post/32833790657">subway</a> &sdot; 
 			<a href="http://headlikeanorange.tumblr.com">head like an orange</a>
 		</span>
 	</div>
-	
+
 	<div id="navigation">
 		<a href="infinite_scroll_2.html">Next Page</a>
 	</div>
-</div>
 
+</div>
 </body>
 </html>

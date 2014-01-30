@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>freezeframe.js v1.1.0 documentation</title>
+	<title>freezeframe.js v2.0 documentation</title>
 	<link rel="stylesheet" type="text/css" href="style.css" />
 </head>
 
 <body>
 
-<h1>freezeframe.js v1.1.0</h1>
+<h1>freezeframe.js v2.0</h1>
 
-<p>Documentation & Examples</p>
+<p>Documentation &amp; Examples</p>
 
 <h2>Navigation</h2>
 
@@ -27,64 +27,8 @@
 
 <ol>
 	<li><p><a href="example">Single Image</a></p></li>
-	<li><p><a href="example/infinite-scroll.html">Integrated with Infinite-Scroll</a></p></li>
+	<li><p><a href="example/infinite_scroll.html">Integrated with Infinite-Scroll</a></p></li>
 </ol>
-
-<h2 id="changelog">Changelog</h2>
-
-<ul>
-	<li>
-		<p><span class="bold">v1.1.0</span> &sdot; 12/07/2012 &sdot; Many new features, including:
-			<ul>
-				<li><p>Created more specific variables for loading background style</p></li>
-				<li><p>Added icon to denote animation and supporting variables</p></li>
-				<li><p>Added support for touch devices (click to toggle, animation duration, etc)</p></li>
-				<li><p>Added false functionality to loading and animation icons to disable</p></li>
-			</ul>
-		</p>
-	</li>
-	<li><p><span class="bold">v1.0.2</span> &sdot; 11/30/2012 &sdot; Fixed filename and version syntax</p></li>
-	<li><p><span class="bold">v1.0.1</span> &sdot; 11/28/2012 &sdot; Fixed image positioning bug</p></li>
-	<li><p><span class="bold">v1.0.0</span> &sdot; 11/25/2012 &sdot; Initial Release<p></li>
-</ul>
-
-<h2 id="files-included">Files Included</h2>
-
-<ul>
-	<li>
-		<p><span class="bold">freezeframe/
-			<ul>
-				<li><p>freezeframe.js</p></li>
-				<li><p>index.html</p></li>
-				<li><p>readme.md</p></li>
-				<li class="disc">
-					<p><span class="bold">example/</span>
-						<ul>
-							<li><p>index.html</p></li>
-							<li><p>infinite_scroll.html</p></li>
-							<li><p>infinite_scroll_2.html</p></li>
-							<li><p>infinite_scroll_3.html</p></li>
-							<li><p>jquery.infinitescroll.js</p></li>
-							<li class="disc">
-								<p><span class="bold">img/</span>
-									<ul>
-										<li><p>ants.gif</p></li>
-										<li><p>felix_baumgartner.gif</p></li>
-										<li><p>lightning.gif</p></li>
-										<li><p>pugs.gif</p></li>
-										<li><p>running.gif</p></li>
-										<li><p>subway.gif</p></li>
-										<li><p>times_square.gif</p></li>
-									</ul>
-								</p>
-							</li>
-						</ul>
-					</p>
-				</li>
-			</ul>
-		</p>
-	</li>
-</ul>
 
 <h3>Image Credit</h3>
 
@@ -112,35 +56,52 @@
 </ul>
 
 <ol start="4">
-	<li><p>Include the following code in your <span class="bold">HTML Header</span>. This will include the script and set it to run on page load. Optionally, you can customize variables that determine how freezeframe functions and looks in the header.</p></li>
+	<li><p>Include the following code in your <span class="bold">HTML Header</span>. This will include the script and set it to run on page load.</p></li>
 </ol>
 
 <h3>HTML Header</h3>
 
-<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="color">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-<span class="color">freezeframe = new FreezeFrame();</span>
-&lt;/script&gt;</pre>
+<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="color">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;</pre>
+
+<ul>
+	<li><p>Optionally, you can customize variables that determine how freezeframe functions and looks in the HTML Header.</p></li>
+</ul>
 
 <h3>HTML Header (Optional)</h3>
 
-<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="color">&quot;freezeframe.js&quot;</span>&gt;&lt;/script&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-<span class="color">freezeframe = new FreezeFrame({
+<pre>&lt;script type=&quot;text/javascript&quot; src=<span class="color">&quot;freezeframe.js&quot;</span>&gt;
+<span class="color">freezeframe_options = {
 	loading_background_color: &quot;red&quot;,
 	animation_icon_position: &quot;center center&quot;
-});</span>
+}</span>
+&lt;/script&gt;</pre>
+
+<ul>
+	<li><p>You can also include these custom variables anywhere on the page.</p></li>
+</ul>
+
+<h3>HTML Body (Optional)</h3>
+
+<pre>...
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;script type=&quot;text/javascript&quot;&gt;
+<span class="color">freezeframe_options = {
+	loading_background_color: &quot;red&quot;,
+	animation_icon_position: &quot;center center&quot;
+}</span>
 &lt;/script&gt;</pre>
 
 <span class="note"><span class="bold">Note:</span> The path may need to be modified depending on where you choose to upoad the script.</span>
 
 <ol start="5">
-	<li><p>Add the boolean attribute <span class="bold">freezeframe</span> to each image you want modified.</p></li>
+	<li><p>Add the CSS class <span class="bold">freezeframe</span> to each image you want modified. You can change the of this class name that Freezeframe searches for via the <span class="bold">"class_name"</span> variable.</p></li>
 </ol>
 
 <h3>HTML</h3>
 
-<pre>&lt;img src=&quot;whatever.gif&quot; <span class="color">freezeframe</span> /&gt;</pre>
+<pre>&lt;img <span class="color">src=&quot;freezeframe&quot;</span> src=&quot;whatever.gif&quot; /&gt;</pre>
 
 <h2 id="styling-centering">Styling and Centering the Image</h2>
 
@@ -180,8 +141,25 @@
 	<span class="color">freezeframe.run();</span>
 });</pre>
 
-<!-- Variables ----------------------------------------------------- -->
+<!-- Variables -->
 <h2 id="variables">Variables</h2>
+
+<!-- class_name -->
+<h3>class_name</h3>
+<ul class="variable">
+	<li><span class="attribute">Description:</span><p>The class name that Freezeframe searches for to distinguish which images to process. This value is changed after the image is processed to avoid images being processed multiple times.</p></li>
+	<li>
+		<span class="attribute">Values:</span>
+		<p>
+			<span class="type">(string)</span> [user defined value]
+		</p>
+	</li>
+	<li>
+		<span class="attribute">Default:</span>
+		<p><span class="type">(string)</span> "freezeframe"</p>
+	</li>
+</ul>
+<pre><span class="color">class_name:</span> "my_class"</pre>
 
 <!-- trigger_event -->
 <h3>trigger_event</h3>
@@ -228,8 +206,7 @@
 	<li>
 		<span class="attribute">Values:</span>
 		<p>
-			<span class="type">(int)</span> [user defined value]<br />
-			<span class="type">(undefined)</span>
+			<span class="type">(int)</span> [user defined value]
 		</p>
 	</li>
 	<li>
@@ -248,8 +225,7 @@
 	<li>
 		<span class="attribute">Values:</span>
 		<p>
-			<span class="type">(string)</span> [user defined value]<br />
-			<span class="type">(undefined)</span>
+			<span class="type">(string)</span> [user defined value]
 		</p>
 	</li>
 	<li>
@@ -269,8 +245,7 @@
 		<span class="attribute">Values:</span>
 		<p>
 			<span class="type">(string)</span> [user defined image url]<br />
-			<span class="type">(boolean)</span> false<br />
-			<span class="type">(undefined)</span>
+			<span class="type">(boolean)</span> false
 		</p>
 	</li>
 	<li>
@@ -316,8 +291,7 @@
 	<li>
 		<span class="attribute">Values:</span>
 		<p>
-			<span class="type">(int)</span> [user defined value]<br />
-			<span class="type">(undefined)</span>
+			<span class="type">(int)</span> [user defined value]
 		</p>
 	</li>
 	<li>
@@ -337,8 +311,7 @@
 		<span class="attribute">Values:</span>
 		<p>
 			<span class="type">(string)</span> [user defined image url]<br />
-			<span class="type">(boolean)</span> false<br />
-			<span class="type">(undefined)</span>
+			<span class="type">(boolean)</span> false
 		</p>
 	</li>
 	<li>
@@ -384,8 +357,7 @@
 	<li>
 		<span class="attribute">Values:</span>
 		<p>
-			<span class="type">(int)</span> [user defined value]<br />
-			<span class="type">(undefined)</span>
+			<span class="type">(int)</span> [user defined value]
 		</p>
 	</li>
 	<li>
@@ -397,7 +369,7 @@
 </ul>
 <pre><span class="color">animation_fade_out_speed:</span> 300</pre>
 
-<p>Copyright &copy; 2012 Chris Antonellis &sdot; <a href="http://www.chrisantonellis.com" target="_blank">http://www.chrisantonellis.com</a></p>
+<p>Copyright &copy; 2014 Chris Antonellis &sdot; <a href="http://www.chrisantonellis.com" target="_blank">http://www.chrisantonellis.com</a></p>
 
 </body>
 </html>

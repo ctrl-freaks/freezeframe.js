@@ -2,53 +2,25 @@
 <html>
 <head>
 	<title>freezeframe.js</title>
-	<script src="jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css" />
+
+	<!-- jQuery include -->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 	<!-- freezeframe include -->
 	<script type="text/javascript" src="../freezeframe.js"></script>
-	<!-- freezeframe init -->
+	<!-- freezeframe options -->
 	<script type="text/javascript">
-	freezeframe = new FreezeFrame();
+		freezeframe_options = {}
 	</script>
-	<!-- CSS -->
-	<style type="text/css">
-	body {
-		font-family: "Open Sans", sans-serif;
-	}
-	#main {
-		width: 400px;
-		margin: 0px auto;
-	}
-	figure.freezeframe-container {
-		margin: 0px 0px 10px 0px;
-		border-radius: 3px;
-		box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-	}
-	span.note {
-		display: block;
-		margin: 0px 0px 20px 2px;
-		font-size: 11px;
-	}
-	span.note a {
-		color: #333;
-		text-decoration: none;
-	}
-	span.note a:hover {
-		color: #000;
-		text-decoration: underline;
-	}
-	</style>
+
 </head>
 
 <body>
-
-<div id="main">
 	<h1>freezeframe.js example</h1>
 	<!-- GIF with freezeframe attribute -->
-	<img src="img/times_square.gif" freezeframe />
+	<img class="freezeframe" src="img/times_square.gif" />
 	<span class="note">
-		Title: <a href="http://black-and-white-gifs.tumblr.com/post/35796812811/times-square-new-york-city-hang-zhang">new york city</a> &sdot; Artist: <a href="http://black-and-white-gifs.tumblr.com/">Black and White Gifs</a>
-	</span>	
-</div>
-
+		Title: <a href="#">Something</a> &sdot; Artist: <a href="#">Something</a>
+	</span>
 </body>
 </html>

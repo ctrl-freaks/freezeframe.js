@@ -1,25 +1,50 @@
-/* -----------------------------------------------------------------------------
- * Freezeframe
- * freezeframe.js v2.0
- * 2014 Chris Antonellis
- *
- * Freezeframe.js is a script that automatically pauses animated GIFs and 
- * enables them to start animating on mouse hover.
- *
- * Website: http://freezeframe.chrisantonellis.com/
- * Documentation: http://freezeframe.chrisantonellis.com/documentation/
- * 
- * Licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License
- * http://creativecommons.org/licenses/by-sa/3.0/deed.en_US
- * -------------------------------------------------------------------------- */
+/*
+--------------
+freezeframe.js
+--------------
+v1.2.0
+
+Licensed under a Creative Commons Attribution-ShareAlike 3.0 Unported License
+http://creativecommons.org/licenses/by-sa/3.0/deed.en_US
+
+2012 Chris Antonellis
+http://www.chrisantonellis.com
+https://github.com/chrisantonellis/freezeframe
+Documentation: http://freezeframe.chrisantonellis.com
+
+---------
+Changelog
+---------
+ 3/27/2013 v1.2.0 Bugfixes and new features, including:
+ - Fixed bug with touch device detection, now using isMouseEventSupported by kangax
+   - http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
+ - Fixed bug with loading cached images and .load not firing corectly, now using
+   jQuery imagesloaded plugin v2.1.1 by desandro
+   - http://github.com/desandro/imagesloaded
+ - Fixed bug with dynamically resized images
+ - Adjusted fade speeds to be more 'snappy'
+12/07/2012 v1.1.0 Many new features, including:
+	- Created more specific variables for loading background style
+	- Added icon to denote animation and supporting variables
+	- Added support for touch devices (click to toggle, animation duration, etc)
+	- Added false functionality to loading and animation icons to disable
+11/30/2012 v1.0.2 Fixed filename and version syntax
+11/28/2012 v1.0.1 Fixed image positioning bug
+11/25/2012 v1.0.0 Initial Release
+
+----
+TODO
+----
+Add debug text + handles
+Write image attribution text file
+Update READEME.md on website
+*/
 
 FreezeFrame = ( function() {
-
 	var _ff;
 	var canvas;
 	var context;
 
-	var class_name;
 	var trigger_event;
 	var support_touch_devices;
 	var animation_play_duration;
@@ -36,13 +61,17 @@ FreezeFrame = ( function() {
 	var is_touch_device;
 	var freezeframe_count;
 
+	var debug;
+
 	function FreezeFrame( _options ) {
 
 		_ff = this;
 
-		_options.class_name == null ?
-			this.class_name = "freezeframe" : 
-			this.class_name = _options.class_name;
+		_options == null ? _options = {} : null;
+
+		_options.debug == null ?
+			this.debug = false : 
+			this.debug = _options.debug.toLowerCase();
 
 		_options.trigger_event == null ? 
 			this.trigger_event = "hover" : 
@@ -59,6 +88,8 @@ FreezeFrame = ( function() {
 		_options.loading_background_color == null ? 
 			this.loading_background_color = "#666" : 
 			this.loading_background_color = _options.loading_background_color.toLowerCase();
+
+
 
 		_options.loading_background_image == null ? 
 			this.loading_background_image = "data:image/gif;base64,R0lGODlhEAAQAPIAAGZmZv///4mJidbW1v///8PDw7CwsKampiH+GkNyZWF0ZWQgd2l0aCBhamF4bG9hZC5pbmZvACH5BAAKAAAAIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQACgABACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkEAAoAAgAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkEAAoAAwAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkEAAoABAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQACgAFACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQACgAGACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAAKAAcALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" : 
@@ -84,62 +115,73 @@ FreezeFrame = ( function() {
 			this.animation_fade_out_speed = 250 : 
 			this.animation_fade_out_speed = parseInt(_options.animation_fade_out_speed);
 
+		_options.debug  == null ?
+			this.debug = "false" : 
+			this.debug = _options.debug.toLowerCase();
+
 		this.is_touch_device = isMouseEventSupported("ontouchstart");
 		this.freezeframe_count = 0;
+
+		// Execute .setup() then .run() when document is done loading
+		$(document).ready( function() {
+			_ff.setup();
+			_ff.run();
+		});
 	};
 
-	/** --------------------------------------------------------------------------
-	 * @function .setup()
+	/**
+	 * .setup()
 	 * Sets up the freezeframe instance by adding a canvas element to the 
 	 * document and capturing references to the canvas and its 2D context
-	 * ------------------------------------------------------------------------ */
-
+	 */
 	FreezeFrame.prototype.setup = function() {
 		$("<canvas>",{id:"freezeframe-canvas"})
 			.css("display", "none")
 			.prependTo($("body"));
-		this.canvas = $("canvas#freezeframe-canvas");
-		this.context = this.canvas[0].getContext('2d');
+		this.canvas		= $("canvas#freezeframe-canvas");
+		this.context	= this.canvas[0].getContext('2d');
 	};
 
-	/** --------------------------------------------------------------------------
+	/**
 	 * .run()
 	 * Starts freezeframe processing for each image. Copies the image to 
 	 * the freezeframe canvas and converts it to a data url
-	 * ------------------------------------------------------------------------ */
-
+	 */
 	FreezeFrame.prototype.run = function() {
 		var images = [];
 		var ext;
 		var figure_background = _ff.loading_background_color;
 
 		if( _ff.loading_background_image !== false ) {
-			figure_background += " url('" + _ff.loading_background_image + "') " +
-				_ff.loading_background_position + " no-repeat";
+			figure_background += " url('" + _ff.loading_background_image + "') "
+												+ _ff.loading_background_position
+												+ " no-repeat";
 		}
 
-		// Select all images with a class matching the option class_name
-		images = $('img[class="' + _ff.class_name + '"]')
-			.not('[class="' + _ff.class_name + '_done"]');
+		// Select all images with the attribute "freezeframe" but not images
+		// with the attribute freezeframe="true" or images whos src 
+		// attribute starts with "http"
+		images = $('img[freezeframe]')
+			.not('[freezeframe="true"]')
+			.not('[src^="http"]');
 
-		// Process each image by resetting the animation sequence, copying to the 
-		// canvas, converting to a data url, and attaching that data url to the 
-		// image itself as an attribute
-
+		// Process each image by resetting the animation sequence, copying
+		// to the canvas, converting to a data url, and attaching that
+		// data url to the image itself as an attribute
 		$(images).each(function(index) {
-			// Change image class so it won't be reprocessed if .run() is run again
-			$(this).removeClass(_ff.class_name).addClass(_ff.class_name + "_done");
-			// Set cross-origin to anon to load images from remote services that send 
-			// the correct header. Not working correctly, needs more testing
-			$(this).crossOrigin = "anonymous";
+
+			// Set freezeframe attribute to true so it won't be reprocessed
+			$(this).attr("freezeframe", "true");
+
 			// Determine file extension
 			ext = $(this)[0].src.split(".");
 			ext = ext[ext.length - 1].toLowerCase();
-			// Remove non GIF files
+
 			if(ext !== "gif") {
 				images.splice(index, 1);
-			} else {
 
+			} else {
+				// Wrap image in figure tag
 				var freezeframe_figure = $("<figure />")
 					.attr("class", "freezeframe-container " + _ff.freezeframe_count)
 					.css({
@@ -147,13 +189,11 @@ FreezeFrame = ( function() {
 						"overflow": "hidden",
 						"background": figure_background
 				});
-
 				$(this)
 					.css({
 					"opacity": 0,
 					"display": "block"
 				}).wrap(freezeframe_figure);
-
 				freezeframe_figure = $(this).parent();
 
 				// If an animation icon image is available, attach it
@@ -163,29 +203,33 @@ FreezeFrame = ( function() {
 						.css({
 							"display": "block",
 							"position": "absolute",
-							"background": "transparent " +
-								"url('" + _ff.animation_icon_image + "') " +
-								_ff.animation_icon_position + " no-repeat",
+							"background": "transparent "
+														+ "url('" + _ff.animation_icon_image + "') "
+														+ _ff.animation_icon_position
+														+ " no-repeat",
 							"pointer-events": "none",
 							"z-index": 100,
 							"opacity": 0
 						});
-
 					$(freezeframe_figure).prepend(animation_icon);
-
 					animation_icon = $(this).siblings($(".freezeframe-animation-icon"));
 				}
 
 				// Increment counter so each image gets a unique number
 				_ff.freezeframe_count++;
 
-				// Create a temporary refernce to the image as non-object to pass to .drawImage
+				// Create a temporary refernce to the image as non-object to 
+				// pass to .drawImage
 				var _self = this;
 
-				// Using imagesLoaded by Desandro because .load doesn't work on cached images
+				// Using imagesLoaded by Desandro
+				// http://github.com/desandro/imagesloaded
+				// (because .load doesn't work on cached images)
 				$(this).imagesLoaded(function() {
 
 					$(this).off("imagesLoaded");
+				
+					console.log($(this));
 
 					_ff.canvas[0].width = $(this)[0].clientWidth;
 					_ff.canvas[0].height = $(this)[0].clientHeight;
@@ -217,7 +261,7 @@ FreezeFrame = ( function() {
 							.css("opacity", 0)
 							.attr("src", $(this).attr("animated"));
 
-						// Touch Device or Click Event
+						// Touch Device or Click Event -----------------------------
 						if((_ff.support_touch_devices && _ff.is_touch_device) || 
 						   _ff.trigger_event.toLowerCase() == "click") {
 
@@ -259,7 +303,7 @@ FreezeFrame = ( function() {
 
 						} else {
 
-							// Hover Event
+							// Hover Event -------------------------------------------
 							$(this).mouseenter(function() {
 								$(this)
 									.attr("src", $(this).attr("src"))
@@ -276,7 +320,9 @@ FreezeFrame = ( function() {
 									$(animation_icon).animate({"opacity": 1}, _ff.animation_fade_out_speed);
 								}
 							});
+
 						}
+
 					});
 				});
 			}
@@ -286,35 +332,21 @@ FreezeFrame = ( function() {
 	return FreezeFrame;
 })();
 
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//  Setup & Run Freezeframe                                                   //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
 
-$(document).ready(function() {
-	typeof(freezeframe_options) == 'undefined' ? freezeframe_options = {} : null;
-	freezeframe = new FreezeFrame(freezeframe_options);
-	freezeframe.setup();
-	freezeframe.run();
-});
 
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//  Support Functions                                                         //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
 
-/** ----------------------------------------------------------------------------
+
+/*!
  * jQuery imagesLoaded plugin v2.1.1
  * http://github.com/desandro/imagesloaded
  *
  * MIT License. by Paul Irish et al.
- * -------------------------------------------------------------------------- */
-
+ */
 ;(function($, undefined) {
 'use strict';
+
 var BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
+
 $.fn.imagesLoaded = function( callback ) {
 	var $this = this,
 		deferred = $.isFunction($.Deferred) ? $.Deferred() : 0,
@@ -323,6 +355,7 @@ $.fn.imagesLoaded = function( callback ) {
 		loaded = [],
 		proper = [],
 		broken = [];
+
 	if ($.isPlainObject(callback)) {
 		$.each(callback, function (key, value) {
 			if (key === 'callback') {
@@ -332,9 +365,11 @@ $.fn.imagesLoaded = function( callback ) {
 			}
 		});
 	}
+
 	function doneLoading() {
 		var $proper = $(proper),
 			$broken = $(broken);
+
 		if ( deferred ) {
 			if ( broken.length ) {
 				deferred.reject( $images, $proper, $broken );
@@ -342,62 +377,79 @@ $.fn.imagesLoaded = function( callback ) {
 				deferred.resolve( $images );
 			}
 		}
+
 		if ( $.isFunction( callback ) ) {
 			callback.call( $this, $images, $proper, $broken );
 		}
 	}
+
 	function imgLoadedHandler( event ) {
 		imgLoaded( event.target, event.type === 'error' );
 	}
+
 	function imgLoaded( img, isBroken ) {
 		if ( img.src === BLANK || $.inArray( img, loaded ) !== -1 ) {
 			return;
 		}
+
 		loaded.push( img );
+
 		if ( isBroken ) {
 			broken.push( img );
 		} else {
 			proper.push( img );
 		}
+
 		$.data( img, 'imagesLoaded', { isBroken: isBroken, src: img.src } );
+
 		if ( hasNotify ) {
 			deferred.notifyWith( $(img), [ isBroken, $images, $(proper), $(broken) ] );
 		}
+
 		if ( $images.length === loaded.length ) {
 			setTimeout( doneLoading );
 			$images.unbind( '.imagesLoaded', imgLoadedHandler );
 		}
 	}
+
 	if ( !$images.length ) {
 		doneLoading();
 	} else {
 		$images.bind( 'load.imagesLoaded error.imagesLoaded', imgLoadedHandler )
 		.each( function( i, el ) {
 			var src = el.src;
+
 			var cached = $.data( el, 'imagesLoaded' );
 			if ( cached && cached.src === src ) {
 				imgLoaded( el, cached.isBroken );
 				return;
 			}
+
 			if ( el.complete && el.naturalWidth !== undefined ) {
 				imgLoaded( el, el.naturalWidth === 0 || el.naturalHeight === 0 );
 				return;
 			}
+
 			if ( el.readyState || el.complete ) {
 				el.src = BLANK;
 				el.src = src;
 			}
 		});
 	}
+
 	return deferred ? deferred.promise( $this ) : $this;
 };
+
 })(jQuery);
 
-/** ----------------------------------------------------------------------------
+
+
+
+
+/**
  * isMouseEventSupported by kangax
  * http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
- * -------------------------------------------------------------------------- */
-
+ */
 function isMouseEventSupported(eventName) {
   var el = document.createElement('div');
   eventName = 'on' + eventName;
