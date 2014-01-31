@@ -18,7 +18,6 @@ Changelog
 - Cleaned up bracketing and comments
 - Removed broken debug functions / variables
 - Removed requirement to create instance of freezeframe object yourself, instead just runs on page load by just including the script
-- 
 
 3/28/2013 v1.2.1 Bugfix
 - Fixed bug with jquery conflicts on websites using a bunch of other js
