@@ -118,13 +118,49 @@ FreezeFrame = ( function() {
 				_ff.loading_background_position + " no-repeat";
 		}
 
+<<<<<<< HEAD
 		// Select all images with a class matching the option class_name
 		images = $('img[class="' + _ff.class_name + '"]')
 			.not('[class="' + _ff.class_name + '_done"]');
+||||||| merged common ancestors
+		// Select all images with the attribute "freezeframe" but not images
+		// with the attribute freezeframe="true" or images whos src 
+		// attribute starts with "http"
+		images = $('img[freezeframe]')
+			.not('[freezeframe="true"]')
+			.not('[src^="http"]');
 
+		// Process each image by resetting the animation sequence, copying
+		// to the canvas, converting to a data url, and attaching that
+		// data url to the image itself as an attribute
+		$(images).each(function(index) {
+=======
+		// Select all images with the attribute "freezeframe" but not images
+		// with the attribute freezeframe="true" or images whos src 
+		// attribute starts with "http"
+		images = $('img[freezeframe]')
+			.not('[freezeframe="true"]');
+
+		// Process each image by resetting the animation sequence, copying
+		// to the canvas, converting to a data url, and attaching that
+		// data url to the image itself as an attribute
+		$(images).each(function(index) {
+>>>>>>> 012392d595eda7e7505ff61b113c1d002de6afd3
+
+<<<<<<< HEAD
 		// Process each image by resetting the animation sequence, copying to the 
 		// canvas, converting to a data url, and attaching that data url to the 
 		// image itself as an attribute
+||||||| merged common ancestors
+			// Set freezeframe attribute to true so it won't be reprocessed
+			$(this).attr("freezeframe", "true");
+=======
+			// Set freezeframe attribute to true so it won't be reprocessed
+			$(this).attr("freezeframe", "true");
+			
+			// Set cross-origin to anon to load images from remote services (that send the correct header)
+			$(this).attr("crossOrigin", "anonymous");
+>>>>>>> 012392d595eda7e7505ff61b113c1d002de6afd3
 
 		$(images).each(function(index) {
 			// Change image class so it won't be reprocessed if .run() is run again
