@@ -125,7 +125,6 @@ FreezeFrame = ( function() {
 		// Process each image by resetting the animation sequence, copying to the 
 		// canvas, converting to a data url, and attaching that data url to the 
 		// image itself as an attribute
-
 		$(images).each(function(index) {
 			// Change image class so it won't be reprocessed if .run() is run again
 			$(this).removeClass(_ff.class_name).addClass(_ff.class_name + "_done");
@@ -142,17 +141,13 @@ FreezeFrame = ( function() {
 
 				var freezeframe_figure = $("<figure />")
 					.attr("class", "freezeframe-container " + _ff.freezeframe_count)
-					.css({
-						"display": "inline-block",
+					.css({"display": "inline-block",
 						"overflow": "hidden",
-						"background": figure_background
-				});
+						"background": figure_background});
 
-				$(this)
-					.css({
-					"opacity": 0,
-					"display": "block"
-				}).wrap(freezeframe_figure);
+				$(this).css({"opacity": 0,
+					"display": "block"})
+					.wrap(freezeframe_figure);
 
 				freezeframe_figure = $(this).parent();
 
@@ -160,16 +155,13 @@ FreezeFrame = ( function() {
 				if(_ff.animation_icon_image !== false) {
 					var animation_icon = $("<div />")
 						.attr("class", "freezeframe-animation-icon")
-						.css({
-							"display": "block",
+						.css({"display": "block",
 							"position": "absolute",
-							"background": "transparent " +
-								"url('" + _ff.animation_icon_image + "') " +
+							"background": "transparent " + "url('" + _ff.animation_icon_image + "') " +
 								_ff.animation_icon_position + " no-repeat",
 							"pointer-events": "none",
 							"z-index": 100,
-							"opacity": 0
-						});
+							"opacity": 0});
 
 					$(freezeframe_figure).prepend(animation_icon);
 
@@ -190,8 +182,7 @@ FreezeFrame = ( function() {
 					_ff.canvas[0].width = $(this)[0].clientWidth;
 					_ff.canvas[0].height = $(this)[0].clientHeight;
 
-					$(this)
-						.attr("animated", $(this).attr("src"))
+					$(this).attr("animated", $(this).attr("src"))
 						.attr("src", $(this).attr("src"));
 
 					_ff.context.drawImage(_self, 0, 0, $(this)[0].clientWidth, $(this)[0].clientHeight);
@@ -200,26 +191,22 @@ FreezeFrame = ( function() {
 
 					// If an animation icon image is available, show it
 					if(_ff.animation_icon_image !== false) {
-						$(animation_icon)
-							.css({
-								"width": parseInt($(this)[0].width),
-								"height": parseInt($(this)[0].height)
-							}).animate({"opacity": 1}, _ff.loading_fade_in_speed);
+						$(animation_icon).css({
+							"width": parseInt($(this)[0].width),
+							"height": parseInt($(this)[0].height)})
+							.animate({"opacity": 1}, _ff.loading_fade_in_speed);
 					}
 
 					// When fade in sequence is complete, enable interaction
 					$(this).animate({"opacity": 1}, _ff.loading_fade_in_speed, function() {
 
-						$(freezeframe_figure)
-							.css("background", "url('" + $(this).attr("src") + "')");
+						$(freezeframe_figure).css("background", "url('" + $(this).attr("src") + "')");
 
-						$(this)
-							.css("opacity", 0)
+						$(this).css("opacity", 0)
 							.attr("src", $(this).attr("animated"));
 
 						// Touch Device or Click Event
-						if((_ff.support_touch_devices && _ff.is_touch_device) || 
-						   _ff.trigger_event.toLowerCase() == "click") {
+						if((_ff.support_touch_devices && _ff.is_touch_device) || _ff.trigger_event.toLowerCase() == "click") {
 
 							var stop_animation;
 							var animating = false;
@@ -228,12 +215,10 @@ FreezeFrame = ( function() {
 
 								// If not currently animating, start animating
 								if(!animating) {
-									$(this)
-										.attr("src", $(this).attr("src"))
+									$(this).attr("src", $(this).attr("src"))
 										.css("opacity", 1);
 									if(_ff.animation_icon_image !== false) {
-										$(animation_icon )
-											.css("opacity", 0);
+										$(animation_icon).css("opacity", 0);
 									}
 
 									stop_animation = setInterval(function() {
@@ -261,8 +246,7 @@ FreezeFrame = ( function() {
 
 							// Hover Event
 							$(this).mouseenter(function() {
-								$(this)
-									.attr("src", $(this).attr("src"))
+								$(this).attr("src", $(this).attr("src"))
 									.css("opacity", 1);
 								if(_ff.animation_icon_image !== false) {
 									$(animation_icon).css("opacity", 0);
@@ -270,8 +254,7 @@ FreezeFrame = ( function() {
 							});
 
 							$(this).mouseleave(function() {
-								$(this)
-									.animate({"opacity": 0}, _ff.animation_fade_out_speed);
+								$(this).animate({"opacity": 0}, _ff.animation_fade_out_speed);
 								if(_ff.animation_icon_image !== false) {
 									$(animation_icon).animate({"opacity": 1}, _ff.animation_fade_out_speed);
 								}
@@ -286,11 +269,9 @@ FreezeFrame = ( function() {
 	return FreezeFrame;
 })();
 
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//  Setup & Run Freezeframe                                                   //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
+/** ----------------------------------------------------------------------------
+ * Setup & Run Freezeframe
+ * -------------------------------------------------------------------------- */
 
 $(document).ready(function() {
 	typeof(freezeframe_options) == 'undefined' ? freezeframe_options = {} : null;
@@ -298,12 +279,6 @@ $(document).ready(function() {
 	freezeframe.setup();
 	freezeframe.run();
 });
-
-////////////////////////////////////////////////////////////////////////////////
-//                                                                            //
-//  Support Functions                                                         //
-//                                                                            //
-////////////////////////////////////////////////////////////////////////////////
 
 /** ----------------------------------------------------------------------------
  * jQuery imagesLoaded plugin v2.1.1
