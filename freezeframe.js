@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
  * Freezeframe
- * freezeframe.js v2.0
+ * freezeframe.js v2.0.1
  * 2014 Chris Antonellis
  *
  * Freezeframe.js is a script that automatically pauses animated GIFs and 
@@ -119,8 +119,8 @@ FreezeFrame = ( function() {
 		}
 
 		// Select all images with a class matching the option class_name
-		images = $('img[class="' + _ff.class_name + '"]')
-			.not('[class="' + _ff.class_name + '_done"]');
+		images = $('img[class*="' + _ff.class_name + '"]')
+			.not('[class*="' + _ff.class_name + '_done"]');
 
 		// Process each image by resetting the animation sequence, copying to the 
 		// canvas, converting to a data url, and attaching that data url to the 

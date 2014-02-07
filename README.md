@@ -1,6 +1,6 @@
 freezeframe.js
 ==============
-v2.0
+v2.0.1
 
 Documentation
 =============
@@ -12,17 +12,20 @@ http://freezeframe.chrisantonellis.com
 
 Changelog
 =========
-1/33/2014 v.2.0.0 Overhaul
+02/07/2014 v2.0.1 Bugfix
+- Fixed bug with selecting images, number of classnames now not an issue
+
+01/30/2014 v2.0.0 Overhaul
 - Added license text to readme
 - Removed boolean attribute, instead captures images based on class name and class name can be changed via option
 - Cleaned up bracketing and comments
 - Removed broken debug functions / variables
 - Removed requirement to create instance of freezeframe object yourself, instead just runs on page load by just including the script
 
-3/28/2013 v1.2.1 Bugfix
+03/28/2013 v1.2.1 Bugfix
 - Fixed bug with jquery conflicts on websites using a bunch of other js
 
-3/27/2013 v1.2.0 Bugfixes and new features
+03/27/2013 v1.2.0 Bugfixes and new features
 - Fixed bug with touch device detection, now using isMouseEventSupported by kangax
 - http://perfectionkills.com/detecting-event-support-without-browser-sniffing/
 - Fixed bug with loading cached images and .load not firing corectly, now using jQuery imagesloaded plugin v2.1.1 by desandro
