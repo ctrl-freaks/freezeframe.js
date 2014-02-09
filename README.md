@@ -1,6 +1,6 @@
 freezeframe.js
 ==============
-v2.0.1
+v2.0.2
 
 Documentation
 =============
@@ -12,6 +12,9 @@ http://freezeframe.chrisantonellis.com
 
 Changelog
 =========
+02/09/2014 v2.0.2 Bugfix
+- Added jQuery noconflict stuff
+
 02/07/2014 v2.0.1 Bugfix
 - Fixed bug with selecting images, number of classnames now not an issue
 

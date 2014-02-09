@@ -1,6 +1,6 @@
 /* -----------------------------------------------------------------------------
  * Freezeframe
- * freezeframe.js v2.0.1
+ * freezeframe.js v2.0.2
  * 2014 Chris Antonellis
  *
  * Freezeframe.js is a script that automatically pauses animated GIFs and 
@@ -13,7 +13,7 @@
  * http://creativecommons.org/licenses/by-sa/3.0/deed.en_US
  * -------------------------------------------------------------------------- */
 
-FreezeFrame = ( function() {
+FreezeFrame = (function($) {
 
 	var _ff;
 	var canvas;
@@ -267,13 +267,13 @@ FreezeFrame = ( function() {
 	};
 
 	return FreezeFrame;
-})();
+})(jQuery);
 
 /** ----------------------------------------------------------------------------
  * Setup & Run Freezeframe
  * -------------------------------------------------------------------------- */
 
-$(document).ready(function() {
+jQuery(document).ready(function($) {
 	typeof(freezeframe_options) == 'undefined' ? freezeframe_options = {} : null;
 	freezeframe = new FreezeFrame(freezeframe_options);
 	freezeframe.setup();
