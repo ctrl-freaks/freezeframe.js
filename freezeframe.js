@@ -50,7 +50,7 @@ FreezeFrame = (function($) {
 
 		_options.support_touch_devices == null ? 
 			this.support_touch_devices = true : 
-			this.support_touch_devuces = _options.support_touch_devices.toLowerCase();
+			this.support_touch_devices = _options.support_touch_devices.toLowerCase();
 
 		_options.animation_play_duration == null ? 
 			this.animation_play_duration = 10000 : 
