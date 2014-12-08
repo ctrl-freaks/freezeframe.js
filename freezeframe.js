@@ -134,6 +134,7 @@ FreezeFrame = (function($) {
 			// Determine file extension
 			ext = $(this)[0].src.split(".");
 			ext = ext[ext.length - 1].toLowerCase();
+			ext = ext.split("?")[0];
 			// Remove non GIF files
 			if(ext !== "gif") {
 				images.splice(index, 1);
