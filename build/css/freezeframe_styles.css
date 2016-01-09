@@ -1,0 +1,29 @@
+.freezeframe_container {
+  display: inline-block;
+  background: rgba(0, 0, 0, 0.5) url("/tests/img/loading.gif") center center no-repeat; }
+  .freezeframe_container .freezeframe_image {
+    position: relative;
+    z-index: 0;
+    vertical-align: top;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0; }
+    .freezeframe_container .freezeframe_image.ready {
+      opacity: 1; }
+  .freezeframe_container .freezeframe_canvas {
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+    vertical-align: top;
+    opacity: 0;
+    image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: -o-crisp-edges;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor; }
+    .freezeframe_container .freezeframe_canvas.ready {
+      transition: opacity 300ms;
+      opacity: 1; }
+    .freezeframe_container .freezeframe_canvas.active {
+      transition: none;
+      opacity: 0; }
