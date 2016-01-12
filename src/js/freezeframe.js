@@ -2,8 +2,6 @@
 var freezeframe = (function($) {
 
 	var images;
-	var image_count;
-
 	var options;
 	var is_touch_device;
 
@@ -15,20 +13,17 @@ var freezeframe = (function($) {
 	function freezeframe(_options) {
 		var options;
 
+		// default options
 		this.options = {
 			selector : '.freezeframe',
 			animation_play_duration: 5000,
 			non_touch_device_trigger_event: 'hover'
 		}
 
-		if (typeof _options == "string") {
-			options = {
-				'selector': _options
-			}
-		} else {
-			options = _options;
-		}
+		// new selector as string
+		options = typeof _options == 'string' ? { 'selector': _options } : _options;
 
+		// new options
 		if(options) {
 			for (attribute in options) {
 				if (attribute in this.options) {
@@ -39,6 +34,7 @@ var freezeframe = (function($) {
 			}
 		}
 
+		// is this a touch device?
 		this.is_touch_device = ('ontouchstart' in window || 'onmsgesturechange' in window);
 
 		return this;
@@ -243,6 +239,15 @@ var freezeframe = (function($) {
 
 	//////////////////////////////////////////////////////////////////////////////
 	//                                                                          //
+	//  Freeze Images                                                           //
+	//                                                                          //
+	//////////////////////////////////////////////////////////////////////////////
+	freezeframe.prototype.freeze = function() {
+		this.capture().setup().attach(); // ✨tada✨
+	}
+
+	//////////////////////////////////////////////////////////////////////////////
+	//                                                                          //
 	//  Trigger Animation                                                       //
 	//                                                                          //
 	//////////////////////////////////////////////////////////////////////////////
@@ -271,5 +276,4 @@ var freezeframe = (function($) {
 	}
 
 	return freezeframe;
-
 })(jQuery);
