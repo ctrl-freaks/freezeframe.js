@@ -10,24 +10,20 @@
 
 	<!-- vendor js -->
 	<script type="text/javascript" src="../src/js/vendor/jquery-2.1.4.js"></script>
-	<script type="text/javascript" src="../src/js/vendor/EventEmitter.js"></script>
-	<script type="text/javascript" src="../src/js/vendor/eventie.js"></script>
-	<script type="text/javascript" src="../src/js/vendor/imagesloaded.js"></script>
+	<script type="text/javascript" src="../src/js/vendor/imagesloaded.pkgd.js"></script>
 
 	<!-- js -->
 	<script type="text/javascript" src="../build/js/freezeframe.js"></script>
-
-	<script type="text/javascript">
-		$(function() {
-			logo = new freezeframe('#logo').freeze();
-		})
-	</script>
 
 </head>
 
 <body>
 
-<img id="logo" class="freezeframe" src="https://usnewsghost.files.wordpress.com/2014/03/oil.gif" />
+<img class="freezeframe" src="https://usnewsghost.files.wordpress.com/2014/03/oil.gif" />
 
 </body>
 </html>
+
+<script>
+  logo = new freezeframe().freeze();
+</script>

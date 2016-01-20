@@ -1,58 +1,38 @@
-## docs are being worked on
-## hold ya horses
---
+##freezeframe.js
+freezeframe.js is a script that automatically pauses animated .gifs and enables them to start animation on mouse hover or click
 
-## freezeframe.js
----
-freezeframe.js is a script that automatically pauses animated .gifs and enables them to start animation on mouse hover or click.
+##usage
+Get the CSS from **/build/css** and include on your page
 
-----
-## Usage
-
-Include the script and stylesheet in your header:
-
-    <script type="text/javascript" src="freezeframe.js"></script>
     <link rel="stylesheet" href="freezeframe_styles.css">
-> If you do not use the packaged version, the following dependencies are also required
->
-* jQuery
-* imagesLoaded
 
-Add **freezeframe** as a class name on the images you want processed:
+Get the JS from **/build/js** and include on your page
 
-    <img class="freezeframe" src="image.gif" />
-> Non **.gif** files will be skipped
+    <link rel="stylesheet" href="freezeframe.pkgd.min.js">
+> If you do not use a packaged version the following dependencies are required (can be found in **/src/js/vendor**)
+> * imagesLoaded Packaged v4.0.0 ([https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded))
+> * jQuery v2.1.4
 
-If you need to process more / new images, run the capture function from the freezeframe global:
+Add **freezeframe** as a class name on the images you want processed
 
-    ff.capture();
+    <img class="freezeframe" src="image.gif" /> 
 
-Example use with [Infinite-Scroll](http://www.infinite-scroll.com/):
+Freeze those .gifs!
 
-    $('#content').infinitescroll({
-      option: "value",
-      option: "value",
-      ...
-    },function(elements){
-      ff.capture();
-    });
+    ff = new freezeframe().freeze();
 
+##options reference
 
----
-## markdown quick reference
-# headers
+    selector
+    animation_play_duration
+    non_touch_device_trigger_event
 
-*emphasis*
+##function reference
 
-**strong**
-
-* list
-
->block quote
-
-    code (4 spaces indent)
-[links](http://wikipedia.org)
-
-----
-## changelog
-* 17-Feb-2013 re-design
+    freezeframe()
+    capture()
+    setup()
+    process()
+    filter()
+    trigger()
+    release()

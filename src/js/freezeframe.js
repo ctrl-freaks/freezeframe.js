@@ -11,7 +11,7 @@ var freezeframe = (function($) {
 	//                                                                          //
 	//////////////////////////////////////////////////////////////////////////////
 	function freezeframe(_options) {
-		var options;
+    var options;
 
 		// default options
 		this.options = {
