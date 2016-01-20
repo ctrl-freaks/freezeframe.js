@@ -1,4 +1,4 @@
-##freezeframe.js
+##freezeframe.js 3.0.1
 freezeframe.js is a script that automatically pauses animated .gifs and enables them to start animation on mouse hover or click
 
 ##usage
