@@ -9209,6 +9209,8 @@ return jQuery;
 
 }));
 
+// 
+
 var freezeframe = (function($) {
 
 	var images;
@@ -9339,24 +9341,25 @@ var freezeframe = (function($) {
 	freezeframe.prototype.process = function($_image) {
 		var ff = this,
 			$canvas = $_image.siblings('canvas'),
-			transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend';
+			transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',
+      image_width = $_image[0].clientWidth,
+      image_height = $_image[0].clientHeight;
 
-		$canvas.css({
-			'margin-right': '-' + $_image[0].clientWidth + 'px',
-		}).attr({
-			'width': $_image[0].clientWidth,
-			'height': $_image[0].clientHeight
-		});
+		$canvas.attr({
+			'width': image_width,
+			'height': image_height
+		}).css({
+      'margin-right': '-' + image_width + 'px'
+    })
 
 		context = $canvas[0].getContext('2d');
 		context.mozImageSmoothingEnabled = false;
 		context.imageSmoothingEnabled = false;
-		context.drawImage($_image[0], 0, 0, $_image[0].clientWidth, $_image[0].clientHeight);
+		context.drawImage($_image[0], 0, 0, image_width, image_height);
 
 		$canvas.addClass('ready').on(transitionEnd, function() {
 			$(this).off(transitionEnd);
 			$_image.addClass('ready');
-			// ff.attach($_image, $canvas);
 		})
 
 		return this;
@@ -9388,7 +9391,6 @@ var freezeframe = (function($) {
 	//  Attach Hover / Click Events                                             //
 	//                                                                          //
 	//////////////////////////////////////////////////////////////////////////////
-	// dont run if no images found
 	freezeframe.prototype.attach = function(_selector) {
 		var ff, click_timeout, images;
 
@@ -9396,8 +9398,8 @@ var freezeframe = (function($) {
 
 		this.filter(_selector).each(function(e) {
 
-			$image = $(this);
-			$canvas = $(this).siblings('canvas');
+			var $image = $(this);
+			var $canvas = $(this).siblings('canvas');
 
 			// hover
 			if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
