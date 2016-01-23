@@ -12,7 +12,7 @@ $base_zindex: 0;
     background: rgba(0, 0, 0, 0.5);
     opacity: 0;
 
-    &.ready {
+    &.freezeframe-image-ready {
       opacity: 1;
     }
   }
@@ -30,12 +30,12 @@ $base_zindex: 0;
     image-rendering: optimize-contrast;
     -ms-interpolation-mode: nearest-neighbor;
 
-    &.freezeframe-ready {
+    &.freezeframe-canvas-ready {
       transition: opacity 300ms;
       opacity: 1;
     }
 
-    &.freezeframe-active {
+    &.freezeframe-canvas-active {
       transition: none;
       opacity: 0;
     }

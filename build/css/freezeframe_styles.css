@@ -7,7 +7,7 @@
     vertical-align: top;
     background: rgba(0, 0, 0, 0.5);
     opacity: 0; }
-    .freezeframe-container .freezeframe-image.ready {
+    .freezeframe-container .freezeframe-image.freezeframe-image-ready {
       opacity: 1; }
   .freezeframe-container .freezeframe-canvas {
     display: inline-block;
@@ -21,9 +21,9 @@
     image-rendering: -o-crisp-edges;
     image-rendering: optimize-contrast;
     -ms-interpolation-mode: nearest-neighbor; }
-    .freezeframe-container .freezeframe-canvas.freezeframe-ready {
+    .freezeframe-container .freezeframe-canvas.freezeframe-canvas-ready {
       transition: opacity 300ms;
       opacity: 1; }
-    .freezeframe-container .freezeframe-canvas.freezeframe-active {
+    .freezeframe-container .freezeframe-canvas.freezeframe-canvas-active {
       transition: none;
       opacity: 0; }

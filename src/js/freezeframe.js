@@ -145,9 +145,9 @@ var freezeframe = (function($) {
     context.imageSmoothingEnabled = false;
     context.drawImage($_image[0], 0, 0, image_width, image_height);
 
-    $canvas.addClass('freezeframe-ready').on(transitionEnd, function() {
+    $canvas.addClass('freezeframe-canvas-ready').on(transitionEnd, function() {
       $(this).off(transitionEnd);
-      $_image.addClass('freezeframe-ready');
+      $_image.addClass('freezeframe-image-ready');
     })
 
     return this;
@@ -195,13 +195,13 @@ var freezeframe = (function($) {
         $canvas.mouseenter(function() {
           (function() {
             $image.attr('src', $image[0].src);
-            $canvas.removeClass('freezeframe-ready').addClass('freezeframe-active');
+            $canvas.removeClass('freezeframe-canvas-ready').addClass('freezeframe-canvas-active');
           })();
         })
 
         $canvas.mouseleave(function() {
           (function() {
-            $canvas.removeClass('freezeframe-active').addClass('freezeframe-ready');
+            $canvas.removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
           })();
         })
       }
@@ -213,18 +213,18 @@ var freezeframe = (function($) {
 
           (function() {
 
-            var clicked = $canvas.hasClass('freezeframe-active');
+            var clicked = $canvas.hasClass('freezeframe-canvas-active');
 
             if(clicked) {
               clearTimeout(click_timeout);
-              $canvas.removeClass('freezeframe-active').addClass('freezeframe-ready');
+              $canvas.removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
 
             } else {
               $image.attr('src', $image[0].src);
-              $canvas.removeClass('freezeframe-ready').addClass('freezeframe-active');
+              $canvas.removeClass('freezeframe-canvas-ready').addClass('freezeframe-canvas-active');
 
               click_timeout = setTimeout(function() {
-                $canvas.removeClass('freezeframe-active').addClass('freezeframe-ready');
+                $canvas.removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
               }, ff.options.animation_play_duration);
 
             }
@@ -257,7 +257,7 @@ var freezeframe = (function($) {
 
     this.filter(_selector).each(function(e) {
       $(this).attr('src', $(this)[0].src);
-      $(this).siblings('canvas').removeClass('freezeframe-ready').addClass('freezeframe-active');
+      $(this).siblings('canvas').removeClass('freezeframe-canvas-ready').addClass('freezeframe-canvas-active');
     });
   }
 
@@ -271,7 +271,7 @@ var freezeframe = (function($) {
   freezeframe.prototype.release = function(_selector) {
 
     this.filter(_selector).each(function(e) {
-      $(this).siblings('canvas').removeClass('freezeframe-active').addClass('freezeframe-ready');
+      $(this).siblings('canvas').removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
     });
   }
 
