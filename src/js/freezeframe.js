@@ -91,15 +91,15 @@ var freezeframe = (function($) {
   // dont run if no images found
   freezeframe.prototype.setup = function() {
     var ff = this,
-      setup_required = this.images.not('.freezeframe_setup');
+      setup_required = this.images.not('.freezeframe-setup');
 
     setup_required.each(function(e) {
       var $image = $(this);
 
-      $image.addClass('freezeframe_setup freezeframe_image');
+      $image.addClass('freezeframe-setup freezeframe-image');
 
       $canvas = $('<canvas />', {
-        class: 'freezeframe_canvas'
+        class: 'freezeframe-canvas'
       }).attr({
         width: 0,
         height: 0
@@ -107,7 +107,7 @@ var freezeframe = (function($) {
 
       $image.add($canvas).wrapAll(
         $('<div />', {
-          class: 'freezeframe_container'
+          class: 'freezeframe-container'
         })
       );
 
@@ -145,9 +145,9 @@ var freezeframe = (function($) {
     context.imageSmoothingEnabled = false;
     context.drawImage($_image[0], 0, 0, image_width, image_height);
 
-    $canvas.addClass('ready').on(transitionEnd, function() {
+    $canvas.addClass('freezeframe-ready').on(transitionEnd, function() {
       $(this).off(transitionEnd);
-      $_image.addClass('ready');
+      $_image.addClass('freezeframe-ready');
     })
 
     return this;
@@ -195,13 +195,13 @@ var freezeframe = (function($) {
         $canvas.mouseenter(function() {
           (function() {
             $image.attr('src', $image[0].src);
-            $canvas.removeClass('ready').addClass('active');
+            $canvas.removeClass('freezeframe-ready').addClass('freezeframe-active');
           })();
         })
 
         $canvas.mouseleave(function() {
           (function() {
-            $canvas.removeClass('active').addClass('ready');
+            $canvas.removeClass('freezeframe-active').addClass('freezeframe-ready');
           })();
         })
       }
@@ -213,18 +213,18 @@ var freezeframe = (function($) {
 
           (function() {
 
-            var clicked = $canvas.hasClass('active');
+            var clicked = $canvas.hasClass('freezeframe-active');
 
             if(clicked) {
               clearTimeout(click_timeout);
-              $canvas.removeClass('active').addClass('ready');
+              $canvas.removeClass('freezeframe-active').addClass('freezeframe-ready');
 
             } else {
               $image.attr('src', $image[0].src);
-              $canvas.removeClass('ready').addClass('active');
+              $canvas.removeClass('freezeframe-ready').addClass('freezeframe-active');
 
               click_timeout = setTimeout(function() {
-                $canvas.removeClass('active').addClass('ready');
+                $canvas.removeClass('freezeframe-active').addClass('freezeframe-ready');
               }, ff.options.animation_play_duration);
 
             }
@@ -257,7 +257,7 @@ var freezeframe = (function($) {
 
     this.filter(_selector).each(function(e) {
       $(this).attr('src', $(this)[0].src);
-      $(this).siblings('canvas').removeClass('ready').addClass('active');
+      $(this).siblings('canvas').removeClass('freezeframe-ready').addClass('freezeframe-active');
     });
   }
 
@@ -271,7 +271,7 @@ var freezeframe = (function($) {
   freezeframe.prototype.release = function(_selector) {
 
     this.filter(_selector).each(function(e) {
-      $(this).siblings('canvas').removeClass('active').addClass('ready');
+      $(this).siblings('canvas').removeClass('freezeframe-active').addClass('freezeframe-ready');
     });
   }
 
