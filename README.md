@@ -1,7 +1,7 @@
 ## freezeframe.js
 
 freezeframe.js is a script that pauses animated .gifs and enables them to start animation 
-automatically on mouse hover / mouse click / touch event, or manually withg trigger / release 
+automatically on mouse hover / mouse click / touch event, or manually with trigger / release 
 functions. it also supports responsive images.
 
 ## Examples
