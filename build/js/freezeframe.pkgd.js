@@ -9301,12 +9301,17 @@ var freezeframe = (function($) {
   // dont run if no images found
   freezeframe.prototype.setup = function() {
     var ff = this,
-      setup_required = this.images.not('.freezeframe-setup');
+      setup_required = this.images.not('.freezeframe-setup'),
+      container_classnames = ['freezeframe-container'];
 
     setup_required.each(function(e) {
       var $image = $(this);
 
       $image.addClass('freezeframe-setup freezeframe-image');
+
+      if($image.hasClass('freezeframe-responsive')) {
+        container_classnames.push('freezeframe-responsive');
+      }
 
       $canvas = $('<canvas />', {
         class: 'freezeframe-canvas'
@@ -9317,7 +9322,7 @@ var freezeframe = (function($) {
 
       $image.add($canvas).wrapAll(
         $('<div />', {
-          class: 'freezeframe-container'
+          class: container_classnames.join(' ')
         })
       );
 
@@ -9346,13 +9351,15 @@ var freezeframe = (function($) {
     $canvas.attr({
       'width': image_width,
       'height': image_height
-    }).css({
-      'margin-right': '-' + image_width + 'px'
-    })
+    });
+    // }).css({
+    //   'margin-right': '-' + image_width + 'px'
+    // })
 
     context = $canvas[0].getContext('2d');
-    context.mozImageSmoothingEnabled = false;
-    context.imageSmoothingEnabled = false;
+    context.mozImageSmoothingEnabled = true;
+    context.webkitImageSmoothingEnabled = true;
+    context.imageSmoothingEnabled = true;
     context.drawImage($_image[0], 0, 0, image_width, image_height);
 
     $canvas.addClass('freezeframe-canvas-ready').on(transitionEnd, function() {
@@ -9402,14 +9409,14 @@ var freezeframe = (function($) {
       // hover
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
 
-        $canvas.mouseenter(function() {
+        $image.mouseenter(function() {
           (function() {
             $image.attr('src', $image[0].src);
             $canvas.removeClass('freezeframe-canvas-ready').addClass('freezeframe-canvas-active');
           })();
         })
 
-        $canvas.mouseleave(function() {
+        $image.mouseleave(function() {
           (function() {
             $canvas.removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
           })();
@@ -9419,7 +9426,7 @@ var freezeframe = (function($) {
       // click
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
 
-        $canvas.click(function() {
+        $image.click(function() {
 
           (function() {
 
