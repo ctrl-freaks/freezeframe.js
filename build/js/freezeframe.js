@@ -230,7 +230,7 @@ var freezeframe = (function($) {
               $image.attr('src', $image[0].src);
               $canvas.removeClass('freezeframe-canvas-ready').addClass('freezeframe-canvas-active');
 
-              click_timeout = setTimeout(function() {
+              var click_timeout = setTimeout(function() {
                 $canvas.removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
               }, ff.options.animation_play_duration);
 
@@ -250,7 +250,7 @@ var freezeframe = (function($) {
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
   freezeframe.prototype.freeze = function() {
-    this.capture().setup().attach(); // ✨tada✨
+    this.capture().setup().attach(); // ✨ tada ✨
   }
 
   //////////////////////////////////////////////////////////////////////////////
