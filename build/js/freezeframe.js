@@ -7,6 +7,40 @@ var freezeframe = (function($) {
 
   //////////////////////////////////////////////////////////////////////////////
   //                                                                          //
+  //  Private Methods                                                         //
+  //                                                                          //
+  //////////////////////////////////////////////////////////////////////////////
+  
+  // decorated console.log warn message
+  var warn = function(_message) {
+    console.warn('freezeframe.js : ' + _message)
+  }
+
+  // filter captured images by selector
+  var filter = function(_this, _selector) {
+    var images = _this.images,
+        filtered_images
+
+    if(_selector != undefined && images.length > 1) {
+      filtered_images = images.filter( $(_selector) );
+      if (filtered_images.length == 0) {
+        warn("no images found for selector " + _selector)
+        return false;
+      }
+    } else {
+      filtered_images = images;
+    }
+
+    return filtered_images;
+  }
+
+  // does the freezeframe instance have captured images ?
+  var has_images = function(_this) {
+    return _this.images.length == 0 ? false : true;
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
+  //                                                                          //
   //  Constructor                                                             //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
@@ -29,15 +63,13 @@ var freezeframe = (function($) {
         if (attribute in this.options) {
           this.options[attribute] = options[attribute]
         } else {
-          console.warn('freezeframe : "' + attribute + '" not a valid option', options);
+          warn(attribute + 'not a valid option')
         }
       }
     }
 
     // is this a touch device?
     this.is_touch_device = ('ontouchstart' in window || 'onmsgesturechange' in window);
-
-    return this;
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -45,7 +77,6 @@ var freezeframe = (function($) {
   //  Capture Images                                                          //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  // .freezeframe set by default, case where neither are set doesn't make sense
   freezeframe.prototype.capture = function(_selector) {
     var selector;
 
@@ -55,7 +86,7 @@ var freezeframe = (function($) {
     } else if (this.options.selector !== undefined) {
       selector = this.options.selector;
     } else {
-      console.warn('freezeframe : no selector passed to capture function or set in freezeframe options')
+      warn("no selector passed to capture function or set in options")
       return false;
     }
 
@@ -88,23 +119,30 @@ var freezeframe = (function($) {
   //  Setup Elements                                                          //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  // dont run if no images found
   freezeframe.prototype.setup = function() {
     var ff = this,
-      setup_required = this.images.not('.freezeframe-setup'),
-      container_classnames = ['freezeframe-container'];
+      setup_required = this.images.not('.ff-setup'),
+      container_classnames = ['ff-container'];
+
+    if(!has_images(ff)) {
+      warn("unable to run setup(), no images captured")
+      return false;
+    } else if(setup_required.length == 0) {
+      warn("unable to run setup(), no images require setup")
+      return false;
+    }
 
     setup_required.each(function(e) {
       var $image = $(this);
 
-      $image.addClass('freezeframe-setup freezeframe-image');
+      $image.addClass('ff-setup ff-image');
 
       if($image.hasClass('freezeframe-responsive')) {
-        container_classnames.push('freezeframe-responsive');
+        container_classnames.push('ff-responsive');
       }
 
       $canvas = $('<canvas />', {
-        class: 'freezeframe-canvas'
+        class: 'ff-canvas'
       }).attr({
         width: 0,
         height: 0
@@ -130,7 +168,7 @@ var freezeframe = (function($) {
   //  Process Images                                                          //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  // dont run if no images found
+  // this should be a private method ? maybe
   freezeframe.prototype.process = function($_image) {
     var ff = this,
       $canvas = $_image.siblings('canvas'),
@@ -142,9 +180,6 @@ var freezeframe = (function($) {
       'width': image_width,
       'height': image_height
     });
-    // }).css({
-    //   'margin-right': '-' + image_width + 'px'
-    // })
 
     context = $canvas[0].getContext('2d');
     context.mozImageSmoothingEnabled = true;
@@ -152,33 +187,12 @@ var freezeframe = (function($) {
     context.imageSmoothingEnabled = true;
     context.drawImage($_image[0], 0, 0, image_width, image_height);
 
-    $canvas.addClass('freezeframe-canvas-ready').on(transitionEnd, function() {
+    $canvas.addClass('ff-canvas-ready').on(transitionEnd, function() {
       $(this).off(transitionEnd);
-      $_image.addClass('freezeframe-image-ready');
+      $_image.addClass('ff-image-ready');
     })
 
     return this;
-  }
-
-  //////////////////////////////////////////////////////////////////////////////
-  //                                                                          //
-  //  Filter Images by Selector                                               //
-  //                                                                          //
-  //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.filter = function(_selector) {
-    var images;
-
-    if(_selector != undefined && this.images.length > 1) {
-      images = this.images.filter( $(_selector) );
-      if (images.length == 0) {
-        console.warn('freezeframe : no gifs found for selector "' + _selector + '"')
-        return false;
-      }
-    } else {
-      images = this.images;
-    }
-
-    return images;
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -187,58 +201,63 @@ var freezeframe = (function($) {
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
   freezeframe.prototype.attach = function(_selector) {
-    var ff, click_timeout, images;
+    var ff = this,
+      click_timeout,
+      images;
 
-    ff = this;
+    if(!has_images(ff)) {
+      warn("unable to run attach(), no images captured")
+      return false;
+    }
 
-    this.filter(_selector).each(function(e) {
+    filter(ff, _selector).each(function(e) {
 
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
 
-      // hover
+      // hover /////////////////////////////////////////////////////////////////
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
 
         $image.mouseenter(function() {
           (function() {
             $image.attr('src', $image[0].src);
-            $canvas.removeClass('freezeframe-canvas-ready').addClass('freezeframe-canvas-active');
+            $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
           })();
         })
 
         $image.mouseleave(function() {
           (function() {
-            $canvas.removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
+            $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
           })();
         })
       }
 
-      // click
+      // click /////////////////////////////////////////////////////////////////
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
+
+        var click_timeout;
 
         $image.click(function() {
 
           (function() {
-
-            var clicked = $canvas.hasClass('freezeframe-canvas-active');
+            var clicked = $canvas.hasClass('ff-canvas-active');
 
             if(clicked) {
               clearTimeout(click_timeout);
-              $canvas.removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
+              $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
 
             } else {
               $image.attr('src', $image[0].src);
-              $canvas.removeClass('freezeframe-canvas-ready').addClass('freezeframe-canvas-active');
+              $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
 
-              var click_timeout = setTimeout(function() {
-                $canvas.removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
+              click_timeout = setTimeout(function() {
+                $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
               }, ff.options.animation_play_duration);
 
             }
           })();
         })
       }
-
     })
 
     return this;
@@ -251,6 +270,7 @@ var freezeframe = (function($) {
   //////////////////////////////////////////////////////////////////////////////
   freezeframe.prototype.freeze = function() {
     this.capture().setup().attach(); // ✨ tada ✨
+    return this;
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -258,13 +278,14 @@ var freezeframe = (function($) {
   //  Trigger Animation                                                       //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  // dont run if no images found
-  // return false if image not done processing yet
-  freezeframe.prototype.trigger = function(_selector) {
 
-    this.filter(_selector).each(function(e) {
+  // return false if image not done processing yet
+  // save references in a better way
+
+  freezeframe.prototype.trigger = function(_selector) {
+    filter(_selector).each(function(e) {
       $(this).attr('src', $(this)[0].src);
-      $(this).siblings('canvas').removeClass('freezeframe-canvas-ready').addClass('freezeframe-canvas-active');
+      $(this).siblings('canvas').removeClass('ff-canvas-ready').addClass('ff-canvas-active');
     });
   }
 
@@ -273,14 +294,16 @@ var freezeframe = (function($) {
   //  Release Animation                                                       //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  // dont run if no images found
-  // return false if image not done processing yet
-  freezeframe.prototype.release = function(_selector) {
 
-    this.filter(_selector).each(function(e) {
-      $(this).siblings('canvas').removeClass('freezeframe-canvas-active').addClass('freezeframe-canvas-ready');
+  // return false if image not done processing yet
+  // save references in a better way
+
+  freezeframe.prototype.release = function(_selector) {
+    filter(_selector).each(function(e) {
+      $(this).siblings('canvas').removeClass('ff-canvas-active').addClass('ff-canvas-ready');
     });
   }
 
   return freezeframe;
+
 })(jQuery);
