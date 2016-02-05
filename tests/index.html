@@ -27,6 +27,13 @@ p {
   font-weight: 700;
 }
 </style>
+
+<script type="text/javascript">
+  $(function() {
+    gifs = new freezeframe().freeze();
+  })
+</script>
+
 </head>
 
 <body>
@@ -43,9 +50,3 @@ p {
 
 </body>
 </html>
-
-<script type="text/javascript">
-$(function() {
-  gifs = new freezeframe({'non_touch_device_trigger_event': 'click'}).freeze();
-})
-</script>
