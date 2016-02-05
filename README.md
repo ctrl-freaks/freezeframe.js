@@ -11,9 +11,9 @@ functions. it also supports responsive images.
 
 1. Include the js and css from **/build**  
 
-    ```html
-    <link rel="stylesheet" href="freezeframe_styles.min.css">
-    <script src="freezeframe.min.js"></script>
+    ```
+  <link rel="stylesheet" href="freezeframe_styles.min.css">
+  <script src="freezeframe.min.js"></script>
     ```
     If you do not use a packaged version the following dependencies are required  
     ( can be found in **/src/js/vendor** ):
@@ -23,19 +23,19 @@ functions. it also supports responsive images.
 2. Add **freezeframe** as a class name on the .gifs you want processed  
 
     ```
-    <img class="freezeframe" src="image.gif" /> 
+  <img class="freezeframe" src="image.gif" /> 
     ```
   Add **freezeframe-responsive** as an additional class name to make the .gif responsive
     ```
-    <img class="freezeframe freezeframe-responsive" src="image.gif" /> 
+  <img class="freezeframe freezeframe-responsive" src="image.gif" /> 
     ```
 
 3. ✨ freeze those frames ✨
 
     ```javascript
-    $(function() {
-      ff = new freezeframe().freeze();
-    })
+  $(function() {
+    ff = new freezeframe().freeze();
+  })
     ```
 
 ## Advanced Usage
@@ -92,21 +92,46 @@ ff = new freezeframe('.my_class')
 
 these are the freezeframe public methods and how you can use them
 
-* ```freezeframe()```
-    creates a new freezeframe object with image selection. can be passed options 
-    object or string to act as new selector.
+* **freezeframe(** selector **)**  
+    creates a new freezeframe object instance with image selection.  
+    can be passed options object or string to act as new selector.
 
-* ```capture()```
+* **capture(** selector **)**  
+    captures images by jquery reference to be operated on by freezeframe. if run 
+    without selector argument, selector in freezeframe options will be used. can 
+    be run multiple times with different selector to group many images, 
+    unrelated by selector, in one freezeframe instance
 
-* ```setup()```
+* **setup()**   
+    creates and inserts support elements.  
+    before:
 
-* ```process()```
+     ```html
+  <img class="freezeframe" src="my_image.gif" />
+     ```  
 
-* ```filter()```
+     after:
+     ```
+  <div class="ff-container">
+    <canvas class="ff-canvas ff-canvas-ready" width="400" height="250"></canvas>
+    <img class="freezeframe ff-setup ff-image ff-image-ready" src="my_image.gif">
+  </div>
+     ```
 
-* ```trigger()```
+* **attach(** selector **)**  
+    attaches hover / click / touch events based on freezeframe options. can be filtered by selector.
 
-* ```release()```
+* **process(** selector **)**  
+    attaches imagesloaded event listener to image and processes / pauses image 
+    when ready.
+
+* **trigger(** selector **)**  
+    triggers image animation by selector. must be a part of existing image 
+    selection in freezeframe instance.
+
+* **release(** selector **)**  
+    releases ( stops ) image animation by selector. must be part of existing image selection 
+    in freezeframe instance.
 
 ## Development Environment
 * use package.json to install npm stuff
