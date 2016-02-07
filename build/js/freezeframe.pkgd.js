@@ -10062,6 +10062,7 @@ return ImagesLoaded;
 
 
 // pass references around in a cleaner way
+
 var freezeframe = (function($) {
 
   var images, options, is_touch_device;
@@ -10325,30 +10326,26 @@ var freezeframe = (function($) {
 
   //////////////////////////////////////////////////////////////////////////////
   //                                                                          //
-  //  Freeze Images                                                           //
-  //                                                                          //
-  //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.freeze = function() {
-    this.capture().setup().attach(); // ✨ tada ✨
-    return this;
-  }
-
-  //////////////////////////////////////////////////////////////////////////////
-  //                                                                          //
   //  Trigger Animation                                                       //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-
-  // return false if image not done processing yet
-  // save references in a better way
-
   freezeframe.prototype.trigger = function(_selector) {
-    var ff = this;
+    var ff = this,
+      errors = 0;
 
     filter.call(ff, _selector).each(function(e) {
-      $(this).attr('src', $(this)[0].src);
-      $(this).siblings('canvas').removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+
+      if($(this).hasClass('ff-image-ready')) {
+        $(this).attr('src', $(this)[0].src);
+        $(this).siblings('canvas').removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+      } else {
+        warn("image not done processing ! " + $(this).attr("src"));
+        errors ++;
+      }
+
     });
+
+    return errors == 0 ? true : false;
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -10356,16 +10353,30 @@ var freezeframe = (function($) {
   //  Release Animation                                                       //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-
-  // return false if image not done processing yet
-  // save references in a better way
-
   freezeframe.prototype.release = function(_selector) {
-    var ff = this;
+    var ff = this,
+      errors = 0;
 
     filter.call(ff, _selector).each(function(e) {
-      $(this).siblings('canvas').removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+      if($(this).hasClass('ff-image-ready')) {
+        $(this).siblings('canvas').removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+      } else {
+        warn("image not done processing ! " + $(this).attr("src"));
+        errors ++;
+      }
     });
+
+    return errors == 0 ? true : false;
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
+  //                                                                          //
+  //  Freeze Images                                                           //
+  //                                                                          //
+  //////////////////////////////////////////////////////////////////////////////
+  freezeframe.prototype.freeze = function() {
+    this.capture().setup().attach(); // ✨ tada ✨
+    return this;
   }
 
   return freezeframe;
