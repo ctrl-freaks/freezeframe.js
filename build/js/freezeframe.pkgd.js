@@ -10063,9 +10063,7 @@ return ImagesLoaded;
 
 var freezeframe = (function($) {
 
-  var images;
-  var options;
-  var is_touch_device;
+  var images, options, is_touch_device;
 
   //////////////////////////////////////////////////////////////////////////////
   //                                                                          //
@@ -10075,18 +10073,22 @@ var freezeframe = (function($) {
   
   // decorated console.log warn message
   var warn = function(_message) {
-    console.warn('freezeframe.js : ' + _message)
+    console.warn('✨ freezeframe.js ✨ : ' + _message);
+  }
+
+  // does the freezeframe instance have captured images ?
+  var has_images = function() {
+    return images.length == 0 ? false : true;
   }
 
   // filter captured images by selector
-  var filter = function(_this, _selector) {
-    var images = _this.images,
-        filtered_images
+  var filter = function(_selector) {
+    var filtered_images;
 
     if(_selector != undefined && images.length > 1) {
       filtered_images = images.filter( $(_selector) );
       if (filtered_images.length == 0) {
-        warn("no images found for selector " + _selector)
+        warn("no images found for selector '" + _selector + "'")
         return false;
       }
     } else {
@@ -10094,11 +10096,6 @@ var freezeframe = (function($) {
     }
 
     return filtered_images;
-  }
-
-  // does the freezeframe instance have captured images ?
-  var has_images = function(_this) {
-    return _this.images.length == 0 ? false : true;
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -10186,7 +10183,7 @@ var freezeframe = (function($) {
       setup_required = this.images.not('.ff-setup'),
       container_classnames = ['ff-container'];
 
-    if(!has_images(ff)) {
+    if(!has_images.call(ff)) {
       warn("unable to run setup(), no images captured")
       return false;
     } else if(setup_required.length == 0) {
@@ -10267,12 +10264,12 @@ var freezeframe = (function($) {
       click_timeout,
       images;
 
-    if(!has_images(ff)) {
+    if(!has_images.call(ff)) {
       warn("unable to run attach(), no images captured")
       return false;
     }
 
-    filter(ff, _selector).each(function(e) {
+    filter.call(ff).each(function(e) {
 
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
@@ -10345,7 +10342,9 @@ var freezeframe = (function($) {
   // save references in a better way
 
   freezeframe.prototype.trigger = function(_selector) {
-    filter(_selector).each(function(e) {
+    var ff = this;
+
+    filter.call(ff).each(function(e) {
       $(this).attr('src', $(this)[0].src);
       $(this).siblings('canvas').removeClass('ff-canvas-ready').addClass('ff-canvas-active');
     });
@@ -10361,7 +10360,9 @@ var freezeframe = (function($) {
   // save references in a better way
 
   freezeframe.prototype.release = function(_selector) {
-    filter(_selector).each(function(e) {
+    var ff = this;
+
+    filter.call(ff).each(function(e) {
       $(this).siblings('canvas').removeClass('ff-canvas-active').addClass('ff-canvas-ready');
     });
   }
