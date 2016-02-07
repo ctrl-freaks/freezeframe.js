@@ -10061,6 +10061,7 @@ return ImagesLoaded;
 });
 
 
+// pass references around in a cleaner way
 var freezeframe = (function($) {
 
   var images, options, is_touch_device;
@@ -10071,31 +10072,51 @@ var freezeframe = (function($) {
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
   
-  // decorated console.log warn message
   var warn = function(_message) {
     console.warn('✨ freezeframe.js ✨ : ' + _message);
   }
 
-  // does the freezeframe instance have captured images ?
   var has_images = function() {
-    return images.length == 0 ? false : true;
+    return this.images.length == 0 ? false : true;
   }
 
-  // filter captured images by selector
   var filter = function(_selector) {
     var filtered_images;
 
-    if(_selector != undefined && images.length > 1) {
-      filtered_images = images.filter( $(_selector) );
+    if(_selector != undefined && this.images.length > 1) {
+      filtered_images = this.images.filter( $(_selector) );
       if (filtered_images.length == 0) {
         warn("no images found for selector '" + _selector + "'")
         return false;
       }
     } else {
-      filtered_images = images;
+      filtered_images = this.images;
     }
 
     return filtered_images;
+  }
+
+  var process = function ($_image) {
+    var ff = this,
+      $canvas = $_image.siblings('canvas'),
+      transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',
+      image_width = $_image[0].clientWidth,
+      image_height = $_image[0].clientHeight;
+
+    $canvas.attr({
+      'width': image_width,
+      'height': image_height
+    });
+
+    context = $canvas[0].getContext('2d');
+    context.drawImage($_image[0], 0, 0, image_width, image_height);
+
+    $canvas.addClass('ff-canvas-ready').on(transitionEnd, function() {
+      $(this).off(transitionEnd);
+      $_image.addClass('ff-image-ready');
+    })
+
+    return this;
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -10216,40 +10237,8 @@ var freezeframe = (function($) {
     });
 
     imagesLoaded(setup_required).on('progress', function(instance, image) {
-      ff.process($(image.img));
+      process.call(ff, $(image.img));
     });
-
-    return this;
-  }
-
-  //////////////////////////////////////////////////////////////////////////////
-  //                                                                          //
-  //  Process Images                                                          //
-  //                                                                          //
-  //////////////////////////////////////////////////////////////////////////////
-  // this should be a private method ? maybe
-  freezeframe.prototype.process = function($_image) {
-    var ff = this,
-      $canvas = $_image.siblings('canvas'),
-      transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend',
-      image_width = $_image[0].clientWidth,
-      image_height = $_image[0].clientHeight;
-
-    $canvas.attr({
-      'width': image_width,
-      'height': image_height
-    });
-
-    context = $canvas[0].getContext('2d');
-    context.mozImageSmoothingEnabled = true;
-    context.webkitImageSmoothingEnabled = true;
-    context.imageSmoothingEnabled = true;
-    context.drawImage($_image[0], 0, 0, image_width, image_height);
-
-    $canvas.addClass('ff-canvas-ready').on(transitionEnd, function() {
-      $(this).off(transitionEnd);
-      $_image.addClass('ff-image-ready');
-    })
 
     return this;
   }
@@ -10269,7 +10258,7 @@ var freezeframe = (function($) {
       return false;
     }
 
-    filter.call(ff).each(function(e) {
+    filter.call(ff, _selector).each(function(e) {
 
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
@@ -10279,14 +10268,22 @@ var freezeframe = (function($) {
 
         $image.mouseenter(function() {
           (function() {
-            $image.attr('src', $image[0].src);
-            $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+
+            if($image.hasClass('ff-image-ready')) {
+              $image.attr('src', $image[0].src);
+              $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+            }
+
           })();
         })
 
         $image.mouseleave(function() {
           (function() {
-            $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+
+            if($image.hasClass('ff-image-ready')) {
+              $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+            }
+
           })();
         })
       }
@@ -10301,19 +10298,23 @@ var freezeframe = (function($) {
           (function() {
             var clicked = $canvas.hasClass('ff-canvas-active');
 
-            if(clicked) {
-              clearTimeout(click_timeout);
-              $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+            if($image.hasClass('ff-image-ready')) {
 
-            } else {
-              $image.attr('src', $image[0].src);
-              $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
-
-              click_timeout = setTimeout(function() {
+              if(clicked) {
+                clearTimeout(click_timeout);
                 $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
-              }, ff.options.animation_play_duration);
 
+              } else {
+                $image.attr('src', $image[0].src);
+                $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+
+                click_timeout = setTimeout(function() {
+                  $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+                }, ff.options.animation_play_duration);
+
+              }
             }
+
           })();
         })
       }
@@ -10344,7 +10345,7 @@ var freezeframe = (function($) {
   freezeframe.prototype.trigger = function(_selector) {
     var ff = this;
 
-    filter.call(ff).each(function(e) {
+    filter.call(ff, _selector).each(function(e) {
       $(this).attr('src', $(this)[0].src);
       $(this).siblings('canvas').removeClass('ff-canvas-ready').addClass('ff-canvas-active');
     });
@@ -10362,7 +10363,7 @@ var freezeframe = (function($) {
   freezeframe.prototype.release = function(_selector) {
     var ff = this;
 
-    filter.call(ff).each(function(e) {
+    filter.call(ff, _selector).each(function(e) {
       $(this).siblings('canvas').removeClass('ff-canvas-active').addClass('ff-canvas-ready');
     });
   }
