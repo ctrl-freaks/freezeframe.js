@@ -10062,8 +10062,9 @@ return ImagesLoaded;
 
 
 // pass references around in a cleaner way
+// try to remove jquery dependency !
 
-var freezeframe = (function($) {
+var freezeframe = (function($) { 
 
   var images, options, is_touch_device;
 
@@ -10073,14 +10074,17 @@ var freezeframe = (function($) {
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
   
+  // decorated console.warn message
   var warn = function(_message) {
     console.warn('✨ freezeframe.js ✨ : ' + _message);
   }
 
+  // does freezeframe instance have any captured images?
   var has_images = function() {
     return this.images.length == 0 ? false : true;
   }
 
+  // filter captured images by selector and warn if none found
   var filter = function(_selector) {
     var filtered_images;
 
@@ -10097,6 +10101,7 @@ var freezeframe = (function($) {
     return filtered_images;
   }
 
+  // reset .gif to first frame and write to canvas
   var process = function ($_image) {
     var ff = this,
       $canvas = $_image.siblings('canvas'),
@@ -10116,8 +10121,6 @@ var freezeframe = (function($) {
       $(this).off(transitionEnd);
       $_image.addClass('ff-image-ready');
     })
-
-    return this;
   }
 
   //////////////////////////////////////////////////////////////////////////////
