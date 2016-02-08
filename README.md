@@ -34,6 +34,7 @@ jQuery plugin.
 ## Basic Usage: jQuery Plugin
 
 1. Capture the image you want by selector and run the **freezeframe()** function.  
+
     ```javascript
   $('.my_class').freezeframe();
     ```
