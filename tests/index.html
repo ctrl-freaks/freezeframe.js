@@ -3,9 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>freezeframe.js</title>
-<!-- css -->
 <link rel="stylesheet" href="../build/css/freezeframe_styles.css">
-<!-- js -->
 <script type="text/javascript" src="../src/js/vendor/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="../src/js/vendor/imagesloaded.pkgd.js"></script>
 <script type="text/javascript" src="../src/js/freezeframe.js"></script>
@@ -18,19 +16,47 @@ body {
   padding: 20px;
 }
 
-p {
+p, button {
   font-family: monospace;
   text-align: center;
+}
+
+button {
+  margin: 5px 5px 0px 0px;
+  padding: 5px 10px;
+  border: 1px solid #000;
+  background: #fff;
 }
 
 .bold {
   font-weight: 700;
 }
+
 </style>
 
 <script type="text/javascript">
   $(function() {
-    first_two = new freezeframe().freeze();
+    first = new freezeframe('.my_class_1').freeze();
+
+    second = new freezeframe({
+      'selector': '.my_class_2',
+      'non_touch_device_trigger_event': 'click'
+    }).freeze();
+
+    third = new freezeframe('.my_class_3').capture().setup();
+
+    $('.start').click(function(e) {
+      e.preventDefault();
+      third.trigger();
+    });
+
+    $('.stop').click(function(e) {
+      e.preventDefault();
+      third.release();
+    });
+
+    $('.my_class_4').freezeframe()
+
   })
 </script>
 
@@ -40,31 +66,20 @@ p {
 
 <p class="bold">freezeframe.js</p>
 
-<p>natural</p>
+<p>natural width<br />animate on hover</p>
+<img class="my_class_1" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" />
 
-<img class="freezeframe" src="http://49.media.tumblr.com/05dd38679f733525f02483d192f16db9/tumblr_nla0aiN4cl1qhcd6po1_500.gif" />
+<p>responsive<br />start / stop on click</p>
+<img class="my_class_2 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />
 
-<p>responsive</p>
+<p>responsive<br />start &amp; stop manually</p>
+<img class="my_class_3 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif" />
+<button class="start">start</button><button class="stop">stop</button>
 
-<img class="freezeframe freezeframe-responsive" src="http://45.media.tumblr.com/d07e2e7dbffc7da8e40ac31508929230/tumblr_nla0b4xBxW1qhcd6po1_500.gif" />
+<p>responsive<br />jquery plugin</p>
+<img class="my_class_4 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/56143453e4b06dc85b46bf6b/1444744863151/spg.gif" />
 
-<p>mr. gifs by <a href="http://www.mrgif.com/">mr. gif</a>
-
-<hr>
-
-<p>xtras</p>
-
-<img class="freezeframe" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" />
-
-<hr>
-
-<img class="freezeframe" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />
-
-<hr>
-
-<img class="some_other_class freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif" />
-
-<p>cinemagraphs by <a href="http://www.cinemagraph.com/">cinemagraph.com</a>
+<p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
 
 </body>
 </html>

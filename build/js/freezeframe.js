@@ -1,6 +1,6 @@
 
 // pass references around in a cleaner way
-// try to remove jquery dependency !
+// remove jquery dependency
 
 var freezeframe = (function($) { 
 
@@ -23,17 +23,17 @@ var freezeframe = (function($) {
   }
 
   // filter captured images by selector and warn if none found
-  var filter = function(_selector) {
+  var filter = function(_selector, _images) {
     var filtered_images;
 
-    if(_selector != undefined && this.images.length > 1) {
-      filtered_images = this.images.filter( $(_selector) );
+    if(_selector != undefined && _images.length > 1) {
+      filtered_images = _images.filter( $(_selector) );
       if (filtered_images.length == 0) {
         warn("no images found for selector '" + _selector + "'")
         return false;
       }
     } else {
-      filtered_images = this.images;
+      filtered_images = _images;
     }
 
     return filtered_images;
@@ -102,7 +102,7 @@ var freezeframe = (function($) {
   freezeframe.prototype.capture = function(_selector) {
     var selector;
 
-    // passed in string or default string
+    // Passed in string or default string
     if(_selector !== undefined) {
       selector = _selector;
     } else if (this.options.selector !== undefined) {
@@ -112,22 +112,22 @@ var freezeframe = (function($) {
       return false;
     }
 
-    // empty jquery object to add into
+    // Empty jQuery object to add into
     if(this.images == undefined) {
       this.images = $();
     }
 
-    // add new selection, jquery keeps it non redundant
+    // Add new selection, jQuery keeps it non redundant
     this.images = this.images.add( $('img' + selector) );
 
-    // get non gifs outta there
+    // Get non gifs outta there
     for (i = 0; i < this.images.length; i++) {
       if (this.images[i].src.split('.').pop().toLowerCase().substring(0, 3) !== 'gif') {
         this.images.splice(i, 1);
       }
     }
 
-    // if nothing was found, throw a fit
+    // If nothing was found, throw a fit
     if(this.images.length == 0) {
       console.warn('freezeframe : no gifs found for selector "' + selector + '"');
       return false;
@@ -141,7 +141,7 @@ var freezeframe = (function($) {
   //  Setup Elements                                                          //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.setup = function() {
+  freezeframe.prototype.setup = function(_selector) {
     var ff = this,
       setup_required = this.images.not('.ff-setup'),
       container_classnames = ['ff-container'];
@@ -154,7 +154,7 @@ var freezeframe = (function($) {
       return false;
     }
 
-    setup_required.each(function(e) {
+    filter.call(ff, _selector, setup_required).each(function(e) {
       var $image = $(this);
 
       $image.addClass('ff-setup ff-image');
@@ -200,7 +200,7 @@ var freezeframe = (function($) {
       return false;
     }
 
-    filter.call(ff, _selector).each(function(e) {
+    filter.call(ff, _selector, ff.images).each(function(e) {
 
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
@@ -274,7 +274,7 @@ var freezeframe = (function($) {
     var ff = this,
       errors = 0;
 
-    filter.call(ff, _selector).each(function(e) {
+    filter.call(ff, _selector, ff.images).each(function(e) {
 
       if($(this).hasClass('ff-image-ready')) {
         $(this).attr('src', $(this)[0].src);
@@ -298,7 +298,7 @@ var freezeframe = (function($) {
     var ff = this,
       errors = 0;
 
-    filter.call(ff, _selector).each(function(e) {
+    filter.call(ff, _selector, ff.images).each(function(e) {
       if($(this).hasClass('ff-image-ready')) {
         $(this).siblings('canvas').removeClass('ff-canvas-active').addClass('ff-canvas-ready');
       } else {
@@ -321,5 +321,14 @@ var freezeframe = (function($) {
   }
 
   return freezeframe;
-
 })(jQuery);
+
+// jQuery plugin
+$.fn.freezeframe = function(_options) {
+
+  var ff = new freezeframe(_options);
+  ff.images = this;
+  ff.setup().attach();
+
+  return this;
+};
