@@ -1,8 +1,9 @@
 ## freezeframe.js
 
-freezeframe.js is a script that pauses animated .gifs and enables them to start animation 
-automatically on mouse hover / mouse click / touch event, or manually with trigger / release 
-functions. It supports responsive images and works as a jQuery plugin.
+freezeframe.js is a script that pauses animated .gifs and enables them to 
+animate automaticall on mouse hover / mouse click / touch event, or manually 
+with trigger / release functions. It supports responsive images and works as a 
+jQuery plugin.
 
 1. [Examples](#examples)
 2. [Files & Dependencies](#files_dependencies)
@@ -21,7 +22,7 @@ functions. It supports responsive images and works as a jQuery plugin.
 
 1. Include the js and css from **/build/**  
 
-    ```html5
+    ```
   <link rel="stylesheet" href="freezeframe_styles.min.css">
   <script src="freezeframe.min.js"></script>
     ```
@@ -32,7 +33,7 @@ functions. It supports responsive images and works as a jQuery plugin.
 <a name="basic_usage_jquery_plugin"></a>
 ## Basic Usage: jQuery Plugin
 
-1. Capture the image you want by selector and run the **freezeframe()** function.
+1. Capture the image you want by selector and run the **freezeframe()** function.  
     ```
   $('.my_class').freezeframe();
     ```
@@ -40,16 +41,16 @@ functions. It supports responsive images and works as a jQuery plugin.
 <a name="basic_usage_vanilla_js"></a>
 ## Basic Usage: Vanilla JS
 
-1. Add **freezeframe** as a class name on the .gifs you want processed
+1. Add **freezeframe** as a class name on the .gifs you want processed.
     ```
   <img class="freezeframe" src="image.gif" /> 
     ```
-  Add **freezeframe-responsive** as an additional class name to make the .gif responsive
+  Add **freezeframe-responsive** as an additional class name to make the .gif responsive.
     ```
   <img class="freezeframe freezeframe-responsive" src="image.gif" /> 
     ```
 
-2. ✨ freeze those frames ✨
+2. ✨ Freeze those frames ✨
 
     ```javascript
   $(function() {
@@ -83,6 +84,9 @@ Options can be passed to a freezeframe instance on creation in the form of an
 **object** or a **string**. Strings will be interpreted as the **selector** option.  
 
 ```javascript
+// Options passed to jQuery plugin
+$('.my_class').freezeframe({'animation_play_duration': 2500})
+
 // String as selector option
 var ff = new freezeframe('.my_class');
 
@@ -145,12 +149,12 @@ var ff = new freezeframe({
     ```
     HTML image before:
 
-     ```html5
+     ```
   <img class="freezeframe" src="my_image.gif" />
      ```  
 
      ...and after:
-     ```html5
+     ```
   <div class="ff-container">
     <canvas class="ff-canvas ff-canvas-ready" width="400" height="250"></canvas>
     <img class="freezeframe ff-setup ff-image ff-image-ready" src="my_image.gif">
