@@ -243,18 +243,27 @@ var freezeframe = (function($) {
             if($image.hasClass('ff-image-ready')) {
 
               if(clicked) {
-                clearTimeout(click_timeout);
+
+                if(ff.options.animation_play_duration != Infinity) {
+                  clearTimeout(click_timeout);
+                }
+
                 $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
 
               } else {
+
                 $image.attr('src', $image[0].src);
                 $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
 
-                click_timeout = setTimeout(function() {
-                  $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
-                }, ff.options.animation_play_duration);
+                if(ff.options.animation_play_duration != Infinity) {
+                  click_timeout = setTimeout(function() {
+                    $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+                  }, ff.options.animation_play_duration);
+                }
 
               }
+
+
             }
 
           })();

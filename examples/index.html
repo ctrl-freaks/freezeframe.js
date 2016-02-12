@@ -32,6 +32,14 @@ button {
   font-weight: 700;
 }
 
+.image {
+  max-width: 400px;
+}
+
+pre {
+  float: right;
+}
+
 </style>
 
 <script type="text/javascript">
@@ -40,6 +48,7 @@ button {
 
     second = new freezeframe({
       'selector': '.my_class_2',
+      'animation_play_duration': Infinity,
       'non_touch_device_trigger_event': 'click'
     }).freeze();
 
@@ -66,8 +75,19 @@ button {
 
 <p class="bold">freezeframe.js</p>
 
+
+
 <p>natural width<br />animate on hover</p>
-<img class="my_class_1" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" />
+<div class="image">
+  <img class="my_class_1" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" />
+</div>
+
+<pre>
+$('.start').click(function(e) {
+  e.preventDefault();
+  third.trigger();
+});
+</pre>
 
 <p>responsive<br />start / stop on click</p>
 <img class="my_class_2 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />

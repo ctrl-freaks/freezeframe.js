@@ -106,7 +106,9 @@ var ff = new freezeframe({
 
 * **animation_play_duration** *integer*  
     Default: ```5000```  
-    The number of milliseconds a .gif will animate for when triggered by click / touch event.
+    The number of milliseconds a .gif will animate for when triggered by click / 
+    touch event.  
+    Use ```Infinity``` to make the .gif play *forever.*
 
 * **non_touch_device_trigger_event** *string*  
     Default: ```"hover"``` Options: ```"hover", "click"```  
