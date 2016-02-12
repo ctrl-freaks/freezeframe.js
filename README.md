@@ -51,7 +51,7 @@ jQuery plugin.
   <img class="freezeframe freezeframe-responsive" src="image.gif" /> 
     ```
 
-2. ✨ Freeze those frames ✨
+2. ✨Freeze those frames ✨
 
     ```javascript
   $(function() {
@@ -105,7 +105,7 @@ var ff = new freezeframe({
     function is run (if no custom selector is passed to the capture() function).
 
 * **animation_play_duration** *integer*  
-    Default: ```5000```  
+    Default: ```5000``` Options: ```Infinity```  
     The number of milliseconds a .gif will animate for when triggered by click / 
     touch event.  
     Use ```Infinity``` to make the .gif play *forever.*
@@ -165,21 +165,22 @@ var ff = new freezeframe({
      ```
 
 * **attach(** selector **)**  
-    Attaches hover / click / touch events based on freezeframe options.
+    Attaches hover / click / touch events based on freezeframe options. Can be filtered by selector.
     ```javascript
   ff.attach();                // all images in freezeframe instance
   ff.attach('.my_class');     // filter images by selector
     ```
 
 * **trigger(** selector **)**  
-    Triggers (starts) animation. Can be filtered by selector.
+    Triggers (starts) animation, or restarts animation from the first frame if 
+    the .gif is already animating. Can be filtered by selector.
     ```javascript
   ff.trigger();               // all images in freezeframe instance
   ff.trigger('.my_class');    // filter images by selector
     ```
 
 * **release(** selector **)**  
-    Releases (stops) animation.
+    Releases (stops) animation. Can be filtered by selector.
     ```javascript
   ff.release()                // all images in freezeframe instance
   ff.release('.my_class');    // filter images by selector
