@@ -3,41 +3,63 @@
 <head>
 <meta charset="utf-8">
 <title>freezeframe.js</title>
+
+<!-- local -->
 <link rel="stylesheet" href="../build/css/freezeframe_styles.css">
 <script type="text/javascript" src="../src/js/vendor/jquery-2.1.4.js"></script>
 <script type="text/javascript" src="../src/js/vendor/imagesloaded.pkgd.js"></script>
 <script type="text/javascript" src="../src/js/freezeframe.js"></script>
 
+<!-- gh-pages -->
+<!-- <link rel="stylesheet" href="https://cdn.rawgit.com/ctrl-freaks/freezeframe.js/master/build/css/freezeframe_styles.min.css">
+<script type="text/javascript" src="https://cdn.rawgit.com/ctrl-freaks/freezeframe.js/master/build/js/freezeframe.pkgd.js"></script> -->
+
 <style type="text/css">
+
 body {
   text-align: center;
   max-width: 1000px;
   margin: 0px auto;
   padding: 20px;
+  color: #202020;
+  font-size: 13px;
 }
 
-p, button {
+a {
+  color: #202020;
+}
+
+p {
   font-family: monospace;
   text-align: center;
+
+  padding: 10px 0px;
 }
 
 button {
-  margin: 5px 5px 0px 0px;
-  padding: 5px 10px;
+  font-family: monospace;
+  text-align: center;
+
+  width: 100px;
+  margin: 0px 10px 10px 0px;
+  padding: 5px 0px;
   border: 1px solid #000;
   background: #fff;
+
+  outline: none;
+}
+
+button:active {
+  background: #000;
+  color: #fff;
 }
 
 .bold {
   font-weight: 700;
 }
 
-.image {
-  max-width: 400px;
-}
-
-pre {
-  float: right;
+.italic {
+  font-style: italic;
 }
 
 </style>
@@ -64,7 +86,7 @@ pre {
       third.release();
     });
 
-    $('.my_class_4').freezeframe()
+    $('.my_class_4').freezeframe();
 
   })
 </script>
@@ -73,31 +95,17 @@ pre {
 
 <body>
 
-<p class="bold">freezeframe.js</p>
+<p class="bold title">freezeframe.js</p>
 
+<p>natural width,<br />animate on hover.</p>
+<img class="my_class_1" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" />
 
-
-<p>natural width<br />animate on hover</p>
-<div class="image">
-  <img class="my_class_1" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" />
-</div>
-
-<pre>
-$('.start').click(function(e) {
-  e.preventDefault();
-  third.trigger();
-});
-</pre>
-
-<p>responsive<br />start / stop on click</p>
+<p>responsive,<br />start &amp; stop on click,<br />playing <span class="italic">forever.</span></p>
 <img class="my_class_2 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />
 
-<p>responsive<br />start &amp; stop manually</p>
-<img class="my_class_3 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif" />
+<p>responsive,<br />start &amp; stop manually.</p>
 <button class="start">start</button><button class="stop">stop</button>
-
-<p>responsive<br />jquery plugin</p>
-<img class="my_class_4 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/56143453e4b06dc85b46bf6b/1444744863151/spg.gif" />
+<img class="my_class_3 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif" />
 
 <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
 
