@@ -12,6 +12,7 @@ jQuery plugin.
 5. [Advanced Usage](#advanced_usage)
 6. [Options Reference](#options_reference)
 7. [Function Reference](#function_reference)
+8. [License](#license)
 
 <a name="examples"></a>
 ## Examples
@@ -185,3 +186,7 @@ var ff = new freezeframe({
   ff.release()                // all images in freezeframe instance
   ff.release('.my_class');    // filter images by selector
     ```
+
+<a name="license"></a>
+## License
+freezeframe.js is released under the terms of the MIT License.
