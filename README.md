@@ -1,9 +1,8 @@
 ## freezeframe.js
 
 freezeframe.js is a script that pauses animated .gifs and enables them to 
-animate automatically on mouse hover / mouse click / touch event, or manually 
-with trigger / release functions. It supports responsive images and works as a 
-jQuery plugin.
+animate on mouse hover / mouse click / touch event, or with trigger / release 
+functions. It supports responsive images and works as a jQuery plugin.
 
 1. [Examples](#examples)
 2. [Files & Dependencies](#files_dependencies)
@@ -13,6 +12,7 @@ jQuery plugin.
 6. [Options Reference](#options_reference)
 7. [Function Reference](#function_reference)
 8. [License](#license)
+9. [Thanks](#thanks)
 
 <a name="examples"></a>
 ## Examples
@@ -34,7 +34,7 @@ jQuery plugin.
 <a name="basic_usage_jquery_plugin"></a>
 ## Basic Usage: jQuery Plugin
 
-1. Capture the image you want by selector and run the **freezeframe()** function.  
+1. trigger the image you want by selector and run the **freezeframe()** function.  
 
     ```javascript
   $('.my_class').freezeframe();
@@ -64,16 +64,16 @@ jQuery plugin.
 ## Advanced Usage
 
 freezeframe.js exposes public methods to allow for more custom integration. You 
-have the option of manually controlling when freezeframe captures images, adds 
+have the option of manually controlling when freezeframe triggers images, adds 
 support elements, and attaches event handlers. You can also manually trigger 
 and release animation on one image or a group of images. These methods are 
 described in detail in the [Function Reference](#function_reference).
 
-Capture .gifs and manually trigger / release animation:
+*Example: trigger logo .gif and manually trigger / release animation:*
 ```javascript
 logo = new freezeframe('#logo'); // setup freezeframe instance with custom selector
 
-logo.capture(); // capture images by selector
+logo.trigger(); // trigger images by selector
 logo.setup();   // setup support elements
 logo.trigger(); // trigger animation
 logo.release(); // release animation
@@ -100,26 +100,39 @@ var ff = new freezeframe({
 })
 ```
 
-* **selector** *string*  
-    Default: ```".freezeframe"```  
-    The selector freezeframe will use to search for .gifs when the capture() 
-    function is run (if no custom selector is passed to the capture() function).
+* ### ```selector```   
 
-* **animation_play_duration** *integer*  
-    Default: ```5000``` Options: ```Infinity```  
+    <code><b>type:</b> string</code>  
+    <code><b>default</b>: ".freezeframe"</code>  
+
+    The selector used to search for .gifs when the ```trigger()``` function is 
+    run.
+
+* ### ```animation_play_duration```  
+
+    <code><b>type:</b> integer</code>  
+    <code><b>default</b>: 5000</code>  
+    <code><b>options</b>: Infinity</code>  
+
     The number of milliseconds a .gif will animate for when triggered by click / 
     touch event.  
     Use ```Infinity``` to make the .gif play *forever.*
 
-* **non_touch_device_trigger_event** *string*  
-    Default: ```"hover"``` Options: ```"hover", "click"```  
+* ### ```non_touch_device_trigger_event```  
+
+    <code><b>type:</b> string</code>  
+    <code><b>default</b>: "hover"</code>  
+    <code><b>options</b>: "hover", "click"</code>  
+
     The trigger event to start animation for non-touch devices.
 
 <a name="function_reference"></a>
 ## Function Reference
 
-* **freezeframe(** options **)**  
-    Creates a new freezeframe object instance. Can be passed options.
+* ### ```freezeframe( options )```  
+
+    Create a new freezeframe object instance.  
+    Can be passed options. Strings will be interpreted as the **selector** option. 
      ```javascript
   // Default options
   var ff = new freezeframe();
@@ -135,17 +148,17 @@ var ff = new freezeframe({
   })
     ```
 
-* **capture(** selector **)**  
-    Captures images to be paused by freezeframe. If run without selector 
+* ### ```trigger( selector )```  
+    trigger images to be paused by freezeframe. If run without selector 
     argument, selector in freezeframe options will be used. Can be run multiple 
     times with different selector to group many images, unrelated by selector, 
     in one freezeframe instance.
     ```javascript
-  ff.capture();               // use selector in freezeframe options
+  ff.trigger();               // use selector in freezeframe options
   ff.trigger('.my_class');    // use custom selector
     ```
 
-* **setup()**   
+* ### ```setup()```  
     Creates and inserts support elements. Can be filtered by selector.  
     ```javascript
   ff.setup();                 // all images in freezeframe instance
@@ -165,14 +178,14 @@ var ff = new freezeframe({
   </div>
      ```
 
-* **attach(** selector **)**  
+* ### ```attach( selector )```  
     Attaches hover / click / touch events based on freezeframe options. Can be filtered by selector.
     ```javascript
   ff.attach();                // all images in freezeframe instance
   ff.attach('.my_class');     // filter images by selector
     ```
 
-* **trigger(** selector **)**  
+* ### ```trigger( selector )```  
     Triggers (starts) animation, or restarts animation from the first frame if 
     the .gif is already animating. Can be filtered by selector.
     ```javascript
@@ -180,7 +193,7 @@ var ff = new freezeframe({
   ff.trigger('.my_class');    // filter images by selector
     ```
 
-* **release(** selector **)**  
+* ### ```release( selector )```  
     Releases (stops) animation. Can be filtered by selector.
     ```javascript
   ff.release()                // all images in freezeframe instance
@@ -190,3 +203,7 @@ var ff = new freezeframe({
 <a name="license"></a>
 ## License
 freezeframe.js is released under the terms of the MIT License.
+
+<a name="thanks"></a>
+## Thanks
+* [Browserstack - Live, Web-Based Browser Testing](https://www.browserstack.com/)
