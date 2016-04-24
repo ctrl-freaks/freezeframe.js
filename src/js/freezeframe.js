@@ -263,7 +263,6 @@ var freezeframe = (function($) {
 
               }
 
-
             }
 
           })();
@@ -335,9 +334,22 @@ var freezeframe = (function($) {
 // jQuery plugin
 $.fn.freezeframe = function(_options) {
 
+  var self = this;
   var ff = new freezeframe(_options);
-  ff.images = this;
-  ff.setup().attach();
 
-  return this;
+  // Make sure the methods are accessible on the jQuery object
+  var methods = [
+    'capture',
+    'setup',
+    'attach',
+    'release'
+  ];
+
+  methods.forEach(function(x) {
+    self[methods[x]] = ff[methods[x]];
+  });
+
+  ff.images = this;
+
+  return ff.setup().attach();
 };
