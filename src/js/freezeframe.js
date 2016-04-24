@@ -337,6 +337,11 @@ $.fn.freezeframe = function(_options) {
   var self = this;
   var ff = new freezeframe(_options);
 
+  if (this.length == 0) {
+    console.warn('✨ freezeframe.js ✨ : no images found for selector ' + this.selector);
+    return false;
+  }
+
   // Make sure the methods are accessible on the jQuery object
   var methods = [
     'capture',
@@ -345,8 +350,8 @@ $.fn.freezeframe = function(_options) {
     'release'
   ];
 
-  methods.forEach(function(x) {
-    self[methods[x]] = ff[methods[x]];
+  methods.forEach(function(index, method) {
+    self[method] = ff[method];
   });
 
   ff.images = this;
