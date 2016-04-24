@@ -334,13 +334,13 @@ var freezeframe = (function($) {
 // jQuery plugin
 $.fn.freezeframe = function(_options) {
 
-  var self = this;
-  var ff = new freezeframe(_options);
-
   if (this.length == 0) {
     console.warn('✨ freezeframe.js ✨ : no images found for selector ' + this.selector);
     return false;
   }
+
+  var self = this;
+  var ff = new freezeframe(_options);
 
   // Make sure the methods are accessible on the jQuery object
   var methods = [
@@ -350,7 +350,7 @@ $.fn.freezeframe = function(_options) {
     'release'
   ];
 
-  methods.forEach(function(index, method) {
+  methods.forEach(function(method) {
     self[method] = ff[method];
   });
 
