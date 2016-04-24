@@ -342,18 +342,6 @@ $.fn.freezeframe = function(_options) {
   var self = this;
   var ff = new freezeframe(_options);
 
-  // Make sure the methods are accessible on the jQuery object
-  var methods = [
-    'capture',
-    'setup',
-    'attach',
-    'release'
-  ];
-
-  methods.forEach(function(method) {
-    self[method] = ff[method];
-  });
-
   ff.images = this;
 
   return ff.setup().attach();
