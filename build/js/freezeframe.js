@@ -338,11 +338,23 @@ $.fn.freezeframe = function(_options) {
     console.warn('✨ freezeframe.js ✨ : no images found for selector ' + this.selector);
     return false;
   }
-
-  var self = this;
+  
   var ff = new freezeframe(_options);
 
   ff.images = this;
 
-  return ff.setup().attach();
+  ff.setup().attach();
+
+  $.extend(this, {
+    trigger: function() {
+      ff.trigger(this.selector);
+      return this;
+    },
+    release: function() {
+      ff.release(this.selector);
+      return this;
+    }
+  });
+
+  return this;
 };
