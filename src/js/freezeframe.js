@@ -338,22 +338,33 @@ $.fn.freezeframe = function(_options) {
     console.warn('✨ freezeframe.js ✨ : no images found for selector ' + this.selector);
     return false;
   }
-  
+
   var ff = new freezeframe(_options);
 
   ff.images = this;
 
   ff.setup().attach();
 
-  $.extend(this, {
-    trigger: function() {
-      ff.trigger(this.selector);
-      return this;
-    },
-    release: function() {
-      ff.release(this.selector);
-      return this;
-    }
+  // $.extend(this, {
+  //   trigger: function() {
+  //     ff.trigger(this.selector);
+  //     return this;
+  //   },
+  //   release: function() {
+  //     ff.release(this.selector);
+  //     return this;
+  //   }
+  // });
+
+  // this could also be done with a loop... for instance
+
+  var self = this;
+  var methods = ['trigger', 'release'];
+  methods.forEach(function(method) {
+    self[method] = function() {
+      ff[method](self.selector);
+      return self;
+    };
   });
 
   return this;
