@@ -345,19 +345,6 @@ $.fn.freezeframe = function(_options) {
 
   ff.setup().attach();
 
-  // $.extend(this, {
-  //   trigger: function() {
-  //     ff.trigger(this.selector);
-  //     return this;
-  //   },
-  //   release: function() {
-  //     ff.release(this.selector);
-  //     return this;
-  //   }
-  // });
-
-  // this could also be done with a loop... for instance
-
   var self = this;
   var methods = ['trigger', 'release'];
   methods.forEach(function(method) {
