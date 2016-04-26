@@ -10,6 +10,8 @@
 // fallback image needed
 // 
 // test compatibility with browserstack using feature test function
+//
+// make warn method public
 // 
 // pass references around in a cleaner way
 // remove jquery dependency
