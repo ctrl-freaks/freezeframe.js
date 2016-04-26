@@ -351,9 +351,25 @@ var freezeframe = (function($) {
 // jQuery plugin
 $.fn.freezeframe = function(_options) {
 
+  if (this.length == 0) {
+    console.warn('✨ freezeframe.js ✨ : no images found for selector ' + this.selector);
+    return false;
+  }
+
   var ff = new freezeframe(_options);
+
   ff.images = this;
+
   ff.setup().attach();
+
+  var self = this;
+  var methods = ['trigger', 'release'];
+  methods.forEach(function(method) {
+    self[method] = function() {
+      ff[method](self.selector);
+      return self;
+    };
+  });
 
   return this;
 };
