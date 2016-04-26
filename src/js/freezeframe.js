@@ -1,10 +1,22 @@
 
+// make generic private trigger and release functions
+// finish default state variable for paused or playing
+// 
+// add class to image css to support image ready / active
+// hide gif when canvas is active
+// 
+// write function to test for features needed, write failure to console
+// if unsupported, attach simple image replacement
+// fallback image needed
+// 
+// test compatibility with browserstack using feature test function
+// 
 // pass references around in a cleaner way
 // remove jquery dependency
 
 var freezeframe = (function($) { 
 
-  var images, options, is_touch_device;
+  var images, options, is_touch_device, default_state;
 
   //////////////////////////////////////////////////////////////////////////////
   //                                                                          //
@@ -59,6 +71,14 @@ var freezeframe = (function($) {
       $(this).off(transitionEnd);
       $_image.addClass('ff-image-ready');
     })
+  }
+
+  var trigger = function() {
+
+  }
+
+  var release = function() {
+
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -205,7 +225,7 @@ var freezeframe = (function($) {
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
 
-      // hover /////////////////////////////////////////////////////////////////
+      // hover
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
 
         $image.mouseenter(function() {
@@ -230,7 +250,7 @@ var freezeframe = (function($) {
         })
       }
 
-      // click /////////////////////////////////////////////////////////////////
+      // click
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
 
         var click_timeout;
@@ -260,12 +280,8 @@ var freezeframe = (function($) {
                     $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
                   }, ff.options.animation_play_duration);
                 }
-
               }
-
-
             }
-
           })();
         })
       }
