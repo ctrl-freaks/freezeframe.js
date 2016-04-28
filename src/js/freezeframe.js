@@ -1,22 +1,22 @@
 
 // make generic private trigger and release functions
 // finish default state variable for paused or playing
-// 
+//
 // add class to image css to support image ready / active
 // hide gif when canvas is active
-// 
+//
 // write function to test for features needed, write failure to console
 // if unsupported, attach simple image replacement
 // fallback image needed
-// 
+//
 // test compatibility with browserstack using feature test function
 //
 // make warn method public
-// 
+//
 // pass references around in a cleaner way
 // remove jquery dependency
 
-var freezeframe = (function($) { 
+var freezeframe = (function($) {
 
   var images, options, is_touch_device, default_state;
 
@@ -25,7 +25,7 @@ var freezeframe = (function($) {
   //  Private Methods                                                         //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  
+
   // decorated console.warn message
   var warn = function(_message) {
     console.warn('✨ freezeframe.js ✨ : ' + _message);
@@ -169,7 +169,7 @@ var freezeframe = (function($) {
   freezeframe.prototype.setup = function(_selector) {
     var ff = this,
       setup_required = this.images.not('.ff-setup'),
-      container_classnames = ['ff-container', 'ff-loading-icon'];    //here!
+      container_classnames = ['ff-container', 'ff-loading-icon'];
 
     if(!has_images.call(ff)) {
       warn("unable to run setup(), no images captured")

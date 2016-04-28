@@ -36,7 +36,8 @@ $base_zindex: 0;
     }
 
     &.ff-canvas-ready {
-      transition: opacity 10ms; //this is causing the flash. originally 300ms. breaks without it
+      // the longer this transition the more obvious the flash when mousing out
+      transition: opacity 10ms;
       opacity: 1;
 
       & + .ff-image.ff-image-ready {
