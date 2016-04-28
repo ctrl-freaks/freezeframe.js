@@ -72,6 +72,9 @@ var freezeframe = (function($) {
     $canvas.addClass('ff-canvas-ready').on(transitionEnd, function() {
       $(this).off(transitionEnd);
       $_image.addClass('ff-image-ready');
+
+      // remove the loading icon style from the container
+      $_image.parent().removeClass('ff-loading-icon');
     })
   }
 
@@ -166,7 +169,7 @@ var freezeframe = (function($) {
   freezeframe.prototype.setup = function(_selector) {
     var ff = this,
       setup_required = this.images.not('.ff-setup'),
-      container_classnames = ['ff-container'];
+      container_classnames = ['ff-container', 'ff-loading-icon'];    //here!
 
     if(!has_images.call(ff)) {
       warn("unable to run setup(), no images captured")
