@@ -850,23 +850,10 @@ return ImagesLoaded;
 
 });
 
-
-// make generic private trigger and release functions
-// finish default state variable for paused or playing
-// 
-// add class to image css to support image ready / active
-// hide gif when canvas is active
-// 
-// write function to test for features needed, write failure to console
-// if unsupported, attach simple image replacement
-// fallback image needed
-// 
-// test compatibility with browserstack using feature test function
-//
-// make warn method public
-// 
-// pass references around in a cleaner way
-// remove jquery dependency
+/*!
+ * freezeframe.js v3.0.8
+ * MIT License
+ */
 
 var freezeframe = (function($) { 
 
