@@ -2,11 +2,11 @@
 
 freezeframe.js is a script that pauses animated .gifs and enables them to 
 animate on mouse hover / mouse click / touch event, or with trigger / release 
-functions. It supports responsive images and works as a jQuery/Zepto plugin.
+functions. It supports responsive images and works as a jQuery / Zepto plugin.
 
 1. [Examples](#examples)
 2. [Files & Dependencies](#files_dependencies)
-3. [Basic Usage: jQuery/Zepto Plugin](#basic_usage_jquery_plugin)
+3. [Basic Usage: jQuery / Zepto Plugin](#basic_usage_jquery_zepto_plugin)
 4. [Basic Usage: Vanilla JS](#basic_usage_vanilla_js)
 5. [Advanced Usage](#advanced_usage)
 6. [Options Reference](#options_reference)
@@ -27,41 +27,46 @@ functions. It supports responsive images and works as a jQuery/Zepto plugin.
   <link rel="stylesheet" href="freezeframe_styles.min.css">
   <script src="freezeframe.min.js"></script>
     ```
-2. If you do not use the **packaged version** of freezeframe, the following dependencies are required. These files can be found in **/src/js/vendor/**:
+2. If you do not use the **packaged version** of freezeframe, the following dependencies are required:
   * imagesLoaded Packaged v4.0.0 ( [https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded) )
-  * jQuery or Zepto (note: only the core and event modules are required if using Zepto, 20kb minified)
+  * jQuery v2.1.4 *or* Zepto v1.1.6  
+    (**Note**: only the core and event modules are required if using Zepto, 20kb minified)
 
+
+<a name="html_setup"></a>
+## HTML Setup
+
+Add **freezeframe** as a class name on the .gifs you want processed.  
+( You can optionally specify a custom selector as shown in [Advanced Usage](#advanced_usage). )
+
+```HTML5
+<img class="freezeframe" src="image.gif" /> 
+```
+Add **freezeframe-responsive** as an additional class name to make the .gif responsive.
+
+```HTML5
+<img class="freezeframe freezeframe-responsive" src="image.gif" /> 
+```
 
 <a name="basic_usage_vanilla_js"></a>
 ## Basic Usage: Vanilla JS
 
-1. Add **freezeframe** as a class name on the .gifs you want processed.
-    ```
-  <img class="freezeframe" src="image.gif" /> 
-    ```
-  Add **freezeframe-responsive** as an additional class name to make the .gif responsive.
-    ```
-  <img class="freezeframe freezeframe-responsive" src="image.gif" /> 
-    ```
+✨Freeze those frames ✨
 
-2. ✨Freeze those frames ✨
+```javascript
+$(function() {
+  ff = new freezeframe().freeze();
+})
+```
 
-    ```javascript
-  $(function() {
-    ff = new freezeframe().freeze();
-  })
-    ```
+<a name="basic_usage_jquery_zepto_plugin"></a>
+## Basic Usage: jQuery / Zepto Plugin
 
-<a name="basic_usage_jquery_plugin"></a>
-## Basic Usage: jQuery/Zepto Plugin
+Trigger the image you want by selector and run the **freezeframe()** function. 
 
-1. Follow step 1 of the previous example
-
-2. Trigger the image you want by selector and run the **freezeframe()** function. 
-
-    ```javascript
-  $('.my_class').freezeframe();
-    ```
+```javascript
+$('.my_class').freezeframe();
+```
 
 <a name="advanced_usage"></a>
 ## Advanced Usage
