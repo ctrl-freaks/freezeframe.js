@@ -6,13 +6,14 @@ functions. It supports responsive images and works as a jQuery / Zepto plugin.
 
 1. [Examples](#examples)
 2. [Files & Dependencies](#files_dependencies)
-3. [Basic Usage: jQuery / Zepto Plugin](#basic_usage_jquery_zepto_plugin)
-4. [Basic Usage: Vanilla JS](#basic_usage_vanilla_js)
-5. [Advanced Usage](#advanced_usage)
-6. [Options Reference](#options_reference)
-7. [Function Reference](#function_reference)
-8. [License](#license)
-9. [Thanks](#thanks)
+3. [HTML Setup](#html_setup)
+4. [Basic Usage: jQuery / Zepto Plugin](#basic_usage_jquery_zepto_plugin)
+5. [Basic Usage: Vanilla JS](#basic_usage_vanilla_js)
+6. [Advanced Usage](#advanced_usage)
+7. [Options Reference](#options_reference)
+8. [Function Reference](#function_reference)
+9. [License](#license)
+10. [Thanks](#thanks)
 
 <a name="examples"></a>
 ## Examples
