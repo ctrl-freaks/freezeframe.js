@@ -1,20 +1,7 @@
-
-// make generic private trigger and release functions
-// finish default state variable for paused or playing
-// 
-// add class to image css to support image ready / active
-// hide gif when canvas is active
-// 
-// write function to test for features needed, write failure to console
-// if unsupported, attach simple image replacement
-// fallback image needed
-// 
-// test compatibility with browserstack using feature test function
-//
-// make warn method public
-// 
-// pass references around in a cleaner way
-// remove jquery dependency
+/*!
+ * freezeframe.js v3.0.8
+ * MIT License
+ */
 
 var freezeframe = (function($) { 
 
@@ -122,7 +109,7 @@ var freezeframe = (function($) {
     } else if (this.options.selector !== undefined) {
       selector = this.options.selector;
     } else {
-      warn("no selector passed to capture function or set in options")
+      warn("no selector passed to capture function or set in options");
       return false;
     }
 
@@ -143,7 +130,7 @@ var freezeframe = (function($) {
 
     // If nothing was found, throw a fit
     if(this.images.length == 0) {
-      console.warn('freezeframe : no gifs found for selector "' + selector + '"');
+      warn("no gifs found for selector '" + selector + "'");
       return false;
     }
 

@@ -109,7 +109,7 @@ var freezeframe = (function($) {
     } else if (this.options.selector !== undefined) {
       selector = this.options.selector;
     } else {
-      warn("no selector passed to capture function or set in options")
+      warn("no selector passed to capture function or set in options");
       return false;
     }
 
@@ -130,7 +130,7 @@ var freezeframe = (function($) {
 
     // If nothing was found, throw a fit
     if(this.images.length == 0) {
-      console.warn('freezeframe : no gifs found for selector "' + selector + '"');
+      warn("no gifs found for selector '" + selector + "'");
       return false;
     }
 
