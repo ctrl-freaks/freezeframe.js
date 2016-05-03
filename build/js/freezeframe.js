@@ -3,16 +3,31 @@
  * MIT License
  */
 
-var freezeframe = (function($) { 
+// make generic private trigger and release functions
+//
+// add class to image css to support image ready / active
+// hide gif when canvas is active
+//
+// write function to test for features needed, write failure to console
+// if unsupported, attach simple image replacement
+// fallback image needed
+//
+// test compatibility with browserstack using feature test function
+//
+// make warn method public
+//
+// pass references around in a cleaner way
 
-  var images, options, is_touch_device, default_state;
+var freezeframe = (function($) {
+
+  var images, options, is_touch_device;
 
   //////////////////////////////////////////////////////////////////////////////
   //                                                                          //
   //  Private Methods                                                         //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  
+
   // decorated console.warn message
   var warn = function(_message) {
     console.warn('✨ freezeframe.js ✨ : ' + _message);
@@ -30,7 +45,7 @@ var freezeframe = (function($) {
     if(_selector != undefined && _images.length > 1) {
       filtered_images = _images.filter( $(_selector) );
       if (filtered_images.length == 0) {
-        warn("no images found for selector '" + _selector + "'")
+        warn('no images found for selector "' + _selector + '"')
         return false;
       }
     } else {
@@ -59,7 +74,10 @@ var freezeframe = (function($) {
     $canvas.addClass('ff-canvas-ready').on(transitionEnd, function() {
       $(this).off(transitionEnd);
       $_image.addClass('ff-image-ready');
-    })
+
+      // remove the loading icon style from the container
+      $_image.parent().removeClass('ff-loading-icon');
+    });
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -109,7 +127,7 @@ var freezeframe = (function($) {
     } else if (this.options.selector !== undefined) {
       selector = this.options.selector;
     } else {
-      warn("no selector passed to capture function or set in options");
+      warn('no selector passed to capture function or set in options')
       return false;
     }
 
@@ -145,13 +163,13 @@ var freezeframe = (function($) {
   freezeframe.prototype.setup = function(_selector) {
     var ff = this,
       setup_required = this.images.not('.ff-setup'),
-      container_classnames = ['ff-container'];
+      container_classnames = ['ff-container', 'ff-loading-icon'];
 
     if(!has_images.call(ff)) {
-      warn("unable to run setup(), no images captured")
+      warn('unable to run setup(), no images captured')
       return false;
     } else if(setup_required.length == 0) {
-      warn("unable to run setup(), no images require setup")
+      warn('unable to run setup(), no images require setup')
       return false;
     }
 
@@ -169,13 +187,17 @@ var freezeframe = (function($) {
       }).attr({
         width: 0,
         height: 0
-      }).insertBefore($image);
+      });
 
-      $image.add($canvas).wrapAll(
+      var $group = $image.add($canvas);
+
+      $group.wrapAll(
         $('<div />', {
           class: container_classnames.join(' ')
         })
       );
+
+      $canvas.insertBefore($image);
 
     });
 
@@ -197,7 +219,7 @@ var freezeframe = (function($) {
       images;
 
     if(!has_images.call(ff)) {
-      warn("unable to run attach(), no images captured")
+      warn('unable to run attach(), no images captured')
       return false;
     }
 
@@ -286,7 +308,7 @@ var freezeframe = (function($) {
         $(this).attr('src', $(this)[0].src);
         $(this).siblings('canvas').removeClass('ff-canvas-ready').addClass('ff-canvas-active');
       } else {
-        warn("image not done processing ! " + $(this).attr("src"));
+        warn('image not done processing ! ' + $(this).attr('src'));
         errors ++;
       }
 
@@ -308,7 +330,7 @@ var freezeframe = (function($) {
       if($(this).hasClass('ff-image-ready')) {
         $(this).siblings('canvas').removeClass('ff-canvas-active').addClass('ff-canvas-ready');
       } else {
-        warn("image not done processing ! " + $(this).attr("src"));
+        warn('image not done processing ! ' + $(this).attr('src'));
         errors ++;
       }
     });
