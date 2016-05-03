@@ -1,5 +1,5 @@
 
-
+Fallback Feature
 
 determine browser support for html5 canvas features:
 * [ canvas ].getContext
@@ -26,9 +26,20 @@ Use cut the mustard concept for feature testing
 if any features fail, use compatibility mode
 http://responsivenews.co.uk/post/18948466399/cutting-the-mustard
 
-add class to image css to support image ready / active
-hide gif when canvas is active
-
 fallback image needed
 test compatibility with browserstack using feature test function
+
+################################################################################
+
+Documentation
+* include project setup or development
+* bower components
+* node modules
+* gulp start, then dev
+* gulp build
+
+################################################################################
+
+General stuff
+
 make warn method public
