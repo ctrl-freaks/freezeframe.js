@@ -1,10 +1,24 @@
 
+// make generic private trigger and release functions
+// finish default state variable for paused or playing
+// 
+// add class to image css to support image ready / active
+// hide gif when canvas is active
+// 
+// write function to test for features needed, write failure to console
+// if unsupported, attach simple image replacement
+// fallback image needed
+// 
+// test compatibility with browserstack using feature test function
+//
+// make warn method public
+// 
 // pass references around in a cleaner way
 // remove jquery dependency
 
 var freezeframe = (function($) { 
 
-  var images, options, is_touch_device;
+  var images, options, is_touch_device, default_state;
 
   //////////////////////////////////////////////////////////////////////////////
   //                                                                          //
@@ -112,12 +126,12 @@ var freezeframe = (function($) {
       return false;
     }
 
-    // Empty jQuery object to add into
+    // Empty jQuery/Zepto object to add into
     if(this.images == undefined) {
       this.images = $();
     }
 
-    // Add new selection, jQuery keeps it non redundant
+    // Add new selection, jQuery/Zepto keeps it non redundant
     this.images = this.images.add( $('img' + selector) );
 
     // Get non gifs outta there
@@ -205,10 +219,10 @@ var freezeframe = (function($) {
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
 
-      // hover /////////////////////////////////////////////////////////////////
+      // hover
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
 
-        $image.mouseenter(function() {
+        $image.on('mouseenter', function() {
           (function() {
 
             if($image.hasClass('ff-image-ready')) {
@@ -219,7 +233,7 @@ var freezeframe = (function($) {
           })();
         })
 
-        $image.mouseleave(function() {
+        $image.on('mouseleave', function() {
           (function() {
 
             if($image.hasClass('ff-image-ready')) {
@@ -230,12 +244,12 @@ var freezeframe = (function($) {
         })
       }
 
-      // click /////////////////////////////////////////////////////////////////
+      // click
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
 
         var click_timeout;
 
-        $image.click(function() {
+        $image.on('click', function() {
 
           (function() {
             var clicked = $canvas.hasClass('ff-canvas-active');
@@ -260,11 +274,8 @@ var freezeframe = (function($) {
                     $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
                   }, ff.options.animation_play_duration);
                 }
-
               }
-
             }
-
           })();
         })
       }
@@ -329,9 +340,9 @@ var freezeframe = (function($) {
   }
 
   return freezeframe;
-})(jQuery);
+})($);
 
-// jQuery plugin
+// jQuery/Zepto plugin
 $.fn.freezeframe = function(_options) {
 
   if (this.length == 0) {

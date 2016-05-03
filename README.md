@@ -2,11 +2,11 @@
 
 freezeframe.js is a script that pauses animated .gifs and enables them to 
 animate on mouse hover / mouse click / touch event, or with trigger / release 
-functions. It supports responsive images and works as a jQuery plugin.
+functions. It supports responsive images and works as a jQuery/Zepto plugin.
 
 1. [Examples](#examples)
 2. [Files & Dependencies](#files_dependencies)
-3. [Basic Usage: jQuery Plugin](#basic_usage_jquery_plugin)
+3. [Basic Usage: jQuery/Zepto Plugin](#basic_usage_jquery_plugin)
 4. [Basic Usage: Vanilla JS](#basic_usage_vanilla_js)
 5. [Advanced Usage](#advanced_usage)
 6. [Options Reference](#options_reference)
@@ -29,16 +29,8 @@ functions. It supports responsive images and works as a jQuery plugin.
     ```
 2. If you do not use a **packaged version** the following dependencies are required. These files can be found in **/src/js/vendor/**:
   * imagesLoaded Packaged v4.0.0 ( [https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded) )
-  * jQuery
+  * jQuery or Zepto (note: only the core and event modules are required if using Zepto, 20kb minified)
 
-<a name="basic_usage_jquery_plugin"></a>
-## Basic Usage: jQuery Plugin
-
-1. trigger the image you want by selector and run the **freezeframe()** function.  
-
-    ```javascript
-  $('.my_class').freezeframe();
-    ```
 
 <a name="basic_usage_vanilla_js"></a>
 ## Basic Usage: Vanilla JS
@@ -58,6 +50,17 @@ functions. It supports responsive images and works as a jQuery plugin.
   $(function() {
     ff = new freezeframe().freeze();
   })
+    ```
+
+<a name="basic_usage_jquery_plugin"></a>
+## Basic Usage: jQuery/Zepto Plugin
+
+1. Follow step 1 of the previous example
+
+2. Trigger the image you want by selector and run the **freezeframe()** function. 
+
+    ```javascript
+  $('.my_class').freezeframe();
     ```
 
 <a name="advanced_usage"></a>
