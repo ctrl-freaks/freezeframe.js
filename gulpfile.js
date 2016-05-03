@@ -34,8 +34,8 @@ gulp.task('js-concat', ['js-clean'], function () {
     .pipe(gulp.dest('./build/js/'));
 
   return gulp.src([
-      './src/js/vendor/jquery-2.1.4.js',
-      './src/js/vendor/imagesloaded.pkgd.js',
+      './src/js/vendor/zepto.min.js',
+      './bower_components/imagesloaded-packaged/imagesloaded.pkgd.js',
       './src/js/*.js'
     ])
     .pipe(concat('freezeframe.pkgd.js'))
