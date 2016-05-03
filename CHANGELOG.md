@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased]
+### Added
+- Zepto file to src/js/vendor
+### Removed
+- jQuery dependency
+- jQuery file from src/js/vendor
+## Changed
+- jQuery hard dependency to Zepto or jQuery
+
 ## [3.0.8] - 2016-05-03
 ### Added
 - Semver versioning re-introduced
