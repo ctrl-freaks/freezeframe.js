@@ -1,17 +1,31 @@
 
+// make generic private trigger and release functions
+// finish default state variable for paused or playing
+//
+// add class to image css to support image ready / active
+// hide gif when canvas is active
+//
+// write function to test for features needed, write failure to console
+// if unsupported, attach simple image replacement
+// fallback image needed
+//
+// test compatibility with browserstack using feature test function
+//
+// make warn method public
+//
 // pass references around in a cleaner way
 // remove jquery dependency
 
-var freezeframe = (function($) { 
+var freezeframe = (function($) {
 
-  var images, options, is_touch_device;
+  var images, options, is_touch_device, default_state;
 
   //////////////////////////////////////////////////////////////////////////////
   //                                                                          //
   //  Private Methods                                                         //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  
+
   // decorated console.warn message
   var warn = function(_message) {
     console.warn('✨ freezeframe.js ✨ : ' + _message);
@@ -58,7 +72,18 @@ var freezeframe = (function($) {
     $canvas.addClass('ff-canvas-ready').on(transitionEnd, function() {
       $(this).off(transitionEnd);
       $_image.addClass('ff-image-ready');
+
+      // remove the loading icon style from the container
+      $_image.parent().removeClass('ff-loading-icon');
     })
+  }
+
+  var trigger = function() {
+
+  }
+
+  var release = function() {
+
   }
 
   //////////////////////////////////////////////////////////////////////////////
@@ -144,7 +169,7 @@ var freezeframe = (function($) {
   freezeframe.prototype.setup = function(_selector) {
     var ff = this,
       setup_required = this.images.not('.ff-setup'),
-      container_classnames = ['ff-container'];
+      container_classnames = ['ff-container', 'ff-loading-icon'];
 
     if(!has_images.call(ff)) {
       warn("unable to run setup(), no images captured")
@@ -205,7 +230,7 @@ var freezeframe = (function($) {
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
 
-      // hover /////////////////////////////////////////////////////////////////
+      // hover
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
 
         $image.mouseenter(function() {
@@ -230,7 +255,7 @@ var freezeframe = (function($) {
         })
       }
 
-      // click /////////////////////////////////////////////////////////////////
+      // click
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
 
         var click_timeout;
@@ -260,11 +285,8 @@ var freezeframe = (function($) {
                     $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
                   }, ff.options.animation_play_duration);
                 }
-
               }
-
             }
-
           })();
         })
       }
