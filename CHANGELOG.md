@@ -26,7 +26,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [3.0.3] - 2016-02-07
 ### Added
-- Private methods to protect some parts the user shouldnt be touching
+- Private methods to protect some parts the user shouldnt be touching  
+
 ### Fixed
 - Trigger / release functions so they don't fire if the selector doesn't match 
 any captured images
@@ -41,39 +42,43 @@ any captured images
 
 ## [3.0.0] - 2016-01-09
 ### Added
-- Totally new code! Complete rewrite
+- Totally new code! Complete rewrite  
+
 ### Removed
-- All the old code!
+- All the old code!  
+
 ### Fixed
 - Broke the script down into smaller functions
 - Simplified input options
 
-## [2.0.4] - 2015-01-15
+## [2.0.5] - 2015-01-15
 ### Fixed
 - Added '?' to extension when filtering out non .gif files to allow for images 
 with file extensions that prevent caching such as my_image.gif?2384792384723
 
-## [2.0.3] - 2014-09-10
+## [2.0.4] - 2014-09-10
 ### Fixed
 - Typo in support_touch_devices variable
 
-## [2.0.2] - 2014-08-29
+## [2.0.3] - 2014-08-29
 ### Added
 - Bower.json file
 
-## [2.0.1] - 2014-02-09
+## [2.0.2] - 2014-02-09
 ### Fixed
 - More jQuery no conflict issues
 
 ## [2.0.1] - 2014-01-07
 ### Fixed
-- Bug wth selecting images, number of classnames is no longer an issue
+- Bug with selecting images, number of classnames is no longer an issue
 
 ## [2.0.0] - 2014-30-1
 ### Added
-- Attribution-ShareAlike 3.0 License
+- Attribution-ShareAlike 3.0 License  
+
 ### Changed
-- Boolean ```freezeframe``` attribute to classname
+- Boolean ```freezeframe``` attribute to classname  
+
 ### Removed
 - Broken debug functions and variables
 - Ability to create freezeframe instance yourself, instead freezeframe just 
