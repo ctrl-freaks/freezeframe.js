@@ -25,7 +25,7 @@
       opacity: 1; }
       .ff-container .ff-canvas.ff-canvas-ready + .ff-image.ff-image-ready {
         transition: opacity 300ms;
-        transition-delay: 150ms;
+        transition-delay: 170ms;
         opacity: 0; }
     .ff-container .ff-canvas.ff-canvas-active {
       transition: none;
