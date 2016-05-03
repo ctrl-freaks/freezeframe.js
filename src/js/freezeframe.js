@@ -1,6 +1,30 @@
 
+// determine browser support for html5 canvas features:
+// [ canvas ].getContext
+// [ canvas ].drawimage
+
+// determine browser support for jquery functions:
+// .hasClass
+// .siblings
+// .addClass
+// .removeClass
+// .attr
+// .mouseenter = .on(mouseenter)
+// .mouseleave
+// .click
+// .insertbefore
+// .add
+// .wrapall
+// .on
+// .not
+
+// IE9 = add this tag so canvas stuff works
+
+// cut the mustard
+// http://responsivenews.co.uk/post/18948466399/cutting-the-mustard
+
 // make generic private trigger and release functions
-// finish default state variable for paused or playing
+// finish default state variable for paused or playinghack
 // 
 // add class to image css to support image ready / active
 // hide gif when canvas is active
