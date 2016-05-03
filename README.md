@@ -27,7 +27,7 @@ functions. It supports responsive images and works as a jQuery/Zepto plugin.
   <link rel="stylesheet" href="freezeframe_styles.min.css">
   <script src="freezeframe.min.js"></script>
     ```
-2. If you do not use a **packaged version** the following dependencies are required. These files can be found in **/src/js/vendor/**:
+2. If you do not use the **packaged version** of freezeframe, the following dependencies are required. These files can be found in **/src/js/vendor/**:
   * imagesLoaded Packaged v4.0.0 ( [https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded) )
   * jQuery or Zepto (note: only the core and event modules are required if using Zepto, 20kb minified)
 
