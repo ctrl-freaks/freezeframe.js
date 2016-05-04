@@ -894,21 +894,6 @@ function makeArray( obj ) {
  * MIT License
  */
 
-// make generic private trigger and release functions
-//
-// add class to image css to support image ready / active
-// hide gif when canvas is active
-//
-// write function to test for features needed, write failure to console
-// if unsupported, attach simple image replacement
-// fallback image needed
-//
-// test compatibility with browserstack using feature test function
-//
-// make warn method public
-//
-// pass references around in a cleaner way
-
 var freezeframe = (function($) {
 
   var images, options, is_touch_device;

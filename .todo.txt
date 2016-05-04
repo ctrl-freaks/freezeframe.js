@@ -42,4 +42,5 @@ Documentation
 
 General stuff
 
+get the bower stuff done
 make warn method public
