@@ -300,7 +300,7 @@ var freezeframe = (function($) {
 
     });
 
-    return errors == 0 ? true : false;
+    return errors == 0;
   }
 
   //////////////////////////////////////////////////////////////////////////////
