@@ -195,8 +195,8 @@ var freezeframe = (function($) {
 		$overlay = $('<div />', {  class: 'ff-playpause'}).insertAfter($image);
 		$overlay.click(function(e) {
 			e.preventDefault();
-			$($overlay).toggleClass('ff-playing');
-			ff.trigger();
+			$(this).toggleClass('ff-playing');
+			ff.trigger($image);
 		});
 	  }
 	  
@@ -229,6 +229,7 @@ var freezeframe = (function($) {
 
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
+	  var $overlay = $(this).siblings('.ff-playpause');
 
       // hover
       if(!ff.options.overlay && ((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device))) {
@@ -286,6 +287,7 @@ var freezeframe = (function($) {
                     $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
                   }, ff.options.animation_play_duration);
                 }
+				$($overlay).toggleClass('ff-playing');
               }
             }
           })();
