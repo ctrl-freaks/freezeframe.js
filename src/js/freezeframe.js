@@ -348,17 +348,22 @@ $.fn.freezeframe = function(_options) {
   var ff = new freezeframe(_options);
 
   ff.images = this;
-
-  ff.setup().attach();
-
-  var self = this;
-  var methods = ['trigger', 'release'];
-  methods.forEach(function(method) {
-    self[method] = function() {
-      ff[method](self.selector);
-      return self;
-    };
-  });
-
+  
+  var setup = ff.setup();
+  
+  if(typeof setup.attach !== 'undefined')
+  {
+      ff.setup().attach();
+    
+      var self = this;
+      var methods = ['trigger', 'release'];
+      methods.forEach(function(method) {
+        self[method] = function() {
+          ff[method](self.selector);
+          return self;
+        };
+      });
+  }
+  
   return this;
 };
