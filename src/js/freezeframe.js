@@ -77,7 +77,8 @@ var freezeframe = (function($) {
     this.options = {
       selector : '.freezeframe',
       animation_play_duration: 5000,
-      non_touch_device_trigger_event: 'hover'
+      non_touch_device_trigger_event: 'hover',
+	  overlay: false
     }
 
     // new selector as string
@@ -89,7 +90,7 @@ var freezeframe = (function($) {
         if (attribute in this.options) {
           this.options[attribute] = options[attribute]
         } else {
-          warn(attribute + 'not a valid option')
+          warn(attribute + ' not a valid option')
         }
       }
     }
@@ -145,7 +146,12 @@ var freezeframe = (function($) {
   //  Setup Elements                                                          //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.setup = function(_selector) {
+  freezeframe.prototype.setup = function(_setupOptions) {
+	if( !(_setupOptions == undefined)){
+		var _selector = _setupOptions.selector;
+		var _overlay = _setupOptions.overlay;
+	}
+	
     var ff = this,
       setup_required = this.images.not('.ff-setup'),
       container_classnames = ['ff-container', 'ff-loading-icon'];
@@ -181,6 +187,16 @@ var freezeframe = (function($) {
           class: container_classnames.join(' ')
         })
       );
+	  
+	  if (ff.options['overlay']) {
+		$overlay = $('<div />', {  class: 'ff-playpause'}).insertAfter($image);
+		$overlay.click(function(e) {
+			e.preventDefault();
+			$(this).toggleClass('ff-playing');
+			ff.trigger($image);
+		});
+	  }
+	  
 
       $canvas.insertBefore($image);
 
@@ -212,9 +228,10 @@ var freezeframe = (function($) {
 
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
+	  var $overlay = $(this).siblings('.ff-playpause');
 
       // hover
-      if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
+      if(!ff.options.overlay && ((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device))) {
 
         $image.on('mouseenter', function() {
           (function() {
@@ -239,7 +256,7 @@ var freezeframe = (function($) {
       }
 
       // click
-      if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
+      if(ff.options.overlay || (!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
 
         var click_timeout;
 
@@ -257,6 +274,7 @@ var freezeframe = (function($) {
                 }
 
                 $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+				$($overlay).toggleClass('ff-playing');
 
               } else {
 
@@ -268,6 +286,7 @@ var freezeframe = (function($) {
                     $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
                   }, ff.options.animation_play_duration);
                 }
+				$($overlay).toggleClass('ff-playing');
               }
             }
           })();
@@ -299,7 +318,7 @@ var freezeframe = (function($) {
 
     });
 
-    return errors == 0 ? true : false;
+    return errors == 0;
   }
 
   //////////////////////////////////////////////////////////////////////////////
