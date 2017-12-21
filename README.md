@@ -23,12 +23,12 @@ functions. It supports responsive images and works as a jQuery plugin.
 
 1. Include the js and css from **/build/**  
 
-    ```
+```
   <link rel="stylesheet" href="freezeframe_styles.min.css">
   <script src="freezeframe.min.js"></script>
-    ```
+```
 2. If you do not use a **packaged version** the following dependencies are required. These files can be found in **/src/js/vendor/**:
-  * imagesLoaded Packaged v4.0.0 ( [https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded) )
+  * imagesLoaded Packaged v4.0.0 (<https://github.com/desandro/imagesloaded>)
   * jQuery
 
 <a name="basic_usage_jquery_plugin"></a>
@@ -36,29 +36,29 @@ functions. It supports responsive images and works as a jQuery plugin.
 
 1. trigger the image you want by selector and run the **freezeframe()** function.  
 
-    ```javascript
+```javascript
   $('.my_class').freezeframe();
-    ```
+```
 
 <a name="basic_usage_vanilla_js"></a>
 ## Basic Usage: Vanilla JS
 
 1. Add **freezeframe** as a class name on the .gifs you want processed.
-    ```
+```
   <img class="freezeframe" src="image.gif" /> 
-    ```
+```
   Add **freezeframe-responsive** as an additional class name to make the .gif responsive.
-    ```
+```
   <img class="freezeframe freezeframe-responsive" src="image.gif" /> 
-    ```
+```
 
 2. ✨Freeze those frames ✨
 
-    ```javascript
+```javascript
   $(function() {
     ff = new freezeframe().freeze();
   })
-    ```
+```
 
 <a name="advanced_usage"></a>
 ## Advanced Usage
