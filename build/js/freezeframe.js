@@ -20,7 +20,7 @@ var freezeframe = (function($) {
 
   // does freezeframe instance have any captured images?
   var has_images = function() {
-    return this.images.length == 0 ? false : true;
+    return this.images.length > 0;
   }
 
   // filter captured images by selector and warn if none found
@@ -30,7 +30,7 @@ var freezeframe = (function($) {
     if(_selector != undefined && _images.length > 1) {
       filtered_images = _images.filter( $(_selector) );
       if (filtered_images.length == 0) {
-        warn('no images found for selector "' + _selector + '"')
+        warn('no images found for selector "' + _selector + '"');
         return false;
       }
     } else {
@@ -78,7 +78,7 @@ var freezeframe = (function($) {
       selector : '.freezeframe',
       animation_play_duration: 5000,
       non_touch_device_trigger_event: 'hover',
-	  overlay: false
+	    overlay: false
     }
 
     // new selector as string
@@ -88,9 +88,9 @@ var freezeframe = (function($) {
     if(options) {
       for (attribute in options) {
         if (attribute in this.options) {
-          this.options[attribute] = options[attribute]
+          this.options[attribute] = options[attribute];
         } else {
-          warn(attribute + ' not a valid option')
+          warn(attribute + ' not a valid option');
         }
       }
     }
@@ -113,7 +113,7 @@ var freezeframe = (function($) {
     } else if (this.options.selector !== undefined) {
       selector = this.options.selector;
     } else {
-      warn('no selector passed to capture function or set in options')
+      warn('no selector passed to capture function or set in options');
       return false;
     }
 
@@ -147,22 +147,22 @@ var freezeframe = (function($) {
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
   freezeframe.prototype.setup = function(_setupOptions) {
-	if( !(_setupOptions == undefined)){
-		var _selector = _setupOptions.selector;
-		var _overlay = _setupOptions.overlay;
-	}
+    if( !(_setupOptions == undefined)){
+      var _selector = _setupOptions.selector;
+      var _overlay = _setupOptions.overlay;
+    }
 	
     var ff = this,
       setup_required = this.images.not('.ff-setup'),
       container_classnames = ['ff-container', 'ff-loading-icon'];
 
     if(!has_images.call(ff)) {
-      warn('unable to run setup(), no images captured')
+      warn('unable to run setup(), no images captured');
       return this;
     }
-      
+    
     if(setup_required.length == 0) {
-      warn('unable to run setup(), no images require setup')
+      warn('unable to run setup(), no images require setup');
       return this;
     }
 
@@ -218,7 +218,7 @@ var freezeframe = (function($) {
       images;
 
     if(!has_images.call(ff)) {
-      warn('unable to run attach(), no images captured')
+      warn('unable to run attach(), no images captured');
       return this;
     }
 

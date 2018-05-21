@@ -33,7 +33,6 @@ test compatibility with browserstack using feature test function
 
 Documentation
 * include project setup or development
-* bower components
 * node modules
 * gulp start, then dev
 * gulp build
@@ -42,5 +41,4 @@ Documentation
 
 General stuff
 
-get the bower stuff done
 make warn method public

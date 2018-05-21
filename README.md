@@ -1,4 +1,4 @@
-## freezeframe.js 3.0.8
+## freezeframe.js 3.0.9
 
 freezeframe.js is a script that pauses animated .gifs and enables them to 
 animate on mouse hover / mouse click / touch event, or with trigger / release 
@@ -29,7 +29,7 @@ functions. It supports responsive images and works as a jQuery / Zepto plugin.
   <script src="freezeframe.min.js"></script>
     ```
 2. If you do not use the **packaged version** of freezeframe, the following dependencies are required:
-  * imagesLoaded Packaged v4.0.0 ( [https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded) )
+  * imagesLoaded Packaged v4.1.4 ( [https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded) )
   * jQuery v2.1.4 *or* Zepto v1.1.6  
     (**Note**: only the core and event modules are required if using Zepto, 20kb minified)
 
