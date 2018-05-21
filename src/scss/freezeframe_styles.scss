@@ -81,7 +81,8 @@ $base_zindex: 0;
     margin:auto;
     background-size:contain;
     background-position: center;
-    z-index: 100;
+    pointer-events: none;
+    z-index:100;
 	
   	&.ff-overlay-active {
   		display: none;
