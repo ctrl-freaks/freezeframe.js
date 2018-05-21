@@ -968,7 +968,8 @@ var freezeframe = (function($) {
     this.options = {
       selector : '.freezeframe',
       animation_play_duration: 5000,
-      non_touch_device_trigger_event: 'hover'
+      non_touch_device_trigger_event: 'hover',
+	  overlay: false
     }
 
     // new selector as string
@@ -980,7 +981,7 @@ var freezeframe = (function($) {
         if (attribute in this.options) {
           this.options[attribute] = options[attribute]
         } else {
-          warn(attribute + 'not a valid option')
+          warn(attribute + ' not a valid option')
         }
       }
     }
@@ -1036,17 +1037,24 @@ var freezeframe = (function($) {
   //  Setup Elements                                                          //
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
-  freezeframe.prototype.setup = function(_selector) {
+  freezeframe.prototype.setup = function(_setupOptions) {
+	if( !(_setupOptions == undefined)){
+		var _selector = _setupOptions.selector;
+		var _overlay = _setupOptions.overlay;
+	}
+	
     var ff = this,
       setup_required = this.images.not('.ff-setup'),
       container_classnames = ['ff-container', 'ff-loading-icon'];
 
     if(!has_images.call(ff)) {
       warn('unable to run setup(), no images captured')
-      return false;
-    } else if(setup_required.length == 0) {
+      return this;
+    }
+      
+    if(setup_required.length == 0) {
       warn('unable to run setup(), no images require setup')
-      return false;
+      return this;
     }
 
     filter.call(ff, _selector, setup_required).each(function(e) {
@@ -1072,7 +1080,13 @@ var freezeframe = (function($) {
           class: container_classnames.join(' ')
         })
       );
-
+	  
+	    if (ff.options.overlay) {
+        $overlay = $('<div />', {
+          class: 'ff-overlay'
+        }).insertAfter($image);
+  	  }
+	  
       $canvas.insertBefore($image);
 
     });
@@ -1096,13 +1110,14 @@ var freezeframe = (function($) {
 
     if(!has_images.call(ff)) {
       warn('unable to run attach(), no images captured')
-      return false;
+      return this;
     }
 
     filter.call(ff, _selector, ff.images).each(function(e) {
 
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
+      var $overlay = $(this).siblings('.ff-overlay');
 
       // hover
       if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
@@ -1113,6 +1128,10 @@ var freezeframe = (function($) {
             if($image.hasClass('ff-image-ready')) {
               $image.attr('src', $image[0].src);
               $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+              
+              if (ff.options.overlay) {
+                $overlay.toggleClass('ff-overlay-active');
+              }
             }
 
           })();
@@ -1123,6 +1142,9 @@ var freezeframe = (function($) {
 
             if($image.hasClass('ff-image-ready')) {
               $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+              if (ff.options.overlay) {
+                $overlay.toggleClass('ff-overlay-active');
+              }
             }
 
           })();
@@ -1148,11 +1170,19 @@ var freezeframe = (function($) {
                 }
 
                 $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+                
+                if (ff.options.overlay) {
+                  $overlay.toggleClass('ff-overlay-active');
+                }
 
               } else {
 
                 $image.attr('src', $image[0].src);
                 $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+                
+                if (ff.options.overlay) {
+                  $overlay.toggleClass('ff-overlay-active');
+                }
 
                 if(ff.options.animation_play_duration != Infinity) {
                   click_timeout = setTimeout(function() {
@@ -1190,7 +1220,7 @@ var freezeframe = (function($) {
 
     });
 
-    return errors == 0 ? true : false;
+    return errors == 0;
   }
 
   //////////////////////////////////////////////////////////////////////////////

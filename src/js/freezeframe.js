@@ -158,10 +158,12 @@ var freezeframe = (function($) {
 
     if(!has_images.call(ff)) {
       warn('unable to run setup(), no images captured')
-      return false;
-    } else if(setup_required.length == 0) {
+      return this;
+    }
+      
+    if(setup_required.length == 0) {
       warn('unable to run setup(), no images require setup')
-      return false;
+      return this;
     }
 
     filter.call(ff, _selector, setup_required).each(function(e) {
@@ -188,16 +190,12 @@ var freezeframe = (function($) {
         })
       );
 	  
-	  if (ff.options['overlay']) {
-		$overlay = $('<div />', {  class: 'ff-playpause'}).insertAfter($image);
-		$overlay.click(function(e) {
-			e.preventDefault();
-			$(this).toggleClass('ff-playing');
-			ff.trigger($image);
-		});
-	  }
+	    if (ff.options.overlay) {
+        $overlay = $('<div />', {
+          class: 'ff-overlay'
+        }).insertAfter($image);
+  	  }
 	  
-
       $canvas.insertBefore($image);
 
     });
@@ -221,17 +219,17 @@ var freezeframe = (function($) {
 
     if(!has_images.call(ff)) {
       warn('unable to run attach(), no images captured')
-      return false;
+      return this;
     }
 
     filter.call(ff, _selector, ff.images).each(function(e) {
 
       var $image = $(this);
       var $canvas = $(this).siblings('canvas');
-	  var $overlay = $(this).siblings('.ff-playpause');
+      var $overlay = $(this).siblings('.ff-overlay');
 
       // hover
-      if(!ff.options.overlay && ((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device))) {
+      if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
 
         $image.on('mouseenter', function() {
           (function() {
@@ -239,6 +237,10 @@ var freezeframe = (function($) {
             if($image.hasClass('ff-image-ready')) {
               $image.attr('src', $image[0].src);
               $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+              
+              if (ff.options.overlay) {
+                $overlay.toggleClass('ff-overlay-active');
+              }
             }
 
           })();
@@ -249,6 +251,9 @@ var freezeframe = (function($) {
 
             if($image.hasClass('ff-image-ready')) {
               $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+              if (ff.options.overlay) {
+                $overlay.toggleClass('ff-overlay-active');
+              }
             }
 
           })();
@@ -256,7 +261,7 @@ var freezeframe = (function($) {
       }
 
       // click
-      if(ff.options.overlay || (!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
+      if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
 
         var click_timeout;
 
@@ -274,19 +279,25 @@ var freezeframe = (function($) {
                 }
 
                 $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
-				$($overlay).toggleClass('ff-playing');
+                
+                if (ff.options.overlay) {
+                  $overlay.toggleClass('ff-overlay-active');
+                }
 
               } else {
 
                 $image.attr('src', $image[0].src);
                 $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+                
+                if (ff.options.overlay) {
+                  $overlay.toggleClass('ff-overlay-active');
+                }
 
                 if(ff.options.animation_play_duration != Infinity) {
                   click_timeout = setTimeout(function() {
                     $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
                   }, ff.options.animation_play_duration);
                 }
-				$($overlay).toggleClass('ff-playing');
               }
             }
           })();
