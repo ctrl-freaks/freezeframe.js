@@ -1,5 +1,5 @@
 /*!
- * freezeframe.js v3.0.8
+ * freezeframe.js v3.0.9
  * MIT License
  */
 
