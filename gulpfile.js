@@ -10,7 +10,8 @@ var concat = require('gulp-concat');
 var clean = require('gulp-clean');
 var uglify = require('gulp-uglify');
 var sass = require('gulp-sass');
-var minifyCss = require('gulp-minify-css');
+// var minifyCss = require('gulp-minify-css');
+var minifyCss = require('gulp-clean-css');
 var rename = require("gulp-rename");
 
 ////////////////////////////////////////////////////////////////////////////////
