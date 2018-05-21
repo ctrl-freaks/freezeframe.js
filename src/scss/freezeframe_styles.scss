@@ -47,7 +47,7 @@ $base_zindex: 0;
     }
 
     &.ff-canvas-active {
-      transition: none;
+      transition: none; 
       opacity: 0;
 
       & + .ff-image.ff-image-ready {
