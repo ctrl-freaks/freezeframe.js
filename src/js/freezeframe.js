@@ -239,7 +239,7 @@ var freezeframe = (function($) {
               $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
               
               if (ff.options.overlay) {
-                $overlay.toggleClass('ff-overlay-active');
+                $overlay.addClass('ff-overlay-active');
               }
             }
 
@@ -252,7 +252,7 @@ var freezeframe = (function($) {
             if($image.hasClass('ff-image-ready')) {
               $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
               if (ff.options.overlay) {
-                $overlay.toggleClass('ff-overlay-active');
+                $overlay.removeClass('ff-overlay-active');
               }
             }
 
