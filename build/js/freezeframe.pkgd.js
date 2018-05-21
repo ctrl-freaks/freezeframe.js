@@ -228,7 +228,7 @@ var freezeframe = (function($) {
 
     if(!has_images.call(ff)) {
       warn('unable to run attach(), no images captured');
-      return this;
+      return this; 
     }
 
     filter.call(ff, _selector, ff.images).each(function(e) {
@@ -290,7 +290,7 @@ var freezeframe = (function($) {
                 $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
                 
                 if (ff.options.overlay) {
-                  $overlay.toggleClass('ff-overlay-active');
+                  $overlay.addClass('ff-overlay-active');
                 }
 
               } else {
@@ -299,7 +299,7 @@ var freezeframe = (function($) {
                 $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
                 
                 if (ff.options.overlay) {
-                  $overlay.toggleClass('ff-overlay-active');
+                  $overlay.removeClass('ff-overlay-active');
                 }
 
                 if(ff.options.animation_play_duration != Infinity) {
