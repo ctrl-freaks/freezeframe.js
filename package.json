@@ -1,6 +1,6 @@
 {
   "name": "freezeframe.js",
-  "version": "3.0.9",
+  "version": "3.0.10",
   "description": "freezeframe.js is a script that automatically pauses animated .gifs and enables them to start animation on mouse hover or click",
   "main": "/build/freezeframe.js",
   "directories": {
