@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.  
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [3.0.10] - 2018-05-25
+### Fied
+- Fixed mobile issue
+
+## [3.0.9] - 2018-05-21
+### Added
+- Integrated overlay icon feature
+
 ## [Unreleased]
 ### Added
 - Zepto file to src/js/vendor
