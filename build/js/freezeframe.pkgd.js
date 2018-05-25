@@ -36,8 +36,8 @@ var freezeframe = (function($) {
   var filter = function(_selector, _images) {
     var filtered_images;
 
-    if(_selector != undefined && _images.length > 1) {
-      filtered_images = _images.filter( $(_selector) );
+    if (_selector != undefined && _images.length > 1) {
+      filtered_images = _images.filter($(_selector));
       if (filtered_images.length == 0) {
         warn('no images found for selector "' + _selector + '"');
         return false;
@@ -94,7 +94,7 @@ var freezeframe = (function($) {
     options = typeof _options == 'string' ? { 'selector': _options } : _options;
 
     // new options
-    if(options) {
+    if (options) {
       for (attribute in options) {
         if (attribute in this.options) {
           this.options[attribute] = options[attribute];
@@ -117,7 +117,7 @@ var freezeframe = (function($) {
     var selector;
 
     // Passed in string or default string
-    if(_selector !== undefined) {
+    if (_selector !== undefined) {
       selector = _selector;
     } else if (this.options.selector !== undefined) {
       selector = this.options.selector;
@@ -127,12 +127,12 @@ var freezeframe = (function($) {
     }
 
     // Empty jQuery/Zepto object to add into
-    if(this.images == undefined) {
+    if (this.images == undefined) {
       this.images = $();
     }
 
     // Add new selection, jQuery/Zepto keeps it non redundant
-    this.images = this.images.add( $('img' + selector) );
+    this.images = this.images.add($('img' + selector));
 
     // Get non gifs outta there
     for (i = 0; i < this.images.length; i++) {
@@ -142,7 +142,7 @@ var freezeframe = (function($) {
     }
 
     // If nothing was found, throw a fit
-    if(this.images.length == 0) {
+    if (this.images.length == 0) {
       warn("no gifs found for selector '" + selector + "'");
       return false;
     }
@@ -156,7 +156,7 @@ var freezeframe = (function($) {
   //                                                                          //
   //////////////////////////////////////////////////////////////////////////////
   freezeframe.prototype.setup = function(_setupOptions) {
-    if( !(_setupOptions == undefined)){
+    if (!(_setupOptions == undefined)) {
       var _selector = _setupOptions.selector;
       var _overlay = _setupOptions.overlay;
     }
@@ -165,12 +165,12 @@ var freezeframe = (function($) {
       setup_required = this.images.not('.ff-setup'),
       container_classnames = ['ff-container', 'ff-loading-icon'];
 
-    if(!has_images.call(ff)) {
+    if (!has_images.call(ff)) {
       warn('unable to run setup(), no images captured');
       return this;
     }
     
-    if(setup_required.length == 0) {
+    if (setup_required.length == 0) {
       warn('unable to run setup(), no images require setup');
       return this;
     }
@@ -180,7 +180,7 @@ var freezeframe = (function($) {
 
       $image.addClass('ff-setup ff-image');
 
-      if($image.hasClass('freezeframe-responsive')) {
+      if ($image.hasClass('freezeframe-responsive')) {
         container_classnames.push('ff-responsive');
       }
 
@@ -226,7 +226,7 @@ var freezeframe = (function($) {
       click_timeout,
       images;
 
-    if(!has_images.call(ff)) {
+    if (!has_images.call(ff)) {
       warn('unable to run attach(), no images captured');
       return this; 
     }
@@ -238,78 +238,67 @@ var freezeframe = (function($) {
       var $overlay = $(this).siblings('.ff-overlay');
 
       // hover
-      if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover') || (ff.is_touch_device)) {
+      if ((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'hover')) {
 
         $image.on('mouseenter', function() {
-          (function() {
-
-            if($image.hasClass('ff-image-ready')) {
-              $image.attr('src', $image[0].src);
-              $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
-              
-              if (ff.options.overlay) {
-                $overlay.addClass('ff-overlay-active');
-              }
+          if ($image.hasClass('ff-image-ready')) {
+            $image.attr('src', $image[0].src);
+            $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
+            
+            if (ff.options.overlay) {
+              $overlay.addClass('ff-overlay-active');
             }
-
-          })();
+          }
         })
 
         $image.on('mouseleave', function() {
-          (function() {
-
-            if($image.hasClass('ff-image-ready')) {
-              $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
-              if (ff.options.overlay) {
-                $overlay.removeClass('ff-overlay-active');
-              }
+          if ($image.hasClass('ff-image-ready')) {
+            $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+            if (ff.options.overlay) {
+              $overlay.removeClass('ff-overlay-active');
             }
-
-          })();
+          }
         })
       }
 
       // click
-      if((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
+      if ((!ff.is_touch_device && ff.options.non_touch_device_trigger_event == 'click') || (ff.is_touch_device)) {
 
         var click_timeout;
 
         $image.on('click', function() {
 
-          (function() {
-            var clicked = $canvas.hasClass('ff-canvas-active');
+          var clicked = $canvas.hasClass('ff-canvas-active');
 
-            if($image.hasClass('ff-image-ready')) {
+          if ($image.hasClass('ff-image-ready')) {
 
-              if(clicked) {
+            if (clicked) {
 
-                if(ff.options.animation_play_duration != Infinity) {
-                  clearTimeout(click_timeout);
-                }
+              if (ff.options.animation_play_duration != Infinity) {
+                clearTimeout(click_timeout);
+              }
 
-                $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
-                
-                if (ff.options.overlay) {
-                  $overlay.addClass('ff-overlay-active');
-                }
+              $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
 
-              } else {
+              if (ff.options.overlay) {
+                $overlay.removeClass('ff-overlay-active');
+              }
 
-                $image.attr('src', $image[0].src);
-                $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
-                
-                if (ff.options.overlay) {
-                  $overlay.removeClass('ff-overlay-active');
-                }
+            } else {
+              $image.attr('src', $image[0].src);
+              $canvas.removeClass('ff-canvas-ready').addClass('ff-canvas-active');
 
-                if(ff.options.animation_play_duration != Infinity) {
-                  click_timeout = setTimeout(function() {
-                    $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
-                  }, ff.options.animation_play_duration);
-                }
+              if (ff.options.overlay) {
+                $overlay.addClass('ff-overlay-active');
+              }
+
+              if (ff.options.animation_play_duration != Infinity) {
+                click_timeout = setTimeout(function() {
+                  $canvas.removeClass('ff-canvas-active').addClass('ff-canvas-ready');
+                }, ff.options.animation_play_duration);
               }
             }
-          })();
+          }
         })
       }
     })
@@ -328,7 +317,7 @@ var freezeframe = (function($) {
 
     filter.call(ff, _selector, ff.images).each(function(e) {
 
-      if($(this).hasClass('ff-image-ready')) {
+      if ($(this).hasClass('ff-image-ready')) {
         $(this).attr('src', $(this)[0].src);
         $(this).siblings('canvas').removeClass('ff-canvas-ready').addClass('ff-canvas-active');
       } else {
@@ -351,7 +340,7 @@ var freezeframe = (function($) {
       errors = 0;
 
     filter.call(ff, _selector, ff.images).each(function(e) {
-      if($(this).hasClass('ff-image-ready')) {
+      if ($(this).hasClass('ff-image-ready')) {
         $(this).siblings('canvas').removeClass('ff-canvas-active').addClass('ff-canvas-ready');
       } else {
         warn('image not done processing ! ' + $(this).attr('src'));
