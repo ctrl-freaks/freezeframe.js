@@ -1,8 +1,7 @@
 # freezeframe.js
 
-freezeframe.js is a script that pauses animated .gifs and enables them to 
-animate on mouse hover / mouse click / touch event, or with trigger / release 
-functions. It supports responsive images and works as a jQuery / Zepto plugin.
+Freezeframe.js is a library that pauses animated .gifs and enables them to
+animate on mouse hover / mouse click / touch event, or manually via class methods.
 
 1. [Examples](#examples)
 2. [Files & Dependencies](#files_dependencies)
