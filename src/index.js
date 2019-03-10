@@ -45,6 +45,7 @@ class Freezeframe {
   }
 
   load($images) {
+    // TODO use imagesLoaded.progress instead of forEach
     $images.forEach(async ($image) => {
       const { elements } = await asyncCallback(imagesLoaded, $image);
       this.setup(elements[0]);
@@ -120,18 +121,13 @@ class Freezeframe {
   }
 
   toggle(freeze) {
-    const { $image, $canvas } = freeze;
+    const { $canvas } = freeze;
     const isActive = $canvas.classList.contains(classes.CANVAS_ACTIVE);
 
-    if ($image.classList.contains(classes.IMAGE_READY)) {
-      if (isActive) {
-        $canvas.classList.add(classes.CANVAS_READY);
-        $canvas.classList.remove(classes.CANVAS_ACTIVE);
-      } else {
-        $image.setAttribute('src', $image.src);
-        $canvas.classList.remove(classes.CANVAS_READY);
-        $canvas.classList.add(classes.CANVAS_ACTIVE);
-      }
+    if (isActive) {
+      this.toggleOff(freeze);
+    } else {
+      this.toggleOn(freeze);
     }
   }
 
@@ -152,6 +148,18 @@ class Freezeframe {
       $canvas.classList.remove(classes.CANVAS_READY);
       $canvas.classList.add(classes.CANVAS_ACTIVE);
     }
+  }
+
+  start() {
+    this.items.forEach((freeze) => {
+      this.toggleOn(freeze);
+    });
+  }
+
+  stop() {
+    this.items.forEach((freeze) => {
+      this.toggleOff(freeze);
+    });
   }
 
   injectStylesheet() {

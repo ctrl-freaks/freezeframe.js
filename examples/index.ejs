@@ -98,11 +98,11 @@ button:active {
 <img class="my-class-1" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" />
 
 <p>responsive,<br />start &amp; stop on click,<br />playing <span class="italic">forever.</span></p>
-<img class="my-class-2 freezeframe" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />
+<img class="my-class-2" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />
 
 <p>responsive,<br />start &amp; stop manually.</p>
 <button class="start">start</button><button class="stop">stop</button>
-<img class="my-class-3 freezeframe" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif" />
+<img class="my-class-3" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif" />
 
 <p>responsive,<br />jquery/zepto plugin.</p>
 <img class="my-class-4 freezeframe" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141f2be4b0a4afc2d17505/56141f47e4b00b973f0ec806/1444159323808/Ecco-Domani-Summer-Cinemagraph-980px.gif?format=1000w" />
@@ -114,7 +114,27 @@ button:active {
 
 <script>
 new Freezeframe();
+
 new Freezeframe('.my-class-1');
+new Freezeframe('.my-class-2', {
+  trigger: 'click'
+});
+
+const manual = new Freezeframe('.my-class-3', {
+  trigger: false
+});
+
+document
+  .querySelector('.start')
+  .addEventListener('click', () => {
+    manual.start();
+  });
+
+document
+  .querySelector('.stop')
+  .addEventListener('click', () => {
+    manual.stop();
+  });
 </script>
 
 </body>
