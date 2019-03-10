@@ -100,40 +100,57 @@ class Freezeframe {
   }
 
   attach(freeze) {
-    const { $image, $canvas } = freeze;
+    const { $image } = freeze;
 
     if (!this.isTouch && this.options.trigger === 'hover') {
       $image.addEventListener('mouseenter', () => {
-        if ($image.classList.contains(classes.IMAGE_READY)) {
-          $image.setAttribute('src', $image.src);
-          $canvas.classList.remove(classes.CANVAS_READY);
-          $canvas.classList.add(classes.CANVAS_ACTIVE);
-        }
+        this.toggleOn(freeze);
       });
 
       $image.addEventListener('mouseleave', () => {
-        if ($image.classList.contains(classes.IMAGE_READY)) {
-          $canvas.classList.remove(classes.CANVAS_ACTIVE);
-          $canvas.classList.add(classes.CANVAS_READY);
-        }
+        this.toggleOff(freeze);
       });
     }
 
     if (this.isTouch || this.options.trigger === 'click') {
       $image.addEventListener('click', () => {
-        if ($image.classList.contains(classes.IMAGE_READY)) {
-          const isActive = $canvas.classList.contains(classes.CANVAS_ACTIVE);
-          if (isActive) {
-            $image.setAttribute('src', $image.src);
-            $canvas.classList.add(classes.CANVAS_READY);
-            $canvas.classList.remove(classes.CANVAS_ACTIVE);
-          } else {
-            $image.setAttribute('src', $image.src);
-            $canvas.classList.remove(classes.CANVAS_READY);
-            $canvas.classList.add(classes.CANVAS_ACTIVE);
-          }
-        }
+        this.toggle(freeze);
       });
+    }
+  }
+
+  toggle(freeze) {
+    const { $image, $canvas } = freeze;
+    const isActive = $canvas.classList.contains(classes.CANVAS_ACTIVE);
+
+    if ($image.classList.contains(classes.IMAGE_READY)) {
+      if (isActive) {
+        $canvas.classList.add(classes.CANVAS_READY);
+        $canvas.classList.remove(classes.CANVAS_ACTIVE);
+      } else {
+        $image.setAttribute('src', $image.src);
+        $canvas.classList.remove(classes.CANVAS_READY);
+        $canvas.classList.add(classes.CANVAS_ACTIVE);
+      }
+    }
+  }
+
+  toggleOff(freeze) {
+    const { $image, $canvas } = freeze;
+
+    if ($image.classList.contains(classes.IMAGE_READY)) {
+      $canvas.classList.add(classes.CANVAS_READY);
+      $canvas.classList.remove(classes.CANVAS_ACTIVE);
+    }
+  }
+
+  toggleOn(freeze) {
+    const { $image, $canvas } = freeze;
+
+    if ($image.classList.contains(classes.IMAGE_READY)) {
+      $image.setAttribute('src', $image.src);
+      $canvas.classList.remove(classes.CANVAS_READY);
+      $canvas.classList.add(classes.CANVAS_ACTIVE);
     }
   }
 
