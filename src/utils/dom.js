@@ -1,8 +1,6 @@
-import { html } from 'common-tags';
-
-export function htmlToNode(_html) {
+export function htmlToNode(html) {
   const $wrap = window.document.createElement('div');
-  $wrap.innerHTML = html`${_html}`;
+  $wrap.innerHTML = html;
   const $content = $wrap.childNodes;
   return $content.length > 1
     ? $content
@@ -10,7 +8,6 @@ export function htmlToNode(_html) {
 }
 
 export const wrap = ($el, $wrapper) => {
-  console.log('wrap', $el, $wrapper);
   $el.parentNode.insertBefore($wrapper, $el);
   $wrapper.appendChild($el);
 };

@@ -11,6 +11,8 @@ import {
   htmlToNode
 } from './utils/dom';
 
+import * as templates from './templates';
+
 class Freezeframe {
   constructor(
     selectorOrNodes = '.freezeframe',
@@ -24,6 +26,7 @@ class Freezeframe {
   }
 
   init(selectorOrNodes) {
+    this.injectStylesheet();
     this.capture(selectorOrNodes);
     this.load(this.$images);
   }
@@ -50,14 +53,8 @@ class Freezeframe {
   }
 
   wrap($image) {
-    const $container = htmlToNode(`
-      <div class="ff-container ff-loading-icon">
-      </div>
-    `);
-    const $canvas = htmlToNode(`
-      <canvas class="ff-canvas" width="0" height="0">
-      </canvas>
-    `);
+    const $container = htmlToNode(templates.container());
+    const $canvas = htmlToNode(templates.canvas());
 
     if (this.options.response) {
       $container.classList.add('ff-responsive');
@@ -81,6 +78,14 @@ class Freezeframe {
     context.drawImage($image, 0, 0, clientWidth, clientHeight);
     return freeze;
     // const transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend';
+  }
+
+  injectStylesheet() {
+    document.head.appendChild(
+      htmlToNode(
+        templates.stylesheet()
+      )
+    );
   }
 }
 
