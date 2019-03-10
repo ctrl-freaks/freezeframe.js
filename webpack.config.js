@@ -5,6 +5,7 @@ const postcssPresetEnv = require('postcss-preset-env');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const env = require('./utils/env');
 
@@ -34,15 +35,9 @@ const templates = fs.readdirSync('./examples')
 const options = {
   mode,
   devtool: DEVTOOL,
-  // context: path.resolve(__dirname, 'src'),
   entry: {
-    // freezeframe: ENTRY_PATH
     freezeframe: './src/index.js'
   },
-  // entry: {
-  //   freezeframe: ENTRY_PATH
-  //   // freezeframe: 'src/index.js'
-  // },
   output: {
     path: path.join(__dirname, OUTPUT_PATH),
     publicPath: path.join(__dirname, PUBLIC_PATH),
@@ -121,7 +116,21 @@ const options = {
       });
     }),
     new WriteFilePlugin()
-  ]
+  ],
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        cache: true,
+        parallel: true,
+        terserOptions: {
+          output: {
+            comments: false
+          }
+        }
+      })
+    ]
+  }
 };
 
 module.exports = options;

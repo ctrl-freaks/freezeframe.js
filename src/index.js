@@ -1,9 +1,10 @@
+import imagesLoaded from 'imagesloaded';
+
 import {
   compose,
   asyncCallback,
   normalizeElements,
   validateElements,
-  imagesLoaded,
   isTouch
 } from './utils';
 
