@@ -12,10 +12,11 @@ import {
 } from './utils/dom';
 
 import * as templates from './templates';
+import classes from './constants';
 
 class Freezeframe {
   constructor(
-    selectorOrNodes = '.freezeframe',
+    selectorOrNodes = classes.SELECTOR,
     options = {
       responsive: true
     }
@@ -57,7 +58,7 @@ class Freezeframe {
     const $canvas = htmlToNode(templates.canvas());
 
     if (this.options.response) {
-      $container.classList.add('ff-responsive');
+      $container.classList.add(classes.RESPONSIVE);
     }
     $container.appendChild($canvas);
     wrap($image, $container);
@@ -76,6 +77,9 @@ class Freezeframe {
     $canvas.setAttribute('height', clientHeight);
     const context = $canvas.getContext('2d');
     context.drawImage($image, 0, 0, clientWidth, clientHeight);
+
+    $canvas.classList.add(classes.CANVAS_READY);
+
     return freeze;
     // const transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend';
   }

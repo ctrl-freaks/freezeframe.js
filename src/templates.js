@@ -1,4 +1,5 @@
 import { html } from 'common-tags';
+import classes from './constants';
 import styles from './scss/styles.scss';
 
 export const stylesheet = () => (
@@ -11,14 +12,14 @@ export const stylesheet = () => (
 
 export const container = () => (
   html`
-    <div class="ff-container ff-loading-icon">
+    <div class="${classes.CONTAINER} ${classes.LOADING_ICON}">
     </div>
   `
 );
 
 export const canvas = () => (
   html`
-    <canvas class="ff-canvas" width="0" height="0">
+    <canvas class="${classes.CANVAS}" width="0" height="0">
     </canvas>
   `
 );
