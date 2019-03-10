@@ -6,5 +6,6 @@ export default {
   IMAGE_READY: 'ff-image-ready',
   CANVAS: 'ff-canvas',
   CANVAS_READY: 'ff-canvas-ready',
+  CANVAS_ACTIVE: 'ff-canvas-active',
   RESPONSIVE: 'ff-responsive'
 };

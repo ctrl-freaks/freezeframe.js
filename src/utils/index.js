@@ -56,3 +56,17 @@ export const validateElements = (elements) => {
   });
   return elements;
 };
+
+// export const whichTransitionEvent = () => {
+//   const $el = document.createElement('div');
+//   console.log($el.style);
+//   const options = [
+//     'transitionend',
+//     'webkitTransitionEnd',
+//     'oTransitionEnd',
+//     'otransitionend'
+//   ];
+//   return options.find((name) => {
+//     return !!$el.style[name];
+//   });
+// };

@@ -46,10 +46,11 @@ class Freezeframe {
     });
   }
 
-  setup($image) {
+  async setup($image) {
     const freeze = this.wrap($image);
     this.items.push(freeze);
-    this.process(freeze);
+    await this.process(freeze);
+    this.attach(freeze);
     // $image.classList.add('ff-setup');
   }
 
@@ -71,17 +72,42 @@ class Freezeframe {
   }
 
   process(freeze) {
-    const { $canvas, $image } = freeze;
-    const { clientWidth, clientHeight } = $image;
-    $canvas.setAttribute('width', clientWidth);
-    $canvas.setAttribute('height', clientHeight);
-    const context = $canvas.getContext('2d');
-    context.drawImage($image, 0, 0, clientWidth, clientHeight);
+    return new Promise((resolve) => {
+      const { $canvas, $image, $container } = freeze;
+      const { clientWidth, clientHeight } = $image;
+      $canvas.setAttribute('width', clientWidth);
+      $canvas.setAttribute('height', clientHeight);
+      const context = $canvas.getContext('2d');
+      context.drawImage($image, 0, 0, clientWidth, clientHeight);
 
-    $canvas.classList.add(classes.CANVAS_READY);
+      $canvas.classList.add(classes.CANVAS_READY);
+      $canvas.addEventListener('transitionend', () => {
+        $image.classList.add(classes.IMAGE_READY);
+        $container.classList.remove(classes.LOADING_ICON);
+        resolve(freeze);
+      }, {
+        once: true
+      });
+    });
+  }
 
-    return freeze;
-    // const transitionEnd = 'transitionend webkitTransitionEnd oTransitionEnd otransitionend';
+  attach(freeze) {
+    const { $image, $canvas } = freeze;
+
+    $image.addEventListener('mouseenter', () => {
+      if ($image.classList.contains(classes.IMAGE_READY)) {
+        $image.setAttribute('src', $image.src);
+        $canvas.classList.remove(classes.CANVAS_READY);
+        $canvas.classList.add(classes.CANVAS_ACTIVE);
+      }
+    });
+
+    $image.addEventListener('mouseleave', () => {
+      if ($image.classList.contains(classes.IMAGE_READY)) {
+        $canvas.classList.remove(classes.CANVAS_ACTIVE);
+        $canvas.classList.add(classes.CANVAS_READY);
+      }
+    });
   }
 
   injectStylesheet() {
