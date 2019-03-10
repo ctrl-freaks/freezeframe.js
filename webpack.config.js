@@ -46,7 +46,9 @@ const options = {
   output: {
     path: path.join(__dirname, OUTPUT_PATH),
     publicPath: path.join(__dirname, PUBLIC_PATH),
-    filename: `[name]${BUNDLE_SUFFIX}`
+    filename: `[name]${BUNDLE_SUFFIX}`,
+    library: OUTPUT_FILENAME,
+    libraryTarget: 'umd'
   },
   resolve: {
     alias: {
