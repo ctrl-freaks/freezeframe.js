@@ -24,6 +24,10 @@ export const warn = (message, ...args) => {
   console.warn(formatMessage(message), ...args);
 };
 
+export const isTouch = () => {
+  return ('ontouchstart' in window || 'onmsgesturechange' in window);
+};
+
 export const normalizeElements = (selectorOrNodes) => {
   const sel = selectorOrNodes;
   const type = typeof sel;

@@ -3,7 +3,8 @@ import {
   asyncCallback,
   normalizeElements,
   validateElements,
-  imagesLoaded
+  imagesLoaded,
+  isTouch
 } from './utils';
 
 import {
@@ -14,20 +15,24 @@ import {
 import * as templates from './templates';
 import classes from './constants';
 
+const DEFAULT_OPTIONS = {
+  responsive: true,
+  trigger: 'hover'
+};
+
 class Freezeframe {
   constructor(
     selectorOrNodes = classes.SELECTOR,
-    options = {
-      responsive: true
-    }
+    options
   ) {
     this.items = [];
-    this.options = options;
+    this.options = Object.assign({}, DEFAULT_OPTIONS, options);
     this.init(selectorOrNodes);
   }
 
   init(selectorOrNodes) {
     this.injectStylesheet();
+    this.isTouch = isTouch();
     this.capture(selectorOrNodes);
     this.load(this.$images);
   }
@@ -75,12 +80,15 @@ class Freezeframe {
     return new Promise((resolve) => {
       const { $canvas, $image, $container } = freeze;
       const { clientWidth, clientHeight } = $image;
+
       $canvas.setAttribute('width', clientWidth);
       $canvas.setAttribute('height', clientHeight);
+
       const context = $canvas.getContext('2d');
       context.drawImage($image, 0, 0, clientWidth, clientHeight);
 
       $canvas.classList.add(classes.CANVAS_READY);
+
       $canvas.addEventListener('transitionend', () => {
         $image.classList.add(classes.IMAGE_READY);
         $container.classList.remove(classes.LOADING_ICON);
@@ -94,20 +102,39 @@ class Freezeframe {
   attach(freeze) {
     const { $image, $canvas } = freeze;
 
-    $image.addEventListener('mouseenter', () => {
-      if ($image.classList.contains(classes.IMAGE_READY)) {
-        $image.setAttribute('src', $image.src);
-        $canvas.classList.remove(classes.CANVAS_READY);
-        $canvas.classList.add(classes.CANVAS_ACTIVE);
-      }
-    });
+    if (!this.isTouch && this.options.trigger === 'hover') {
+      $image.addEventListener('mouseenter', () => {
+        if ($image.classList.contains(classes.IMAGE_READY)) {
+          $image.setAttribute('src', $image.src);
+          $canvas.classList.remove(classes.CANVAS_READY);
+          $canvas.classList.add(classes.CANVAS_ACTIVE);
+        }
+      });
 
-    $image.addEventListener('mouseleave', () => {
-      if ($image.classList.contains(classes.IMAGE_READY)) {
-        $canvas.classList.remove(classes.CANVAS_ACTIVE);
-        $canvas.classList.add(classes.CANVAS_READY);
-      }
-    });
+      $image.addEventListener('mouseleave', () => {
+        if ($image.classList.contains(classes.IMAGE_READY)) {
+          $canvas.classList.remove(classes.CANVAS_ACTIVE);
+          $canvas.classList.add(classes.CANVAS_READY);
+        }
+      });
+    }
+
+    if (this.isTouch || this.options.trigger === 'click') {
+      $image.addEventListener('click', () => {
+        if ($image.classList.contains(classes.IMAGE_READY)) {
+          const isActive = $canvas.classList.contains(classes.CANVAS_ACTIVE);
+          if (isActive) {
+            $image.setAttribute('src', $image.src);
+            $canvas.classList.add(classes.CANVAS_READY);
+            $canvas.classList.remove(classes.CANVAS_ACTIVE);
+          } else {
+            $image.setAttribute('src', $image.src);
+            $canvas.classList.remove(classes.CANVAS_READY);
+            $canvas.classList.add(classes.CANVAS_ACTIVE);
+          }
+        }
+      });
+    }
   }
 
   injectStylesheet() {
