@@ -11,7 +11,7 @@ const env = require('./utils/env');
 // const ENTRY_FILENAME = 'index';
 // const ENTRY_PATH = path.resolve('src', `${ENTRY_FILENAME}.js`);
 const OUTPUT_FILENAME = 'freezeframe';
-const BUNDLE_SUFFIX = '.bundle.js';
+const BUNDLE_SUFFIX = '.min.js';
 
 const ENV = env.NODE_ENV;
 
