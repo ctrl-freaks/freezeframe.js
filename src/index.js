@@ -1,5 +1,6 @@
 import {
   compose,
+  asyncCallback,
   normalizeElements,
   validateElements,
   imagesLoaded
@@ -14,22 +15,29 @@ class Freezeframe {
   }
 
   init(selectorOrNodes) {
+    this.capture(selectorOrNodes);
+    this.load(this.$images);
+  }
+
+  capture(selectorOrNodes) {
     this.$images = compose(
       normalizeElements,
       validateElements
     )(selectorOrNodes);
-    this.loaded(this.$images);
   }
 
-  loaded($images) {
-    $images.forEach(($image) => {
-      imagesLoaded($image, () => this.setup);
+  load($images) {
+    $images.forEach(async ($image) => {
+      const loader = await asyncCallback(imagesLoaded, $image);
+      this.setup(loader.elements[0]);
     });
   }
 
-  setup($image) {
-    console.log('setup', $image);
+  setup({ elements }) {
+    console.log('capture', elements[0]);
   }
 }
+
+window.Freezeframe = Freezeframe;
 
 export default Freezeframe;

@@ -1,15 +1,15 @@
-export { imagesLoaded } from 'imagesloaded';
+import imagesLoaded from 'imagesloaded';
+
+export { imagesLoaded };
 
 export const compose = (...fns) => (
   fns.reduceRight((f, g) => (...args) => f(g(...args)))
 );
 
 export const asyncCallback = (fn, ...args) => {
-  return new Promise((resolve, reject) => {
-    fn(...args, (error, data) => (
-      error
-        ? reject(error)
-        : resolve(data)
+  return new Promise((resolve) => {
+    fn(...args, (data) => (
+      resolve(data)
     ));
   });
 };
@@ -32,13 +32,27 @@ export const normalizeElements = (selectorOrNodes) => {
     : sel;
 };
 
+export const parseFilename = (filePath) => {
+  return filePath
+    .split('.')
+    .pop()
+    .toLowerCase()
+    .substring(0, 3);
+};
+
+export const validateFilename = (filePath) => {
+  const ext = parseFilename(filePath);
+  return ext === 'gif';
+};
+
 export const validateElements = (elements) => {
   elements.forEach((image) => {
     if (!(image instanceof HTMLImageElement)) {
       error('Invalid element', image);
     }
-    if (!(image.src.test(/.*\.gif$/i))) {
+    if (!(validateFilename(image.src))) {
       warn('Image is not a gif', image);
     }
   });
+  return elements;
 };
