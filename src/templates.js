@@ -1,5 +1,5 @@
 import { html } from 'common-tags';
-import classes from './constants';
+import { classes } from './constants';
 import styles from './scss/styles.scss';
 
 export const stylesheet = () => (

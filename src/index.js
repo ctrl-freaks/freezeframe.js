@@ -2,7 +2,6 @@ import imagesLoaded from 'imagesloaded';
 
 import {
   compose,
-  asyncCallback,
   normalizeElements,
   validateElements,
   isTouch
@@ -14,12 +13,7 @@ import {
 } from './utils/dom';
 
 import * as templates from './templates';
-import classes from './constants';
-
-const DEFAULT_OPTIONS = {
-  responsive: true,
-  trigger: 'hover'
-};
+import { classes, defaultOptions } from './constants';
 
 class Freezeframe {
   constructor(
@@ -27,7 +21,7 @@ class Freezeframe {
     options
   ) {
     this.items = [];
-    this.options = Object.assign({}, DEFAULT_OPTIONS, options);
+    this.options = Object.assign({}, defaultOptions, options);
     this.init(selectorOrNodes);
   }
 
@@ -46,11 +40,10 @@ class Freezeframe {
   }
 
   load($images) {
-    // TODO use imagesLoaded.progress instead of forEach
-    $images.forEach(async ($image) => {
-      const { elements } = await asyncCallback(imagesLoaded, $image);
-      this.setup(elements[0]);
-    });
+    imagesLoaded($images)
+      .on('progress', (instance, { img }) => {
+        this.setup(img);
+      });
   }
 
   async setup($image) {
@@ -58,7 +51,6 @@ class Freezeframe {
     this.items.push(freeze);
     await this.process(freeze);
     this.attach(freeze);
-    // $image.classList.add('ff-setup');
   }
 
   wrap($image) {

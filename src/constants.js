@@ -1,4 +1,4 @@
-export default {
+export const classes = {
   SELECTOR: '.freezeframe',
   CONTAINER: 'ff-container',
   LOADING_ICON: 'ff-loading-icon',
@@ -8,4 +8,9 @@ export default {
   CANVAS_READY: 'ff-canvas-ready',
   CANVAS_ACTIVE: 'ff-canvas-active',
   RESPONSIVE: 'ff-responsive'
+};
+
+export const defaultOptions = {
+  responsive: true,
+  trigger: 'hover'
 };
