@@ -57,9 +57,13 @@ class Freezeframe {
     const $container = htmlToNode(templates.container());
     const $canvas = htmlToNode(templates.canvas());
 
-    if (this.options.response) {
+    if (this.options.responsive) {
       $container.classList.add(classes.RESPONSIVE);
     }
+    if (this.options.overlay) {
+      $container.appendChild(htmlToNode(templates.overlay()));
+    }
+    $image.classList.add(classes.IMAGE);
     $container.appendChild($canvas);
     wrap($image, $container);
 
@@ -84,7 +88,8 @@ class Freezeframe {
       $canvas.classList.add(classes.CANVAS_READY);
 
       $canvas.addEventListener('transitionend', () => {
-        $image.classList.add(classes.IMAGE_READY);
+        $container.classList.add(classes.READY);
+        $container.classList.add(classes.INACTIVE);
         $container.classList.remove(classes.LOADING_ICON);
         resolve(freeze);
       }, {
@@ -114,8 +119,8 @@ class Freezeframe {
   }
 
   toggle(freeze) {
-    const { $canvas } = freeze;
-    const isActive = $canvas.classList.contains(classes.CANVAS_ACTIVE);
+    const { $container } = freeze;
+    const isActive = $container.classList.contains(classes.ACTIVE);
 
     if (isActive) {
       this.toggleOff(freeze);
@@ -125,21 +130,21 @@ class Freezeframe {
   }
 
   toggleOff(freeze) {
-    const { $image, $canvas } = freeze;
+    const { $container } = freeze;
 
-    if ($image.classList.contains(classes.IMAGE_READY)) {
-      $canvas.classList.add(classes.CANVAS_READY);
-      $canvas.classList.remove(classes.CANVAS_ACTIVE);
+    if ($container.classList.contains(classes.READY)) {
+      $container.classList.add(classes.INACTIVE);
+      $container.classList.remove(classes.ACTIVE);
     }
   }
 
   toggleOn(freeze) {
-    const { $image, $canvas } = freeze;
+    const { $container, $image } = freeze;
 
-    if ($image.classList.contains(classes.IMAGE_READY)) {
+    if ($container.classList.contains(classes.READY)) {
       $image.setAttribute('src', $image.src);
-      $canvas.classList.remove(classes.CANVAS_READY);
-      $canvas.classList.add(classes.CANVAS_ACTIVE);
+      $container.classList.remove(classes.INACTIVE);
+      $container.classList.add(classes.ACTIVE);
     }
   }
 

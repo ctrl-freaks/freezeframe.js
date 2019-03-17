@@ -23,3 +23,10 @@ export const canvas = () => (
     </canvas>
   `
 );
+
+export const overlay = () => (
+  html`
+    <div class="${classes.OVERLAY}">
+    </div>
+  `
+);

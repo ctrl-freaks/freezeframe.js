@@ -3,14 +3,18 @@ export const classes = {
   CONTAINER: 'ff-container',
   LOADING_ICON: 'ff-loading-icon',
   IMAGE: 'ff-image',
-  IMAGE_READY: 'ff-image-ready',
   CANVAS: 'ff-canvas',
+  READY: 'ff-ready',
+  INACTIVE: 'ff-inactive',
+  ACTIVE: 'ff-active',
   CANVAS_READY: 'ff-canvas-ready',
-  CANVAS_ACTIVE: 'ff-canvas-active',
-  RESPONSIVE: 'ff-responsive'
+  // CANVAS_ACTIVE: 'ff-canvas-active',
+  RESPONSIVE: 'ff-responsive',
+  OVERLAY: 'ff-overlay'
 };
 
 export const defaultOptions = {
   responsive: true,
-  trigger: 'hover'
+  trigger: 'hover',
+  overlay: false
 };

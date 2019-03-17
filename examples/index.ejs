@@ -92,8 +92,12 @@ button:active {
   src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141f2be4b0a4afc2d17505/56141f47e4b00b973f0ec806/1444159323808/Ecco-Domani-Summer-Cinemagraph-980px.gif?format=1000w"
 />
 
-<!-- <p>with overlay icon.</p>
-<img class="my-class-5" src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/5615846be4b042d6d89a94ee/1444251161903/?format=1000w" /> -->
+<p>with overlay icon.</p>
+
+<img
+  class="my-class-5"
+  src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/5615846be4b042d6d89a94ee/1444251161903/?format=1000w"
+/>
 
 <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
 
@@ -120,6 +124,14 @@ document
   .addEventListener('click', () => {
     manual.stop();
   });
+
+new Freezeframe('.my-class-4', {
+  responsive: true
+});
+
+new Freezeframe('.my-class-5', {
+  overlay: true
+});
 </script>
 
 </body>
