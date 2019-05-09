@@ -1,4 +1,4 @@
-# freezeframe.js
+# Freezeframe.js
 
 [![npm version](https://badge.fury.io/js/freezeframe.svg)](https://badge.fury.io/js/%40thrivehive%2Feslint-config-node)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
@@ -9,22 +9,23 @@ animate on mouse hover / mouse click / touch event, or manually via class method
 Version 4.x no longer requires or supports jQuery. If you want to use freezeframe as a jQuery
 plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
-1. [Examples](#examples)
-2. [Installation](#install)
-3. [HTML Setup](#html_setup)
-4. [Basic Usage: jQuery / Zepto Plugin](#basic_usage_jquery_zepto_plugin)
-5. [Basic Usage: Vanilla JS](#basic_usage_vanilla_js)
-6. [Advanced Usage](#advanced_usage)
-7. [Options Reference](#options_reference)
-8. [Function Reference](#function_reference)
-9. [License](#license)
-10. [Thanks](#thanks)
+- [Freezeframe.js](#freezeframejs)
+  - [Examples](#examples)
+  - [Installation](#installation)
+    - [npm](#npm)
+    - [CDN](#cdn)
+  - [Setup](#setup)
+  - [Basic Usage: Vanilla JS](#basic-usage-vanilla-js)
+  - [Advanced Usage](#advanced-usage)
+  - [Options Reference](#options-reference)
+  - [Function Reference](#function-reference)
+  - [License](#license)
+  - [Thanks](#thanks)
 
-<a name="examples"></a>
 ## Examples
+
 [http://ctrl-freaks.github.io/freezeframe.js/](http://ctrl-freaks.github.io/freezeframe.js/)
 
-<a name="install"></a>
 ## Installation
 
 If your project supports ES6 modules or commonjs modules, install via npm or yarn:
@@ -43,7 +44,6 @@ If not, you can pull in the library from a CDN:
 <script src="https://unpkg.com/freezeframe/build/js/freezeframe.min.js"></script>
 ```
 
-<a name="setup"></a>
 ## Setup
 
 Add **freezeframe** as a class name on the .gifs you want processed.  
@@ -59,7 +59,6 @@ Add **freezeframe-responsive** as an additional class name to make the .gif resp
 <img class="freezeframe freezeframe-responsive" src="image.gif" />
 ```
 
-<a name="basic_usage_vanilla_js"></a>
 ## Basic Usage: Vanilla JS
 
 ✨Freeze those frames ✨
@@ -68,7 +67,6 @@ Add **freezeframe-responsive** as an additional class name to make the .gif resp
 new Freezeframe();
 ```
 
-<a name="advanced_usage"></a>
 ## Advanced Usage
 
 freezeframe.js exposes public methods to allow for more custom integration. You 
@@ -90,10 +88,9 @@ logo.start(); // start animation
 logo.stop(); // stop animation
 ```
 
-<a name="options_reference"></a>
 ## Options Reference
 
-Options can be passed to a freezeframe instance on creation in the form of an 
+<!-- Options can be passed to a freezeframe instance on creation in the form of an 
 **object** or a **string**. Strings will be interpreted as the **selector** option.  
 
 ```javascript
@@ -109,9 +106,9 @@ var ff = new freezeframe({
   'animation_play_duration': 3000,
   'non_touch_device_trigger_event': 'hover'
 })
-```
+``` -->
 
-* ### ```selector```
+- ### ```selector```
 
     <code><b>type:</b> string</code>  
     <code><b>default</b>: ".freezeframe"</code>  
@@ -128,7 +125,7 @@ var ff = new freezeframe({
     touch event.  
     Use ```Infinity``` to make the .gif play *forever.* -->
 
-* ### ```trigger```  
+- ### ```trigger```  
 
     <code><b>type:</b> string | boolean</code>  
     <code><b>default</b>: "hover"</code>  
@@ -136,10 +133,9 @@ var ff = new freezeframe({
 
     The trigger event to start animation for non-touch devices.
 
-<a name="function_reference"></a>
 ## Function Reference
 
-* ### ```Freezeframe( options )```  
+- ### ```Freezeframe(options)```  
 
     Create a new freezeframe object instance.  
     Can be passed options. Strings will be interpreted as the **selector** option.
@@ -158,8 +154,9 @@ var ff = new freezeframe({
   })
   ```
 
-* ### ```trigger( selector )```  
-    trigger images to be paused by freezeframe. If run without selector 
+<!-- * ### ```trigger(selector)```
+
+    trigger images to be paused by freezeframe. If run without selector
     argument, selector in freezeframe options will be used. Can be run multiple
     times with different selector to group many images, unrelated by selector,
     in one freezeframe instance.
@@ -167,9 +164,10 @@ var ff = new freezeframe({
   ```js
   ff.trigger();               // use selector in freezeframe options
   ff.trigger('.my_class');    // use custom selector
-  ```
+  ``` -->
 
-* ### ```setup()```  
+<!-- * ### ```setup()```
+
     Creates and inserts support elements. Can be filtered by selector.  
 
   ```js
@@ -190,17 +188,19 @@ var ff = new freezeframe({
     <canvas class="ff-canvas ff-canvas-ready" width="400" height="250"></canvas>
     <img class="freezeframe ff-setup ff-image ff-image-ready" src="my_image.gif">
   </div>
-  ```
+  ``` -->
 
-* ### ```attach( selector )```  
+<!-- * ### ```attach(selector)```
+  
     Attaches hover / click / touch events based on freezeframe options. Can be filtered by selector.
 
   ```js
   ff.attach();                // all images in freezeframe instance
   ff.attach('.my_class');     // filter images by selector
-  ```
+  ``` -->
 
-* ### ```start( selector )```  
+- ### ```start(selector)```
+
     Triggers (starts) animation, or restarts animation from the first frame if 
     the .gif is already animating. Can be filtered by selector.
 
@@ -209,7 +209,8 @@ var ff = new freezeframe({
   ff.start('.my_class');    // filter images by selector
   ```
 
-* ### ```stop( selector )```  
+- ### ```stop(selector)```
+
     Releases (stops) animation. Can be filtered by selector.
 
   ```js
@@ -217,10 +218,10 @@ var ff = new freezeframe({
   ff.stop('.my_class');    // filter images by selector
   ```
 
-<a name="license"></a>
 ## License
+
 freezeframe.js is released under the terms of the MIT License.
 
-<a name="thanks"></a>
 ## Thanks
-* [Browserstack - Live, Web-Based Browser Testing](https://www.browserstack.com/)
+
+- [Browserstack - Live, Web-Based Browser Testing](https://www.browserstack.com/)
