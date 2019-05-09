@@ -24,7 +24,7 @@
     "eslint-plugin-import": "^2.16.0",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
     "postcss-preset-env": "^6.6.0",
     "sass-loader": "^7.1.0",
@@ -35,7 +35,7 @@
     "write-file-webpack-plugin": "^4.5.0"
   },
   "scripts": {
-    "build": "NODE_ENV=production node utils/build.js",
+    "build": "node utils/build.js",
     "start": "node utils/dev.js",
     "lint": "eslint -f json -o lintReport.json ./src",
     "test": "echo \"Error: no test specified\" && exit 1"
