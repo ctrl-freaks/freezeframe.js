@@ -15,7 +15,7 @@ plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezefra
     - [npm](#npm)
     - [CDN](#cdn)
   - [Setup](#setup)
-  - [Basic Usage: Vanilla JS](#basic-usage-vanilla-js)
+  - [Basic Usage](#basic-usage)
   - [Advanced Usage](#advanced-usage)
   - [Options Reference](#options-reference)
   - [Function Reference](#function-reference)
@@ -59,7 +59,7 @@ Add **freezeframe-responsive** as an additional class name to make the .gif resp
 <img class="freezeframe freezeframe-responsive" src="image.gif" />
 ```
 
-## Basic Usage: Vanilla JS
+## Basic Usage
 
 ✨Freeze those frames ✨
 
@@ -145,11 +145,11 @@ var ff = new freezeframe({
   new Freezeframe();
 
   // String as selector option
-  new Freezeframe('.my_class');
+  new Freezeframe('.my-class');
 
   // Object as options
-  var ff = new Freezeframe({
-    'selector': '.my_class',
+  const ff = new Freezeframe({
+    'selector': '.my-class',
     'trigger': 'hover'
   })
   ```
@@ -201,21 +201,19 @@ var ff = new freezeframe({
 
 - ### ```start(selector)```
 
-    Triggers (starts) animation, or restarts animation from the first frame if 
+    Start animation, or restarts animation from the first frame if
     the .gif is already animating. Can be filtered by selector.
 
   ```js
-  ff.start();               // all images in freezeframe instance
-  ff.start('.my_class');    // filter images by selector
+  ff.start();
   ```
 
 - ### ```stop(selector)```
 
-    Releases (stops) animation. Can be filtered by selector.
+    Stops animation.
 
   ```js
-  ff.stop()                // all images in freezeframe instance
-  ff.stop('.my_class');    // filter images by selector
+  ff.stop();
   ```
 
 ## License
