@@ -21,7 +21,7 @@ export const warn = (message, ...args) => {
 };
 
 export const isTouch = () => {
-  return ('ontouchstart' in window || 'onmsgesturechange' in window);
+  return 'ontouchstart' in window || 'onmsgesturechange' in window;
 };
 
 export const normalizeElements = (selectorOrNodes) => {
