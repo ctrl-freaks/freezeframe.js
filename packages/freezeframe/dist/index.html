@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>freezeframe.js</title>
+
+<!-- local -->
+<script src="./freezeframe.min.js"></script>
+
+<!-- gh-pages -->
+<!-- <script type="text/javascript" src="https://cdn.rawgit.com/ctrl-freaks/freezeframe.js/master/dist/freezeframe.min.js"></script> -->
+
+<style type="text/css">
+
+body {
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 20px;
+  font-size: 13px;
+  text-align: center;
+  color: #202020;
+}
+
+a {
+  color: #202020;
+}
+
+p {
+  padding: 10px 0px;
+  text-align: center;
+  font-family: monospace;
+}
+
+button {
+  width: 100px;
+  margin: 0px 10px 10px 0px;
+  padding: 5px 0px;
+  border: 1px solid #000;
+  background: #fff;
+  outline: none;
+  font-family: monospace;
+  text-align: center;
+}
+
+button:active {
+  background: #000;
+  color: #fff;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<p class="bold title">freezeframe.js</p>
+
+<p>natural width,<br />animate on hover.</p>
+
+<img
+  class="my-class-1"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif"
+/>
+
+<p>responsive,<br />start & stop on click,<br />playing <span class="italic">forever.</span></p>
+
+<img
+  class="my-class-2"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif"
+/>
+
+<p>responsive,<br />start & stop manually.</p>
+
+<button class="start">start</button>
+<button class="stop">stop</button>
+
+<img
+  class="my-class-3"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+/>
+
+<p>responsive</p>
+
+<img
+  class="my-class-4 freezeframe"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141f2be4b0a4afc2d17505/56141f47e4b00b973f0ec806/1444159323808/Ecco-Domani-Summer-Cinemagraph-980px.gif?format=1000w"
+/>
+
+<p>with overlay icon.</p>
+
+<img
+  class="my-class-5"
+  src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/5615846be4b042d6d89a94ee/1444251161903/?format=1000w"
+/>
+
+<p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
+
+<script>
+new Freezeframe();
+
+new Freezeframe('.my-class-1');
+new Freezeframe('.my-class-2', {
+  trigger: 'click'
+});
+
+const manual = new Freezeframe('.my-class-3', {
+  trigger: false
+});
+
+document
+  .querySelector('.start')
+  .addEventListener('click', () => {
+    manual.start();
+  });
+
+document
+  .querySelector('.stop')
+  .addEventListener('click', () => {
+    manual.stop();
+  });
+
+new Freezeframe('.my-class-4', {
+  responsive: true
+});
+
+new Freezeframe('.my-class-5', {
+  overlay: true
+});
+</script>
+
+</body>
+</html>

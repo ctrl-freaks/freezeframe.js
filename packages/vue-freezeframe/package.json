@@ -1,0 +1,59 @@
+{
+  "name": "vue-freezeframe",
+  "version": "0.0.1",
+  "description": "A vue.js component to wrap freezeframe.js",
+  "keywords": [
+    "freezeframe",
+    "vue"
+  ],
+  "author": "Nick Ford <nickforddesign@gmail.com>",
+  "homepage": "https://github.com/ctrl-freaks/freezeframe.js#readme",
+  "license": "MIT",
+  "main": "lib/vue-freezeframe.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-freaks/freezeframe.js.git"
+  },
+  "scripts": {
+    "build": "vue-cli-service build --target lib --name vue-freezeframe src/lib.js",
+    "serve": "vue-cli-service serve --open",
+    "lint": "vue-cli-service lint",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/ctrl-freaks/freezeframe.js/issues"
+  },
+  "peerDependencies": {
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "freezeframe": "^4.0.0-alpha.0"
+  },
+  "devDependencies": {
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "freezeframe": "^4.0.0-alpha.0",
+    "@thrivehive/eslint-config-node": "^1.2.3",
+    "@thrivehive/eslint-config-vue": "^1.2.3",
+    "@vue/cli-plugin-babel": "^3.8.0",
+    "@vue/cli-plugin-eslint": "^3.8.0",
+    "@vue/cli-plugin-unit-jest": "^3.8.0",
+    "@vue/cli-service": "^3.8.0",
+    "@vue/eslint-config-airbnb": "^4.0.0",
+    "@vue/test-utils": "1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^23.6.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.6.10"
+  }
+}

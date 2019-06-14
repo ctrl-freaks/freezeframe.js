@@ -169,6 +169,4 @@ class Freezeframe {
   }
 }
 
-window.Freezeframe = Freezeframe;
-
 export default Freezeframe;

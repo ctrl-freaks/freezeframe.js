@@ -9,9 +9,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const env = require('./utils/env');
 
-// const ENTRY_FILENAME = 'index';
-// const ENTRY_PATH = path.resolve('src', `${ENTRY_FILENAME}.js`);
-const OUTPUT_FILENAME = 'freezeframe';
+const NAME = 'Freezeframe';
+const OUTPUT_FILENAME = NAME.toLowerCase();
 const BUNDLE_SUFFIX = '.min.js';
 
 const ENV = env.NODE_ENV;
@@ -35,15 +34,14 @@ const templates = fs.readdirSync('./examples')
 const options = {
   mode,
   devtool: DEVTOOL,
-  entry: {
-    freezeframe: './src/index.js'
-  },
+  entry: './src/index.js',
   output: {
     path: path.join(__dirname, OUTPUT_PATH),
     publicPath: path.join(__dirname, PUBLIC_PATH),
-    filename: `[name]${BUNDLE_SUFFIX}`,
-    library: OUTPUT_FILENAME,
-    libraryTarget: 'umd'
+    filename: `${OUTPUT_FILENAME}${BUNDLE_SUFFIX}`,
+    library: NAME,
+    libraryTarget: 'umd',
+    libraryExport: 'default'
   },
   resolve: {
     alias: {
