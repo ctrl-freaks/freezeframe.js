@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha.0",
   "main": "dist/freezeframe.umd.js",
   "repository": "https://github.com/ctrl-freaks/freezeframe.js",
-  "licesnse": "MIT",
+  "license": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name freezeframe src/lib.js",
