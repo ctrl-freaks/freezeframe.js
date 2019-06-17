@@ -27,8 +27,8 @@ export default {
         this.$refs.manual.start();
       }
       this.isPlaying = !this.isPlaying;
-    }
-  }
+    },
+  },
 };
 </script>
 
