@@ -21,5 +21,13 @@ export default {
   mounted() {
     this.$freezeframe = new Freezeframe(this.$refs.img);
   },
+  methods: {
+    start() {
+      this.$freezeframe.start();
+    },
+    stop() {
+      this.$freezeframe.stop();
+    },
+  },
 };
 </script>

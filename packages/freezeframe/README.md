@@ -1,6 +1,6 @@
 # Freezeframe.js
 
-[![npm version](https://badge.fury.io/js/freezeframe.svg)](https://badge.fury.io/js/%40thrivehive%2Feslint-config-node)
+[![npm version](https://badge.fury.io/js/freezeframe.svg)](https://badge.fury.io/js/freezeframe)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Freezeframe.js is a library that pauses animated .gifs and enables them to
@@ -9,19 +9,19 @@ animate on mouse hover / mouse click / touch event, or manually via class method
 Version 4.x no longer requires or supports jQuery. If you want to use freezeframe as a jQuery
 plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
-- [Freezeframe.js](#freezeframejs)
-  - [Examples](#examples)
-  - [Installation](#installation)
+- [Freezeframe.js](#Freezeframejs)
+  - [Examples](#Examples)
+  - [Installation](#Installation)
     - [npm](#npm)
     - [yarn](#yarn)
-    - [CDN](#cdn)
-  - [Setup](#setup)
-  - [Usage](#usage)
-  - [Advanced Usage](#advanced-usage)
-  - [Options Reference](#options-reference)
-  - [Function Reference](#function-reference)
-  - [License](#license)
-  - [Thanks](#thanks)
+    - [CDN](#CDN)
+  - [Setup](#Setup)
+  - [Usage](#Usage)
+  - [Advanced Usage](#Advanced-Usage)
+  - [Options Reference](#Options-Reference)
+  - [Function Reference](#Function-Reference)
+  - [License](#License)
+  - [Thanks](#Thanks)
 
 ## Examples
 

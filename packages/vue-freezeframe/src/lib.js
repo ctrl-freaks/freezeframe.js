@@ -1,3 +1,9 @@
-import Freezeframe from './components/Freezeframe.vue';
+import VueFreezeframe from './components/Freezeframe.vue';
 
-export default Freezeframe;
+export default {
+  name: 'vue-freezeframe',
+  install(Vue) {
+    Vue.component(this.name, VueFreezeframe);
+  },
+  VueFreezeframe,
+};
