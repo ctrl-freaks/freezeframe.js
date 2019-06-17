@@ -4,20 +4,16 @@ freezeframe.js is a script that pauses animated .gifs and enables them to
 animate on mouse hover / mouse click / touch event, or with trigger / release 
 functions. It supports responsive images and works as a jQuery / Zepto plugin.
 
-1. [Examples](#examples)
-2. [Files & Dependencies](#files_dependencies)
-3. [HTML Setup](#html_setup)
-4. [Basic Usage: jQuery / Zepto Plugin](#basic_usage_jquery_zepto_plugin)
-5. [Basic Usage: Vanilla JS](#basic_usage_vanilla_js)
-6. [Advanced Usage](#advanced_usage)
-7. [Options Reference](#options_reference)
-8. [Function Reference](#function_reference)
-9. [License](#license)
-10. [Thanks](#thanks)
+- [freezeframe.js 3.0.10](#freezeframejs-3010)
+- [Examples](#examples)
+- [Files & Dependencies](#files--dependencies)
+- [Function Reference](#function-reference)
+- [License](#license)
+- [Thanks](#thanks)
 
 <a name="examples"></a>
 ## Examples
-[http://ctrl-freaks.github.io/freezeframe.js/](http://ctrl-freaks.github.io/freezeframe.js/)
+[http://ctrl-freaks.github.io/freezeframe.js/3.0.10.html](http://ctrl-freaks.github.io/freezeframe.js/3.0.10.html)
 
 <a name="files_dependencies"></a>
 ## Files & Dependencies
