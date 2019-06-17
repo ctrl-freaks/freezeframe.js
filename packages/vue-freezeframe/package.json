@@ -7,6 +7,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name freezeframe src/lib.js",
+    "build-demo": "vue-cli-service build --dest demo",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },
