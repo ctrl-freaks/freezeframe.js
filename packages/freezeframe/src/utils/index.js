@@ -46,7 +46,7 @@ export const validateFilename = (filePath) => {
 };
 
 export const validateElements = (elements) => {
-  elements.forEach((image) => {
+  Array.from(elements).forEach((image) => {
     if (!(image instanceof HTMLImageElement)) {
       error('Invalid element', image);
     }
