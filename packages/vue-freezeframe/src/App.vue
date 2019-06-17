@@ -7,7 +7,7 @@
 
       <freezeframe src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />
     </div>
-    
+
     <div class="section">
       <p>start/stop manually</p>
 
