@@ -61,12 +61,20 @@ button:active {
 
 <p class="bold title">freezeframe.js</p>
 
+<!-- Example 1 -->
+
 <p>natural width,<br />animate on hover.</p>
 
 <img
-  class="my-class-1"
+  class="freezeframe"
   src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif"
 />
+
+<script>
+new Freezeframe();
+</script>
+
+<!-- Example 2 -->
 
 <p>responsive,<br />start & stop on click,<br />playing <span class="italic">forever.</span></p>
 
@@ -74,6 +82,14 @@ button:active {
   class="my-class-2"
   src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif"
 />
+
+<script>
+new Freezeframe('.my-class-2', {
+  trigger: 'click'
+});
+</script>
+
+<!-- Example 3 -->
 
 <p>responsive,<br />start & stop manually.</p>
 
@@ -85,30 +101,7 @@ button:active {
   src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
 />
 
-<p>responsive</p>
-
-<img
-  class="my-class-4 freezeframe"
-  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141f2be4b0a4afc2d17505/56141f47e4b00b973f0ec806/1444159323808/Ecco-Domani-Summer-Cinemagraph-980px.gif?format=1000w"
-/>
-
-<p>with overlay icon.</p>
-
-<img
-  class="my-class-5"
-  src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/5615846be4b042d6d89a94ee/1444251161903/?format=1000w"
-/>
-
-<p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
-
 <script>
-new Freezeframe();
-
-new Freezeframe('.my-class-1');
-new Freezeframe('.my-class-2', {
-  trigger: 'click'
-});
-
 const manual = new Freezeframe('.my-class-3', {
   trigger: false
 });
@@ -124,15 +117,53 @@ document
   .addEventListener('click', () => {
     manual.stop();
   });
+</script>
 
+
+<!-- Example 4 -->
+
+<p>responsive</p>
+
+<img
+  class="my-class-4 freezeframe"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141f2be4b0a4afc2d17505/56141f47e4b00b973f0ec806/1444159323808/Ecco-Domani-Summer-Cinemagraph-980px.gif?format=1000w"
+/>
+
+<script>
 new Freezeframe('.my-class-4', {
   responsive: true
 });
+</script>
 
+<!-- Example 5 -->
+
+<p>with overlay icon.</p>
+
+<img
+  class="my-class-5"
+  src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/5615846be4b042d6d89a94ee/1444251161903/?format=1000w"
+/>
+
+<script>
 new Freezeframe('.my-class-5', {
   overlay: true
 });
 </script>
+
+<!-- Example 6 -->
+
+<p>passing a DOM reference</p>
+
+<img
+  class="my-class-6"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+/>
+
+<script>
+new Freezeframe(document.getElementsByClassName('my-class-6'));
+</script>
+
+<p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
 
 </body>
 </html>
