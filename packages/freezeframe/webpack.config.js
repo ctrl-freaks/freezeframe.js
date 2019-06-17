@@ -9,6 +9,8 @@ const TerserPlugin = require('terser-webpack-plugin');
 const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin');
 const env = require('./utils/env');
 
+console.log(process.env.NODE_ENV);
+
 const NAME = 'Freezeframe';
 const OUTPUT_FILENAME = NAME.toLowerCase();
 const BUNDLE_SUFFIX = '.min.js';
