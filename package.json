@@ -1,34 +1,15 @@
 {
-  "name": "freezeframe.js",
-  "version": "3.0.10",
-  "description": "freezeframe.js is a script that automatically pauses animated .gifs and enables them to start animation on mouse hover or click",
-  "main": "/build/freezeframe.js",
-  "directories": {
-    "test": "tests"
-  },
-  "dependencies": {
-    "imagesloaded": "^4.1.4"
+  "name": "freezeframe-root",
+  "scripts": {
+    "lint": "eslint ./"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-clean": "^0.4.0",
-    "gulp-clean-css": "^3.9.4",
-    "gulp-concat": "^2.6.0",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^4.0.1",
-    "gulp-uglify": "^3.0.0"
+    "@thrivehive/eslint-config-node": "^1.2.3",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.15.0",
+    "lerna": "^3.14.1"
   },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Ctrl-Freaks/freezeframe.js.git"
-  },
-  "author": "Chris Antonellis",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Ctrl-Freaks/freezeframe.js/issues"
-  },
-  "homepage": "https://github.com/Ctrl-Freaks/freezeframe.js#readme"
+  "dependencies": {}
 }
