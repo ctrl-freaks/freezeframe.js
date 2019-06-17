@@ -48,7 +48,7 @@ yarn add freezeframe
 If not, you can pull in the library from a CDN:
 
 ```html
-<script src="https://unpkg.com/freezeframe/build/js/freezeframe.min.js"></script>
+<script src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script>
 ```
 
 ## Setup
