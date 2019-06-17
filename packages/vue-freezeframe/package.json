@@ -1,47 +1,18 @@
 {
   "name": "vue-freezeframe",
-  "version": "0.0.1",
-  "description": "A Vue.js component for Freezeframe.js",
-  "keywords": [
-    "vue",
-    "freezeframe",
-    "gifs"
-  ],
-  "author": "Nick Ford <nickforddesign@gmail.com>",
-  "homepage": "https://github.com/ctrl-freaks/freezeframe.js#readme",
-  "license": "MIT",
-  "main": "dist/index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ctrl-freaks/freezeframe.js.git"
-  },
+  "version": "0.1.0",
+  "main": "dist/freezeframe.umd.js",
   "scripts": {
-    "build": "vue-cli-service build --target lib --name vue-freezeframe src/lib.js",
-    "serve": "vue-cli-service serve --open",
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name freezeframe src/lib.js",
     "lint": "vue-cli-service lint",
-    "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "bugs": {
-    "url": "https://github.com/ctrl-freaks/freezeframe.js/issues"
+    "test:unit": "vue-cli-service test:unit"
   },
   "peerDependencies": {
     "core-js": "^2.6.5",
-    "vue": "^2.6.10",
-    "freezeframe": "^4.0.0-alpha.1"
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10",
-    "freezeframe": "^4.0.0-alpha.1",
-    "@thrivehive/eslint-config-node": "^1.2.3",
-    "@thrivehive/eslint-config-vue": "^1.2.3",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-unit-jest": "^3.8.0",
