@@ -5,5 +5,6 @@ export default {
   install(Vue) {
     Vue.component(this.name, VueFreezeframe);
   },
-  VueFreezeframe,
 };
+
+export { VueFreezeframe };
