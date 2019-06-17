@@ -10,7 +10,7 @@ http://ctrl-freaks.github.io/freezeframe.js/vue.html
 ## Project setup
 
 ```bash
-npm install vue-freezeframe
+npm install freezeframe vue-freezeframe
 ```
 
 ## Install globally
