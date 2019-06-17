@@ -1,12 +1,46 @@
 # vue-freezeframe
 
-docs coming soon
-<!-- ## Project setup -->
+## Project setup
 
-<!-- 
 ```bash
 npm install vue-freezeframe
-``` -->
+```
+
+## Install globally
+
+```js
+// main.js
+
+import Vue from 'vue';
+import VueFreezeframe from 'vue-freezeframe';
+
+Vue.use(VueFreezeframe);
+```
+
+```html
+<!-- any component -->
+<template>
+  <vue-freezeframe src="./something.gif" />
+</template>
+```
+
+## Local-only usage
+
+```html
+<template>
+  <vue-freezeframe src="./something.gif" />
+</template>
+
+<script>
+import { VueFreezeframe } from 'vue-freezeframe';
+
+export default {
+  components: {
+    VueFreezeframe,
+  }
+};
+</script>
+```
 
 <!-- 
 ### Compiles and hot-reloads for development

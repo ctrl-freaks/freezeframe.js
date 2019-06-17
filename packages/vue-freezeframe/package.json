@@ -2,6 +2,8 @@
   "name": "vue-freezeframe",
   "version": "0.1.0",
   "main": "dist/freezeframe.umd.js",
+  "repository": "https://github.com/ctrl-freaks/freezeframe.js",
+  "licesnse": "MIT",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name freezeframe src/lib.js",
@@ -9,10 +11,13 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "peerDependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "freezeframe": "^4.0.0-alpha.1"
   },
   "devDependencies": {
+    "core-js": "^2.6.5",
+    "vue": "^2.6.10",
+    "freezeframe": "^4.0.0-alpha.1",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-unit-jest": "^3.8.0",
