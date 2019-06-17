@@ -1,10 +1,12 @@
 # vue-freezeframe
 
-## Project setup
+docs coming soon
+<!-- ## Project setup -->
 
+<!-- 
 ```bash
 npm install vue-freezeframe
-```
+``` -->
 
 <!-- 
 ### Compiles and hot-reloads for development
