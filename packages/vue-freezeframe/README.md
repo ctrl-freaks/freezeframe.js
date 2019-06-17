@@ -3,9 +3,10 @@
 ## Project setup
 
 ```bash
-npm install
+npm install vue-freezeframe
 ```
 
+<!-- 
 ### Compiles and hot-reloads for development
 
 ```bash
@@ -38,4 +39,4 @@ npm run test:unit
 
 ### Customize configuration
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+See [Configuration Reference](https://cli.vuejs.org/config/). -->

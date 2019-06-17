@@ -4,6 +4,7 @@
     "lint": "eslint ./"
   },
   "devDependencies": {
+    "@thrivehive/eslint-config-node": "^1.2.3",
     "babel-eslint": "^10.0.1",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
