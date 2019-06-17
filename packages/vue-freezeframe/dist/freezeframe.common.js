@@ -478,10 +478,11 @@ var component = normalizeComponent(
   name: 'vue-freezeframe',
   install: function install(Vue) {
     Vue.component(this.name, Freezeframe);
-  },
-  VueFreezeframe: Freezeframe
+  }
 });
+
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+/* concated harmony reexport VueFreezeframe */__webpack_require__.d(__webpack_exports__, "VueFreezeframe", function() { return Freezeframe; });
 
 
 /* harmony default export */ var entry_lib = __webpack_exports__["default"] = (lib);
