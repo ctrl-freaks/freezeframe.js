@@ -5,13 +5,13 @@
 </template>
 
 <script>
-import Freezeframe from './components/Freezeframe';
+import Freezeframe from './components/Freezeframe.vue';
 
 export default {
   name: 'app',
   components: {
-    Freezeframe
-  }
+    Freezeframe,
+  },
 };
 </script>
 
@@ -22,6 +22,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  width: 800px;
+  max-width: 100%;
+  margin: 60px auto;
 }
 </style>

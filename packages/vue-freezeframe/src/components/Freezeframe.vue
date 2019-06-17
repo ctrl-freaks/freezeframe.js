@@ -10,20 +10,16 @@
 <script>
 import Freezeframe from 'freezeframe';
 
-const FF = require('freezeframe');
-
-console.log(Freezeframe, FF);
-
 export default {
   name: 'freezeframe',
   props: {
     src: {
       type: String,
-      default: null
-    }
+      default: null,
+    },
   },
   mounted() {
-
-  }
+    this.$freezeframe = new Freezeframe(this.$refs.img);
+  },
 };
 </script>

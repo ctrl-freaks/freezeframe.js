@@ -1,15 +1,16 @@
 {
   "name": "vue-freezeframe",
   "version": "0.0.1",
-  "description": "A vue.js component to wrap freezeframe.js",
+  "description": "A Vue.js component for Freezeframe.js",
   "keywords": [
+    "vue",
     "freezeframe",
-    "vue"
+    "gifs"
   ],
   "author": "Nick Ford <nickforddesign@gmail.com>",
   "homepage": "https://github.com/ctrl-freaks/freezeframe.js#readme",
   "license": "MIT",
-  "main": "lib/vue-freezeframe.js",
+  "main": "dist/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -33,12 +34,12 @@
   "peerDependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
-    "freezeframe": "^4.0.0-alpha.0"
+    "freezeframe": "^4.0.0-alpha.1"
   },
   "devDependencies": {
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
-    "freezeframe": "^4.0.0-alpha.0",
+    "freezeframe": "^4.0.0-alpha.1",
     "@thrivehive/eslint-config-node": "^1.2.3",
     "@thrivehive/eslint-config-vue": "^1.2.3",
     "@vue/cli-plugin-babel": "^3.8.0",

@@ -9,5 +9,6 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.15.0",
     "lerna": "^3.14.1"
-  }
+  },
+  "dependencies": {}
 }

@@ -13,9 +13,10 @@ plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezefra
   - [Examples](#examples)
   - [Installation](#installation)
     - [npm](#npm)
+    - [yarn](#yarn)
     - [CDN](#cdn)
   - [Setup](#setup)
-  - [Basic Usage](#basic-usage)
+  - [Usage](#usage)
   - [Advanced Usage](#advanced-usage)
   - [Options Reference](#options-reference)
   - [Function Reference](#function-reference)
@@ -34,6 +35,12 @@ If your project supports ES6 modules or commonjs modules, install via npm or yar
 
 ```bash
 npm install freezeframe
+```
+
+### yarn
+
+```bash
+yarn add freezeframe
 ```
 
 ### CDN
@@ -59,9 +66,21 @@ Add **freezeframe-responsive** as an additional class name to make the .gif resp
 <img class="freezeframe freezeframe-responsive" src="image.gif" />
 ```
 
-## Basic Usage
+## Usage
 
-✨Freeze those frames ✨
+If your environment supports commonjs modules (`require`) or es6 module imports (`import`), you can import freezeframe like so:
+
+```js
+// es6 modules
+import Freezeframe from 'freezeframe';
+
+// or commonjs
+const Freezeframe = require('freezeframe');
+```
+
+However, if you are using the CDN version, you can just access the global variable, `Freezeframe`.
+
+✨ Now time to Freeze those frames ✨
 
 ```js
 new Freezeframe();
@@ -110,7 +129,7 @@ var ff = new freezeframe({
 
 - ### ```selector```
 
-    <code><b>type:</b> string</code>  
+    <code><b>type:</b> string|DOM object</code>  
     <code><b>default</b>: ".freezeframe"</code>  
 
     The selector used to search for .gifs when the ```trigger()``` function is run.
