@@ -6,7 +6,13 @@
 
 ## Examples
 
+GH Pages:
+
 http://ctrl-freaks.github.io/freezeframe.js/vue.html
+
+Codesandbox:
+
+https://codesandbox.io/s/vue-freezeframe-demo-jibmp
 
 ## Project setup
 

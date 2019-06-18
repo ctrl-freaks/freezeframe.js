@@ -28,6 +28,10 @@ To get started with freezeframe, head over to the core [freezeframe](./packages/
 
 To use freezeframe with Vue.js, check out [vue-freezeframe](./packages/vue-freezeframe).
 
+## How it works
+
+For the curious, we are able to pause animated gifs by writing their data to a canvas element. Only the first frame of the animation can be written to the canvas, so we now have a frozen version of the gif.
+
 ## License
 
 freezeframe.js is released under the terms of the MIT License.
