@@ -1,12 +1,17 @@
 # vue-freezeframe
 
 [![npm version](https://badge.fury.io/js/vue-freezeframe.svg)](https://badge.fury.io/js/vue-freezeframe)
+![Size](https://img.shields.io/github/size/ctrl-freaks/freezeframe.js/packages/vue-freezeframe/dist/freezeframe.umd.min.js.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
+## Examples
+
+http://ctrl-freaks.github.io/freezeframe.js/vue.html
 
 ## Project setup
 
 ```bash
-npm install vue-freezeframe
+npm install freezeframe vue-freezeframe
 ```
 
 ## Install globally
@@ -43,6 +48,21 @@ export default {
   }
 };
 </script>
+```
+
+## Options
+
+The `options` prop accepts all options allowed by [freezeframe core](../freezeframe)
+
+```html
+<template>
+  <vue-freezeframe
+    src="./something.gif"
+    :options="{
+      trigger: false
+    }"
+  />
+</template>
 ```
 
 <!-- 

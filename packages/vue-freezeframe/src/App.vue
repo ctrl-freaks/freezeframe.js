@@ -9,7 +9,7 @@
     </div>
 
     <div class="section">
-      <p>start/stop manually</p>
+      <p>start/stop manually, with overlay</p>
 
       <button @click="start">Start</button>
       <button @click="stop">Stop</button>
@@ -19,7 +19,8 @@
         src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif"
         ref="freeze"
         :options="{
-          trigger: false
+          trigger: false,
+          overlay: true
         }"
       />
     </div>

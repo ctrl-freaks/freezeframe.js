@@ -312,18 +312,20 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"739ac426-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Freezeframe.vue?vue&type=template&id=56364ca2&
-var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-freezeframe"},[_c('img',{ref:"img",attrs:{"src":_vm.src}})])}
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"739ac426-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Freezeframe.vue?vue&type=template&id=18e0dcbe&
+var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-freezeframe"},[(_vm.$slots.default)?_vm._t("default"):(_vm.src)?_c('img',{ref:"img",attrs:{"src":_vm.src}}):_vm._e()],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Freezeframe.vue?vue&type=template&id=56364ca2&
+// CONCATENATED MODULE: ./src/components/Freezeframe.vue?vue&type=template&id=18e0dcbe&
 
 // EXTERNAL MODULE: ./node_modules/freezeframe/dist/freezeframe.min.js
 var freezeframe_min = __webpack_require__("5233");
 var freezeframe_min_default = /*#__PURE__*/__webpack_require__.n(freezeframe_min);
 
 // CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js??ref--12-0!./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Freezeframe.vue?vue&type=script&lang=js&
+//
+//
 //
 //
 //
@@ -340,10 +342,18 @@ var freezeframe_min_default = /*#__PURE__*/__webpack_require__.n(freezeframe_min
     src: {
       type: String,
       default: null
+    },
+    options: {
+      type: Object,
+      default: null
     }
   },
   mounted: function mounted() {
-    this.$freezeframe = new freezeframe_min_default.a(this.$refs.img);
+    if (this.$slots.default) {
+      this.$freezeframe = new freezeframe_min_default.a(this.$el, this.options);
+    } else if (this.src) {
+      this.$freezeframe = new freezeframe_min_default.a(this.$refs.img, this.options);
+    }
   },
   methods: {
     start: function start() {
@@ -478,10 +488,11 @@ var component = normalizeComponent(
   name: 'vue-freezeframe',
   install: function install(Vue) {
     Vue.component(this.name, Freezeframe);
-  },
-  VueFreezeframe: Freezeframe
+  }
 });
+
 // CONCATENATED MODULE: ./node_modules/@vue/cli-service/lib/commands/build/entry-lib.js
+/* concated harmony reexport VueFreezeframe */__webpack_require__.d(__webpack_exports__, "VueFreezeframe", function() { return Freezeframe; });
 
 
 /* harmony default export */ var entry_lib = __webpack_exports__["default"] = (lib);

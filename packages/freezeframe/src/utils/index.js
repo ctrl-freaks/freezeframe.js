@@ -2,14 +2,6 @@ export const compose = (...fns) => (
   fns.reduceRight((f, g) => (...args) => f(g(...args)))
 );
 
-// export const asyncCallback = (fn, ...args) => {
-//   return new Promise((resolve) => {
-//     fn(...args, (data) => (
-//       resolve(data)
-//     ));
-//   });
-// };
-
 export const formatMessage = (string) => `✨Freezeframe: ${string}✨`;
 
 export const error = (message, ...args) => {

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>freezeframe.js v3.0.10</title>
+
+<!-- gh-pages -->
+<link rel="stylesheet" href="https://unpkg.com/freezeframe@3.0.10/build/css/freezeframe_styles.min.css">
+<script type="text/javascript" src="https://unpkg.com/freezeframe@3.0.10/build/js/freezeframe.pkgd.min.js"></script>
+
+<style type="text/css">
+
+body {
+  text-align: center;
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 20px;
+  color: #202020;
+  font-size: 13px;
+}
+
+a {
+  color: #202020;
+}
+
+p {
+  font-family: monospace;
+  text-align: center;
+
+  padding: 10px 0px;
+}
+
+button {
+  font-family: monospace;
+  text-align: center;
+
+  width: 100px;
+  margin: 0px 10px 10px 0px;
+  padding: 5px 0px;
+  border: 1px solid #000;
+  background: #fff;
+
+  outline: none;
+}
+
+button:active {
+  background: #000;
+  color: #fff;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+</style>
+
+<script type="text/javascript">
+  $(function() {
+
+    first = new freezeframe('.my_class_1').freeze();
+
+    second = new freezeframe({
+      'selector': '.my_class_2',
+      'animation_play_duration': Infinity,
+      'non_touch_device_trigger_event': 'click'
+    }).freeze();
+
+    third = new freezeframe('.my_class_3').capture().setup();
+
+    $('.start').click(function(e) {
+      e.preventDefault();
+      third.trigger();
+    });
+
+    $('.stop').click(function(e) {
+      e.preventDefault();
+      third.release();
+    });
+
+    $('.my_class_4').freezeframe();
+	
+	  $('.my_class_5').freezeframe({overlay: true});
+
+  })
+</script>
+
+</head>
+
+<body>
+
+<p class="bold title">freezeframe.js v3.0.10</p>
+
+<p>natural width,<br />animate on hover.</p>
+<img class="my_class_1" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" />
+
+<p>responsive,<br />start &amp; stop on click,<br />playing <span class="italic">forever.</span></p>
+<img class="my_class_2 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />
+
+<p>responsive,<br />start &amp; stop manually.</p>
+<button class="start">start</button><button class="stop">stop</button>
+<img class="my_class_3 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif" />
+
+<p>responsive,<br />jquery/zepto plugin.</p>
+<img class="my_class_4 freezeframe-responsive" src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141f2be4b0a4afc2d17505/56141f47e4b00b973f0ec806/1444159323808/Ecco-Domani-Summer-Cinemagraph-980px.gif?format=1000w" />
+
+<p>with overlay icon.</p>
+<img class="my_class_5" src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/5615846be4b042d6d89a94ee/1444251161903/?format=1000w" />
+
+<p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
+
+</body>
+</html>

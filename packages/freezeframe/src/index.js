@@ -21,8 +21,11 @@ class Freezeframe {
     options
   ) {
     this.items = [];
-    this.options = Object.assign({}, defaultOptions, options);
-    this.init(selectorOrNodes);
+    this.options = selectorOrNodes instanceof Object && !options
+      ? { ...defaultOptions, ...selectorOrNodes }
+      : { ...defaultOptions, ...options };
+    const target = this.options.selector || selectorOrNodes;
+    this.init(target);
   }
 
   init(selectorOrNodes) {

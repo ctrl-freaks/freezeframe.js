@@ -1,6 +1,7 @@
 # Freezeframe.js
 
 [![npm version](https://badge.fury.io/js/freezeframe.svg)](https://badge.fury.io/js/freezeframe)
+![Size](https://img.shields.io/github/size/ctrl-freaks/freezeframe.js/packages/freezeframe/dist/freezeframe.min.js.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Freezeframe.js is a library that pauses animated .gifs and enables them to
@@ -109,40 +110,14 @@ logo.stop(); // stop animation
 
 ## Options Reference
 
-<!-- Options can be passed to a freezeframe instance on creation in the form of an 
-**object** or a **string**. Strings will be interpreted as the **selector** option.  
-
-```javascript
-// Options passed to jQuery plugin
-$('.my_class').freezeframe({'animation_play_duration': 2500})
-
-// String as selector option
-var ff = new freezeframe('.my_class');
-
-// Object as options
-var ff = new freezeframe({
-  'selector': '.my_class',
-  'animation_play_duration': 3000,
-  'non_touch_device_trigger_event': 'hover'
-})
-``` -->
-
 - ### ```selector```
 
     <code><b>type:</b> string|DOM object</code>  
     <code><b>default</b>: ".freezeframe"</code>  
 
     The selector used to search for .gifs when the ```trigger()``` function is run.
-
-<!-- * ### ```animation_play_duration```  
-
-    <code><b>type:</b> integer</code>  
-    <code><b>default</b>: 5000</code>  
-    <code><b>options</b>: Infinity</code>  
-
-    The number of milliseconds a .gif will animate for when triggered by click / 
-    touch event.  
-    Use ```Infinity``` to make the .gif play *forever.* -->
+    Selector may either be passed as the first argument of the Freezeframe constructor, or as a
+    property of the options object.
 
 - ### ```trigger```  
 
@@ -151,6 +126,13 @@ var ff = new freezeframe({
     <code><b>options</b>: "hover", "click", false</code>  
 
     The trigger event to start animation for non-touch devices.
+
+- ### ```overlay```  
+
+    <code><b>type:</b> boolean</code>  
+    <code><b>default</b>: false</code>  
+
+    Whether or not to display a play icon on top of the paused image.
 
 ## Function Reference
 
@@ -168,55 +150,11 @@ var ff = new freezeframe({
 
   // Object as options
   const ff = new Freezeframe({
-    'selector': '.my-class',
-    'trigger': 'hover'
-  })
+    selector: '.my-class',
+    trigger: 'hover',
+    overlay: true
+  });
   ```
-
-<!-- * ### ```trigger(selector)```
-
-    trigger images to be paused by freezeframe. If run without selector
-    argument, selector in freezeframe options will be used. Can be run multiple
-    times with different selector to group many images, unrelated by selector,
-    in one freezeframe instance.
-
-  ```js
-  ff.trigger();               // use selector in freezeframe options
-  ff.trigger('.my_class');    // use custom selector
-  ``` -->
-
-<!-- * ### ```setup()```
-
-    Creates and inserts support elements. Can be filtered by selector.  
-
-  ```js
-  ff.setup();                 // all images in freezeframe instance
-  ff.setup('.my_class');      // filter images by selector
-  ```
-
-    HTML image before:
-
-  ```html
-  <img class="freezeframe" src="my_image.gif" />
-  ```  
-
-  ...and after:
-
-  ```html
-  <div class="ff-container">
-    <canvas class="ff-canvas ff-canvas-ready" width="400" height="250"></canvas>
-    <img class="freezeframe ff-setup ff-image ff-image-ready" src="my_image.gif">
-  </div>
-  ``` -->
-
-<!-- * ### ```attach(selector)```
-  
-    Attaches hover / click / touch events based on freezeframe options. Can be filtered by selector.
-
-  ```js
-  ff.attach();                // all images in freezeframe instance
-  ff.attach('.my_class');     // filter images by selector
-  ``` -->
 
 - ### ```start(selector)```
 
