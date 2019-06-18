@@ -65,6 +65,27 @@ The `options` prop accepts all options allowed by [freezeframe core](../freezefr
 </template>
 ```
 
+## Slot
+
+Using the default slot, you can freeze any .gifs inside, while safely including other content too.
+
+```html
+<template>
+  <vue-freezeframe
+    :options="{
+      trigger: 'click'
+    }"
+  >
+    <h1>Images</h1>
+    <img src="./1.gif">
+    <img src="./2.gif">
+    <p>
+      Other content here
+    </p>
+  </vue-freezeframe>
+</template>
+```
+
 <!-- 
 ### Compiles and hot-reloads for development
 
