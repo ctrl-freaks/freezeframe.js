@@ -23,7 +23,7 @@ functions. It supports responsive images and works as a jQuery / Zepto plugin.
 ```
   <link rel="stylesheet" href="freezeframe_styles.min.css">
   <script src="freezeframe.min.js"></script>
-    ```
+```
 2. If you do not use the **packaged version** of freezeframe, the following dependencies are required:
   * imagesLoaded Packaged v4.1.4 ( [https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded) )
   * jQuery v2.1.4 *or* Zepto v1.1.6  
