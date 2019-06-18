@@ -12,7 +12,7 @@ animate on mouse hover / mouse click / touch event, or triggered manually.
 Version 4+ is built with modern javascript in mind. It's transpiled with webpack/babel, so it should
 work in most environments, but we are no longer supporting the jquery plugin.
 
-If you want to use freeezeframe as a jquery plugin, check out
+If you want to use freezeframe as a jquery plugin, check out
 [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
 ## Packages
