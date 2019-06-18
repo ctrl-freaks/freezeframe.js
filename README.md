@@ -1,6 +1,7 @@
 # Freezeframe.js
 
 [![npm version](https://badge.fury.io/js/freezeframe.svg)](https://badge.fury.io/js/%40thrivehive%2Feslint-config-node)
+![Size](https://img.shields.io/github/size/ctrl-freaks/freezeframe.js/packages/freezeframe/dist/freezeframe.min.js.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 Freezeframe.js is a library that pauses animated .gifs and enables them to
@@ -8,14 +9,15 @@ animate on mouse hover / mouse click / touch event, or triggered manually.
 
 ## 4.x
 
-Version 4+ is built with modern javascript in mind.
+Version 4+ is built with modern javascript in mind. It's transpiled with webpack/babel, so it should
+work in most environments, but we are no longer supporting the jquery plugin.
 
 If you want to use freeezeframe as a jquery plugin, check out
 [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
 ## Packages
 
-This is a lernajs monorepo, containing the following packages:
+This is a [lernajs](https://lerna.js.org/) monorepo, containing the following packages:
 
 - [freezeframe](./packages/freezeframe)
 - [vue-freezeframe](./packages/vue-freezeframe)

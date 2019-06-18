@@ -5,18 +5,45 @@
     <div class="section">
       <p>natural width,<br />animate on hover.</p>
 
-      <freezeframe src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b018c0454fd619/1444744841735/pool980.gif" />
+      <freezeframe src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w" />
     </div>
 
     <div class="section">
-      <p>start/stop manually</p>
+      <p>start/stop manually, with overlay</p>
 
       <button @click="start">Start</button>
       <button @click="stop">Stop</button>
       <button @click="toggle">Toggle</button>
 
-      <freezeframe src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif" ref="freeze" />
+      <freezeframe
+        src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif"
+        ref="freeze"
+        :options="{
+          trigger: false,
+          overlay: true
+        }"
+      />
     </div>
+
+    <div class="section">
+      <p>using slot</p>
+
+      <freezeframe class="grid">
+        <div class="cell">
+          <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e801085229b264ca29fc/1519577337605/download.gif?format=1000w">
+        </div>
+        <div class="cell">
+          <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e904c830257a34734ff5/1519577373504/Armani-Central-Park-6151.gif?format=1000w">
+        </div>
+        <div class="cell">
+          <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a95c231419202eb9a763970/1519814094692/tumblr_nfro6qnt591qzcq51o1_500.gif?format=750w">
+        </div>
+        <div class="cell">
+          <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a93f42471c10b0d656d1562/1519814094495/dirk-980.gif?format=1000w">
+        </div>
+      </freezeframe>
+    </div>
+    <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a></p>
   </div>
 </template>
 
@@ -61,7 +88,10 @@ body {
   text-align: center;
   color: #202020;
 }
+</style>
 
+
+<style lang="scss" scoped>
 a {
   color: #202020;
 }
@@ -94,5 +124,18 @@ button:active {
 
 .italic {
   font-style: italic;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+
+  .cell {
+    width: calc(50% - 24px);
+    height: auto;
+    padding: 12px;
+  }
 }
 </style>

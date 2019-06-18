@@ -1,6 +1,8 @@
 <template>
   <div class="vue-freezeframe">
+    <slot v-if="$slots.default" />
     <img
+      v-else-if="src"
       ref="img"
       :src="src"
     >
@@ -17,9 +19,17 @@ export default {
       type: String,
       default: null,
     },
+    options: {
+      type: Object,
+      default: null,
+    },
   },
   mounted() {
-    this.$freezeframe = new Freezeframe(this.$refs.img);
+    if (this.$slots.default) {
+      this.$freezeframe = new Freezeframe(this.$el, this.options);
+    } else if (this.src) {
+      this.$freezeframe = new Freezeframe(this.$refs.img, this.options);
+    }
   },
   methods: {
     start() {

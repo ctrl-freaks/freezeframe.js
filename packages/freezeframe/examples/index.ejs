@@ -8,7 +8,7 @@
 <script src="<%= scriptSrc %>"></script>
 
 <!-- gh-pages -->
-<!-- <script type="text/javascript" src="https://cdn.rawgit.com/ctrl-freaks/freezeframe.js/master/dist/freezeframe.min.js"></script> -->
+<!-- <script type="text/javascript" src="https://unpkg.com/freezeframe/dist/freezeframe.min.js"></script> -->
 
 <style type="text/css">
 
@@ -76,7 +76,7 @@ new Freezeframe();
 
 <!-- Example 2 -->
 
-<p>responsive,<br />start & stop on click,<br />playing <span class="italic">forever.</span></p>
+<p>start & stop on click</p>
 
 <img
   class="my-class-2"
@@ -84,7 +84,8 @@ new Freezeframe();
 />
 
 <script>
-new Freezeframe('.my-class-2', {
+new Freezeframe({
+  selector: '.my-class-2',
   trigger: 'click'
 });
 </script>
