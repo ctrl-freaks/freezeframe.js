@@ -34,8 +34,7 @@
     "write-file-webpack-plugin": "^4.5.0"
   },
   "scripts": {
-    "build": "node utils/build.js",
-    "rollup": "rollup --config",
+    "build": "node utils/build.js && ./demo.sh",
     "start": "node utils/dev.js",
     "lint": "eslint -f json -o lintReport.json ./src",
     "test": "echo \"Error: no test specified\" && exit 1"

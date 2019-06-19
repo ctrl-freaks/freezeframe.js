@@ -21,6 +21,7 @@ plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezefra
   - [Advanced Usage](#Advanced-Usage)
   - [Options Reference](#Options-Reference)
   - [Function Reference](#Function-Reference)
+  - [Contributing](#Contributing)
   - [License](#License)
   - [Thanks](#Thanks)
 
@@ -172,6 +173,24 @@ logo.stop(); // stop animation
   ```js
   ff.stop();
   ```
+
+## Contributing
+
+Assuming you have already read the [instructions](../../#contributing) in the project root:
+
+- First, `cd` into the appropriate package directory
+
+```bash
+# start webpack dev server
+npm start
+```
+
+```bash
+# build the project and examples for gh-pages
+npm run build
+```
+
+Then commit your changes and submit your PR for review.
 
 ## License
 

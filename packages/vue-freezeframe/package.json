@@ -5,9 +5,9 @@
   "repository": "https://github.com/ctrl-freaks/freezeframe.js",
   "license": "MIT",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name freezeframe src/lib.js",
-    "build-demo": "./demo.sh",
+    "start": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name freezeframe src/lib.js && npm run build-demo",
+    "build-demo": "vue-cli-service build --dest demo && ./demo.sh",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
   },

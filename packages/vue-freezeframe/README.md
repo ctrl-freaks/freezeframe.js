@@ -92,37 +92,24 @@ Using the default slot, you can freeze any .gifs inside, while safely including 
 </template>
 ```
 
-<!-- 
-### Compiles and hot-reloads for development
+## Contributing
+
+Assuming you have already read the [instructions](../../#contributing) in the project root:
+
+- First, `cd` into the appropriate package directory
 
 ```bash
-npm run serve
+# start webpack dev server
+npm start
 ```
 
-### Compiles and minifies for production
-
 ```bash
+# build the project and examples for gh-pages
 npm run build
 ```
 
-### Run your tests
+Then commit your changes and submit your PR for review.
 
-```bash
-npm run test
-```
+## License
 
-### Lints and fixes files
-
-```bash
-npm run lint
-```
-
-### Run your unit tests
-
-```bash
-npm run test:unit
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/). -->
+vue-freezeframe.js is released under the terms of the MIT License.

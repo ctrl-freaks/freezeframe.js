@@ -4,13 +4,10 @@ import {
   compose,
   normalizeElements,
   validateElements,
-  isTouch
-} from './utils';
-
-import {
-  wrap,
+  isTouch,
+  wrapNode,
   htmlToNode
-} from './utils/dom';
+} from './utils';
 
 import * as templates from './templates';
 import { classes, defaultOptions } from './constants';
@@ -68,7 +65,7 @@ class Freezeframe {
     }
     $image.classList.add(classes.IMAGE);
     $container.appendChild($canvas);
-    wrap($image, $container);
+    wrapNode($image, $container);
 
     return {
       $container,

@@ -4,11 +4,7 @@
 <meta charset="utf-8">
 <title>freezeframe.js</title>
 
-<!-- local -->
-<!-- <script src="./freezeframe.min.js"></script> -->
-
-<!-- gh-pages -->
-<script type="text/javascript" src="https://unpkg.com/freezeframe"></script>
+<script src="./freezeframe.min.js"></script>
 
 <style type="text/css">
 
@@ -63,7 +59,7 @@ button:active {
 
 <!-- Example 1 -->
 
-<p>natural width,<br />animate on hover.</p>
+<p>basic,<br />animate on hover.</p>
 
 <img
   class="freezeframe"
@@ -92,7 +88,7 @@ new Freezeframe({
 
 <!-- Example 3 -->
 
-<p>responsive,<br />start & stop manually.</p>
+<p>start & stop manually.</p>
 
 <button class="start">start</button>
 <button class="stop">stop</button>
@@ -120,23 +116,7 @@ document
   });
 </script>
 
-
 <!-- Example 4 -->
-
-<p>responsive</p>
-
-<img
-  class="my-class-4 freezeframe"
-  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141f2be4b0a4afc2d17505/56141f47e4b00b973f0ec806/1444159323808/Ecco-Domani-Summer-Cinemagraph-980px.gif?format=1000w"
-/>
-
-<script>
-new Freezeframe('.my-class-4', {
-  responsive: true
-});
-</script>
-
-<!-- Example 5 -->
 
 <p>with overlay icon.</p>
 
@@ -151,7 +131,7 @@ new Freezeframe('.my-class-5', {
 });
 </script>
 
-<!-- Example 6 -->
+<!-- Example 5 -->
 
 <p>passing a DOM reference</p>
 
