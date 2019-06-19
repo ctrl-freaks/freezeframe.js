@@ -3,7 +3,7 @@
     <p class="bold title">vue-freezeframe</p>
 
     <div class="section">
-      <p>natural width,<br />animate on hover.</p>
+      <p>basic,<br />animate on hover.</p>
 
       <freezeframe src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w" />
     </div>
@@ -26,9 +26,9 @@
     </div>
 
     <div class="section">
-      <p>using slot</p>
+      <p>using slot & overlay</p>
 
-      <freezeframe class="grid">
+      <freezeframe class="grid" :options="{ overlay: true }">
         <div class="cell">
           <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e801085229b264ca29fc/1519577337605/download.gif?format=1000w">
         </div>
