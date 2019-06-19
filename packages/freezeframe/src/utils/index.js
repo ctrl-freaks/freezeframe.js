@@ -16,14 +16,6 @@ export const isTouch = () => {
   return 'ontouchstart' in window || 'onmsgesturechange' in window;
 };
 
-export const normalizeElements = (selectorOrNodes) => {
-  const sel = selectorOrNodes;
-  const type = typeof sel;
-  return type === 'string'
-    ? document.querySelectorAll(sel)
-    : sel;
-};
-
 export const parseFilename = (filePath) => {
   return filePath
     .split('.')
@@ -35,6 +27,14 @@ export const parseFilename = (filePath) => {
 export const validateFilename = (filePath) => {
   const ext = parseFilename(filePath);
   return ext === 'gif';
+};
+
+export const normalizeElements = (selectorOrNodes) => {
+  const sel = selectorOrNodes;
+  const type = typeof sel;
+  return type === 'string'
+    ? document.querySelectorAll(sel)
+    : sel;
 };
 
 export const validateElements = (elements) => {
@@ -49,16 +49,16 @@ export const validateElements = (elements) => {
   return elements;
 };
 
-// export const whichTransitionEvent = () => {
-//   const $el = document.createElement('div');
-//   console.log($el.style);
-//   const options = [
-//     'transitionend',
-//     'webkitTransitionEnd',
-//     'oTransitionEnd',
-//     'otransitionend'
-//   ];
-//   return options.find((name) => {
-//     return !!$el.style[name];
-//   });
-// };
+export const htmlToNode = (html) => {
+  const $wrap = window.document.createElement('div');
+  $wrap.innerHTML = html;
+  const $content = $wrap.childNodes;
+  return $content.length > 1
+    ? $content
+    : $content[0];
+};
+
+export const wrapNode = ($el, $wrapper) => {
+  $el.parentNode.insertBefore($wrapper, $el);
+  $wrapper.appendChild($el);
+};
