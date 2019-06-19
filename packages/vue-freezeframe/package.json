@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name freezeframe src/lib.js",
+    "build": "vue-cli-service build --target lib --name freezeframe src/lib.js && npm run build-demo",
     "build-demo": "vue-cli-service build --dest demo && ./demo.sh",
     "lint": "vue-cli-service lint",
     "test:unit": "vue-cli-service test:unit"
