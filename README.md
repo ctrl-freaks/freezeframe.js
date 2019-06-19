@@ -17,7 +17,7 @@ If you want to use freezeframe as a jquery plugin, check out
 
 ## Packages
 
-This is a [lernajs](https://lerna.js.org/) monorepo, containing the following packages:
+This is a [lerna.js](https://lerna.js.org/) monorepo, containing the following packages:
 
 - [freezeframe](./packages/freezeframe)
 - [vue-freezeframe](./packages/vue-freezeframe)
@@ -31,6 +31,35 @@ To use freezeframe with Vue.js, check out [vue-freezeframe](./packages/vue-freez
 ## How it works
 
 For the curious, we are able to pause animated gifs by writing their data to a canvas element. Only the first frame of the animation can be written to the canvas, so we now have a frozen version of the gif.
+
+## Contributing
+
+- Fork or clone the repository.
+- Install lerna
+
+```bash
+npm install -g lerna
+```
+
+- Install the monorepo dependencies
+
+```bash
+npm install
+```
+
+- Install the sub-package dependencies
+
+```bash
+lerna bootstrap
+```
+
+- If you are part of the ctrl-freakz organization, you can publish directly to npm:
+  
+```bash
+lerna publish
+```
+
+Otherwise, submit your PR for review.
 
 ## License
 
