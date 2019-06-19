@@ -18,11 +18,11 @@ functions. It supports responsive images and works as a jQuery / Zepto plugin.
 <a name="files_dependencies"></a>
 ## Files & Dependencies
 
-1. Include the js and css from **/build/**  
+1. Include the js and css from CDN
 
-```
-  <link rel="stylesheet" href="freezeframe_styles.min.css">
-  <script src="freezeframe.min.js"></script>
+```html
+  <link rel="stylesheet" href="https://unpkg.com/freezeframe@3.0.10/build/css/freezeframe_styles.min.css">
+  <script type="text/javascript" src="https://unpkg.com/freezeframe@3.0.10/build/js/freezeframe.pkgd.min.js"></script>
 ```
 2. If you do not use the **packaged version** of freezeframe, the following dependencies are required:
   * imagesLoaded Packaged v4.1.4 ( [https://github.com/desandro/imagesloaded](https://github.com/desandro/imagesloaded) )
