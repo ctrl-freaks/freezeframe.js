@@ -1,6 +1,6 @@
 {
   "name": "vue-freezeframe",
-  "version": "0.1.0-alpha.1",
+  "version": "4.0.0-alpha.3",
   "main": "dist/freezeframe.umd.js",
   "repository": "https://github.com/ctrl-freaks/freezeframe.js",
   "license": "MIT",
@@ -12,13 +12,10 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "peerDependencies": {
-    "vue": "^2.6.10",
-    "freezeframe": "^4.0.0-alpha.1"
+    "freezeframe": "^4.0.0-alpha.1",
+    "vue": "^2.6.10"
   },
   "devDependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10",
-    "freezeframe": "^4.0.0-alpha.1",
     "@vue/cli-plugin-babel": "^3.8.0",
     "@vue/cli-plugin-eslint": "^3.8.0",
     "@vue/cli-plugin-unit-jest": "^3.8.0",
@@ -28,10 +25,13 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "core-js": "^2.6.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "freezeframe": "^4.0.0-alpha.3",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.6.10"
   }
 }
