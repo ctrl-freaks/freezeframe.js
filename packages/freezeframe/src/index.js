@@ -4,6 +4,7 @@ import {
   compose,
   normalizeElements,
   validateElements,
+  dedupeImages,
   isTouch,
   wrapNode,
   htmlToNode
@@ -35,7 +36,8 @@ class Freezeframe {
   capture(selectorOrNodes) {
     this.$images = compose(
       normalizeElements,
-      validateElements
+      validateElements,
+      dedupeImages
     )(selectorOrNodes);
   }
 

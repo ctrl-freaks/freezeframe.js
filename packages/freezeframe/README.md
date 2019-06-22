@@ -56,16 +56,20 @@ If not, you can pull in the library from a CDN:
 ## Setup
 
 Add **freezeframe** as a class name on the .gifs you want processed.  
-( You can optionally specify a custom selector as shown in [Advanced Usage](#advanced_usage). )
+( You can optionally use a custom selector as shown in [Advanced Usage](#advanced_usage). )
 
 ```html
 <img class="freezeframe" src="image.gif" />
 ```
 
-Add **freezeframe-responsive** as an additional class name to make the .gif responsive.
+It is also possible to put the `.freezeframe` class on a parent element containing as many gifs as you want:
 
 ```html
-<img class="freezeframe freezeframe-responsive" src="image.gif" />
+<div class="freezeframe">
+  <img src="image1.gif">
+  <img src="image2.gif">
+  <img src="image3.gif">
+</div>
 ```
 
 ## Usage
