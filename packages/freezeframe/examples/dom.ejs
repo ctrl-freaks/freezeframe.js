@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>freezeframe.js</title>
+
+<script src="<%= scriptSrc %>"></script>
+
+<style type="text/css">
+
+body {
+  max-width: 1000px;
+  margin: 0px auto;
+  padding: 20px;
+  font-size: 13px;
+  text-align: center;
+  color: #202020;
+}
+
+a {
+  color: #202020;
+}
+
+p {
+  padding: 10px 0px;
+  text-align: center;
+  font-family: monospace;
+}
+
+button {
+  width: 100px;
+  margin: 0px 10px 10px 0px;
+  padding: 5px 0px;
+  border: 1px solid #000;
+  background: #fff;
+  outline: none;
+  font-family: monospace;
+  text-align: center;
+}
+
+button:active {
+  background: #000;
+  color: #fff;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+</style>
+</head>
+
+<body>
+
+<p class="bold title">advanced freezeframe.js tests</p>
+
+<!-- Example 1 -->
+
+<p>getElementsByClassName</p>
+
+<img
+  class="my-class-1"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+/>
+
+<script>
+new Freezeframe(document.getElementsByClassName('my-class-1'));
+</script>
+
+<!-- Example 2 -->
+
+<p><i>getElementsByClassName on parent with redudant child class</i>e</p>
+
+<div class="freeze">
+  <img
+    src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+  />
+  <img
+    class="freeze"
+    src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+  />
+</div>
+
+<script>
+new Freezeframe(document.getElementsByClassName('freeze'));
+</script>
+
+<p><i>querySelectorAll</i></p>
+
+<img
+  class="freeze-2"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+/>
+
+<script>
+new Freezeframe(document.querySelectorAll('.freeze-2'));
+</script>
+
+<p><i>querySelectorAll with nested redundant selector</i></p>
+
+<div class="freeze-3">
+  <img
+    src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+  />
+  <img
+    class="freeze-3"
+    src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+  />
+</div>
+
+<script>
+new Freezeframe(document.querySelectorAll('.freeze-3'));
+</script>
+
+<p>getElementById</p>
+
+<img
+  id="freeze-id"
+  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+/>
+
+<script>
+new Freezeframe(document.getElementById('freeze-id'));
+</script>
+
+<p>parent only</p>
+
+<div class="parent-freeze">
+  <img
+    src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+  />
+  <img
+    src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/56141631e4b0095d43132f02/5614164be4b0652b31fbd0a5/1444744817955/parislove9801.gif"
+  />
+</div>
+
+<script>
+new Freezeframe('.parent-freeze');
+</script>
+
+<p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
+
+</body>
+</html>

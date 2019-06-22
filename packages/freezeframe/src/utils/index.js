@@ -38,15 +38,28 @@ export const normalizeElements = (selectorOrNodes) => {
 };
 
 export const validateElements = (elements) => {
-  Array.from(elements).forEach((image) => {
+  const list = elements instanceof HTMLElement ? [elements] : elements;
+  return Array.from(list).reduce((acc, image) => {
     if (!(image instanceof HTMLImageElement)) {
-      error('Invalid element', image);
+      const $children = image.querySelectorAll('img');
+      if (!$children.length) {
+        error('Invalid element', image);
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        acc = acc.concat(...$children);
+      }
+    } else {
+      acc.push(image);
+      if (!(validateFilename(image.src))) {
+        warn('Image is not a gif', image);
+      }
     }
-    if (!(validateFilename(image.src))) {
-      warn('Image is not a gif', image);
-    }
-  });
-  return elements;
+    return acc;
+  }, []);
+};
+
+export const dedupeImages = (images) => {
+  return [...new Set(images)];
 };
 
 export const htmlToNode = (html) => {
