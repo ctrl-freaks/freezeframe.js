@@ -1,6 +1,6 @@
 # Freezeframe.js
 
-[![npm version](https://badge.fury.io/js/freezeframe.svg)](https://badge.fury.io/js/%40thrivehive%2Feslint-config-node)
+[![npm version](https://badge.fury.io/js/freezeframe.svg)](https://badge.fury.io/js/freezeframe)
 ![Size](https://img.shields.io/github/size/ctrl-freaks/freezeframe.js/packages/freezeframe/dist/freezeframe.min.js.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
