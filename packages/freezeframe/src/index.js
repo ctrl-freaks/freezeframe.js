@@ -90,14 +90,18 @@ class Freezeframe {
       $canvas.classList.add(classes.CANVAS_READY);
 
       $canvas.addEventListener('transitionend', () => {
-        $container.classList.add(classes.READY);
-        $container.classList.add(classes.INACTIVE);
-        $container.classList.remove(classes.LOADING_ICON);
+        this.ready($container);
         resolve(freeze);
       }, {
         once: true
       });
     });
+  }
+
+  ready($container) {
+    $container.classList.add(classes.READY);
+    $container.classList.add(classes.INACTIVE);
+    $container.classList.remove(classes.LOADING_ICON);
   }
 
   attach(freeze) {

@@ -139,6 +139,13 @@ logo.stop(); // stop animation
 
     Whether or not to display a play icon on top of the paused image.
 
+- ### ```responsive```  
+
+    <code><b>type:</b> boolean</code>  
+    <code><b>default</b>: true</code>  
+
+    Whether or not to make the image responsive (100% width)
+
 ## Function Reference
 
 - ### ```Freezeframe(options)```  
@@ -150,14 +157,25 @@ logo.stop(); // stop animation
   // Default options
   new Freezeframe();
 
-  // String as selector option
-  new Freezeframe('.my-class');
+  // String as selector
+  new Freezeframe('.foo');
 
-  // Object as options
+  // DOM reference as selector
+  new Freezeframe(document.querySelectorAll('.foo'));
+
+  // Custom options
   const ff = new Freezeframe({
-    selector: '.my-class',
-    trigger: 'hover',
-    overlay: true
+    selector: '.foo',
+    trigger: 'click',
+    overlay: true,
+    responsive: false
+  });
+
+  // Also valid syntax
+  const ff = new Freezeframe('.foo', {
+    trigger: 'click',
+    overlay: true,
+    responsive: false
   });
   ```
 
@@ -192,6 +210,11 @@ npm start
 ```bash
 # build the project and examples for gh-pages
 npm run build
+```
+
+```bash
+# run unit tests
+npm test
 ```
 
 Then commit your changes and submit your PR for review.
