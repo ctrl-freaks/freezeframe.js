@@ -6,7 +6,6 @@ mockCanvas(window);
 
 const testFreezeframeInstance = (imgCount, selector) => {
   const ff = new Freezeframe(selector);
-  // console.log(document.body.innerHTML);
   const $container = document.getElementsByClassName(classes.CONTAINER);
   const $canvas = document.getElementsByClassName(classes.CANVAS);
   const $image = document.getElementsByClassName(classes.IMAGE);
