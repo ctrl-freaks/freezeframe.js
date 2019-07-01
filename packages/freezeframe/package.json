@@ -16,6 +16,7 @@
     "clean-webpack-plugin": "^2.0.2",
     "common-tags": "^1.8.0",
     "copy-webpack-plugin": "^5.0.3",
+    "coveralls": "^3.0.4",
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
@@ -40,7 +41,8 @@
     "build": "node utils/build.js && ./demo.sh",
     "start": "node utils/dev.js",
     "lint": "eslint -f json -o lintReport.json ./src",
-    "test": "jest"
+    "test": "jest",
+    "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
