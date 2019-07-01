@@ -2,6 +2,7 @@
   "name": "freezeframe-root",
   "scripts": {
     "bootstrap": "lerna bootstrap",
+    "test": "lerna run test --stream",
     "lint": "eslint ./"
   },
   "devDependencies": {
