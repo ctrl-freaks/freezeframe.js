@@ -1,6 +1,7 @@
 {
   "name": "freezeframe-root",
   "scripts": {
+    "bootstrap": "lerna bootstrap",
     "lint": "eslint ./"
   },
   "devDependencies": {
