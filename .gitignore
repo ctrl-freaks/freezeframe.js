@@ -2,3 +2,4 @@
 .archived
 node_modules
 build
+coverage

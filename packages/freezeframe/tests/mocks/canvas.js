@@ -6,4 +6,10 @@ export default (window) => {
       drawImage() {}
     };
   };
+  window.HTMLCanvasElement.prototype.addEventListener = (event, cb) => {
+    cb(event);
+  };
+  window.HTMLImageElement.prototype.addEventListener = (event, cb) => {
+    cb(event);
+  };
 };

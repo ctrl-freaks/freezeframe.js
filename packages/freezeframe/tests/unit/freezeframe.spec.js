@@ -4,8 +4,8 @@ import mockCanvas from '../mocks/canvas';
 
 mockCanvas(window);
 
-const testFreezeframeInstance = (imgCount, selector) => {
-  const ff = new Freezeframe(selector);
+const testFreezeframeInstance = (imgCount, selector, options, cb = () => {}) => {
+  const ff = new Freezeframe(selector, options);
   const $container = document.getElementsByClassName(classes.CONTAINER);
   const $canvas = document.getElementsByClassName(classes.CANVAS);
   const $image = document.getElementsByClassName(classes.IMAGE);
@@ -14,6 +14,7 @@ const testFreezeframeInstance = (imgCount, selector) => {
   expect($container.length).toBe(imgCount);
   expect($canvas.length).toBe(imgCount);
   expect($image.length).toBe(imgCount);
+  cb(ff);
 };
 
 describe('default selector', () => {
@@ -127,5 +128,56 @@ describe('parent selector', () => {
       </div>
     `;
     testFreezeframeInstance(3);
+  });
+});
+
+describe('options', () => {
+  test('selector & options args', async () => {
+    document.body.innerHTML = `
+      <div class="foo">
+        <img src="foo.gif">
+      </div>
+    `;
+    testFreezeframeInstance(1, '.foo', {
+      overlay: true
+    }, () => {
+      const $overlay = document.getElementsByClassName(classes.OVERLAY);
+      expect($overlay.length).toBe(1);
+    });
+  });
+
+  test('only options args', async () => {
+    document.body.innerHTML = `
+      <div class="foo">
+        <img src="foo.gif">
+      </div>
+    `;
+    testFreezeframeInstance(1, {
+      selector: '.foo',
+      trigger: 'click',
+      overlay: true
+    }, undefined, () => {
+      const $overlay = document.getElementsByClassName(classes.OVERLAY);
+      expect($overlay.length).toBe(1);
+    });
+  });
+
+  test('manual triggers', async () => {
+    document.body.innerHTML = `
+      <div class="foo">
+        <img src="foo.gif">
+      </div>
+    `;
+    testFreezeframeInstance(1, {
+      selector: '.foo',
+      trigger: false,
+      overlay: true
+    }, undefined, (ff) => {
+      ff.start();
+      const $active = document.getElementsByClassName(classes.ACTIVE);
+      expect($active.length).toBe(1);
+      ff.stop();
+      expect($active.length).toBe(0);
+    });
   });
 });
