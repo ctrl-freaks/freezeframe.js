@@ -54,6 +54,12 @@ npm install
 lerna bootstrap
 ```
 
+- Run tests for all sub-packages
+
+```bash
+npm test
+```
+
 - If you are part of the ctrl-freakz organization, you can publish directly to npm:
   
 ```bash
