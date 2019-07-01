@@ -199,7 +199,7 @@ logo.stop(); // stop animation
 
 ## Contributing
 
-Assuming you have already read the [instructions](../../#contributing) in the project root:
+Assuming you have already read the [instructions](../../) in the project root:
 
 - First, `cd` into the appropriate package directory
 
