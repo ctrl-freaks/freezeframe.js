@@ -92,9 +92,28 @@ Using the default slot, you can freeze any .gifs inside, while safely including 
 </template>
 ```
 
+## Events
+
+All freezeframe events are emitted from the freezeframe component:
+
+- start
+- stop
+- toggle
+
+```html
+<template>
+  <vue-freezeframe
+    src="./something.gif"
+    @start="onStart"
+    @stop="onStop"
+    @toggle="onToggle"
+  />
+</template>
+```
+
 ## Contributing
 
-Assuming you have already read the [instructions](../../#contributing) in the project root:
+Assuming you have already read the [instructions](../../README.md) in the project root:
 
 - First, `cd` into the appropriate package directory
 

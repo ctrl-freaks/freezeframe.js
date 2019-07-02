@@ -121,10 +121,14 @@ class Freezeframe {
     if (!this.isTouch && this.options.trigger === 'hover') {
       $image.addEventListener('mouseenter', () => {
         this.toggleOn(freeze);
+        this.emit(events.START, freeze, true);
+        this.emit(events.TOGGLE, freeze, true);
       });
 
       $image.addEventListener('mouseleave', () => {
         this.toggleOff(freeze);
+        this.emit(events.START, freeze, false);
+        this.emit(events.TOGGLE, freeze, false);
       });
     }
 

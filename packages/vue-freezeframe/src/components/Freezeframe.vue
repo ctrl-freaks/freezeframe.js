@@ -43,8 +43,8 @@ export default {
       if (this.$freezeframe) {
         this.$freezeframe.on('toggle', (items, isPlaying) => {
           const event = isPlaying ? 'start' : 'stop';
-          this.$emit(event, items);
-          this.$emit('toggle', isPlaying);
+          this.$emit(event, items, isPlaying);
+          this.$emit('toggle', items, isPlaying);
         });
       }
     },
