@@ -30,6 +30,7 @@ export default {
     } else if (this.src) {
       this.$freezeframe = new Freezeframe(this.$refs.img, this.options);
     }
+    this.addEventListeners();
   },
   methods: {
     start() {
@@ -37,6 +38,15 @@ export default {
     },
     stop() {
       this.$freezeframe.stop();
+    },
+    addEventListeners() {
+      if (this.$freezeframe) {
+        this.$freezeframe.on('toggle', (items, isPlaying) => {
+          const event = isPlaying ? 'start' : 'stop';
+          this.$emit(event, items);
+          this.$emit('toggle', isPlaying);
+        });
+      }
     },
   },
 };
