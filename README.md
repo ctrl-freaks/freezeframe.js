@@ -51,7 +51,7 @@ npm install
 - Install the sub-package dependencies
 
 ```bash
-lerna bootstrap
+lerna bootstrap --hoist
 ```
 
 - Run tests for all sub-packages
