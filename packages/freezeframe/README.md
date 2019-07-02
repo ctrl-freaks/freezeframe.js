@@ -165,7 +165,7 @@ logo.stop(); // stop animation
   new Freezeframe(document.querySelectorAll('.foo'));
 
   // Custom options
-  const ff = new Freezeframe({
+  new Freezeframe({
     selector: '.foo',
     trigger: 'click',
     overlay: true,
@@ -173,7 +173,7 @@ logo.stop(); // stop animation
   });
 
   // Also valid syntax
-  const ff = new Freezeframe('.foo', {
+  new Freezeframe('.foo', {
     trigger: 'click',
     overlay: true,
     responsive: false
@@ -186,6 +186,7 @@ logo.stop(); // stop animation
     the .gif is already animating. Can be filtered by selector.
 
   ```js
+  const ff = new Freezeframe();
   ff.start();
   ```
 
