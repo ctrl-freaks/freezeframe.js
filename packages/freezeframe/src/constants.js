@@ -8,7 +8,6 @@ export const classes = {
   INACTIVE: 'ff-inactive',
   ACTIVE: 'ff-active',
   CANVAS_READY: 'ff-canvas-ready',
-  // CANVAS_ACTIVE: 'ff-canvas-active',
   RESPONSIVE: 'ff-responsive',
   OVERLAY: 'ff-overlay'
 };
@@ -17,4 +16,10 @@ export const defaultOptions = {
   responsive: true,
   trigger: 'hover',
   overlay: false
+};
+
+export const events = {
+  START: 'start',
+  STOP: 'stop',
+  TOGGLE: 'toggle'
 };

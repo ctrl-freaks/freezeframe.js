@@ -5,6 +5,7 @@
   "main": "/dist/freezeframe.min.js",
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/runtime": "^7.4.5",
@@ -20,6 +21,7 @@
     "css-loader": "^2.1.1",
     "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.17.3",
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-webpack-plugin": "^3.2.0",
@@ -40,7 +42,7 @@
   "scripts": {
     "build": "node utils/build.js && ./demo.sh",
     "start": "node utils/dev.js",
-    "lint": "eslint -f json -o lintReport.json ./src",
+    "lint": "eslint ./src",
     "test": "jest",
     "coveralls": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
