@@ -8,10 +8,9 @@
   "devDependencies": {
     "@thrivehive/eslint-config-node": "^1.2.3",
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
+    "eslint": "^5.16.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.15.0",
     "lerna": "^3.14.1"
-  },
-  "dependencies": {}
+  }
 }
