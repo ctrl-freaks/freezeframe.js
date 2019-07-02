@@ -22,7 +22,9 @@
           trigger: false,
           overlay: true
         }"
-        @toggle="logEvent"
+        @toggle="(e, items, isPlaying) => logEvent('toggle', e, items, isPlaying)"
+        @start="(e, items, isPlaying) => logEvent('start', e, items, isPlaying)"
+        @stop="(e, items, isPlaying) => logEvent('stop', e, items, isPlaying)"
       />
     </div>
 
@@ -76,8 +78,8 @@ export default {
     stop() {
       this.$refs.freeze.stop();
     },
-    logEvent(e) {
-      console.log(e);
+    logEvent(event, items, isPlaying) {
+      console.log(event, items, isPlaying);
     },
   },
 };

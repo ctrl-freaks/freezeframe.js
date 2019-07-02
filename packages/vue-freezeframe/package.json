@@ -12,7 +12,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "peerDependencies": {
-    "freezeframe": "latest",
+    "freezeframe": "^4.0.0-alpha.4",
     "vue": "^2.6.10"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "core-js": "^2.6.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "freezeframe": "^4.0.0-alpha.3",
+    "freezeframe": "^4.0.0-alpha.4",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.6.10",
