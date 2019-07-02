@@ -188,6 +188,7 @@ logo.stop(); // stop animation
   ```js
   // first, save a reference to your freezeframe instance
   const ff = new Freezeframe();
+  
   ff.start();
   ```
 
