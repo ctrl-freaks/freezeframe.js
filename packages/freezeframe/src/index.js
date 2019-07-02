@@ -19,10 +19,11 @@ class Freezeframe {
   $images = [];
 
   eventListeners = {
-    ...Object.keys(events)
-      .map((event) => (
-        { [event]: [] }
-      ))
+    ...Object.values(events)
+      .reduce((acc, item) => {
+        acc[item] = [];
+        return acc;
+      }, {})
   };
 
   constructor(
