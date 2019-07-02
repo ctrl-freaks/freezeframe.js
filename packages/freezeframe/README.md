@@ -183,9 +183,10 @@ logo.stop(); // stop animation
 - ### ```start(selector)```
 
     Start animation, or restarts animation from the first frame if
-    the .gif is already animating. Can be filtered by selector.
+    the .gif is already animating.
 
   ```js
+  // first, save a reference to your freezeframe instance
   const ff = new Freezeframe();
   ff.start();
   ```
