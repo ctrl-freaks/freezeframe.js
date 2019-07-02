@@ -1,8 +1,8 @@
 import Freezeframe from '../../src/index';
 import { classes } from '../../src/constants';
-import mockCanvas from '../mocks/canvas';
+import mockDomApis from '../mocks/dom';
 
-mockCanvas(window);
+mockDomApis(window);
 
 const testFreezeframeInstance = (imgCount, selector, options, cb = () => {}) => {
   const ff = new Freezeframe(selector, options);
