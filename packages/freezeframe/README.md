@@ -180,7 +180,7 @@ logo.stop(); // stop animation
   });
   ```
 
-- ### ```start(selector)```
+- ### ```start()```
 
     Start animation, or restarts animation from the first frame if
     the .gif is already animating.
@@ -195,12 +195,46 @@ logo.stop(); // stop animation
   ff.start();
   ```
 
-- ### ```stop(selector)```
+- ### ```stop()```
 
     Stops animation.
 
   ```js
   ff.stop();
+  ```
+
+- ### ```on(event, callback)```
+
+    Add event listeners to a freezeframe instance.
+
+  - event
+
+    <code><b>type:</b> string</code>  
+    <code><b>options</b>: start|stop|toggle</code>  
+
+  - callback
+
+    <code><b>type:</b> function</code>  
+    <code><b>params</b>:</code>
+      - <code><b>items</b>: array&lt;freezeframe&gt; | freezeframe</code>
+      - <code><b>isPlaying</b>: boolean</code>
+
+  ```js
+  ff.on('start', (items) => {
+    // do something on start
+  };
+
+  ff.on('stop', (items) => {
+    // do something on stop
+  };
+
+  ff.on('toggle', (items, isPlaying) => {
+    if (isPlaying) {
+      // do something on start
+    } else {
+      // do something on stop
+    }
+  };
   ```
 
 ## Contributing

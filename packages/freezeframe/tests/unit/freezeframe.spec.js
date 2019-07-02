@@ -1,8 +1,8 @@
 import Freezeframe from '../../src/index';
 import { classes } from '../../src/constants';
-import mockCanvas from '../mocks/canvas';
+import mockDomApis from '../mocks/dom';
 
-mockCanvas(window);
+mockDomApis(window);
 
 const testFreezeframeInstance = (imgCount, selector, options, cb = () => {}) => {
   const ff = new Freezeframe(selector, options);
@@ -178,6 +178,29 @@ describe('options', () => {
       expect($active.length).toBe(1);
       ff.stop();
       expect($active.length).toBe(0);
+    });
+  });
+});
+
+describe('event listeners', () => {
+  test('selector & options args', async () => {
+    document.body.innerHTML = `
+      <div class="foo">
+        <img src="foo.gif">
+      </div>
+    `;
+    testFreezeframeInstance(1, '.foo', undefined, (ff) => {
+      const startCallbackMock = jest.fn();
+      const stopCallbackMock = jest.fn();
+      const toggleCallbackMock = jest.fn();
+      ff.on('start', startCallbackMock);
+      ff.on('stop', stopCallbackMock);
+      ff.on('toggle', toggleCallbackMock);
+      ff.start();
+      ff.stop();
+      expect(startCallbackMock.mock.calls.length).toBe(1);
+      expect(stopCallbackMock.mock.calls.length).toBe(1);
+      expect(toggleCallbackMock.mock.calls.length).toBe(2);
     });
   });
 });

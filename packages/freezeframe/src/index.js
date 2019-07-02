@@ -11,14 +11,25 @@ import {
 } from './utils';
 
 import * as templates from './templates';
-import { classes, defaultOptions } from './constants';
+import { classes, events, defaultOptions } from './constants';
 
 class Freezeframe {
+  items = [];
+
+  $images = [];
+
+  eventListeners = {
+    ...Object.values(events)
+      .reduce((acc, item) => {
+        acc[item] = [];
+        return acc;
+      }, {})
+  };
+
   constructor(
     selectorOrNodes = classes.SELECTOR,
     options
   ) {
-    this.items = [];
     this.options = selectorOrNodes instanceof Object && !options
       ? { ...defaultOptions, ...selectorOrNodes }
       : { ...defaultOptions, ...options };
@@ -124,15 +135,12 @@ class Freezeframe {
     }
   }
 
-  toggle(freeze) {
-    const { $container } = freeze;
-    const isActive = $container.classList.contains(classes.ACTIVE);
-
-    if (isActive) {
-      this.toggleOff(freeze);
-    } else {
-      this.toggleOn(freeze);
-    }
+  injectStylesheet() {
+    document.head.appendChild(
+      htmlToNode(
+        templates.stylesheet()
+      )
+    );
   }
 
   toggleOff(freeze) {
@@ -154,24 +162,41 @@ class Freezeframe {
     }
   }
 
+  emit(event, items, isPlaying) {
+    this.eventListeners[event].forEach((cb) => {
+      cb(items.length === 1 ? items[0] : items, isPlaying);
+    });
+  }
+
+  toggle(freeze) {
+    const { $container } = freeze;
+    const isActive = $container.classList.contains(classes.ACTIVE);
+
+    if (isActive) {
+      this.toggleOff(freeze);
+    } else {
+      this.toggleOn(freeze);
+    }
+  }
+
   start() {
     this.items.forEach((freeze) => {
       this.toggleOn(freeze);
     });
+    this.emit(events.START, this.items, true);
+    this.emit(events.TOGGLE, this.items, true);
   }
 
   stop() {
     this.items.forEach((freeze) => {
       this.toggleOff(freeze);
     });
+    this.emit(events.STOP, this.items, false);
+    this.emit(events.TOGGLE, this.items, false);
   }
 
-  injectStylesheet() {
-    document.head.appendChild(
-      htmlToNode(
-        templates.stylesheet()
-      )
-    );
+  on(event, cb) {
+    this.eventListeners[event].push(cb);
   }
 }
 

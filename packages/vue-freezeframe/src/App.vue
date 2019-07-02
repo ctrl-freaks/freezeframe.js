@@ -22,6 +22,7 @@
           trigger: false,
           overlay: true
         }"
+        @toggle="logEvent"
       />
     </div>
 
@@ -74,6 +75,9 @@ export default {
     },
     stop() {
       this.$refs.freeze.stop();
+    },
+    logEvent(e) {
+      console.log(e);
     },
   },
 };
