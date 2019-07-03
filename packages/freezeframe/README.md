@@ -121,9 +121,9 @@ logo.stop(); // stop animation
     <code><b>type:</b> string|DOM object</code>  
     <code><b>default</b>: ".freezeframe"</code>  
 
-    The selector used to search for .gifs when the ```trigger()``` function is run.
+    The selector used to search for .gifs to freeze.
     Selector may either be passed as the first argument of the Freezeframe constructor, or as a
-    property of the options object.
+    property of the options object. You may pass a string selector or a DOM reference. If a string is passed, we use `querySelectorAll`.
 
 - ### ```trigger```  
 
