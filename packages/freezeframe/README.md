@@ -219,6 +219,7 @@ logo.stop(); // stop animation
       - <code><b>items</b>: array&lt;freezeframe&gt; | freezeframe</code>
       - <code><b>isPlaying</b>: boolean</code>
 
+  For example:
 
   ```js
   ff.on('start', (items) => {
