@@ -20,8 +20,8 @@ plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezefra
   - [Setup](#Setup)
   - [Usage](#Usage)
   - [Advanced Usage](#Advanced-Usage)
-  - [Options Reference](#Options-Reference)
-  - [Function Reference](#Function-Reference)
+  - [Options](#Options)
+  - [Methods](#Methods)
   - [Contributing](#Contributing)
   - [License](#License)
   - [Thanks](#Thanks)
@@ -114,11 +114,11 @@ logo.start(); // start animation
 logo.stop(); // stop animation
 ```
 
-## Options Reference
+## Options
 
 - ### ```selector```
 
-    <code><b>type:</b> string|DOM object</code>  
+    <code><b>type:</b> string | DOM object</code>  
     <code><b>default</b>: ".freezeframe"</code>  
 
     The selector used to search for .gifs to freeze.
@@ -147,7 +147,7 @@ logo.stop(); // stop animation
 
     Whether or not to make the image responsive (100% width)
 
-## Function Reference
+## Methods
 
 - ### ```Freezeframe(options)```  
 
@@ -218,6 +218,7 @@ logo.stop(); // stop animation
     <code><b>params</b>:</code>
       - <code><b>items</b>: array&lt;freezeframe&gt; | freezeframe</code>
       - <code><b>isPlaying</b>: boolean</code>
+
 
   ```js
   ff.on('start', (items) => {
