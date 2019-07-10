@@ -4,6 +4,17 @@
   "main": "dist/freezeframe.umd.js",
   "repository": "https://github.com/ctrl-freaks/freezeframe.js",
   "license": "MIT",
+  "description": "React wrapper for freezeframe.js",
+  "author": "Nick Ford <nickforddesign@gmail.com>",
+  "homepage": "https://github.com/ctrl-freaks/freezeframe.js/packages/vue-freezeframe",
+  "keywords": [
+    "freezeframe",
+    "vue",
+    "gif"
+  ],
+  "bugs": {
+    "url": "https://github.com/ctrl-freaks/freezeframe.js/issues"
+  },
   "scripts": {
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name freezeframe src/lib.js && npm run build-demo",

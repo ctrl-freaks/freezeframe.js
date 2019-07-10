@@ -1,14 +1,14 @@
 # react-freezeframe
 
 [![npm version](https://badge.fury.io/js/react-freezeframe.svg)](https://badge.fury.io/js/react-freezeframe)
-![Size](https://img.shields.io/github/size/ctrl-freaks/freezeframe.js/packages/react-freezeframe/dist/freezeframe.umd.min.js.svg)
+![Size](https://img.shields.io/github/size/ctrl-freaks/freezeframe.js/packages/react-freezeframe/dist/ReactFreezeframe.js.svg)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 ## Examples
 
 GH Pages:
 
-http://ctrl-freaks.github.io/freezeframe.js/react.html
+http://ctrl-freaks.github.io/freezeframe.js/react
 
 ## Project setup
 
@@ -21,7 +21,7 @@ npm install react-freezeframe
 ```jsx
 import React from 'react';
 import { render } from 'react-dom';
-import { ReactFreezeframe } from 'react-freezeframe';
+import ReactFreezeframe from 'react-freezeframe';
 
 const app = () => {
   return (
@@ -34,10 +34,12 @@ render(<App />, document.getElementById('root'));
 
 ## Advanced usage
 
+Here's an example of passing custom options, and binding to a ref so we can manually trigger playback.
+
 ```jsx
 import React from 'react';
 import { render } from 'react-dom';
-import { ReactFreezeframe } from 'react-freezeframe';
+import ReactFreezeframe from 'react-freezeframe';
 
 class App extends React.Component {
   constructor(props) {
@@ -46,10 +48,7 @@ class App extends React.Component {
   }
   render() {
     return (
-      <div className="app">
-        <button onClick={() => this.start()}>Start</button>
-        <button onClick={() => this.stop()}>Stop</button>
-        <button onClick={() => this.toggle()}>Toggle</button>
+      <div>
         <ReactFreezeframe
           src="foo.gif"
           ref={this.freeze}
@@ -58,9 +57,12 @@ class App extends React.Component {
             overlay: true
           }}
           onToggle={(items, isPlaying) => this.logEvent('toggle', items, isPlaying)}
-          onStart={(items, isPlaying) => this.logEvent('start', items, isPlaying)}
-          onStop={(items, isPlaying) => this.logEvent('stop', items, isPlaying)}
+          onStart={(items) => this.logEvent('start', items)}
+          onStop={(items) => this.logEvent('stop', items)}
         />
+        <button onClick={() => this.start()}>Start</button>
+        <button onClick={() => this.stop()}>Stop</button>
+        <button onClick={() => this.toggle()}>Toggle</button>
       </div>
     );
   }
@@ -76,57 +78,53 @@ class App extends React.Component {
 }
 ```
 
-## Options
+## Children
+
+You can also pass gifs as children, they will all inherit the any options passed to the parent component.
+
+```js
+<ReactFreezeframe
+  options={{
+    trigger: 'click'
+  }}
+>
+  <img src="foo1.gif" />
+  <img src="foo2.gif" />
+  <img src="foo3.gif" />
+</ReactFreezeframe>
+```
+
+## Props
+
+### Options
 
 The `options` prop accepts all options allowed by [freezeframe core](../freezeframe)
 
-```html
-<template>
-  <vue-freezeframe
-    src="./something.gif"
-    :options="{
-      trigger: false
-    }"
-  />
-</template>
+```js
+<ReactFreezeframe
+  src="foo.gif"
+  options={{
+    overlay: true,
+    trigger: 'click'
+  }}
+/>
 ```
 
-## Slot
+### Callbacks
 
-Using the default slot, you can freeze any .gifs inside, while safely including other content too.
+The following callback props will fire when freezeframe emits the corresponding events:
 
-```html
+- onStart - 'start'
+- onStop - 'stop'
+- onToggle - 'toggle'
+
+```js
 <template>
-  <vue-freezeframe
-    :options="{
-      trigger: 'click'
-    }"
-  >
-    <h1>Images</h1>
-    <img src="./1.gif">
-    <img src="./2.gif">
-    <p>
-      Other content here
-    </p>
-  </vue-freezeframe>
-</template>
-```
-
-## Events
-
-All freezeframe events are emitted from the freezeframe component:
-
-- start
-- stop
-- toggle
-
-```html
-<template>
-  <vue-freezeframe
+  <ReactFreezeframe
     src="./something.gif"
-    @start="onStart"
-    @stop="onStop"
-    @toggle="onToggle"
+    onStart={(items) => this.onStart(items)}
+    onStop={(items) => this.onStop(items)}
+    onToggle={(items, isPlaying) => this.onToggle(items, isPlaying)}
   />
 </template>
 ```
@@ -143,6 +141,11 @@ npm start
 ```
 
 ```bash
+# lint and fix issues with eslint
+npm run lint -- --fix
+```
+
+```bash
 # build the project and examples for gh-pages
 npm run build
 ```
@@ -151,4 +154,4 @@ Then commit your changes and submit your PR for review.
 
 ## License
 
-vue-freezeframe.js is released under the terms of the MIT License.
+react-freezeframe.js is released under the terms of the MIT License.

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { ReactFreezeframe } from './lib';
+import ReactFreezeframe from './components/ReactFreezeframe';
 import './index.css';
 
 class App extends React.Component {

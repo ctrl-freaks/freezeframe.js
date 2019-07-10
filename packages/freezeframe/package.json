@@ -50,7 +50,7 @@
     "type": "git",
     "url": "git+https://github.com/Ctrl-Freaks/freezeframe.js.git"
   },
-  "author": "Ctrl-Freaks",
+  "author": "ctrl-freaks (Chris Antonellis, Nick Ford)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/Ctrl-Freaks/freezeframe.js/issues"

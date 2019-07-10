@@ -8,7 +8,7 @@
 
 GH Pages:
 
-http://ctrl-freaks.github.io/freezeframe.js/vue.html
+http://ctrl-freaks.github.io/freezeframe.js/vue
 
 Codesandbox:
 

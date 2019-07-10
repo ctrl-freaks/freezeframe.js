@@ -27,11 +27,13 @@
     "lint": "eslint ./",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "build": "rimraf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
+    "build": "rimraf dist && npm run build:demo && npm run build:lib",
+    "build:demo": "react-scripts build && ./demo.sh",
+    "build:lib": "NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
   },
   "devDependencies": {
+    "@babel/cli": "^7.5.0",
     "@thrivehive/eslint-config-node": "^1.2.3",
-    "babel-cli": "^6.26.0",
     "babel-jest": "^24.8.0",
     "babel-preset-react-app": "^9.0.0",
     "eslint-config-airbnb-base": "^13.2.0",
@@ -53,5 +55,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "dependencies": {}
 }

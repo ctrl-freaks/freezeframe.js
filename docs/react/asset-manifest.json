@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/freezeframe.js/static/css/main.85c39dd4.chunk.css",
+    "main.js": "/freezeframe.js/static/js/main.7b514271.chunk.js",
+    "main.js.map": "/freezeframe.js/static/js/main.7b514271.chunk.js.map",
+    "runtime~main.js": "/freezeframe.js/static/js/runtime~main.e2fb1caa.js",
+    "runtime~main.js.map": "/freezeframe.js/static/js/runtime~main.e2fb1caa.js.map",
+    "static/js/2.7ff973e6.chunk.js": "/freezeframe.js/static/js/2.7ff973e6.chunk.js",
+    "static/js/2.7ff973e6.chunk.js.map": "/freezeframe.js/static/js/2.7ff973e6.chunk.js.map",
+    "index.html": "/freezeframe.js/index.html",
+    "precache-manifest.04531ad88821430a67ff77c5adbc8e9b.js": "/freezeframe.js/precache-manifest.04531ad88821430a67ff77c5adbc8e9b.js",
+    "service-worker.js": "/freezeframe.js/service-worker.js",
+    "static/css/main.85c39dd4.chunk.css.map": "/freezeframe.js/static/css/main.85c39dd4.chunk.css.map"
+  }
+}
