@@ -64,16 +64,16 @@ const options = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: () => [
-                postcssPresetEnv({
-                  stage: 3,
-                  browsers: [
-                    'cover 99.5%',
-                    '> 5%'
-                  ]
-                })
-              ]
+              ident: 'postcss'
+              // plugins: () => [
+              //   postcssPresetEnv({
+              //     stage: 3,
+              //     browsers: [
+              //       'cover 99.5%',
+              //       '> 5%'
+              //     ]
+              //   })
+              // ]
             }
           },
           'sass-loader'

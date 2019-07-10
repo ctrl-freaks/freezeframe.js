@@ -9,6 +9,7 @@
       "@babel/env",
       {
         "useBuiltIns": "usage",
+        "corejs": "2",
         "targets": {
           "browsers": [
             "Chrome >= 52",
