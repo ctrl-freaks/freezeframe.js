@@ -22,12 +22,21 @@ class ReactFreezeframe extends React.Component {
     });
   }
   render() {
+    const { children, alt, src } = this.props;
     return (
-      <img
-        ref={this.freeze}
-        alt={this.props.alt}
-        src={this.props.src}
-      />
+      <div className="react-freezeframe">
+        {
+          children
+            ? <div ref={this.freeze}>
+              {children}
+            </div>
+          : <img
+            ref={this.freeze}
+            alt={alt}
+            src={src}
+          />
+        }
+      </div>
     );
   }
   start() {

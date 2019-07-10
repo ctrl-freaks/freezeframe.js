@@ -42,6 +42,32 @@ class App extends React.Component {
             onStop={(items, isPlaying) => this.logEvent('stop', items, isPlaying)}
           />
         </div>
+
+        <div className="section">
+          <p>using children & overlay</p>
+
+          <ReactFreezeframe
+            options={{
+              overlay: true
+            }}
+          >
+            <div className="grid">
+              <div className="cell">
+                <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e801085229b264ca29fc/1519577337605/download.gif?format=1000w" alt="" />
+              </div>
+              <div className="cell">
+                <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e904c830257a34734ff5/1519577373504/Armani-Central-Park-6151.gif?format=1000w" alt="" />
+              </div>
+              <div className="cell">
+                <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a95c231419202eb9a763970/1519814094692/tumblr_nfro6qnt591qzcq51o1_500.gif?format=750w" alt="" />
+              </div>
+              <div className="cell">
+                <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a93f42471c10b0d656d1562/1519814094495/dirk-980.gif?format=1000w" alt="" />
+              </div>
+            </div>
+          </ReactFreezeframe>
+        </div>
+
         <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a></p>
       </div>
     );
