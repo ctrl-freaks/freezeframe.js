@@ -57,7 +57,7 @@ If not, you can pull in the library from a CDN:
 ## Setup
 
 Add **freezeframe** as a class name on the .gifs you want processed.  
-( You can optionally use a custom selector as shown in [Advanced Usage](#advanced_usage). )
+( You can optionally use a custom selector as shown in [Advanced Usage](#advanced-usage). )
 
 ```html
 <img class="freezeframe" src="image.gif" />
@@ -95,11 +95,11 @@ new Freezeframe();
 
 ## Advanced Usage
 
-freezeframe.js exposes public methods to allow for more custom integration. You 
-have the option of manually controlling when freezeframe triggers images, adds 
-support elements, and attaches event handlers. You can also manually trigger 
-and release animation on one image or a group of images. These methods are 
-described in detail in the [Function Reference](#function_reference).
+freezeframe.js exposes public methods to allow for more custom integration. You
+have the option of manually controlling when freezeframe triggers images, adds
+support elements, and attaches event handlers. You can also manually trigger
+and release animation on one image or a group of images. These methods are
+described in detail in the [Methods section](#methods).
 
 *Example: trigger logo .gif and manually trigger / release animation:*
 
@@ -123,7 +123,8 @@ logo.stop(); // stop animation
 
     The selector used to search for .gifs to freeze.
     Selector may either be passed as the first argument of the Freezeframe constructor, or as a
-    property of the options object. You may pass a string selector or a DOM reference. If a string is passed, we use `querySelectorAll`.
+    property of the options object. You may pass a string selector or a DOM reference. If a string
+    is passed, we use `querySelectorAll`.
 
 - ### ```trigger```  
 
@@ -241,7 +242,7 @@ logo.stop(); // stop animation
 
 ## Contributing
 
-Assuming you have already read the [instructions](../../README.md) in the project root:
+Assuming you have already read the [instructions](../../README.md#Contributing) in the project root:
 
 - First, `cd` into the appropriate package directory
 
