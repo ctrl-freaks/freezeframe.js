@@ -55,5 +55,9 @@
   "bugs": {
     "url": "https://github.com/Ctrl-Freaks/freezeframe.js/issues"
   },
-  "homepage": "https://github.com/Ctrl-Freaks/freezeframe.js#readme"
+  "homepage": "https://github.com/Ctrl-Freaks/freezeframe.js#readme",
+  "keywords": [
+    "freezeframe",
+    "gif"
+  ]
 }

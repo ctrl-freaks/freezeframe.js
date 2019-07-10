@@ -39,7 +39,7 @@ For the curious, we are able to pause animated gifs by writing their data to a c
 ## Contributing
 
 - Fork or clone the repository.
-- Install lerna
+- Install lerna globally (optional)
 
 ```bash
 npm install -g lerna
@@ -54,13 +54,19 @@ npm install
 - Install the sub-package dependencies
 
 ```bash
-lerna bootstrap --hoist
+npm run bootstrap
 ```
 
 - Run tests for all sub-packages
 
 ```bash
 npm test
+```
+
+- Run build for all sub-packages
+
+```bash
+npm run build
 ```
 
 - If you are part of the ctrl-freaks organization, you can publish directly to npm:

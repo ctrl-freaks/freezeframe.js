@@ -98,7 +98,7 @@ You can also pass gifs as children, they will all inherit the any options passed
 
 ### Options
 
-The `options` prop accepts all options allowed by [freezeframe core](../freezeframe)
+The `options` prop accepts all options allowed by [freezeframe core](../freezeframe#options)
 
 ```jsx
 <ReactFreezeframe

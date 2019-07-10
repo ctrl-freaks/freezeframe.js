@@ -1,8 +1,9 @@
 {
   "name": "freezeframe-root",
   "scripts": {
-    "bootstrap": "lerna bootstrap",
+    "bootstrap": "lerna bootstrap --hoist",
     "test": "lerna run test --stream",
+    "build": "lerna run build --stream",
     "lint": "eslint ./"
   },
   "devDependencies": {

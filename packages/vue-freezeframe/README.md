@@ -56,21 +56,6 @@ export default {
 </script>
 ```
 
-## Options
-
-The `options` prop accepts all options allowed by [freezeframe core](../freezeframe)
-
-```html
-<template>
-  <vue-freezeframe
-    src="./something.gif"
-    :options="{
-      trigger: false
-    }"
-  />
-</template>
-```
-
 ## Slot
 
 Using the default slot, you can freeze any .gifs inside, while safely including other content too.
@@ -89,6 +74,21 @@ Using the default slot, you can freeze any .gifs inside, while safely including 
       Other content here
     </p>
   </vue-freezeframe>
+</template>
+```
+
+## Options
+
+The `options` prop accepts all options allowed by [freezeframe core](../freezeframe#options)
+
+```html
+<template>
+  <vue-freezeframe
+    src="./something.gif"
+    :options="{
+      trigger: false
+    }"
+  />
 </template>
 ```
 
