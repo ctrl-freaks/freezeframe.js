@@ -312,12 +312,12 @@ if (typeof window !== 'undefined') {
 // EXTERNAL MODULE: ./node_modules/core-js/modules/es6.function.name.js
 var es6_function_name = __webpack_require__("7f7f");
 
-// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2dbb5e58-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Freezeframe.vue?vue&type=template&id=a9915d00&
+// CONCATENATED MODULE: ./node_modules/cache-loader/dist/cjs.js?{"cacheDirectory":"node_modules/.cache/vue-loader","cacheIdentifier":"2dbb5e58-vue-loader-template"}!./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/cache-loader/dist/cjs.js??ref--0-0!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Freezeframe.vue?vue&type=template&id=e8376250&
 var render = function () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"vue-freezeframe"},[(_vm.$slots.default)?_vm._t("default"):(_vm.src)?_c('img',{ref:"img",attrs:{"src":_vm.src}}):_vm._e()],2)}
 var staticRenderFns = []
 
 
-// CONCATENATED MODULE: ./src/components/Freezeframe.vue?vue&type=template&id=a9915d00&
+// CONCATENATED MODULE: ./src/components/Freezeframe.vue?vue&type=template&id=e8376250&
 
 // EXTERNAL MODULE: ./node_modules/freezeframe/dist/freezeframe.min.js
 var freezeframe_min = __webpack_require__("5233");
@@ -348,6 +348,11 @@ var freezeframe_min_default = /*#__PURE__*/__webpack_require__.n(freezeframe_min
       default: null
     }
   },
+  data: function data() {
+    return {
+      isPlaying: false
+    };
+  },
   mounted: function mounted() {
     if (this.$slots.default) {
       this.$freezeframe = new freezeframe_min_default.a(this.$el, this.options);
@@ -360,9 +365,18 @@ var freezeframe_min_default = /*#__PURE__*/__webpack_require__.n(freezeframe_min
   methods: {
     start: function start() {
       this.$freezeframe.start();
+      this.isPlaying = true;
     },
     stop: function stop() {
       this.$freezeframe.stop();
+      this.isPlaying = false;
+    },
+    toggle: function toggle() {
+      if (this.isPlaying) {
+        this.stop();
+      } else {
+        this.start();
+      }
     },
     addEventListeners: function addEventListeners() {
       var _this = this;

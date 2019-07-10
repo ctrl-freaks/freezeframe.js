@@ -24,6 +24,11 @@ export default {
       default: null,
     },
   },
+  data() {
+    return {
+      isPlaying: false,
+    };
+  },
   mounted() {
     if (this.$slots.default) {
       this.$freezeframe = new Freezeframe(this.$el, this.options);
@@ -35,9 +40,18 @@ export default {
   methods: {
     start() {
       this.$freezeframe.start();
+      this.isPlaying = true;
     },
     stop() {
       this.$freezeframe.stop();
+      this.isPlaying = false;
+    },
+    toggle() {
+      if (this.isPlaying) {
+        this.stop();
+      } else {
+        this.start();
+      }
     },
     addEventListeners() {
       if (this.$freezeframe) {

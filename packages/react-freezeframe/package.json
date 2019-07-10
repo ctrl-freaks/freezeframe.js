@@ -1,0 +1,60 @@
+{
+  "name": "react-freezeframe",
+  "version": "4.0.0-alpha.6",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "description": "React wrapper for freezeframe.js",
+  "author": "Nick Ford <nickforddesign@gmail.com>",
+  "homepage": "https://github.com/ctrl-freaks/freezeframe.js/packages/react-freezeframe",
+  "keywords": [
+    "freezeframe",
+    "react",
+    "gif"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-freaks/freezeframe.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ctrl-freaks/freezeframe.js/issues"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build-examples": "react-scripts build",
+    "lint": "eslint ./",
+    "test": "react-scripts test --env=jsdom --passWithNoTests",
+    "eject": "react-scripts eject",
+    "build": "rimraf dist && npm run build:demo && npm run build:lib",
+    "build:demo": "react-scripts build && ./demo.sh",
+    "build:lib": "NODE_ENV=production babel src/components --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@thrivehive/eslint-config-node": "^1.2.3",
+    "babel-jest": "^24.8.0",
+    "babel-preset-react-app": "^9.0.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
+    "freezeframe": "^4.0.0-alpha.6",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "^3.0.1",
+    "rimraf": "^2.6.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {}
+}

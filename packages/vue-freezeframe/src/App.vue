@@ -60,22 +60,12 @@ import Freezeframe from './components/Freezeframe.vue';
 
 export default {
   name: 'app',
-  data() {
-    return {
-      isPlaying: false,
-    };
-  },
   components: {
     Freezeframe,
   },
   methods: {
     toggle() {
-      if (this.isPlaying) {
-        this.stop();
-      } else {
-        this.start();
-      }
-      this.isPlaying = !this.isPlaying;
+      this.$refs.freeze.toggle();
     },
     start() {
       this.$refs.freeze.start();
