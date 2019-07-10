@@ -27,16 +27,15 @@ class ReactFreezeframe extends React.Component {
     const { children, alt, src } = this.props;
     return (
       <div className="react-freezeframe">
-        {
-          children
-            ? <div ref={this.freeze}>
+        { children
+          ? <div ref={this.freeze}>
               {children}
             </div>
-            : <img
-            ref={this.freeze}
-            alt={alt}
-            src={src}
-          />
+          : <img
+              ref={this.freeze}
+              alt={alt}
+              src={src}
+            />
         }
       </div>
     );
