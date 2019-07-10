@@ -1,2 +1,3 @@
-import ReactFreezeframe from "./ReactFreezeframe";
+import ReactFreezeframe from './ReactFreezeframe';
+
 export { ReactFreezeframe };

@@ -1,13 +1,14 @@
 import React from 'react';
-import { render } from "react-dom";
-import { ReactFreezeframe } from "./lib";
-import "./index.css";
+import { render } from 'react-dom';
+import { ReactFreezeframe } from './lib';
+import './index.css';
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.freeze = React.createRef();
   }
+
   render() {
     return (
       <div>
@@ -72,18 +73,22 @@ class App extends React.Component {
       </div>
     );
   }
+
   start() {
     this.freeze.current.start();
   }
+
   stop() {
     this.freeze.current.stop();
   }
+
   toggle() {
     this.freeze.current.toggle();
   }
+
   logEvent(event, items, isPlaying) {
     console.log(event, items, isPlaying);
   }
 }
 
-render(<App />, document.getElementById("root"));
+render(<App />, document.getElementById('root'));

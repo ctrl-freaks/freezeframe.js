@@ -24,14 +24,18 @@
   "scripts": {
     "start": "react-scripts start",
     "build-examples": "react-scripts build",
+    "lint": "eslint ./",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "build": "rimraf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
   },
   "devDependencies": {
+    "@thrivehive/eslint-config-node": "^1.2.3",
     "babel-cli": "^6.26.0",
     "babel-jest": "^24.8.0",
     "babel-preset-react-app": "^9.0.0",
+    "eslint-config-airbnb-base": "^13.2.0",
+    "eslint-plugin-import": "^2.18.0",
     "freezeframe": "^4.0.0-alpha.6",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
