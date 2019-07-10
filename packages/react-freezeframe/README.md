@@ -27,7 +27,7 @@ const app = () => {
   return (
     <ReactFreezeframe src="foo.gif" />
   );
-});
+};
 
 render(<App />, document.getElementById('root'));
 ```
@@ -83,15 +83,19 @@ class App extends React.Component {
 You can also pass gifs as children, they will all inherit the any options passed to the parent component.
 
 ```js
-<ReactFreezeframe
-  options={{
-    trigger: 'click'
-  }}
->
-  <img src="foo1.gif" />
-  <img src="foo2.gif" />
-  <img src="foo3.gif" />
-</ReactFreezeframe>
+const app = () => {
+  return (
+    <ReactFreezeframe
+      options={{
+        trigger: 'click'
+      }}
+    >
+      <img src="foo1.gif" />
+      <img src="foo2.gif" />
+      <img src="foo3.gif" />
+    </ReactFreezeframe>
+  );
+};
 ```
 
 ## Props
@@ -101,13 +105,17 @@ You can also pass gifs as children, they will all inherit the any options passed
 The `options` prop accepts all options allowed by [freezeframe core](../freezeframe)
 
 ```js
-<ReactFreezeframe
-  src="foo.gif"
-  options={{
-    overlay: true,
-    trigger: 'click'
-  }}
-/>
+const app = () => {
+  return (
+    <ReactFreezeframe
+      src="foo.gif"
+      options={{
+        overlay: true,
+        trigger: 'click'
+      }}
+    />
+  );
+};
 ```
 
 ### Callbacks
@@ -119,14 +127,16 @@ The following callback props will fire when freezeframe emits the corresponding 
 - onToggle - 'toggle'
 
 ```js
-<template>
-  <ReactFreezeframe
-    src="./something.gif"
-    onStart={(items) => this.onStart(items)}
-    onStop={(items) => this.onStop(items)}
-    onToggle={(items, isPlaying) => this.onToggle(items, isPlaying)}
-  />
-</template>
+const app = () => {
+  return (
+    <ReactFreezeframe
+      src="./something.gif"
+      onStart={(items) => this.onStart(items)}
+      onStop={(items) => this.onStop(items)}
+      onToggle={(items, isPlaying) => this.onToggle(items, isPlaying)}
+    />
+  );
+};
 ```
 
 ## Contributing
