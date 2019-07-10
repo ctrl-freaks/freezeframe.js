@@ -113,13 +113,18 @@ All freezeframe events are emitted from the freezeframe component:
 
 ## Contributing
 
-Assuming you have already read the [instructions](../../README.md) in the project root:
+Assuming you have already read the [instructions](../../README.md#contributing) in the project root:
 
 - First, `cd` into the appropriate package directory
 
 ```bash
 # start webpack dev server
 npm start
+```
+
+```bash
+# lint and fix issues with eslint
+npm run lint -- --fix
 ```
 
 ```bash

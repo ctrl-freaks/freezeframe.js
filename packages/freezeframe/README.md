@@ -242,7 +242,7 @@ logo.stop(); // stop animation
 
 ## Contributing
 
-Assuming you have already read the [instructions](../../README.md#Contributing) in the project root:
+Assuming you have already read the [instructions](../../README.md#contributing) in the project root:
 
 - First, `cd` into the appropriate package directory
 

@@ -19,7 +19,7 @@
     "start": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name freezeframe src/lib.js && npm run build-demo",
     "build-demo": "vue-cli-service build --dest demo && ./demo.sh",
-    "lint": "vue-cli-service lint",
+    "lint": "vue-cli-service lint --fix",
     "test:unit": "vue-cli-service test:unit"
   },
   "peerDependencies": {

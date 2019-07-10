@@ -129,7 +129,7 @@ The following callback props will fire when freezeframe emits the corresponding 
 
 ## Contributing
 
-Assuming you have already read the [instructions](../../README.md) in the project root:
+Assuming you have already read the [instructions](../../README.md#contributing) in the project root:
 
 - First, `cd` into the appropriate package directory
 
