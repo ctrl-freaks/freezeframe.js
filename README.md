@@ -22,12 +22,15 @@ This is a [lerna.js](https://lerna.js.org/) monorepo, containing the following p
 
 - [freezeframe](./packages/freezeframe)
 - [vue-freezeframe](./packages/vue-freezeframe)
+- [react-freezeframe](./packages/react-freezeframe)
 
 ## Documentation
 
 To get started with freezeframe, head over to the core [freezeframe](./packages/freezeframe) package.
 
-To use freezeframe with Vue.js, check out [vue-freezeframe](./packages/vue-freezeframe).
+To use freezeframe with Vue.js, check out the [vue-freezeframe](./packages/vue-freezeframe) docs.
+
+React users should give [react-freezeframe](./packages/react-freezeframe) a try.
 
 ## How it works
 
@@ -60,7 +63,7 @@ lerna bootstrap --hoist
 npm test
 ```
 
-- If you are part of the ctrl-freakz organization, you can publish directly to npm:
+- If you are part of the ctrl-freaks organization, you can publish directly to npm:
   
 ```bash
 lerna publish
