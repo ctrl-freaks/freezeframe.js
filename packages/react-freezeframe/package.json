@@ -25,7 +25,7 @@
     "start": "react-scripts start",
     "build-examples": "react-scripts build",
     "lint": "eslint ./",
-    "test": "react-scripts test --env=jsdom",
+    "test": "react-scripts test --env=jsdom --passWithNoTests",
     "eject": "react-scripts eject",
     "build": "rimraf dist && npm run build:demo && npm run build:lib",
     "build:demo": "react-scripts build && ./demo.sh",
