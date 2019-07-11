@@ -23,7 +23,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import ReactFreezeframe from 'react-freezeframe';
 
-const app = () => {
+const App = () => {
   return (
     <ReactFreezeframe src="foo.gif" />
   );
