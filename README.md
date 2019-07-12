@@ -8,6 +8,8 @@
 Freezeframe.js is a library that pauses animated .gifs and enables them to
 animate on mouse hover / mouse click / touch event, or triggered manually.
 
+http://ctrl-freaks.github.io/freezeframe.js/
+
 ## 4.x
 
 Version 4+ is built with modern javascript in mind. It's transpiled with webpack/babel, so it should
