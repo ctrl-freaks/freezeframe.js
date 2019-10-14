@@ -1,8 +1,8 @@
 {
   "name": "react-freezeframe",
   "version": "4.0.0-alpha.7",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "main": "dist/ReactFreezeframe.js",
+  "module": "dist/ReactFreezeframe.js",
   "files": [
     "dist"
   ],
