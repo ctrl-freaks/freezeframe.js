@@ -1,6 +1,6 @@
 {
   "name": "vue-freezeframe",
-  "version": "4.0.0-alpha.7",
+  "version": "4.0.0",
   "main": "dist/freezeframe.umd.js",
   "repository": "https://github.com/ctrl-freaks/freezeframe.js",
   "license": "MIT",
@@ -39,7 +39,7 @@
     "core-js": "^2.6.5",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
-    "freezeframe": "^4.0.0-alpha.7",
+    "freezeframe": "^4.0.0",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.6.10",
