@@ -23,3 +23,5 @@ export const events = {
   STOP: 'stop',
   TOGGLE: 'toggle'
 };
+
+export const styleId = 'ff-styles';

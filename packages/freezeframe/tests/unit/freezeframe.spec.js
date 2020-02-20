@@ -1,5 +1,5 @@
 import Freezeframe from '../../src/index';
-import { classes } from '../../src/constants';
+import { classes, styleId } from '../../src/constants';
 import mockDomApis from '../mocks/dom';
 
 mockDomApis(window);
@@ -202,5 +202,20 @@ describe('event listeners', () => {
       expect(stopCallbackMock.mock.calls.length).toBe(1);
       expect(toggleCallbackMock.mock.calls.length).toBe(2);
     });
+  });
+});
+
+describe('stylesheet injection', () => {
+  test('should be injected a single time', () => {
+    document.body.innerHTML = `
+      <img class="custom1" src="foo.gif">
+      <img class="custom2" src="foo.gif">
+      <img class="custom3" src="foo.gif">
+    `;
+    new Freezeframe('.custom1'); // eslint-disable-line
+    new Freezeframe('.custom2'); // eslint-disable-line
+    new Freezeframe('.custom3'); // eslint-disable-line
+    const $stylesheet = document.querySelectorAll(`style#${styleId}`);
+    expect($stylesheet.length).toBe(1);
   });
 });

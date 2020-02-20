@@ -1,7 +1,7 @@
 import imagesLoaded from 'imagesloaded';
 
 import {
-  compose,
+  pipe,
   normalizeElements,
   validateElements,
   dedupeImages,
@@ -11,7 +11,12 @@ import {
 } from './utils';
 
 import * as templates from './templates';
-import { classes, events, defaultOptions } from './constants';
+import {
+  classes,
+  events,
+  defaultOptions,
+  styleId
+} from './constants';
 
 class Freezeframe {
   items = [];
@@ -25,6 +30,10 @@ class Freezeframe {
         return acc;
       }, {})
   };
+
+  get stylesInjected() {
+    return !!document.querySelector(`style#${styleId}`);
+  }
 
   constructor(
     selectorOrNodes = classes.SELECTOR,
@@ -45,7 +54,7 @@ class Freezeframe {
   }
 
   capture(selectorOrNodes) {
-    this.$images = compose(
+    this.$images = pipe(
       normalizeElements,
       validateElements,
       dedupeImages
@@ -140,6 +149,7 @@ class Freezeframe {
   }
 
   injectStylesheet() {
+    if (this.stylesInjected) return;
     document.head.appendChild(
       htmlToNode(
         templates.stylesheet()
