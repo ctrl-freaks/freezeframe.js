@@ -23,7 +23,7 @@ class Freezeframe {
 
   $images = [];
 
-  eventListeners = {
+  _eventListeners = {
     ...Object.values(events)
       .reduce((acc, item) => {
         acc[item] = [];
@@ -31,7 +31,7 @@ class Freezeframe {
       }, {})
   };
 
-  get stylesInjected() {
+  get _stylesInjected() {
     return !!document.querySelector(`style#${styleId}`);
   }
 
@@ -43,17 +43,17 @@ class Freezeframe {
       ? { ...defaultOptions, ...selectorOrNodes }
       : { ...defaultOptions, ...options };
     const target = this.options.selector || selectorOrNodes;
-    this.init(target);
+    this._init(target);
   }
 
-  init(selectorOrNodes) {
-    this.injectStylesheet();
+  _init(selectorOrNodes) {
+    this._injectStylesheet();
     this.isTouch = isTouch();
-    this.capture(selectorOrNodes);
-    this.load(this.$images);
+    this._capture(selectorOrNodes);
+    this._load(this.$images);
   }
 
-  capture(selectorOrNodes) {
+  _capture(selectorOrNodes) {
     this.$images = pipe(
       normalizeElements,
       validateElements,
@@ -61,21 +61,21 @@ class Freezeframe {
     )(selectorOrNodes);
   }
 
-  load($images) {
+  _load($images) {
     imagesLoaded($images)
       .on('progress', (instance, { img }) => {
-        this.setup(img);
+        this._setup(img);
       });
   }
 
-  async setup($image) {
-    const freeze = this.wrap($image);
+  async _setup($image) {
+    const freeze = this._wrap($image);
     this.items.push(freeze);
-    await this.process(freeze);
-    this.attach(freeze);
+    await this._process(freeze);
+    this._attach(freeze);
   }
 
-  wrap($image) {
+  _wrap($image) {
     const $container = htmlToNode(templates.container());
     const $canvas = htmlToNode(templates.canvas());
 
@@ -96,7 +96,7 @@ class Freezeframe {
     };
   }
 
-  process(freeze) {
+  _process(freeze) {
     return new Promise((resolve) => {
       const { $canvas, $image, $container } = freeze;
       const { clientWidth, clientHeight } = $image;
@@ -110,7 +110,7 @@ class Freezeframe {
       $canvas.classList.add(classes.CANVAS_READY);
 
       $canvas.addEventListener('transitionend', () => {
-        this.ready($container);
+        this._ready($container);
         resolve(freeze);
       }, {
         once: true
@@ -118,38 +118,51 @@ class Freezeframe {
     });
   }
 
-  ready($container) {
+  _ready($container) {
     $container.classList.add(classes.READY);
     $container.classList.add(classes.INACTIVE);
     $container.classList.remove(classes.LOADING_ICON);
   }
 
-  attach(freeze) {
+  _attach(freeze) {
     const { $image } = freeze;
 
     if (!this.isTouch && this.options.trigger === 'hover') {
-      $image.addEventListener('mouseenter', () => {
-        this.toggleOn(freeze);
-        this.emit(events.START, freeze, true);
-        this.emit(events.TOGGLE, freeze, true);
-      });
-
-      $image.addEventListener('mouseleave', () => {
-        this.toggleOff(freeze);
-        this.emit(events.START, freeze, false);
-        this.emit(events.TOGGLE, freeze, false);
-      });
+      const onMouseEnter = () => {
+        this._toggleOn(freeze);
+        this._emit(events.START, freeze, true);
+        this._emit(events.TOGGLE, freeze, true);
+      };
+      const onMouseLeave = () => {
+        this._toggleOff(freeze);
+        this._emit(events.START, freeze, false);
+        this._emit(events.TOGGLE, freeze, false);
+      };
+      this._addEventListener($image, 'mouseleave', onMouseLeave);
+      this._addEventListener($image, 'mouseenter', onMouseEnter);
     }
 
     if (this.isTouch || this.options.trigger === 'click') {
-      $image.addEventListener('click', () => {
-        this.toggle(freeze);
-      });
+      const onClick = () => {
+        this._toggle(freeze);
+      };
+      this._addEventListener($image, 'click', onClick);
     }
   }
 
-  injectStylesheet() {
-    if (this.stylesInjected) return;
+  _internalEvents = [];
+
+  _addEventListener($image, event, listener) {
+    this._internalEvents.push({ $image, event, listener });
+    $image.addEventListener(event, listener);
+  }
+
+  _removeEventListener($image, event, listener) {
+    $image.removeEventListener(event, listener);
+  }
+
+  _injectStylesheet() {
+    if (this._stylesInjected) return;
     document.head.appendChild(
       htmlToNode(
         templates.stylesheet()
@@ -157,16 +170,13 @@ class Freezeframe {
     );
   }
 
-  toggleOff(freeze) {
-    const { $container } = freeze;
-
-    if ($container.classList.contains(classes.READY)) {
-      $container.classList.add(classes.INACTIVE);
-      $container.classList.remove(classes.ACTIVE);
-    }
+  _emit(event, items, isPlaying) {
+    this._eventListeners[event].forEach((cb) => {
+      cb(items.length === 1 ? items[0] : items, isPlaying);
+    });
   }
 
-  toggleOn(freeze) {
+  _toggleOn(freeze) {
     const { $container, $image } = freeze;
 
     if ($container.classList.contains(classes.READY)) {
@@ -176,41 +186,65 @@ class Freezeframe {
     }
   }
 
-  emit(event, items, isPlaying) {
-    this.eventListeners[event].forEach((cb) => {
-      cb(items.length === 1 ? items[0] : items, isPlaying);
-    });
+  _toggleOff(freeze) {
+    const { $container } = freeze;
+
+    if ($container.classList.contains(classes.READY)) {
+      $container.classList.add(classes.INACTIVE);
+      $container.classList.remove(classes.ACTIVE);
+    }
   }
 
-  toggle(freeze) {
+  _toggle(freeze) {
     const { $container } = freeze;
     const isActive = $container.classList.contains(classes.ACTIVE);
 
     if (isActive) {
-      this.toggleOff(freeze);
+      this._toggleOff(freeze);
     } else {
-      this.toggleOn(freeze);
+      this._toggleOn(freeze);
     }
+    return !isActive;
   }
+
+  // public methods
 
   start() {
     this.items.forEach((freeze) => {
-      this.toggleOn(freeze);
+      this._toggleOn(freeze);
     });
-    this.emit(events.START, this.items, true);
-    this.emit(events.TOGGLE, this.items, true);
+    this._emit(events.START, this.items, true);
+    this._emit(events.TOGGLE, this.items, true);
   }
 
   stop() {
     this.items.forEach((freeze) => {
-      this.toggleOff(freeze);
+      this._toggleOff(freeze);
     });
-    this.emit(events.STOP, this.items, false);
-    this.emit(events.TOGGLE, this.items, false);
+    this._emit(events.STOP, this.items, false);
+    this._emit(events.TOGGLE, this.items, false);
+  }
+
+  toggle() {
+    this.items.forEach((freeze) => {
+      const isPlaying = this._toggle(freeze);
+      if (isPlaying) {
+        this._emit(events.START, this.items, false);
+      } else {
+        this._emit(events.STOP, this.items, false);
+      }
+      this._emit(events.TOGGLE, this.items, isPlaying);
+    });
   }
 
   on(event, cb) {
-    this.eventListeners[event].push(cb);
+    this._eventListeners[event].push(cb);
+  }
+
+  destroy() {
+    this.internalEvents.forEach(({ $image, event, listener }) => {
+      this._removeEventListener($image, event, listener);
+    });
   }
 }
 

@@ -14,6 +14,7 @@ module.exports = {
     'class-methods-use-this': 0,
     'import/no-extraneous-dependencies': 0,
     'babel/semi': 1,
+    'no-underscore-dangle': 0
   },
   parser: 'babel-eslint'
 };

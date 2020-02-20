@@ -11,20 +11,21 @@ animate on mouse hover / mouse click / touch event, or manually via class method
 Version 4.x no longer requires or supports jQuery. If you want to use freezeframe as a jQuery
 plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
-- [Freezeframe.js](#Freezeframejs)
-  - [Examples](#Examples)
-  - [Installation](#Installation)
+- [Freezeframe.js](#freezeframejs)
+  - [Examples](#examples)
+  - [Installation](#installation)
     - [npm](#npm)
     - [yarn](#yarn)
-    - [CDN](#CDN)
-  - [Setup](#Setup)
-  - [Usage](#Usage)
-  - [Advanced Usage](#Advanced-Usage)
-  - [Options](#Options)
-  - [Methods](#Methods)
-  - [Contributing](#Contributing)
-  - [License](#License)
-  - [Thanks](#Thanks)
+    - [CDN](#cdn)
+  - [Setup](#setup)
+  - [Usage](#usage)
+  - [Advanced Usage](#advanced-usage)
+  - [Options](#options)
+  - [Constructor](#constructor)
+  - [Methods](#methods)
+  - [Contributing](#contributing)
+  - [License](#license)
+  - [Thanks](#thanks)
 
 ## Examples
 
@@ -112,6 +113,7 @@ const logo = new Freezeframe('#logo', {
 
 logo.start(); // start animation
 logo.stop(); // stop animation
+logo.toggle(); // toggle animation
 ```
 
 ## Options
@@ -148,7 +150,7 @@ logo.stop(); // stop animation
 
     Whether or not to make the image responsive (100% width)
 
-## Methods
+## Constructor
 
 - ### ```Freezeframe(options)```  
 
@@ -181,6 +183,8 @@ logo.stop(); // stop animation
   });
   ```
 
+## Methods
+
 - ### ```start()```
 
     Start animation, or restarts animation from the first frame if
@@ -202,6 +206,14 @@ logo.stop(); // stop animation
 
   ```js
   ff.stop();
+  ```
+
+- ### ```toggle()```
+
+    Toggles animation based on its current state.
+
+  ```js
+  ff.toggle();
   ```
 
 - ### ```on(event, callback)```
@@ -238,6 +250,16 @@ logo.stop(); // stop animation
       // do something on stop
     }
   };
+  ```
+
+- ### ```destroy()```
+
+    Removes all event listeners, but leaves DOM intact.
+
+    Use if you are concerned about memory leaks on your event listeners.
+
+  ```js
+  ff.destroy();
   ```
 
 ## Contributing
