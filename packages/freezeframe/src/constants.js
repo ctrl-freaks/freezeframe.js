@@ -15,7 +15,8 @@ export const classes = {
 export const defaultOptions = {
   responsive: true,
   trigger: 'hover',
-  overlay: false
+  overlay: false,
+  warnings: true
 };
 
 export const events = {

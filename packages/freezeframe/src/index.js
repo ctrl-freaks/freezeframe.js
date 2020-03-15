@@ -58,7 +58,7 @@ class Freezeframe {
       normalizeElements,
       validateElements,
       dedupeImages
-    )(selectorOrNodes);
+    )(selectorOrNodes, this.options);
   }
 
   _load($images) {
