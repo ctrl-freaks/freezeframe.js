@@ -150,6 +150,13 @@ logo.toggle(); // toggle animation
 
     Whether or not to make the image responsive (100% width)
 
+- ### ```warnings```  
+
+    <code><b>type:</b> boolean</code>  
+    <code><b>default</b>: true</code>  
+
+    Whether or not to `console.warn` if image doesn't appear to be a gif. When using gifs that don't end in `.gif`, or animated pngs, you may want to disable these.
+
 ## Constructor
 
 - ### ```Freezeframe(options)```  
@@ -172,14 +179,16 @@ logo.toggle(); // toggle animation
     selector: '.foo',
     trigger: 'click',
     overlay: true,
-    responsive: false
+    responsive: false,
+    warnings: false
   });
 
   // Also valid syntax
   new Freezeframe('.foo', {
     trigger: 'click',
     overlay: true,
-    responsive: false
+    responsive: false,
+    warnings: false
   });
   ```
 
