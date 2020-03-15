@@ -23,7 +23,7 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "peerDependencies": {
-    "freezeframe": "^4.0.0-alpha.6",
+    "freezeframe": "^4.1.1",
     "vue": "^2.6.10"
   },
   "devDependencies": {

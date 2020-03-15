@@ -23,6 +23,12 @@ class ReactFreezeframe extends React.Component {
     });
   }
 
+  componenWillUnmount() {
+    if (this.$freezeframe) {
+      this.$freezeframe.destroy();
+    }
+  }
+
   render() {
     const { children, alt, src } = this.props;
     return (

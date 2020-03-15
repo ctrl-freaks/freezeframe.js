@@ -43,6 +43,13 @@ function (_React$Component) {
       });
     }
   }, {
+    key: "componenWillUnmount",
+    value: function componenWillUnmount() {
+      if (this.$freezeframe) {
+        this.$freezeframe.destroy();
+      }
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this$props = this.props,
