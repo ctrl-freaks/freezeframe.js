@@ -7,6 +7,9 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.freeze = React.createRef();
+    this.state = {
+      visible: true
+    };
   }
 
   render() {
@@ -69,6 +72,19 @@ class App extends React.Component {
           </ReactFreezeframe>
         </div>
 
+        <div className="section">
+          <p>destroy, remove event listeners</p>
+
+          <button onClick={() => this.destroy()}>Destroy</button>
+
+          { this.state.visible && <ReactFreezeframe
+            src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w"
+            onToggle={(items, isPlaying) => this.logEvent('toggle', items, isPlaying)}
+            onStart={(items, isPlaying) => this.logEvent('start', items, isPlaying)}
+            onStop={(items, isPlaying) => this.logEvent('stop', items, isPlaying)}
+          />}
+        </div>
+
         <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a></p>
       </div>
     );
@@ -84,6 +100,10 @@ class App extends React.Component {
 
   toggle() {
     this.freeze.current.toggle();
+  }
+
+  destroy() {
+    this.setState({ visible: false });
   }
 
   logEvent(event, items, isPlaying) {
