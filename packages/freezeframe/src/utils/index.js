@@ -1,5 +1,7 @@
 export const pipe = (...fns) => (
-  fns.reduceRight((f, g) => (...args) => f(g(...args)))
+  (...initArgs) => {
+    return fns.reduceRight(((f, g) => (...args) => f(g(...args, ...initArgs))))();
+  }
 );
 
 export const formatMessage = (string) => `✨Freezeframe: ${string}✨`;
@@ -37,7 +39,7 @@ export const normalizeElements = (selectorOrNodes) => {
     : sel;
 };
 
-export const validateElements = (elements) => {
+export const validateElements = (elements, _, options) => {
   const list = elements instanceof HTMLElement ? [elements] : elements;
   return Array.from(list).reduce((acc, image) => {
     if (!(image instanceof HTMLImageElement)) {
@@ -51,7 +53,7 @@ export const validateElements = (elements) => {
     } else {
       acc.push(image);
       if (!(validateFilename(image.src))) {
-        warn('Image is not a gif', image);
+        if (options.warnings) warn('Image does not appear to be a gif', image);
       }
     }
     return acc;
