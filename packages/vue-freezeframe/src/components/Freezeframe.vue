@@ -37,6 +37,11 @@ export default {
     }
     this.addEventListeners();
   },
+  beforeDestroy() {
+    if (this.$freezeframe) {
+      this.$freezeframe.destroy();
+    }
+  },
   methods: {
     start() {
       this.$freezeframe.start();

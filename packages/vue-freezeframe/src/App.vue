@@ -51,6 +51,21 @@
         </div>
       </freezeframe>
     </div>
+
+    <div class="section">
+      <p>destroy, remove event listeners</p>
+
+      <button @click="visible = false">Destroy</button>
+
+      <freezeframe
+        v-if="visible"
+        src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w"
+        @toggle="(e, items, isPlaying) => logEvent('toggle', e, items, isPlaying)"
+        @start="(e, items, isPlaying) => logEvent('start', e, items, isPlaying)"
+        @stop="(e, items, isPlaying) => logEvent('stop', e, items, isPlaying)"
+      />
+    </div>
+
     <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a></p>
   </div>
 </template>
@@ -62,6 +77,11 @@ export default {
   name: 'app',
   components: {
     Freezeframe,
+  },
+  data() {
+    return {
+      visible: true,
+    };
   },
   methods: {
     toggle() {
