@@ -242,7 +242,7 @@ class Freezeframe {
   }
 
   destroy() {
-    this.internalEvents.forEach(({ $image, event, listener }) => {
+    this._internalEvents.forEach(({ $image, event, listener }) => {
       this._removeEventListener($image, event, listener);
     });
   }

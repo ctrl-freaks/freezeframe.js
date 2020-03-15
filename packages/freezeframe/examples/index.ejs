@@ -131,6 +131,31 @@ new Freezeframe('.my-class-4', {
 });
 </script>
 
+<!-- Example 5 -->
+
+<p>destroy, remove event listeners.</p>
+
+<button class="destroy">destroy</button>
+
+<img
+  class="my-class-5"
+  src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/5615846be4b042d6d89a94ee/1444251161903/?format=1000w"
+/>
+
+<script>
+const destroyable = new Freezeframe('.my-class-5', {
+  overlay: true
+});
+
+document
+  .querySelector('.destroy')
+  .addEventListener('click', () => {
+    console.log('click')
+    destroyable.destroy();
+  });
+</script>
+
+
 <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a>
 
 </body>
