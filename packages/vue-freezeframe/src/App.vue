@@ -94,7 +94,7 @@ export default {
       this.$refs.freeze.stop();
     },
     logEvent(event, items, isPlaying) {
-      console.log('Event emitted:', event, items, isPlaying);
+      console.log('Event emitted:', event, items, isPlaying); // eslint-disable-line
     },
   },
 };
