@@ -4,7 +4,7 @@
   "main": "dist/freezeframe.umd.js",
   "repository": "https://github.com/ctrl-freaks/freezeframe.js",
   "license": "MIT",
-  "description": "React wrapper for freezeframe.js",
+  "description": "Vue wrapper for freezeframe.js",
   "author": "Nick Ford <nickforddesign@gmail.com>",
   "homepage": "https://github.com/ctrl-freaks/freezeframe.js/packages/vue-freezeframe",
   "keywords": [
