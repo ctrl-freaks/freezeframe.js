@@ -1,7 +1,8 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
-const postcssPresetEnv = require('postcss-preset-env');
+const sass = require('sass');
+// const postcssPresetEnv = require('postcss-preset-env');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
@@ -76,7 +77,12 @@ const options = {
               // ]
             }
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: sass
+            }
+          }
         ]
       },
       {
