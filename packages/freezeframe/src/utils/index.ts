@@ -51,8 +51,7 @@ export const validateElements = (
       if (!$children.length) {
         error('Invalid element', image);
       } else {
-        // eslint-disable-next-line no-param-reassign
-        acc = acc.concat(...$children);
+        acc = acc.concat(...$children); // eslint-disable-line no-param-reassign
       }
     } else {
       acc.push(image);

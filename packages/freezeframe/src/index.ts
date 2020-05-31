@@ -6,7 +6,6 @@ import {
   FreezeFrameOptions,
   FreezeFrameEventTypes
 } from '../types';
-
 import {
   pipe,
   normalizeElements,
@@ -16,7 +15,6 @@ import {
   wrapNode,
   htmlToNode
 } from './utils/index';
-
 import * as templates from './templates';
 import {
   classes,
@@ -27,11 +25,11 @@ import {
 class Freezeframe {
   options: FreezeFrameOptions;
 
-  #isTouch: boolean;
-
   items: Freeze[] = [];
 
   $images: HTMLImageElement[] = [];
+
+  #isTouch: boolean;
 
   private _eventListeners = {
     ...Object.values(FreezeFrameEventTypes)
@@ -41,7 +39,7 @@ class Freezeframe {
       }, {})
   };
 
-  private get _stylesInjected() {
+  private get _stylesInjected(): boolean {
     return !!document.querySelector(`style#${styleId}`);
   }
 
@@ -56,14 +54,14 @@ class Freezeframe {
     this._init(target);
   }
 
-  private _init(selectorOrNodes: SelectorOrNotes) {
+  private _init(selectorOrNodes: SelectorOrNotes): void {
     this._injectStylesheet();
     this.#isTouch = isTouch();
     this._capture(selectorOrNodes);
     this._load(this.$images);
   }
 
-  private _capture(selectorOrNodes: SelectorOrNotes) {
+  private _capture(selectorOrNodes: SelectorOrNotes): void {
     this.$images = pipe(
       normalizeElements,
       validateElements,
@@ -71,14 +69,14 @@ class Freezeframe {
     )(selectorOrNodes, this.options) as HTMLImageElement[];
   }
 
-  private _load($images: HTMLImageElement[]) {
+  private _load($images: HTMLImageElement[]): void {
     imagesLoaded($images)
       .on('progress', (instance, { img }) => {
         this._setup(img);
       });
   }
 
-  private async _setup($image: HTMLImageElement) {
+  private async _setup($image: HTMLImageElement): Promise<void> {
     const freeze = this._wrap($image);
     this.items.push(freeze);
     await this._process(freeze);
@@ -106,7 +104,7 @@ class Freezeframe {
     };
   }
 
-  private _process(freeze: Freeze) {
+  private _process(freeze: Freeze): Promise<Freeze> {
     return new Promise((resolve) => {
       const { $canvas, $image, $container } = freeze;
       const { clientWidth, clientHeight } = $image;
@@ -128,22 +126,22 @@ class Freezeframe {
     });
   }
 
-  private _ready($container: HTMLElement) {
+  private _ready($container: HTMLElement): void {
     $container.classList.add(classes.READY);
     $container.classList.add(classes.INACTIVE);
     $container.classList.remove(classes.LOADING_ICON);
   }
 
-  private _attach(freeze: Freeze) {
+  private _attach(freeze: Freeze): void {
     const { $image } = freeze;
 
     if (!this.#isTouch && this.options.trigger === 'hover') {
-      const onMouseEnter = () => {
+      const onMouseEnter = (): void => {
         this._toggleOn(freeze);
         this._emit(FreezeFrameEventTypes.START, freeze, true);
         this._emit(FreezeFrameEventTypes.TOGGLE, freeze, true);
       };
-      const onMouseLeave = () => {
+      const onMouseLeave = (): void => {
         this._toggleOff(freeze);
         this._emit(FreezeFrameEventTypes.START, freeze, false);
         this._emit(FreezeFrameEventTypes.TOGGLE, freeze, false);
@@ -153,7 +151,7 @@ class Freezeframe {
     }
 
     if (this.#isTouch || this.options.trigger === 'click') {
-      const onClick = () => {
+      const onClick = (): void => {
         this._toggle(freeze);
       };
       this._addEventListener($image, 'click', onClick);
@@ -166,7 +164,7 @@ class Freezeframe {
     $image: HTMLImageElement,
     event: string,
     listener: EventListenerOrEventListenerObject
-  ) {
+  ): void {
     this.#internalEvents.push({ $image, event, listener });
     $image.addEventListener(event, listener);
   }
@@ -175,11 +173,11 @@ class Freezeframe {
     $image: HTMLImageElement,
     event: string,
     listener: EventListenerOrEventListenerObject
-  ) {
+  ): void {
     $image.removeEventListener(event, listener);
   }
 
-  private _injectStylesheet() {
+  private _injectStylesheet(): void {
     if (this._stylesInjected) return;
     document.head.appendChild(
       htmlToNode(
@@ -188,13 +186,17 @@ class Freezeframe {
     );
   }
 
-  private _emit(event: string, items: Freeze | Freeze[], isPlaying: boolean) {
+  private _emit(
+    event: string,
+    items: Freeze | Freeze[],
+    isPlaying: boolean
+  ): void {
     this._eventListeners[event].forEach((cb: Function) => {
       cb(Array.isArray(items) && items.length === 1 ? items[0] : items, isPlaying);
     });
   }
 
-  private _toggleOn(freeze: Freeze) {
+  private _toggleOn(freeze: Freeze): void {
     const { $container, $image } = freeze;
 
     if ($container.classList.contains(classes.READY)) {
@@ -204,7 +206,7 @@ class Freezeframe {
     }
   }
 
-  private _toggleOff(freeze: Freeze) {
+  private _toggleOff(freeze: Freeze): void {
     const { $container } = freeze;
 
     if ($container.classList.contains(classes.READY)) {
@@ -213,7 +215,7 @@ class Freezeframe {
     }
   }
 
-  private _toggle(freeze: Freeze) {
+  private _toggle(freeze: Freeze): boolean {
     const { $container } = freeze;
     const isActive = $container.classList.contains(classes.ACTIVE);
 
@@ -233,6 +235,7 @@ class Freezeframe {
     });
     this._emit(FreezeFrameEventTypes.START, this.items, true);
     this._emit(FreezeFrameEventTypes.TOGGLE, this.items, true);
+    return this;
   }
 
   stop() {
@@ -241,6 +244,7 @@ class Freezeframe {
     });
     this._emit(FreezeFrameEventTypes.STOP, this.items, false);
     this._emit(FreezeFrameEventTypes.TOGGLE, this.items, false);
+    return this;
   }
 
   toggle() {
@@ -253,13 +257,15 @@ class Freezeframe {
       }
       this._emit(FreezeFrameEventTypes.TOGGLE, this.items, isPlaying);
     });
+    return this;
   }
 
   on(event: string, cb: Function) {
     this._eventListeners[event].push(cb);
+    return this;
   }
 
-  destroy() {
+  destroy(): void {
     this.#internalEvents.forEach(({ $image, event, listener }) => {
       this._removeEventListener($image, event, listener);
     });
