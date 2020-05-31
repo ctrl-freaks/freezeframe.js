@@ -35,7 +35,7 @@ const templates = fs.readdirSync('./examples')
 const options = {
   mode,
   devtool: DEVTOOL,
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     path: path.join(__dirname, OUTPUT_PATH),
     publicPath: path.join(__dirname, PUBLIC_PATH),
@@ -45,6 +45,7 @@ const options = {
     libraryExport: 'default'
   },
   resolve: {
+    extensions: ['.ts', '.js'],
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
@@ -88,6 +89,11 @@ const options = {
       {
         test: /\.html$/,
         loader: 'html-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
         exclude: /node_modules/
       },
       {

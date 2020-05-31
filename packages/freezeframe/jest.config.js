@@ -1,11 +1,14 @@
 module.exports = {
   collectCoverage: true,
   moduleFileExtensions: [
-    'js'
+    'js',
+    'ts'
   ],
   transform: {
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
-    '^.+\\.jsx?$': 'babel-jest'
+    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.tsx?$': 'ts-jest'
+
   },
   transformIgnorePatterns: [
     '/node_modules/'

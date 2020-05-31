@@ -19,10 +19,4 @@ export const defaultOptions = {
   warnings: true
 };
 
-export const events = {
-  START: 'start',
-  STOP: 'stop',
-  TOGGLE: 'toggle'
-};
-
 export const styleId = 'ff-styles';
