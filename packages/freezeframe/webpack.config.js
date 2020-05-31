@@ -38,7 +38,7 @@ const options = {
   entry: './src/index.ts',
   output: {
     path: path.join(__dirname, OUTPUT_PATH),
-    publicPath: path.join(__dirname, PUBLIC_PATH),
+    publicPath: PUBLIC_PATH,
     filename: `${OUTPUT_FILENAME}${BUNDLE_SUFFIX}`,
     library: NAME,
     libraryTarget: 'umd',
