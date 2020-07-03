@@ -1,6 +1,6 @@
 import imagesLoaded from 'imagesloaded';
 import {
-  SelectorOrNotes,
+  SelectorOrNodes,
   Freeze,
   FreezeFrameEvent,
   FreezeFrameOptions,
@@ -13,7 +13,8 @@ import {
   dedupeImages,
   isTouch,
   wrapNode,
-  htmlToNode
+  htmlToNode,
+  error
 } from './utils/index';
 import * as templates from './templates';
 import {
@@ -28,6 +29,8 @@ class Freezeframe {
   items: Freeze[] = [];
 
   $images: HTMLImageElement[] = [];
+
+  #target: SelectorOrNodes;
 
   #isTouch: boolean;
 
@@ -44,24 +47,34 @@ class Freezeframe {
   }
 
   constructor(
-    selectorOrNodes: any = classes.SELECTOR,
-    options: FreezeFrameOptions
+    target: SelectorOrNodes | FreezeFrameOptions = classes.SELECTOR,
+    options?: FreezeFrameOptions
   ) {
-    this.options = selectorOrNodes instanceof Object && !options
-      ? { ...defaultOptions, ...selectorOrNodes }
-      : { ...defaultOptions, ...options };
-    const target = this.options.selector || selectorOrNodes;
-    this._init(target);
+    if (
+      typeof target === 'string'
+        || target instanceof Element
+        || target instanceof HTMLCollection
+        || target instanceof NodeList
+    ) {
+      this.options = { ...defaultOptions, ...options };
+      this.#target = target;
+    } else if (typeof target === 'object' && !options) {
+      this.options = { ...defaultOptions, ...target };
+      this.#target = this.options.selector;
+    } else {
+      error('Invalid FreezeFrame.js configuration');
+    }
+    this._init(this.#target);
   }
 
-  private _init(selectorOrNodes: SelectorOrNotes): void {
+  private _init(selectorOrNodes: SelectorOrNodes): void {
     this._injectStylesheet();
     this.#isTouch = isTouch();
     this._capture(selectorOrNodes);
     this._load(this.$images);
   }
 
-  private _capture(selectorOrNodes: SelectorOrNotes): void {
+  private _capture(selectorOrNodes: SelectorOrNodes): void {
     this.$images = pipe(
       normalizeElements,
       validateElements,

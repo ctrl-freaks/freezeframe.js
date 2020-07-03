@@ -13,6 +13,7 @@ export const classes = {
 };
 
 export const defaultOptions = {
+  selector: classes.SELECTOR,
   responsive: true,
   trigger: 'hover',
   overlay: false,

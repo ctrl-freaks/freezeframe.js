@@ -1,6 +1,9 @@
-export type SelectorOrNotes = string | HTMLAllCollection
+export type SelectorOrNodes = string
+  | Element
+  | HTMLCollectionOf<Element>
+  | NodeListOf<Element>
 
-export type TriggerType = 'hover' | 'click' | false
+export type TriggerType = string | false
 
 export enum FreezeFrameEventTypes {
   START = 'start',
@@ -9,11 +12,11 @@ export enum FreezeFrameEventTypes {
 }
 
 export interface FreezeFrameOptions {
-  selector?: string,
-  responsive: boolean,
-  trigger: TriggerType,
-  overlay: boolean,
-  warnings: boolean
+  selector: SelectorOrNodes,
+  responsive?: boolean,
+  trigger?: TriggerType,
+  overlay?: boolean,
+  warnings?: boolean
 }
 
 export interface Freeze {

@@ -1,4 +1,4 @@
-import { SelectorOrNotes, FreezeFrameOptions } from '../../types/index';
+import { SelectorOrNodes, FreezeFrameOptions } from '../../types/index';
 
 export const pipe = (...fns: Function[]) => (
   (...initArgs: any[]) => {
@@ -33,18 +33,18 @@ export const validateFilename = (filePath: string): boolean => {
   return ext === 'gif';
 };
 
-export const normalizeElements = (selectorOrNodes: SelectorOrNotes) => {
+export const normalizeElements = (selectorOrNodes: SelectorOrNodes) => {
   return typeof selectorOrNodes === 'string'
     ? document.querySelectorAll(selectorOrNodes)
     : selectorOrNodes;
 };
 
 export const validateElements = (
-  elements: HTMLElement | HTMLElement[],
+  elements: Element | Element[],
   _: any,
   options: FreezeFrameOptions
 ) => {
-  const list = elements instanceof HTMLElement ? [elements] : elements;
+  const list = elements instanceof Element ? [elements] : elements;
   return Array.from(list).reduce((acc, image) => {
     if (!(image instanceof HTMLImageElement)) {
       const $children = image.querySelectorAll('img');
