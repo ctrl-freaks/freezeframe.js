@@ -20,15 +20,28 @@ new FreezeFrame({
   overlay: false,
   warnings: false
 });
+new FreezeFrame(document.body, {
+  responsive: false,
+  trigger: 'click',
+  overlay: false,
+  warnings: false
+});
+new FreezeFrame('.foo', {}); // looks odd but isn't an issue
 
 // sad paths
 new FreezeFrame(true);
 new FreezeFrame(3);
 new FreezeFrame({});
+new FreezeFrame([]);
 new FreezeFrame({
   foo: 3
 });
 new FreezeFrame({
   selector: 3
 });
-new FreezeFrame('.foo', {});
+new FreezeFrame({
+  responsive: false,
+  trigger: 'click',
+  overlay: false,
+  warnings: false
+});

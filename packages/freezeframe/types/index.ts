@@ -1,3 +1,7 @@
+export type MandateProps<T extends {}, K extends keyof T> = Omit<T, K> & {
+  [MK in K]-?: NonNullable<T[MK]>
+}
+
 export type SelectorOrNodes = string
   | Element
   | HTMLCollectionOf<Element>
@@ -12,7 +16,7 @@ export enum FreezeFrameEventTypes {
 }
 
 export interface FreezeFrameOptions {
-  selector: SelectorOrNodes,
+  selector?: SelectorOrNodes,
   responsive?: boolean,
   trigger?: TriggerType,
   overlay?: boolean,
