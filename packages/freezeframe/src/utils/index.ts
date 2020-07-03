@@ -71,10 +71,9 @@ export const htmlToNode = (html: string) => {
   const $wrap = window.document.createElement('div');
   $wrap.innerHTML = html;
   const $content = $wrap.childNodes;
-  // return $content.length > 1
-  //   ? $content
-  //   : $content[0];
-  return $content[0] as HTMLElement;
+  return ($content.length > 1
+    ? $content
+    : $content[0]) as HTMLElement;
 };
 
 export const wrapNode = ($el: HTMLElement, $wrapper: HTMLElement) => {
