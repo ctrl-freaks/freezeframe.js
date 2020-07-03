@@ -62,7 +62,10 @@ class Freezeframe {
       this.options = { ...defaultOptions, ...target };
       this.#target = this.options.selector;
     } else {
-      error('Invalid FreezeFrame.js configuration');
+      error(
+        'Invalid FreezeFrame.js configuration:',
+        ...[target, options].filter((arg) => arg !== undefined)
+      );
     }
     this._init(this.#target);
   }

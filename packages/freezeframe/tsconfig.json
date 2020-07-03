@@ -1,4 +1,5 @@
 {
+  "exclude": ["./tests/ts-intellisense"],
   "compilerOptions": {
     "outDir": "./dist/",
     "noImplicitAny": true,
