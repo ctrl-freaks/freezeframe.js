@@ -11,6 +11,8 @@ animate on mouse hover / mouse click / touch event, or manually via class method
 Version 4.x no longer requires or supports jQuery. If you want to use freezeframe as a jQuery
 plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
+FreezeFrame is now built in TypeScript, and offers consumable type definitions and improved input validation!
+
 - [Freezeframe.js](#freezeframejs)
   - [Examples](#examples)
   - [Installation](#installation)
@@ -79,7 +81,7 @@ It is also possible to put the `.freezeframe` class on a parent element containi
 If your environment supports commonjs modules (`require`) or es6 module imports (`import`), you can import freezeframe like so:
 
 ```js
-// es6 modules
+// es6+/ts modules
 import Freezeframe from 'freezeframe';
 
 // or commonjs
@@ -120,13 +122,13 @@ logo.toggle(); // toggle animation
 
 - ### ```selector```
 
-    <code><b>type:</b> string | DOM object</code>  
+    <code><b>type:</b> string | Element | HTMLCollectionOf<Element> | NodeListOf<Element></code>  
     <code><b>default</b>: ".freezeframe"</code>  
 
     The selector used to search for .gifs to freeze.
     Selector may either be passed as the first argument of the Freezeframe constructor, or as a
-    property of the options object. You may pass a string selector or a DOM reference. If a string
-    is passed, we use `querySelectorAll`.
+    property of the options object. You may pass a string selector or a DOM object. If a string
+    is passed, we use `querySelectorAll` to query for the elements.
 
 - ### ```trigger```  
 
@@ -171,7 +173,7 @@ logo.toggle(); // toggle animation
   // String as selector
   new Freezeframe('.foo');
 
-  // DOM reference as selector
+  // DOM object as selector
   new Freezeframe(document.querySelectorAll('.foo'));
 
   // Custom options
