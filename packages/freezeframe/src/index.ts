@@ -5,7 +5,7 @@ import {
   FreezeFrameEvent,
   FreezeFrameOptions,
   FreezeFrameEventTypes,
-  MandateProps
+  RequireProps
 } from '../types';
 import {
   pipe,
@@ -48,7 +48,7 @@ class Freezeframe {
   }
 
   constructor(
-    target: SelectorOrNodes | MandateProps<FreezeFrameOptions, 'selector'> = classes.SELECTOR,
+    target: SelectorOrNodes | RequireProps<FreezeFrameOptions, 'selector'> = classes.SELECTOR,
     options?: FreezeFrameOptions
   ) {
     if (
