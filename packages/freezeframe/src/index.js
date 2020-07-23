@@ -83,7 +83,7 @@ class Freezeframe {
       $container.classList.add(classes.RESPONSIVE);
     }
     if (this.options.overlay) {
-      $container.appendChild(htmlToNode(templates.overlay()));
+      $container.appendChild(htmlToNode(templates.overlay()))
     }
     $image.classList.add(classes.IMAGE);
     $container.appendChild($canvas);
@@ -120,7 +120,7 @@ class Freezeframe {
 
   _ready($container) {
     $container.classList.add(classes.READY);
-    $container.classList.add(classes.INACTIVE);
+    $container.classList.add(classes.ACTIVE);
     $container.classList.remove(classes.LOADING_ICON);
   }
 

@@ -57,19 +57,6 @@ button:active {
 
 <p class="bold title">freezeframe.js</p>
 
-<!-- Example 1 -->
-
-<p>basic,<br />animate on hover.</p>
-
-<img
-  class="freezeframe"
-  src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif"
-/>
-
-<script>
-new Freezeframe();
-</script>
-
 <!-- Example 2 -->
 
 <p>start & stop on click</p>
@@ -82,7 +69,8 @@ new Freezeframe();
 <script>
 new Freezeframe({
   selector: '.my-class-2',
-  trigger: 'click'
+  trigger: 'click',
+  overlay: true
 });
 </script>
 
