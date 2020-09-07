@@ -1,12 +1,12 @@
-import { SelectorOrNodes, Freeze, FreezeFrameOptions, RequireProps } from '../types';
+import { SelectorOrNodes, Freeze, FreezeframeOptions, RequireProps } from '../types';
 declare class Freezeframe {
     #private;
-    options: FreezeFrameOptions;
+    options: FreezeframeOptions;
     items: Freeze[];
     $images: HTMLImageElement[];
     private _eventListeners;
     private get _stylesInjected();
-    constructor(target?: SelectorOrNodes | RequireProps<FreezeFrameOptions, 'selector'>, options?: FreezeFrameOptions);
+    constructor(target?: SelectorOrNodes | RequireProps<FreezeframeOptions, 'selector'>, options?: FreezeframeOptions);
     private _init;
     private _capture;
     private _load;

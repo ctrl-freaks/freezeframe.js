@@ -9,13 +9,13 @@ export type SelectorOrNodes = string
 
 export type TriggerType = string | false
 
-export enum FreezeFrameEventTypes {
+export enum FreezeframeEventTypes {
   START = 'start',
   STOP = 'stop',
   TOGGLE = 'toggle'
 }
 
-export interface FreezeFrameOptions {
+export interface FreezeframeOptions {
   selector?: SelectorOrNodes,
   responsive?: boolean,
   trigger?: TriggerType,
@@ -29,7 +29,7 @@ export interface Freeze {
   $image: HTMLImageElement
 }
 
-export interface FreezeFrameEvent {
+export interface FreezeframeEvent {
   $image: HTMLImageElement,
   event: string,
   listener: EventListenerOrEventListenerObject

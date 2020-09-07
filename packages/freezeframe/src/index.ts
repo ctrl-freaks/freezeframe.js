@@ -2,9 +2,9 @@ import imagesLoaded from 'imagesloaded';
 import {
   SelectorOrNodes,
   Freeze,
-  FreezeFrameEvent,
-  FreezeFrameOptions,
-  FreezeFrameEventTypes,
+  FreezeframeEvent,
+  FreezeframeOptions,
+  FreezeframeEventTypes,
   RequireProps
 } from '../types';
 import {
@@ -25,7 +25,7 @@ import {
 } from './constants';
 
 class Freezeframe {
-  options: FreezeFrameOptions;
+  options: FreezeframeOptions;
 
   items: Freeze[] = [];
 
@@ -36,7 +36,7 @@ class Freezeframe {
   #isTouch: boolean;
 
   private _eventListeners = {
-    ...Object.values(FreezeFrameEventTypes)
+    ...Object.values(FreezeframeEventTypes)
       .reduce<any>((acc, item) => {
         acc[item] = [];
         return acc;
@@ -48,8 +48,8 @@ class Freezeframe {
   }
 
   constructor(
-    target: SelectorOrNodes | RequireProps<FreezeFrameOptions, 'selector'> = classes.SELECTOR,
-    options?: FreezeFrameOptions
+    target: SelectorOrNodes | RequireProps<FreezeframeOptions, 'selector'> = classes.SELECTOR,
+    options?: FreezeframeOptions
   ) {
     if (
       typeof target === 'string'
@@ -64,7 +64,7 @@ class Freezeframe {
       this.#target = this.options.selector;
     } else {
       error(
-        'Invalid FreezeFrame.js configuration:',
+        'Invalid Freezeframe.js configuration:',
         ...[target, options].filter((arg) => arg !== undefined)
       );
     }
@@ -155,13 +155,13 @@ class Freezeframe {
     if (!this.#isTouch && this.options.trigger === 'hover') {
       const onMouseEnter = (): void => {
         this._toggleOn(freeze);
-        this._emit(FreezeFrameEventTypes.START, freeze, true);
-        this._emit(FreezeFrameEventTypes.TOGGLE, freeze, true);
+        this._emit(FreezeframeEventTypes.START, freeze, true);
+        this._emit(FreezeframeEventTypes.TOGGLE, freeze, true);
       };
       const onMouseLeave = (): void => {
         this._toggleOff(freeze);
-        this._emit(FreezeFrameEventTypes.START, freeze, false);
-        this._emit(FreezeFrameEventTypes.TOGGLE, freeze, false);
+        this._emit(FreezeframeEventTypes.START, freeze, false);
+        this._emit(FreezeframeEventTypes.TOGGLE, freeze, false);
       };
       this._addEventListener($image, 'mouseleave', onMouseLeave);
       this._addEventListener($image, 'mouseenter', onMouseEnter);
@@ -175,7 +175,7 @@ class Freezeframe {
     }
   }
 
-  #internalEvents: FreezeFrameEvent[] = [];
+  #internalEvents: FreezeframeEvent[] = [];
 
   private _addEventListener(
     $image: HTMLImageElement,
@@ -250,8 +250,8 @@ class Freezeframe {
     this.items.forEach((freeze) => {
       this._toggleOn(freeze);
     });
-    this._emit(FreezeFrameEventTypes.START, this.items, true);
-    this._emit(FreezeFrameEventTypes.TOGGLE, this.items, true);
+    this._emit(FreezeframeEventTypes.START, this.items, true);
+    this._emit(FreezeframeEventTypes.TOGGLE, this.items, true);
     return this;
   }
 
@@ -259,8 +259,8 @@ class Freezeframe {
     this.items.forEach((freeze) => {
       this._toggleOff(freeze);
     });
-    this._emit(FreezeFrameEventTypes.STOP, this.items, false);
-    this._emit(FreezeFrameEventTypes.TOGGLE, this.items, false);
+    this._emit(FreezeframeEventTypes.STOP, this.items, false);
+    this._emit(FreezeframeEventTypes.TOGGLE, this.items, false);
     return this;
   }
 
@@ -268,11 +268,11 @@ class Freezeframe {
     this.items.forEach((freeze) => {
       const isPlaying = this._toggle(freeze);
       if (isPlaying) {
-        this._emit(FreezeFrameEventTypes.START, this.items, false);
+        this._emit(FreezeframeEventTypes.START, this.items, false);
       } else {
-        this._emit(FreezeFrameEventTypes.STOP, this.items, false);
+        this._emit(FreezeframeEventTypes.STOP, this.items, false);
       }
-      this._emit(FreezeFrameEventTypes.TOGGLE, this.items, isPlaying);
+      this._emit(FreezeframeEventTypes.TOGGLE, this.items, isPlaying);
     });
     return this;
   }

@@ -11,7 +11,13 @@ animate on mouse hover / mouse click / touch event, or manually via class method
 Version 4.x no longer requires or supports jQuery. If you want to use freezeframe as a jQuery
 plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
-FreezeFrame is now built in TypeScript, and offers consumable type definitions and improved input validation!
+Freezeframe is now built in TypeScript, and offers consumable type definitions and improved input validation!
+
+To get started using the TypeScript beta:
+
+```sh
+npm install freezeframe@5.0.0-beta.1
+```
 
 - [Freezeframe.js](#freezeframejs)
   - [Examples](#examples)

@@ -1,4 +1,4 @@
-import { SelectorOrNodes, FreezeFrameOptions } from '../../types/index';
+import { SelectorOrNodes, FreezeframeOptions } from '../../types/index';
 
 export const pipe = (...fns: Function[]) => (
   (...initArgs: any[]) => {
@@ -42,7 +42,7 @@ export const normalizeElements = (selectorOrNodes: SelectorOrNodes) => {
 export const validateElements = (
   elements: Element | Element[],
   _: any,
-  options: FreezeFrameOptions
+  options: FreezeframeOptions
 ) => {
   const list = elements instanceof Element ? [elements] : elements;
   return Array.from(list).reduce((acc, image) => {

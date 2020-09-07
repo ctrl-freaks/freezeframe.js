@@ -3,12 +3,12 @@ export declare type RequireProps<T extends {}, K extends keyof T> = Omit<T, K> &
 };
 export declare type SelectorOrNodes = string | Element | HTMLCollectionOf<Element> | NodeListOf<Element>;
 export declare type TriggerType = string | false;
-export declare enum FreezeFrameEventTypes {
+export declare enum FreezeframeEventTypes {
     START = "start",
     STOP = "stop",
     TOGGLE = "toggle"
 }
-export interface FreezeFrameOptions {
+export interface FreezeframeOptions {
     selector?: SelectorOrNodes;
     responsive?: boolean;
     trigger?: TriggerType;
@@ -20,7 +20,7 @@ export interface Freeze {
     $canvas: HTMLCanvasElement;
     $image: HTMLImageElement;
 }
-export interface FreezeFrameEvent {
+export interface FreezeframeEvent {
     $image: HTMLImageElement;
     event: string;
     listener: EventListenerOrEventListenerObject;

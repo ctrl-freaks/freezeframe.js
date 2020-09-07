@@ -1,45 +1,45 @@
 /* eslint-disable no-new */
-import FreezeFrame from '../../src';
+import Freezeframe from '../../src';
 
 // happy paths
-new FreezeFrame();
-new FreezeFrame('.foo');
-new FreezeFrame('#foo');
-new FreezeFrame(document.body);
-new FreezeFrame(document.getElementById('foo'));
-new FreezeFrame(document.getElementsByClassName('foo'));
-new FreezeFrame(document.querySelector('.foo'));
-new FreezeFrame(document.querySelectorAll('.foo'));
-new FreezeFrame({
+new Freezeframe();
+new Freezeframe('.foo');
+new Freezeframe('#foo');
+new Freezeframe(document.body);
+new Freezeframe(document.getElementById('foo'));
+new Freezeframe(document.getElementsByClassName('foo'));
+new Freezeframe(document.querySelector('.foo'));
+new Freezeframe(document.querySelectorAll('.foo'));
+new Freezeframe({
   selector: '.foo'
 });
-new FreezeFrame({
+new Freezeframe({
   selector: document.body,
   responsive: false,
   trigger: 'click',
   overlay: false,
   warnings: false
 });
-new FreezeFrame(document.body, {
+new Freezeframe(document.body, {
   responsive: false,
   trigger: 'click',
   overlay: false,
   warnings: false
 });
-new FreezeFrame('.foo', {}); // looks odd but isn't an issue
+new Freezeframe('.foo', {}); // looks odd but isn't an issue
 
 // sad paths
-new FreezeFrame(true);
-new FreezeFrame(3);
-new FreezeFrame({});
-new FreezeFrame([]);
-new FreezeFrame({
+new Freezeframe(true);
+new Freezeframe(3);
+new Freezeframe({});
+new Freezeframe([]);
+new Freezeframe({
   foo: 3
 });
-new FreezeFrame({
+new Freezeframe({
   selector: 3
 });
-new FreezeFrame({
+new Freezeframe({
   responsive: false,
   trigger: 'click',
   overlay: false,
