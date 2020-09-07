@@ -10,6 +10,16 @@ animate on mouse hover / mouse click / touch event, or triggered manually.
 
 http://ctrl-freaks.github.io/freezeframe.js/
 
+## 5.x TypeScript beta
+
+Freezeframe core is now built in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
+
+To get started using the TypeScript beta:
+
+```sh
+npm install freezeframe@5.0.0-beta.1
+```
+
 ## 4.x
 
 Version 4+ is built with modern javascript in mind. It's transpiled with webpack/babel, so it should
