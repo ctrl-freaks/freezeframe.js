@@ -3,11 +3,11 @@ import { classes, styleId } from './constants';
 import styles from './scss/styles.scss';
 
 export const stylesheet = () => (
-  html`
+  html(`
     <style id="${styleId}">
       ${styles.toString()}
     </style>
-  `
+  `)
 );
 
 export const container = () => (

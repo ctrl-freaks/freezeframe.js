@@ -1,7 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const webpack = require('webpack');
-const postcssPresetEnv = require('postcss-preset-env');
+const sass = require('sass');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WriteFilePlugin = require('write-file-webpack-plugin');
@@ -34,16 +34,17 @@ const templates = fs.readdirSync('./examples')
 const options = {
   mode,
   devtool: DEVTOOL,
-  entry: './src/index.js',
+  entry: './src/index.ts',
   output: {
     path: path.join(__dirname, OUTPUT_PATH),
-    publicPath: path.join(__dirname, PUBLIC_PATH),
+    publicPath: PUBLIC_PATH,
     filename: `${OUTPUT_FILENAME}${BUNDLE_SUFFIX}`,
     library: NAME,
     libraryTarget: 'umd',
     libraryExport: 'default'
   },
   resolve: {
+    extensions: ['.ts', '.js'],
     alias: {
       '@': path.resolve(__dirname, 'src')
     }
@@ -76,12 +77,22 @@ const options = {
               // ]
             }
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: sass
+            }
+          }
         ]
       },
       {
         test: /\.html$/,
         loader: 'html-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.ts$/,
+        use: 'ts-loader',
         exclude: /node_modules/
       },
       {

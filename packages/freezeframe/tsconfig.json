@@ -1,0 +1,18 @@
+{
+  "exclude": ["./tests/ts-intellisense"],
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "declaration": true,
+    "declarationDir": "./dist/",
+    "noImplicitAny": true,
+    "module": "es2020",
+    "target": "es2015",
+    "lib": ["es2017", "dom"],
+    "allowJs": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "types": [
+      "jest"
+    ]
+  }
+}

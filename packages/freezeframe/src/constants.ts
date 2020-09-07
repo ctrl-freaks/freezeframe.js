@@ -13,16 +13,11 @@ export const classes = {
 };
 
 export const defaultOptions = {
+  selector: classes.SELECTOR,
   responsive: true,
   trigger: 'hover',
   overlay: false,
   warnings: true
-};
-
-export const events = {
-  START: 'start',
-  STOP: 'stop',
-  TOGGLE: 'toggle'
 };
 
 export const styleId = 'ff-styles';
