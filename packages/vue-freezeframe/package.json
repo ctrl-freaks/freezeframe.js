@@ -1,7 +1,7 @@
 {
   "name": "vue-freezeframe",
   "version": "4.1.3",
-  "main": "dist/freezeframe.umd.js",
+  "main": "dist/vue-freezeframe.umd.js",
   "repository": "https://github.com/ctrl-freaks/freezeframe.js",
   "license": "MIT",
   "description": "Vue wrapper for freezeframe.js",
@@ -10,6 +10,7 @@
   "keywords": [
     "freezeframe",
     "vue",
+    "typescript",
     "gif"
   ],
   "bugs": {
@@ -17,32 +18,37 @@
   },
   "scripts": {
     "start": "vue-cli-service serve",
-    "build": "vue-cli-service build --target lib --name freezeframe src/lib.js && npm run build-demo",
+    "build": "vue-cli-service build --target lib --name vue-freezeframe src/lib.ts && npm run build-demo",
     "build-demo": "vue-cli-service build --dest demo && ./demo.sh",
-    "lint": "vue-cli-service lint --fix",
-    "test:unit": "vue-cli-service test:unit"
+    "test:unit": "vue-cli-service test:unit",
+    "lint": "vue-cli-service lint --fix"
   },
-  "peerDependencies": {
-    "freezeframe": "^4.1.2",
-    "vue": "^2.6.10"
+  "dependencies": {
+    "core-js": "^3.6.5",
+    "freezeframe": "5.0.0-beta.1",
+    "vue": "^2.6.11",
+    "vue-class-component": "^7.2.3",
+    "vue-property-decorator": "^8.4.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-plugin-unit-jest": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "@vue/eslint-config-airbnb": "^4.0.0",
-    "@vue/test-utils": "1.0.0-beta.29",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "core-js": "^2.6.5",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "freezeframe": "^4.1.3",
-    "sass": "^1.18.0",
-    "sass-loader": "^7.1.0",
-    "vue": "^2.6.10",
-    "vue-template-compiler": "^2.6.10"
+    "@types/jest": "^24.0.19",
+    "@typescript-eslint/eslint-plugin": "^2.33.0",
+    "@typescript-eslint/parser": "^2.33.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-typescript": "~4.5.0",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^5.0.2",
+    "@vue/test-utils": "^1.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "^1.19.1",
+    "sass": "^1.26.5",
+    "sass-loader": "^8.0.2",
+    "typescript": "~3.9.3",
+    "vue-template-compiler": "^2.6.11"
   }
 }
