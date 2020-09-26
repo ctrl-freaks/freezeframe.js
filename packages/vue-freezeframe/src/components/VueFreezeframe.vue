@@ -30,7 +30,6 @@ export default class VueFreezeframe extends Vue {
 
   $refs!: {
     img: HTMLImageElement
-    // $freezeframe: Freezeframe
   }
 
   mounted() {
