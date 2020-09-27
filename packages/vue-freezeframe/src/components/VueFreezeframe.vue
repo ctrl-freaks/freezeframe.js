@@ -91,7 +91,7 @@ export default class VueFreezeframe extends Vue {
 
   stop() {
     if (this.$freezeframe) {
-      this.$freezeframe?.stop()
+      this.$freezeframe.stop()
       this.isPlaying = false
     }
   }
