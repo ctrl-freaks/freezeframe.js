@@ -22,7 +22,7 @@ export default class VueFreezeframe extends Vue {
   options?: FreezeframeOptions
 
   // data
-  ready = false
+  ready = true
   isPlaying = false
   $freezeframe?: Freezeframe
 
