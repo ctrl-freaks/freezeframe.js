@@ -14,6 +14,18 @@ Codesandbox:
 
 https://codesandbox.io/s/vue-freezeframe-demo-jibmp
 
+## TypeScript
+
+`vue-freezeframe` is now written in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
+
+For advanced use cases, take a look at the [demo source](./src/App.vue), or take a look at the [types exported from Freezeframe](../freezeframe/types).
+
+To get started using the TypeScript beta:
+
+```sh
+npm install vue-freezeframe@5.0.0-beta.1
+```
+
 ## Project setup
 
 ```bash
@@ -39,8 +51,6 @@ Vue.use(VueFreezeframe);
 ```
 
 ## Local-only usage
-
-`vue-freezeframe` is now written in TypeScript. For more advanced use cases, take a look at the [demo](./src/App.vue), or take a look at the [types exported from Freezeframe](../freezeframe/types).
 
 ```html
 <template>

@@ -12,12 +12,21 @@ http://ctrl-freaks.github.io/freezeframe.js/
 
 ## 5.x TypeScript beta
 
-Freezeframe core is now built in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
+Freezeframe is now built in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
 
 To get started using the TypeScript beta:
 
 ```sh
 npm install freezeframe@5.0.0-beta.1
+```
+
+```sh
+npm install vue-freezeframe@5.0.0-beta.1
+```
+
+```sh
+# react typescript re-write coming soon
+# npm install react-freezeframe@5.0.0-beta.1
 ```
 
 ## 4.x
