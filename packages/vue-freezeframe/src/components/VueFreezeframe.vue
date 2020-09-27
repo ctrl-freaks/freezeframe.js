@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-freezeframe">
+  <div class="vue-freezeframe" v-if="ready">
     <slot v-if="$slots.default" />
     <img v-else-if="src" ref="img" :src="src" />
   </div>
@@ -7,7 +7,7 @@
 
 <script lang="ts">
 import Freezeframe from 'freezeframe'
-import { Component, Vue } from 'vue-property-decorator'
+import { Component, Vue, Watch } from 'vue-property-decorator'
 import { FreezeframeOptions, Freeze } from 'freezeframe/types'
 
 @Component({
@@ -22,6 +22,7 @@ export default class VueFreezeframe extends Vue {
   options?: FreezeframeOptions
 
   // data
+  ready = false
   isPlaying = false
   $freezeframe?: Freezeframe
 
@@ -29,13 +30,40 @@ export default class VueFreezeframe extends Vue {
     img: HTMLImageElement
   }
 
+  @Watch('src')
+  onSrcChanged() {
+    this.reset()
+  }
+
+  @Watch('options')
+  onOptionsChanged() {
+    this.reset()
+  }
+
   mounted() {
+    this.init()
+  }
+
+  beforeDestroy() {
+    this.removeEventListeners()
+  }
+
+  async init() {
+    this.ready = true
+    await this.$nextTick()
     if (this.$slots.default) {
       this.$freezeframe = new Freezeframe(this.$el, this.options)
     } else if (this.src) {
       this.$freezeframe = new Freezeframe(this.$refs.img, this.options)
     }
     this.addEventListeners()
+  }
+
+  async reset() {
+    this.ready = false
+    this.removeEventListeners()
+    await this.$nextTick()
+    this.init()
   }
 
   addEventListeners() {
@@ -45,6 +73,12 @@ export default class VueFreezeframe extends Vue {
         this.$emit(event, items, isPlaying)
         this.$emit('toggle', items, isPlaying)
       })
+    }
+  }
+
+  removeEventListeners() {
+    if (this.$freezeframe) {
+      this.$freezeframe.destroy()
     }
   }
 
