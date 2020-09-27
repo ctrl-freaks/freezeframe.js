@@ -61,6 +61,19 @@
     </div>
 
     <div class="section">
+      <p>updating props</p>
+
+      <button @click="toggleSrc">Change src prop</button>
+
+      <vue-freezeframe
+        :src="currentSrc"
+        @toggle="(e, items, isPlaying) => logEvent('toggle', e, items, isPlaying)"
+        @start="(e, items, isPlaying) => logEvent('start', e, items, isPlaying)"
+        @stop="(e, items, isPlaying) => logEvent('stop', e, items, isPlaying)"
+      />
+    </div>
+
+    <div class="section">
       <p>destroy, remove event listeners</p>
 
       <button @click="visible = false">Destroy</button>
@@ -83,6 +96,11 @@ import { Component, Vue } from 'vue-property-decorator'
 import { Freeze, FreezeframeEvent } from 'freezeframe/types'
 import VueFreezeframe from './components/VueFreezeframe.vue'
 
+const TOGGLE_SRCS = [
+  'https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w',
+  'https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a93f42471c10b0d656d1562/1519814094495/dirk-980.gif?format=1000w',
+]
+
 @Component({
   components: {
     VueFreezeframe,
@@ -91,8 +109,14 @@ import VueFreezeframe from './components/VueFreezeframe.vue'
 export default class App extends Vue {
   visible = true
 
+  currentSrcIndex = 0
+
   $refs!: {
     freeze: VueFreezeframe
+  }
+
+  get currentSrc() {
+    return TOGGLE_SRCS[this.currentSrcIndex]
   }
 
   toggle() {
@@ -105,6 +129,10 @@ export default class App extends Vue {
 
   stop() {
     this.$refs.freeze.stop()
+  }
+
+  toggleSrc() {
+    this.currentSrcIndex = Number(!this.currentSrcIndex)
   }
 
   logEvent(event: FreezeframeEvent, items: Freeze[], isPlaying: boolean) {
