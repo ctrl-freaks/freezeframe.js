@@ -17,7 +17,7 @@ https://codesandbox.io/s/vue-freezeframe-demo-jibmp
 ## Project setup
 
 ```bash
-yarn add vue-freezeframe # or npm install vue-freezeframe
+npm install vue-freezeframe
 ```
 
 ## Install globally

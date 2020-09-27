@@ -12,10 +12,7 @@ import { FreezeframeOptions, Freeze } from 'freezeframe/types'
 
 @Component({
   props: {
-    src: {
-      type: [String, Object],
-      default: null,
-    },
+    src: [String, Object],
     options: Object,
   },
 })

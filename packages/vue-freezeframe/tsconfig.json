@@ -2,6 +2,8 @@
   "compilerOptions": {
     "module": "es2020",
     "target": "es2015",
+    "declaration": true,
+    "declarationDir": "./dist/",
     "allowJs": true,
     "strict": true,
     "jsx": "preserve",
