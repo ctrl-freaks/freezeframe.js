@@ -23,7 +23,7 @@ npm install vue-freezeframe
 ## Install globally
 
 ```js
-// main.js
+// main.ts / main.js
 
 import Vue from 'vue';
 import VueFreezeframe from 'vue-freezeframe';
@@ -39,6 +39,28 @@ Vue.use(VueFreezeframe);
 ```
 
 ## Local-only usage
+
+`vue-freezeframe` is now written in TypeScript. For more advanced use cases, take a look at the [demo](./src/App.vue), or take a look at the [types exported from Freezeframe](../freezeframe/types).
+
+```html
+<template>
+  <vue-freezeframe src="./something.gif" />
+</template>
+
+<script lang="ts">
+import { Component, Vue } from 'vue-property-decorator'
+import VueFreezeframe from './components/VueFreezeframe.vue'
+
+@Component({
+  components: {
+    VueFreezeframe,
+  },
+})
+export default class App extends Vue {}
+</script>
+```
+
+Or, you can use `vue-freezeframe` with JavaScript:
 
 ```html
 <template>
@@ -119,21 +141,21 @@ Assuming you have already read the [instructions](../../README.md#contributing) 
 
 ```bash
 # start webpack dev server
-npm start
+yarn start # of npm start
 ```
 
 ```bash
 # lint and fix issues with eslint
-npm run lint -- --fix
+yarn lint # or npm run lint
 ```
 
 ```bash
 # build the project and examples for gh-pages
-npm run build
+yarn build # or npm run build
 ```
 
 Then commit your changes and submit your PR for review.
 
 ## License
 
-vue-freezeframe.js is released under the terms of the MIT License.
+`vue-freezeframe` is released under the terms of the MIT License.
