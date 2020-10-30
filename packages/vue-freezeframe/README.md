@@ -59,7 +59,7 @@ Vue.use(VueFreezeframe);
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import VueFreezeframe from './components/VueFreezeframe.vue'
+import { VueFreezeframe } from 'vue-freezeframe'
 
 @Component({
   components: {
@@ -70,7 +70,7 @@ export default class App extends Vue {}
 </script>
 ```
 
-Or, you can use `vue-freezeframe` with JavaScript:
+Or, you can use `vue-freezeframe` with JavaScript SFCs:
 
 ```html
 <template>
