@@ -52,6 +52,8 @@ Vue.use(VueFreezeframe);
 
 ## Local-only usage
 
+TypeScript:
+
 ```html
 <template>
   <vue-freezeframe src="./something.gif" />
@@ -70,7 +72,7 @@ export default class App extends Vue {}
 </script>
 ```
 
-Or, you can use `vue-freezeframe` with JavaScript SFCs:
+JavaScript:
 
 ```html
 <template>
