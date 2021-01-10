@@ -15,12 +15,6 @@ plugin, check out [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezefra
 
 Freezeframe is now built in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
 
-To get started using the TypeScript beta:
-
-```sh
-npm install freezeframe@5.0.0-beta.1
-```
-
 - [Freezeframe.js](#freezeframejs)
   - [TypeScript](#typescript)
   - [Examples](#examples)

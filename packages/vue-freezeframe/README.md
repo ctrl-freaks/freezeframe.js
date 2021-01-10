@@ -20,12 +20,6 @@ https://codesandbox.io/s/vue-freezeframe-demo-jibmp
 
 For advanced use cases, take a look at the [demo source](./src/App.vue), or take a look at the [types exported from Freezeframe](../freezeframe/types).
 
-To get started using the TypeScript beta:
-
-```sh
-npm install vue-freezeframe@5.0.0-beta.1
-```
-
 ## Project setup
 
 ```bash

@@ -10,26 +10,32 @@ animate on mouse hover / mouse click / touch event, or triggered manually.
 
 http://ctrl-freaks.github.io/freezeframe.js/
 
-## 5.0 - TypeScript
+## v5 - TypeScript
 
 Freezeframe is now built entirely in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
 
-To get started using the TypeScript beta:
+To get started using freezeframe 5:
 
 ```sh
-npm install freezeframe@5.0.0-beta.1
+npm install freezeframe@5.0.0
 ```
 
 ```sh
-npm install vue-freezeframe@5.0.0-beta.1
+npm install vue-freezeframe@5.0.0
 ```
 
 ```sh
-npm install react-freezeframe@5.0.0-beta.1
+npm install react-freezeframe@5.0.0
 ```
 
-Version 5+ is built with modern JavaScript in mind. It's transpiled from TypeScript to normal JavaScript, and it should
+Version 5+ is built with modern development in mind. It's transpiled from TypeScript to JavaScript, and it should
 work in all modern browsers, but we are no longer supporting older browsers, or the jquery plugin.
+
+If you need to support older browsers, try v4.x:
+
+```sh
+npm install freezeframe@4.1.3
+```
 
 If you want to use freezeframe as a jquery plugin, check out
 [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
