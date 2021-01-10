@@ -177,7 +177,7 @@ logo.toggle(); // toggle animation
   new Freezeframe('.foo');
 
   // DOM object as selector
-  new Freezeframe(document.querySelectorAll('.foo'));
+  new Freezeframe(document.querySelector('.foo'));
 
   // Custom options
   new Freezeframe({
