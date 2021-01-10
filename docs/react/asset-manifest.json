@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/freezeframe.js/react/static/css/main.4556303b.chunk.css",
-    "main.js": "/freezeframe.js/react/static/js/main.9c8e5b19.chunk.js",
-    "main.js.map": "/freezeframe.js/react/static/js/main.9c8e5b19.chunk.js.map",
+    "main.js": "/freezeframe.js/react/static/js/main.28540dbd.chunk.js",
+    "main.js.map": "/freezeframe.js/react/static/js/main.28540dbd.chunk.js.map",
     "runtime-main.js": "/freezeframe.js/react/static/js/runtime-main.82070588.js",
     "runtime-main.js.map": "/freezeframe.js/react/static/js/runtime-main.82070588.js.map",
     "static/js/2.ada667ba.chunk.js": "/freezeframe.js/react/static/js/2.ada667ba.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.82070588.js",
     "static/js/2.ada667ba.chunk.js",
     "static/css/main.4556303b.chunk.css",
-    "static/js/main.9c8e5b19.chunk.js"
+    "static/js/main.28540dbd.chunk.js"
   ]
 }

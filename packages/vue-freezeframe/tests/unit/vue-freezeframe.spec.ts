@@ -18,7 +18,7 @@ describe('VueFreezeframe.vue', () => {
     const wrapper = shallowMount(VueFreezeframe, {
       slots: {
         default: [`<img src="${src}" />`],
-      }
+      },
     })
     const img = wrapper.find('img')
     expect(img.exists()).toBe(true)
@@ -29,10 +29,8 @@ describe('VueFreezeframe.vue', () => {
   it('renders images when multiple imgs are passed into default slot', () => {
     const wrapper = shallowMount(VueFreezeframe, {
       slots: {
-        default: [
-          `<img src="${src}" /><img src="${src}" /><img src="${src}" />`
-        ],
-      }
+        default: [`<img src="${src}" /><img src="${src}" /><img src="${src}" />`],
+      },
     })
     const imgs = wrapper.findAll('img')
     expect(imgs.length).toBe(3)

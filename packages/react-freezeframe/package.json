@@ -28,7 +28,7 @@
     "eject": "react-scripts eject",
     "build": "rimraf dist && npm run build:demo && npm run build:lib",
     "build:demo": "react-scripts build && ./demo.sh",
-    "build:lib": "NODE_ENV=production babel src/components --out-dir dist --extensions .ts,.tsx --copy-files --ignore __tests__,spec.js,test.js,__snapshots__"
+    "build:lib": "NODE_ENV=production babel src/components/ReactFreezeframe.tsx --out-dir dist --extensions .ts,.tsx --copy-files --ignore __tests__,spec.tsx,test.tsx,__snapshots__"
   },
   "eslintConfig": {
     "extends": [
