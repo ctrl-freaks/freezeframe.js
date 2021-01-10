@@ -60,6 +60,8 @@ React users should give [react-freezeframe](./packages/react-freezeframe) a try.
 
 For the curious, we are able to pause animated gifs by writing their data to a canvas element. Only the first frame of the animation can be written to the canvas, so we now have a frozen version of the gif.
 
+Unfortunately, browser security prevents reading the actual data of the image if it is hosted on a different domain, which prevents us from being able to truly "pause" the gif on the true current frame. Supporting gifs on other domains is a requirement for this project, so the only frame you can pause on is the first frame.
+
 ## Contributing
 
 - Fork or clone the repository
