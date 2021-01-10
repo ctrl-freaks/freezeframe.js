@@ -265,6 +265,28 @@ logo.toggle(); // toggle animation
     }
   };
   ```
+  
+  And in TypeScript:
+
+  ```js
+  import { Freeze } from 'freezeframe/types';
+  
+  ff.on('start', (items: Freeze[]) => {
+    // do something on start
+  };
+
+  ff.on('stop', (items: Freeze[]) => {
+    // do something on stop
+  };
+
+  ff.on('toggle', (items: Freeze[], isPlaying: boolean) => {
+    if (isPlaying) {
+      // do something on start
+    } else {
+      // do something on stop
+    }
+  };
+  ```
 
 - ### ```destroy()```
 
