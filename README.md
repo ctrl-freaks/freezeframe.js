@@ -12,7 +12,7 @@ http://ctrl-freaks.github.io/freezeframe.js/
 
 ## v5 - TypeScript
 
-Freezeframe is now built entirely in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
+Freezeframe is now written in / supports TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
 
 To get started using freezeframe 5:
 
@@ -31,7 +31,7 @@ npm install react-freezeframe@5.0.0
 Version 5+ is built with modern development in mind. It's transpiled from TypeScript to JavaScript, and it should
 work in all modern browsers, but we are no longer supporting older browsers, or the jquery plugin.
 
-If you need to support older browsers, try v4.x:
+If you need to support older browsers (and don't need TypeScript), try v4.x:
 
 ```sh
 npm install freezeframe@4.1.3
