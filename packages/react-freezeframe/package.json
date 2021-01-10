@@ -1,6 +1,6 @@
 {
   "name": "react-freezeframe",
-  "version": "5.0.0-beta.1",
+  "version": "5.0.0",
   "main": "dist/ReactFreezeframe.js",
   "module": "dist/ReactFreezeframe.js",
   "files": [
@@ -58,7 +58,7 @@
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "babel-preset-react-app": "^10.0.0",
-    "freezeframe": "5.0.0-beta.1",
+    "freezeframe": "^5.0.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.1",
