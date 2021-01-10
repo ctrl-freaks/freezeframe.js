@@ -37,14 +37,13 @@ render(<App />, document.getElementById('root'));
 Here's an example of passing custom options, and binding to a ref so we can manually trigger playback.
 
 ```jsx
-import React from 'react';
-import { render } from 'react-dom';
+import React { Component, createRef } from 'react';
 import ReactFreezeframe from 'react-freezeframe';
 
-class App extends React.Component {
+class App extends Component {
   constructor(props) {
     super(props);
-    this.freeze = React.createRef();
+    this.freeze = createRef();
   }
   render() {
     return (
@@ -75,7 +74,61 @@ class App extends React.Component {
   toggle() {
     this.freeze.current.toggle();
   }
+  logEvent(event, items, isPlaying) {
+    console.log(event, items, isPlaying);
+  }
 }
+
+export default App;
+```
+
+## TypeScript
+
+Here's the same example, in TypeScript.
+
+```tsx
+import React, { Component, createRef } from 'react';
+import ReactFreezeframe from 'react-freezeframe';
+import { Freeze } from 'freezeframe/types'
+
+class App extends Component {
+  private freeze = createRef<ReactFreezeframe>();
+
+  render() {
+    return (
+      <div>
+        <ReactFreezeframe
+          src="foo.gif"
+          ref={this.freeze}
+          options={{
+            trigger: false,
+            overlay: true
+          }}
+          onToggle={(items, isPlaying) => this.logEvent('toggle', items, isPlaying)}
+          onStart={(items, isPlaying) => this.logEvent('start', items, isPlaying)}
+          onStop={(items, isPlaying) => this.logEvent('stop', items, isPlaying)}
+        />
+        <button onClick={() => this.start()}>Start</button>
+        <button onClick={() => this.stop()}>Stop</button>
+        <button onClick={() => this.toggle()}>Toggle</button>
+      </div>
+    );
+  }
+  start(): void {
+    this.freeze.current?.start();
+  }
+  stop(): void {
+    this.freeze.current?.stop();
+  }
+  toggle(): void {
+    this.freeze.current?.toggle();
+  }
+  logEvent(event: string, items: Freeze[], isPlaying: boolean): void {
+    console.log(event, items, isPlaying);
+  }
+}
+
+export default App;
 ```
 
 ## Children

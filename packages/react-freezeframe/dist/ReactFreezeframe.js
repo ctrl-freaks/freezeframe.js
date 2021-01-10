@@ -1,43 +1,68 @@
-import _classCallCheck from "@babel/runtime/helpers/esm/classCallCheck";
-import _createClass from "@babel/runtime/helpers/esm/createClass";
-import _possibleConstructorReturn from "@babel/runtime/helpers/esm/possibleConstructorReturn";
-import _getPrototypeOf from "@babel/runtime/helpers/esm/getPrototypeOf";
-import _inherits from "@babel/runtime/helpers/esm/inherits";
-import React from 'react';
-import Freezeframe from 'freezeframe';
+"use strict";
 
-var ReactFreezeframe =
-/*#__PURE__*/
-function (_React$Component) {
-  _inherits(ReactFreezeframe, _React$Component);
+var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWildcard");
+
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = void 0;
+
+var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/classCallCheck"));
+
+var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createClass"));
+
+var _inherits2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/inherits"));
+
+var _createSuper2 = _interopRequireDefault(require("@babel/runtime/helpers/esm/createSuper"));
+
+var _react = _interopRequireWildcard(require("react"));
+
+var _freezeframe = _interopRequireDefault(require("freezeframe"));
+
+var ReactFreezeframe = /*#__PURE__*/function (_Component) {
+  (0, _inherits2.default)(ReactFreezeframe, _Component);
+
+  var _super = (0, _createSuper2.default)(ReactFreezeframe);
 
   function ReactFreezeframe(props) {
     var _this;
 
-    _classCallCheck(this, ReactFreezeframe);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(ReactFreezeframe).call(this, props));
+    (0, _classCallCheck2.default)(this, ReactFreezeframe);
+    _this = _super.call(this, props);
+    _this.$freezeframe = void 0;
+    _this.props = void 0;
+    _this.freeze = /*#__PURE__*/(0, _react.createRef)();
     _this.state = {
       isPlaying: false
     };
-    _this.freeze = React.createRef();
+    _this.props = props;
     return _this;
   }
 
-  _createClass(ReactFreezeframe, [{
+  (0, _createClass2.default)(ReactFreezeframe, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       var _this2 = this;
 
-      this.$freezeframe = new Freezeframe(this.freeze.current, this.props.options);
-      this.$freezeframe.on('toggle', function (items, isPlaying) {
-        var event = isPlaying ? 'Start' : 'Stop';
+      if (this.freeze.current === null) {
+        throw new ReferenceError('You must provide a valid ref');
+      }
 
-        if (_this2.props["on".concat(event)] instanceof Function) {
-          _this2.props["on".concat(event)](items, isPlaying);
+      this.$freezeframe = new _freezeframe.default(this.freeze.current, this.props.options);
+      this.$freezeframe.on('toggle', function (items, isPlaying) {
+        if (isPlaying) {
+          if (_this2.props.onStart) {
+            _this2.props.onStart(items, isPlaying);
+          }
+        } else {
+          if (_this2.props.onStop) {
+            _this2.props.onStop(items, isPlaying);
+          }
         }
 
-        if (_this2.props.onToggle instanceof Function) {
+        if (_this2.props.onToggle) {
           _this2.props.onToggle(items, isPlaying);
         }
       });
@@ -56,11 +81,11 @@ function (_React$Component) {
           children = _this$props.children,
           alt = _this$props.alt,
           src = _this$props.src;
-      return React.createElement("div", {
+      return /*#__PURE__*/_react.default.createElement("div", {
         className: "react-freezeframe"
-      }, children ? React.createElement("div", {
+      }, children ? /*#__PURE__*/_react.default.createElement("div", {
         ref: this.freeze
-      }, children) : React.createElement("img", {
+      }, children) : /*#__PURE__*/_react.default.createElement("img", {
         ref: this.freeze,
         alt: alt,
         src: src
@@ -69,7 +94,9 @@ function (_React$Component) {
   }, {
     key: "start",
     value: function start() {
-      this.$freezeframe.start();
+      var _this$$freezeframe;
+
+      (_this$$freezeframe = this.$freezeframe) === null || _this$$freezeframe === void 0 ? void 0 : _this$$freezeframe.start();
       this.setState({
         isPlaying: true
       });
@@ -77,7 +104,9 @@ function (_React$Component) {
   }, {
     key: "stop",
     value: function stop() {
-      this.$freezeframe.stop();
+      var _this$$freezeframe2;
+
+      (_this$$freezeframe2 = this.$freezeframe) === null || _this$$freezeframe2 === void 0 ? void 0 : _this$$freezeframe2.stop();
       this.setState({
         isPlaying: false
       });
@@ -92,8 +121,8 @@ function (_React$Component) {
       }
     }
   }]);
-
   return ReactFreezeframe;
-}(React.Component);
+}(_react.Component);
 
-export default ReactFreezeframe;
+var _default = ReactFreezeframe;
+exports.default = _default;

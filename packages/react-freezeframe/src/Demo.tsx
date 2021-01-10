@@ -1,15 +1,41 @@
-import React from 'react';
-import { render } from 'react-dom';
-import ReactFreezeframe from './components/ReactFreezeframe';
-import './index.css';
+import React, { Component, createRef } from 'react';
+import ReactFreezeframe from './components/ReactFreezeframe'
+import { Freeze } from 'freezeframe/types'
+import './Demo.css';
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.freeze = React.createRef();
+export type State = {
+  visible: boolean
+}
+
+class Demo extends Component<any, State> {
+
+  private freeze = createRef<ReactFreezeframe>();
+
+  constructor(props: any) {
+    super(props)
     this.state = {
       visible: true
-    };
+    }
+  }
+
+  private logEvent(event: string, items: Freeze[], isPlaying: boolean): void {
+    console.log(event, items, isPlaying)
+  }
+
+  private start() {
+    this.freeze.current?.start();
+  }
+
+  private stop() {
+    this.freeze.current?.stop();
+  }
+
+  private toggle() {
+    this.freeze.current?.toggle();
+  }
+
+  private destroy() {
+    this.setState({ visible: false });
   }
 
   render() {
@@ -77,7 +103,7 @@ class App extends React.Component {
 
           <button onClick={() => this.destroy()}>Destroy</button>
 
-          { this.state.visible && <ReactFreezeframe
+          { this.state?.visible && <ReactFreezeframe
             src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w"
             onToggle={(items, isPlaying) => this.logEvent('toggle', items, isPlaying)}
             onStart={(items, isPlaying) => this.logEvent('start', items, isPlaying)}
@@ -89,26 +115,6 @@ class App extends React.Component {
       </div>
     );
   }
-
-  start() {
-    this.freeze.current.start();
-  }
-
-  stop() {
-    this.freeze.current.stop();
-  }
-
-  toggle() {
-    this.freeze.current.toggle();
-  }
-
-  destroy() {
-    this.setState({ visible: false });
-  }
-
-  logEvent(event, items, isPlaying) {
-    console.log(event, items, isPlaying);
-  }
 }
 
-render(<App />, document.getElementById('root'));
+export default Demo;
