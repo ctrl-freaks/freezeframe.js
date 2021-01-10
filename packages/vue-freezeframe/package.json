@@ -1,6 +1,6 @@
 {
   "name": "vue-freezeframe",
-  "version": "v5.0.0-beta.1",
+  "version": "5.0.0-beta.1",
   "main": "dist/vue-freezeframe.umd.js",
   "repository": "https://github.com/ctrl-freaks/freezeframe.js",
   "license": "MIT",

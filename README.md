@@ -10,9 +10,9 @@ animate on mouse hover / mouse click / touch event, or triggered manually.
 
 http://ctrl-freaks.github.io/freezeframe.js/
 
-## 5.x TypeScript beta
+## 5.0 - TypeScript
 
-Freezeframe is now built in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
+Freezeframe is now built entirely in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
 
 To get started using the TypeScript beta:
 
@@ -25,14 +25,11 @@ npm install vue-freezeframe@5.0.0-beta.1
 ```
 
 ```sh
-# react typescript re-write coming soon
-# npm install react-freezeframe@5.0.0-beta.1
+npm install react-freezeframe@5.0.0-beta.1
 ```
 
-## 4.x
-
-Version 4+ is built with modern javascript in mind. It's transpiled with webpack/babel, so it should
-work in most environments, but we are no longer supporting the jquery plugin.
+Version 5+ is built with modern JavaScript in mind. It's transpiled from TypeScript to normal JavaScript, and it should
+work in all modern browsers, but we are no longer supporting older browsers, or the jquery plugin.
 
 If you want to use freezeframe as a jquery plugin, check out
 [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
@@ -59,7 +56,7 @@ For the curious, we are able to pause animated gifs by writing their data to a c
 
 ## Contributing
 
-- Fork or clone the repository.
+- Fork or clone the repository
 - Install lerna globally (optional)
 
 ```bash
@@ -90,13 +87,7 @@ npm test
 npm run build
 ```
 
-- If you are part of the ctrl-freaks organization, you can publish directly to npm:
-  
-```bash
-lerna publish
-```
-
-Otherwise, submit your PR for review.
+Then, submit your PR for review.
 
 ## License
 
