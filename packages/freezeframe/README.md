@@ -268,7 +268,7 @@ logo.toggle(); // toggle animation
   
   And in TypeScript:
 
-  ```js
+  ```ts
   import { Freeze } from 'freezeframe/types';
   
   ff.on('start', (items: Freeze[]) => {
