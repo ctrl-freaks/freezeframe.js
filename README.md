@@ -40,21 +40,13 @@ npm install freezeframe@4.1.3
 If you want to use freezeframe as a jquery plugin, check out
 [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
-## Packages
+## Packages / Documentation
 
-This is a [lerna.js](https://lerna.js.org/) monorepo, containing the following packages:
+This is a [lerna.js](https://lerna.js.org/) monorepo, containing the following packages, each with their own docs:
 
 - [freezeframe](./packages/freezeframe)
 - [vue-freezeframe](./packages/vue-freezeframe)
 - [react-freezeframe](./packages/react-freezeframe)
-
-## Documentation
-
-To get started with freezeframe, head over to the core [freezeframe](./packages/freezeframe) package.
-
-To use freezeframe with Vue.js, check out the [vue-freezeframe](./packages/vue-freezeframe) docs.
-
-React users should give [react-freezeframe](./packages/react-freezeframe) a try.
 
 ## How it works
 
