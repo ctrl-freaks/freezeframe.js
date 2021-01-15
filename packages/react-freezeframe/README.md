@@ -13,7 +13,7 @@ http://ctrl-freaks.github.io/freezeframe.js/react
 ## Project setup
 
 ```bash
-npm install react-freezeframe
+npm install freezeframe react-freezeframe
 ```
 
 ## Basic usage

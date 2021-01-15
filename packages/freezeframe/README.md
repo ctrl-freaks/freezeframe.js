@@ -177,7 +177,7 @@ logo.toggle(); // toggle animation
   new Freezeframe('.foo');
 
   // DOM object as selector
-  new Freezeframe(document.querySelectorAll('.foo'));
+  new Freezeframe(document.querySelector('.foo'));
 
   // Custom options
   new Freezeframe({
@@ -258,6 +258,28 @@ logo.toggle(); // toggle animation
   };
 
   ff.on('toggle', (items, isPlaying) => {
+    if (isPlaying) {
+      // do something on start
+    } else {
+      // do something on stop
+    }
+  };
+  ```
+  
+  And in TypeScript:
+
+  ```ts
+  import { Freeze } from 'freezeframe/types';
+  
+  ff.on('start', (items: Freeze[]) => {
+    // do something on start
+  };
+
+  ff.on('stop', (items: Freeze[]) => {
+    // do something on stop
+  };
+
+  ff.on('toggle', (items: Freeze[], isPlaying: boolean) => {
     if (isPlaying) {
       // do something on start
     } else {

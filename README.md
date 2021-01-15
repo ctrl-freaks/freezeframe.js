@@ -12,7 +12,7 @@ http://ctrl-freaks.github.io/freezeframe.js/
 
 ## v5 - TypeScript
 
-Freezeframe is now built entirely in TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
+Freezeframe is now written in / supports TypeScript! The library will still support usage in JavaScript, but if your project uses TypeScript, you'll have access to Freezeframe's type definitions, improved input validation, and depending on your IDE/text editor, autocompletion/intellisense.
 
 To get started using freezeframe 5:
 
@@ -31,7 +31,7 @@ npm install react-freezeframe@5.0.0
 Version 5+ is built with modern development in mind. It's transpiled from TypeScript to JavaScript, and it should
 work in all modern browsers, but we are no longer supporting older browsers, or the jquery plugin.
 
-If you need to support older browsers, try v4.x:
+If you need to support older browsers (and don't need TypeScript), try v4.x:
 
 ```sh
 npm install freezeframe@4.1.3
@@ -40,25 +40,19 @@ npm install freezeframe@4.1.3
 If you want to use freezeframe as a jquery plugin, check out
 [freezeframe v3.0.10](https://github.com/ctrl-freaks/freezeframe.js/tree/archived/3.0.10).
 
-## Packages
+## Packages / Documentation
 
-This is a [lerna.js](https://lerna.js.org/) monorepo, containing the following packages:
+This is a [lerna.js](https://lerna.js.org/) monorepo, containing the following packages, each with their own docs:
 
 - [freezeframe](./packages/freezeframe)
 - [vue-freezeframe](./packages/vue-freezeframe)
 - [react-freezeframe](./packages/react-freezeframe)
 
-## Documentation
-
-To get started with freezeframe, head over to the core [freezeframe](./packages/freezeframe) package.
-
-To use freezeframe with Vue.js, check out the [vue-freezeframe](./packages/vue-freezeframe) docs.
-
-React users should give [react-freezeframe](./packages/react-freezeframe) a try.
-
 ## How it works
 
 For the curious, we are able to pause animated gifs by writing their data to a canvas element. Only the first frame of the animation can be written to the canvas, so we now have a frozen version of the gif.
+
+Unfortunately, browser security prevents reading the actual data of the image if it is hosted on a different domain, which prevents us from being able to truly "pause" the gif on the true current frame. Supporting gifs on other domains is a requirement for this project, so the only frame you can pause on is the first frame.
 
 ## Contributing
 
