@@ -17,15 +17,15 @@ Freezeframe is now written in / supports TypeScript! The library will still supp
 To get started using freezeframe 5:
 
 ```sh
-npm install freezeframe@5.0.0
+npm install freezeframe@5.0.1
 ```
 
 ```sh
-npm install vue-freezeframe@5.0.0
+npm install vue-freezeframe@5.0.1
 ```
 
 ```sh
-npm install react-freezeframe@5.0.0
+npm install react-freezeframe@5.0.1
 ```
 
 Version 5+ is built with modern development in mind. It's transpiled from TypeScript to JavaScript, and it should
