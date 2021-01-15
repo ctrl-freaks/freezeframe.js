@@ -50,6 +50,19 @@ button:active {
 .italic {
   font-style: italic;
 }
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+}
+
+.grid .cell {
+  width: calc(50% - 24px);
+  height: auto;
+  padding: 12px;
+}
+
 </style>
 </head>
 
@@ -121,12 +134,41 @@ document
 <p>with overlay icon.</p>
 
 <img
-  class="my-class-4"
+  class="overlay"
   src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/5615846be4b042d6d89a94ee/1444251161903/?format=1000w"
 />
 
+<div class="section">
+  <p>using child elements</p>
+
+  <div class="overlay">
+    <div class="grid">
+      <div class="cell">
+        <img
+          src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e801085229b264ca29fc/1519577337605/download.gif?format=1000w"
+        />
+      </div>
+      <div class="cell">
+        <img
+          src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e904c830257a34734ff5/1519577373504/Armani-Central-Park-6151.gif?format=1000w"
+        />
+      </div>
+      <div class="cell">
+        <img
+          src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a95c231419202eb9a763970/1519814094692/tumblr_nfro6qnt591qzcq51o1_500.gif?format=750w"
+        />
+      </div>
+      <div class="cell">
+        <img
+          src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a93f42471c10b0d656d1562/1519814094495/dirk-980.gif?format=1000w"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
-new Freezeframe('.my-class-4', {
+new Freezeframe('.overlay', {
   overlay: true
 });
 </script>
