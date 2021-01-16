@@ -1,6 +1,7 @@
 {
   "name": "react-freezeframe",
   "version": "5.0.1",
+  "license": "MIT",
   "main": "dist/ReactFreezeframe.js",
   "module": "dist/ReactFreezeframe.js",
   "files": [
