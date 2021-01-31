@@ -1,6 +1,6 @@
 {
   "name": "freezeframe",
-  "version": "5.0.1",
+  "version": "5.0.2",
   "description": "Freezeframe is a library that automatically pauses animated .gifs and enables them to start animation on mouse hover or click",
   "main": "./dist/freezeframe.min.js",
   "types": "./dist/packages/freezeframe/src/index.d.ts",
