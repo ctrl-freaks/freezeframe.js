@@ -1,0 +1,67 @@
+<div>
+  <p class="bold title">angular-freezeframe</p>
+
+  <div class="section">
+    <p>basic,<br />animate on hover.</p>
+    <angular-freezeframe
+      src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w"
+    ></angular-freezeframe>
+  </div>
+
+  <div class="section">
+    <p>start/stop manually, with overlay</p>
+
+    <button (click)="start()">Start</button>
+    <button (click)="stop()">Stop</button>
+    <button (click)="toggle()">Toggle</button>
+
+    <angular-freezeframe
+      src="http://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/55f96e21e4b0f86680e762dc/56aa551b8b38d446e39e933b/1454003533097/.gif"
+      #freeze
+      [options]="{
+        trigger: false,
+        overlay: true
+      }"
+    ></angular-freezeframe>
+  </div>
+
+  <div class="section">
+    <p>using children & overlay</p>
+
+    <angular-freezeframe
+      [options]="{
+        overlay: true
+      }"
+    >
+      <div class="grid">
+        <div class="cell">
+          <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e801085229b264ca29fc/1519577337605/download.gif?format=1000w" alt="" />
+        </div>
+        <div class="cell">
+          <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e904c830257a34734ff5/1519577373504/Armani-Central-Park-6151.gif?format=1000w" alt="" />
+        </div>
+        <div class="cell">
+          <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a95c231419202eb9a763970/1519814094692/tumblr_nfro6qnt591qzcq51o1_500.gif?format=750w" alt="" />
+        </div>
+        <div class="cell">
+          <img src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a93f42471c10b0d656d1562/1519814094495/dirk-980.gif?format=1000w" alt="" />
+        </div>
+      </div>
+    </angular-freezeframe>
+  </div>
+
+  <!-- <div class="section">
+    <p>destroy, remove event listeners</p>
+
+    <button onClick={() => this.destroy()}>Destroy</button>
+
+    { this.state?.visible && <ReactFreezeframe
+      src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w"
+      onToggle={(items, isPlaying) => this.logEvent('toggle', items, isPlaying)}
+      onStart={(items, isPlaying) => this.logEvent('start', items, isPlaying)}
+      onStop={(items, isPlaying) => this.logEvent('stop', items, isPlaying)}
+    />}
+  </div> -->
+
+  <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a></p>
+</div>
