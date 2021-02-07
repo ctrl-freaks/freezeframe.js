@@ -1,0 +1,1 @@
+{"version":3,"sources":["./styles.scss"],"names":[],"mappings":"AAAA;EACE;EACA;EACA;EACA;EACA;EACA;AACF,C","file":"styles.css","sourcesContent":["body {\n  max-width: 1000px;\n  margin: 0px auto;\n  padding: 20px;\n  font-size: 13px;\n  text-align: center;\n  color: #202020;\n}\n"],"sourceRoot":"webpack:///"}

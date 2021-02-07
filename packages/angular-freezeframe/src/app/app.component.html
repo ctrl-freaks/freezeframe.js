@@ -5,6 +5,9 @@
     <p>basic,<br />animate on hover.</p>
     <angular-freezeframe
       src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w"
+      (startEvent)="log('start', $event)"
+      (stopEvent)="log('stop', $event)"
+      (toggleEvent)="log('toggle', $event)"
     ></angular-freezeframe>
   </div>
 
@@ -22,6 +25,9 @@
         trigger: false,
         overlay: true
       }"
+      (startEvent)="log('start', $event)"
+      (stopEvent)="log('stop', $event)"
+      (toggleEvent)="log('toggle', $event)"
     ></angular-freezeframe>
   </div>
 
@@ -32,6 +38,9 @@
       [options]="{
         overlay: true
       }"
+      (startEvent)="log('start', $event)"
+      (stopEvent)="log('stop', $event)"
+      (toggleEvent)="log('toggle', $event)"
     >
       <div class="grid">
         <div class="cell">
@@ -50,18 +59,23 @@
     </angular-freezeframe>
   </div>
 
-  <!-- <div class="section">
+  <div class="section">
     <p>destroy, remove event listeners</p>
 
-    <button onClick={() => this.destroy()}>Destroy</button>
+    <button (click)="destroy()">Destroy</button>
 
-    { this.state?.visible && <ReactFreezeframe
+    <angular-freezeframe
       src="https://static1.squarespace.com/static/51c748abe4b0c275d0aa86bf/5a9298a1c830257a3467a8de/5a92e9ccec212d9451d56ff9/1519814094696/Lincoln_Cinemagraph_615.gif?format=1000w"
-      onToggle={(items, isPlaying) => this.logEvent('toggle', items, isPlaying)}
-      onStart={(items, isPlaying) => this.logEvent('start', items, isPlaying)}
-      onStop={(items, isPlaying) => this.logEvent('stop', items, isPlaying)}
-    />}
-  </div> -->
+      #freeze
+      *ngIf="destroyerVisible"
+      [options]="{
+        overlay: true
+      }"
+      (startEvent)="log('start', $event)"
+      (stopEvent)="log('stop', $event)"
+      (toggleEvent)="log('toggle', $event)"
+    ></angular-freezeframe>
+  </div>
 
   <p>cinemagraphs by <a href="http://www.cinemagraphs.com/">cinemagraphs.com</a></p>
 </div>

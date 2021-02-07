@@ -147,17 +147,22 @@ Assuming you have already read the [instructions](../../README.md#contributing) 
 
 ```bash
 # start webpack dev server
-yarn start # of npm start
+npm start
 ```
 
 ```bash
 # lint and fix issues with eslint
-yarn lint # or npm run lint
+npm run lint
+```
+
+```bash
+# run unit tests
+npm test
 ```
 
 ```bash
 # build the project and examples for gh-pages
-yarn build # or npm run build
+npm run build
 ```
 
 Then commit your changes and submit your PR for review.

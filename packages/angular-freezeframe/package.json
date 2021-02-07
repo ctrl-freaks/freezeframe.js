@@ -1,15 +1,38 @@
 {
-  "name": "angular-freezeframe-demo",
-  "version": "0.0.0",
+  "name": "angular-freezeframe",
+  "version": "5.0.2",
+  "license": "MIT",
+  "main": "./dist/angular-freezeframe/bundles/angular-freezeframe.umd.js",
+  "module": "./dist/angular-freezeframe/esm2015/public-api.js",
+  "types": "./dist/angular-freezeframe/angular-freezeframe.d.ts",
+  "files": [
+    "dist/angular-freezeframe"
+  ],
+  "description": "Angular wrapper for freezeframe.js",
+  "author": "Nick Ford <nickforddesign@gmail.com>",
+  "homepage": "https://github.com/ctrl-freaks/freezeframe.js/packages/angular-freezeframe",
+  "keywords": [
+    "freezeframe",
+    "angular",
+    "gif"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-freaks/freezeframe.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ctrl-freaks/freezeframe.js/issues"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e"
+    "build": "rm -rf ./dist && npm run build:lib && npm run build:demo",
+    "build:demo": "ng build && ./demo.sh",
+    "build:lib": "ng build angular-freezeframe",
+    "install": "npm run build:lib",
+    "test": "ng test angular-freezeframe --no-watch --no-progress --browsers=ChromeHeadlessCI",
+    "lint": "ng lint"
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "~11.1.0",
     "@angular/common": "~11.1.0",
@@ -40,6 +63,7 @@
     "eslint-plugin-import": "2.22.1",
     "eslint-plugin-jsdoc": "30.7.6",
     "eslint-plugin-prefer-arrow": "1.2.2",
+    "freezeframe": "^5.0.2",
     "jasmine-core": "~3.6.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.2.0",
@@ -48,7 +72,6 @@
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "^1.5.0",
     "ng-packagr": "^11.0.0",
-    "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "typescript": "~4.1.2"
   }

@@ -12,7 +12,6 @@ import { AngularFreezeframeComponent } from '../../projects/angular-freezeframe/
   imports: [
     BrowserModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

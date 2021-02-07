@@ -1,5 +1,7 @@
 {
-  "name": "freezeframe-root",
+  "name": "freezeframe-monorepo",
+  "description": "Freezeframe.js monorepo",
+  "repository": "https://github.com/ctrl-freaks/freezeframe.js",
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist",
     "test": "lerna run test --stream",
@@ -7,7 +9,7 @@
     "lint": "lerna run lint --stream"
   },
   "devDependencies": {
-    "eslint-plugin-import": "^2.15.0",
+    "eslint-plugin-import": "^2.22.1",
     "lerna": "^3.20.2"
   }
 }

@@ -1,0 +1,42 @@
+{
+  "name": "angular-freezeframe",
+  "version": "5.0.2",
+  "license": "MIT",
+  "main": "bundles/angular-freezeframe.umd.js",
+  "module": "fesm2015/angular-freezeframe.js",
+  "types": "./dist/angular-freezeframe/angular-freezeframe.d.ts",
+  "files": [
+    "dist/angular-freezeframe"
+  ],
+  "description": "Angular wrapper for freezeframe.js",
+  "author": "Nick Ford <nickforddesign@gmail.com>",
+  "homepage": "https://github.com/ctrl-freaks/freezeframe.js/packages/angular-freezeframe",
+  "keywords": [
+    "freezeframe",
+    "angular",
+    "gif"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-freaks/freezeframe.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ctrl-freaks/freezeframe.js/issues"
+  },
+  "peerDependencies": {
+    "@angular/common": "^11.1.2",
+    "@angular/core": "^11.1.2",
+    "freezeframe": "^5.0.2"
+  },
+  "dependencies": {
+    "tslib": "^2.0.0"
+  },
+  "es2015": "fesm2015/angular-freezeframe.js",
+  "esm2015": "esm2015/angular-freezeframe.js",
+  "fesm2015": "fesm2015/angular-freezeframe.js",
+  "typings": "angular-freezeframe.d.ts",
+  "sideEffects": false,
+  "scripts": {
+    "prepublishOnly": "node --eval \"console.error('ERROR: Trying to publish a package that has been compiled by Ivy. This is not allowed.\\nPlease delete and rebuild the package, without compiling with Ivy, before attempting to publish.\\n')\" && exit 1"
+  }
+}

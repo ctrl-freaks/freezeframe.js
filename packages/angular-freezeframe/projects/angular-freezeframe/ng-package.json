@@ -3,5 +3,6 @@
   "dest": "../../dist/angular-freezeframe",
   "lib": {
     "entryFile": "src/public-api.ts"
-  }
+  },
+  "whitelistedNonPeerDependencies": ["freezeframe"]
 }

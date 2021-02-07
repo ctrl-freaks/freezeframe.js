@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { AngularFreezeframeComponent } from '../../projects/angular-freezeframe/src/lib/angular-freezeframe.component'
+import { AngularFreezeframeComponent, AngularFreezeframeEvent } from '../../projects/angular-freezeframe/src/lib/angular-freezeframe.component'
 
 @Component({
   selector: 'app-root',
@@ -8,18 +8,27 @@ import { AngularFreezeframeComponent } from '../../projects/angular-freezeframe/
 })
 export class AppComponent {
   title = 'angular-freezeframe-demo';
+  destroyerVisible = true
 
   @ViewChild('freeze') freeze!: AngularFreezeframeComponent
 
-  start() {
+  start(): void {
     this.freeze?.start()
   }
 
-  stop() {
+  stop(): void {
     this.freeze?.stop()
   }
 
-  toggle() {
+  toggle(): void {
     this.freeze?.toggle()
+  }
+
+  destroy(): void {
+    this.destroyerVisible = false
+  }
+
+  log(eventName: string, $event: AngularFreezeframeEvent): void {
+    console.log({ eventName, $event })
   }
 }

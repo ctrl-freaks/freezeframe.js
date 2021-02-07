@@ -1,14 +1,34 @@
 {
   "name": "angular-freezeframe",
-  "version": "0.0.1",
+  "version": "5.0.2",
+  "license": "MIT",
+  "main": "./dist/angular-freezeframe/bundles/angular-freezeframe.umd.js",
+  "module": "./dist/angular-freezeframe/esm2015/public-api.js",
+  "types": "./dist/angular-freezeframe/angular-freezeframe.d.ts",
+  "files": [
+    "dist/angular-freezeframe"
+  ],
+  "description": "Angular wrapper for freezeframe.js",
+  "author": "Nick Ford <nickforddesign@gmail.com>",
+  "homepage": "https://github.com/ctrl-freaks/freezeframe.js/packages/angular-freezeframe",
+  "keywords": [
+    "freezeframe",
+    "angular",
+    "gif"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-freaks/freezeframe.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ctrl-freaks/freezeframe.js/issues"
+  },
   "peerDependencies": {
     "@angular/common": "^11.1.2",
-    "@angular/core": "^11.1.2"
+    "@angular/core": "^11.1.2",
+    "freezeframe": "^5.0.2"
   },
   "dependencies": {
     "tslib": "^2.0.0"
-  },
-  "devDependencies": {
-    "freezeframe": "^5.0.2"
   }
 }

@@ -9,7 +9,7 @@ module.exports = function (config) {
       require('karma-jasmine'),
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
-      require('karma-coverage'),
+      // require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma')
     ],
     client: {
@@ -21,24 +21,30 @@ module.exports = function (config) {
       },
       clearContext: false // leave Jasmine Spec Runner output visible in browser
     },
-    jasmineHtmlReporter: {
-      suppressAll: true // removes the duplicated traces
-    },
-    coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/angular-freezeframe-demo'),
-      subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
-      ]
-    },
-    reporters: ['progress', 'kjhtml'],
+    // jasmineHtmlReporter: {
+    //   suppressAll: true // removes the duplicated traces
+    // },
+    // coverageReporter: {
+    //   dir: require('path').join(__dirname, './coverage/angular-freezeframe-demo'),
+    //   subdir: '.',
+    //   reporters: [
+    //     { type: 'html' },
+    //     { type: 'text-summary' }
+    //   ]
+    // },
+    reporters: ['kjhtml'],
     port: 9876,
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['Chrome'],
-    singleRun: false,
+    customLaunchers: {
+      ChromeHeadlessCI: {
+        base: 'ChromeHeadless',
+        flags: ['--no-sandbox']
+      }
+    },
+    singleRun: true,
     restartOnFileChange: true
   });
 };

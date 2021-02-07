@@ -1,0 +1,46 @@
+a {
+  color: #202020;
+}
+
+p {
+  padding: 10px 0px;
+  text-align: center;
+  font-family: monospace;
+}
+
+button {
+  width: 100px;
+  margin: 0px 10px 10px 0px;
+  padding: 5px 0px;
+  border: 1px solid #000;
+  background: #fff;
+  outline: none;
+  font-family: monospace;
+  text-align: center;
+}
+
+button:active {
+  background: #000;
+  color: #fff;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-items: center;
+  align-items: center;
+
+  .cell {
+    width: calc(50% - 24px);
+    height: auto;
+    padding: 12px;
+  }
+}
