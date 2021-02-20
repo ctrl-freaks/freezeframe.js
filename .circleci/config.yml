@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:12.4
+      - image: circleci/node:12-browsers
 
     working_directory: ~/project
     steps:
@@ -11,9 +11,9 @@ jobs:
       # Download and cache dependencies
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package-lock.json" }}
+            - v502-dependencies-{{ checksum "package-lock.json" }}
             # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
+            - v502-dependencies-
 
       - run: npm install
       - run: npm run bootstrap
@@ -21,6 +21,8 @@ jobs:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "package-lock.json" }}
+          key: v502-dependencies-{{ checksum "package-lock.json" }}
 
       - run: npm test
+      - store_artifacts:
+          path: /home/circleci/.npm/_logs/

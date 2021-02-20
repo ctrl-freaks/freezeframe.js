@@ -1,0 +1,78 @@
+{
+  "name": "angular-freezeframe",
+  "version": "5.0.2",
+  "license": "MIT",
+  "main": "./dist/angular-freezeframe/bundles/angular-freezeframe.umd.js",
+  "module": "./dist/angular-freezeframe/esm2015/public-api.js",
+  "types": "./dist/angular-freezeframe/angular-freezeframe.d.ts",
+  "files": [
+    "dist/angular-freezeframe"
+  ],
+  "description": "Angular wrapper for freezeframe.js",
+  "author": "Nick Ford <nickforddesign@gmail.com>",
+  "homepage": "https://github.com/ctrl-freaks/freezeframe.js/packages/angular-freezeframe",
+  "keywords": [
+    "freezeframe",
+    "angular",
+    "gif"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ctrl-freaks/freezeframe.js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ctrl-freaks/freezeframe.js/issues"
+  },
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "rm -rf ./dist && npm run build:lib && npm run build:demo",
+    "build:demo": "ng build && ./demo.sh",
+    "build:lib": "ng build angular-freezeframe",
+    "install": "npm run build:lib",
+    "test": "ng test angular-freezeframe --no-watch --no-progress --browsers=ChromeHeadlessCI",
+    "lint": "ng lint"
+  },
+  "dependencies": {
+    "@angular/animations": "~11.1.0",
+    "@angular/common": "~11.1.0",
+    "@angular/compiler": "~11.1.0",
+    "@angular/core": "~11.1.0",
+    "@angular/forms": "~11.1.0",
+    "@angular/platform-browser": "~11.1.0",
+    "@angular/platform-browser-dynamic": "~11.1.0",
+    "@angular/router": "~11.1.0",
+    "rxjs": "~6.6.0",
+    "tslib": "^2.0.0",
+    "zone.js": "~0.11.3"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.1101.1",
+    "@angular-eslint/builder": "1.1.0",
+    "@angular-eslint/eslint-plugin": "1.1.0",
+    "@angular-eslint/eslint-plugin-template": "1.1.0",
+    "@angular-eslint/schematics": "1.1.0",
+    "@angular-eslint/template-parser": "1.1.0",
+    "@angular/cli": "~11.1.1",
+    "@angular/compiler-cli": "~11.1.0",
+    "@types/jasmine": "~3.6.0",
+    "@types/node": "^12.11.1",
+    "@typescript-eslint/eslint-plugin": "4.3.0",
+    "@typescript-eslint/parser": "4.3.0",
+    "eslint": "^7.6.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsdoc": "30.7.6",
+    "eslint-plugin-prefer-arrow": "1.2.2",
+    "freezeframe": "^5.0.2",
+    "jasmine-core": "~3.6.0",
+    "jasmine-spec-reporter": "~5.0.0",
+    "karma": "~5.2.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage": "~2.0.3",
+    "karma-jasmine": "~4.0.0",
+    "karma-jasmine-html-reporter": "^1.5.0",
+    "ng-packagr": "^11.0.0",
+    "ts-node": "~8.3.0",
+    "typescript": "~4.1.2"
+  }
+}

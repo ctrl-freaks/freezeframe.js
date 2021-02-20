@@ -173,7 +173,7 @@ The following callback props will fire when freezeframe emits the corresponding 
 
 ```jsx
 <ReactFreezeframe
-  src="./something.gif"
+  src="foo.gif"
   onStart={(items) => this.onStart(items)}
   onStop={(items) => this.onStop(items)}
   onToggle={(items, isPlaying) => this.onToggle(items, isPlaying)}
@@ -194,6 +194,11 @@ npm start
 ```bash
 # lint and fix issues with eslint
 npm run lint -- --fix
+```
+
+```bash
+# run unit tests
+npm test
 ```
 
 ```bash
