@@ -28,6 +28,10 @@ npm install vue-freezeframe
 npm install react-freezeframe
 ```
 
+```sh
+npm install angular-freezeframe
+```
+
 Version 5+ is built with modern development in mind. It's transpiled from TypeScript to JavaScript, and it should
 work in all modern browsers, but we are no longer supporting older browsers, or the jquery plugin.
 
@@ -47,6 +51,7 @@ This is a [lerna.js](https://lerna.js.org/) monorepo, containing the following p
 - [freezeframe](./packages/freezeframe)
 - [vue-freezeframe](./packages/vue-freezeframe)
 - [react-freezeframe](./packages/react-freezeframe)
+- [angular-freezeframe](./packages/angular-freezeframe)
 
 ## How it works
 

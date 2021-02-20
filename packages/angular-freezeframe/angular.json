@@ -23,6 +23,7 @@
             "outputPath": "dist/angular-freezeframe-demo",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "deployUrl": "/freezeframe.js/angular/",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "aot": true,
