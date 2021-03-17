@@ -124,8 +124,12 @@ class Freezeframe {
   private _process(freeze: Freeze): Promise<Freeze> {
     return new Promise((resolve) => {
       const { $canvas, $image, $container } = freeze;
-      const { clientWidth, clientHeight } = $image;
+      const { width, height } = $image.getClientRects()[0];
+      const clientWidth = Math.ceil(width);
+      const clientHeight = Math.ceil(height);
 
+      $canvas.style.width =  `${width}px`;
+      $canvas.style.height = `${height}px`;
       $canvas.setAttribute('width', clientWidth.toString());
       $canvas.setAttribute('height', clientHeight.toString());
 
