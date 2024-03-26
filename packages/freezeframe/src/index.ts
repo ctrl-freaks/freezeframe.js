@@ -124,11 +124,12 @@ class Freezeframe {
   private _process(freeze: Freeze): Promise<Freeze> {
     return new Promise((resolve) => {
       const { $canvas, $image, $container } = freeze;
+      const scale = devicePixelRatio;
       const { width, height } = $image.getClientRects()[0];
-      const clientWidth = Math.ceil(width);
-      const clientHeight = Math.ceil(height);
+      const clientWidth = Math.ceil(width * scale);
+      const clientHeight = Math.ceil(height * scale);
 
-      $canvas.style.width =  `${width}px`;
+      $canvas.style.width = `${width}px`;
       $canvas.style.height = `${height}px`;
       $canvas.setAttribute('width', clientWidth.toString());
       $canvas.setAttribute('height', clientHeight.toString());
